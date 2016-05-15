@@ -15,6 +15,8 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
     var articles: [[String: String?]] = []
     var postUrl: NSURL?
     
+    var refreshControll: UIRefreshControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,6 +31,11 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
             self.articles = response
             self.table.reloadData()
         }
+        
+        refreshControll = UIRefreshControl()
+        refreshControll.attributedTitle = NSAttributedString(string: "下に引っ張って更新")
+        refreshControll.addTarget(self, action: #selector(pullToRefresh), forControlEvents: UIControlEvents.ValueChanged)
+        table.addSubview(refreshControll)
     }
     
     /// tableViewの行数を指定
@@ -79,6 +86,17 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
                 webView.url = postUrl
             default:
                 break
+        }
+    }
+    
+    func pullToRefresh() {
+        
+        APIClient.apiRequest { response in
+            print("tableリロード開始")
+            self.articles = response
+            self.table.reloadData()
+            
+            self.refreshControll.endRefreshing()
         }
     }
 

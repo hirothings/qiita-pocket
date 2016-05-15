@@ -19,7 +19,7 @@ class WebViewController: UIViewController, WKNavigationDelegate {
     var refreshBtn = UIBarButtonItem()
     
     var webview: WKWebView!
-    var url: NSURL?
+    var url: NSURL?    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,8 +50,8 @@ class WebViewController: UIViewController, WKNavigationDelegate {
         // スワイプで戻る・進むできるようにする
         webview.allowsBackForwardNavigationGestures = true
         
+        // ツールバーの生成
         creatToolbarItems()
-        
     }
 
     override func didReceiveMemoryWarning() {

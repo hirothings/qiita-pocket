@@ -15,7 +15,6 @@
 		52471A9B1CD9AF2F006865C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52471A991CD9AF2F006865C6 /* LaunchScreen.storyboard */; };
 		524C29E91CD9B73300A9B40E /* ArticleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524C29E81CD9B73300A9B40E /* ArticleListViewController.swift */; };
 		5290851A1CD9CF5700ED7434 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529085191CD9CF5700ED7434 /* APIClient.swift */; };
-		529EE5981CDCD8650066F06B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 529EE5971CDCD8650066F06B /* Default-568h@2x.png */; };
 		52D86FDC1CDDE0DB00606614 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D86FDB1CDDE0DB00606614 /* WebViewController.swift */; };
 		9AEB7ACA3720EAE3CBB4ED44 /* Pods_qiitareader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D66A5CC6C10C0112CD6EBAD2 /* Pods_qiitareader.framework */; };
 /* End PBXBuildFile section */
@@ -105,7 +104,6 @@
 		528737691CD9DC950020BFEF /* SwiftyJSON.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = SwiftyJSON.modulemap; sourceTree = "<group>"; };
 		5287376A1CD9DC950020BFEF /* SwiftyJSON.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = SwiftyJSON.xcconfig; sourceTree = "<group>"; };
 		529085191CD9CF5700ED7434 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
-		529EE5971CDCD8650066F06B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		52D86FDB1CDDE0DB00606614 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		59A95AFB59F6F713D7B3BD57 /* Pods-qiitareader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qiitareader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-qiitareader/Pods-qiitareader.debug.xcconfig"; sourceTree = "<group>"; };
 		6F23255C9CDF5E6DC0920870 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,7 +140,6 @@
 		52471A841CD9AF2E006865C6 = {
 			isa = PBXGroup;
 			children = (
-				529EE5971CDCD8650066F06B /* Default-568h@2x.png */,
 				52471A8F1CD9AF2F006865C6 /* qiitareader */,
 				52471A8E1CD9AF2E006865C6 /* Products */,
 				19989F1DB404BCE9479B50AF /* Frameworks */,
@@ -447,7 +444,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				52471A9B1CD9AF2F006865C6 /* LaunchScreen.storyboard in Resources */,
-				529EE5981CDCD8650066F06B /* Default-568h@2x.png in Resources */,
 				52471A981CD9AF2F006865C6 /* Assets.xcassets in Resources */,
 				52471A961CD9AF2F006865C6 /* Main.storyboard in Resources */,
 			);
