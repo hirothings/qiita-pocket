@@ -36,6 +36,7 @@ class APIClient: NSObject {
                 ]
                 articles.append(article)
             }
+                // 自作complete delegate を使ってもOK
             
             apiResponse(responseArticles: articles)
         }

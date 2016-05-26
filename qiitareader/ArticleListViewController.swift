@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SDWebImage
+
 
 class ArticleListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -50,15 +52,9 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
         let article = articles[indexPath.row]
         
         // 投稿者イメージの生成
-        do {
-            let url = NSURL(string: article["profile_image_url"]!!)
-            let imageData = try NSData(contentsOfURL: url!, options: NSDataReadingOptions.DataReadingMappedIfSafe)
-            let img = UIImage(data: imageData)
-            let imageView = table.viewWithTag(1) as! UIImageView
-            imageView.image = img
-        } catch {
-            print("Error: can't creat image.")
-        }
+        let url = NSURL(string: article["profile_image_url"]!!)
+        let imageView = table.viewWithTag(1) as! UIImageView
+        imageView.sd_setImageWithURL(url)
         
         // 投稿タイトルの生成
         let label = table.viewWithTag(2) as! UILabel
