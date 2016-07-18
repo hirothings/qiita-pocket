@@ -158,10 +158,13 @@
 		52471A8F1CD9AF2F006865C6 /* qiitareader */ = {
 			isa = PBXGroup;
 			children = (
+				6C7FEF2C1D3CB47400D0A36C /* ViewModels */,
 				529EE5921CDCC9A70066F06B /* Views */,
 				524C29E81CD9B73300A9B40E /* ArticleListViewController.swift */,
+				6C7FEF2D1D3CB47F00D0A36C /* Models */,
 				529085191CD9CF5700ED7434 /* APIClient.swift */,
 				52471A901CD9AF2F006865C6 /* AppDelegate.swift */,
+				6C7FEF2E1D3CB48F00D0A36C /* Controllers */,
 				52471A941CD9AF2F006865C6 /* Main.storyboard */,
 				52D86FDB1CDDE0DB00606614 /* WebViewController.swift */,
 				52471A971CD9AF2F006865C6 /* Assets.xcassets */,
@@ -343,6 +346,27 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		6C7FEF2C1D3CB47400D0A36C /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewModels;
+			sourceTree = "<group>";
+		};
+		6C7FEF2D1D3CB47F00D0A36C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		6C7FEF2E1D3CB48F00D0A36C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		D21971F7442B85EB240F1FC9 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -359,12 +383,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 52471A9F1CD9AF2F006865C6 /* Build configuration list for PBXNativeTarget "qiitareader" */;
 			buildPhases = (
-				F79A1D8321A44E0D12CC1E0F /* 📦 Check Pods Manifest.lock */,
+				F79A1D8321A44E0D12CC1E0F /* [CP] Check Pods Manifest.lock */,
 				52471A891CD9AF2E006865C6 /* Sources */,
 				52471A8A1CD9AF2E006865C6 /* Frameworks */,
 				52471A8B1CD9AF2E006865C6 /* Resources */,
-				D1233591E0CDA1B19F57F825 /* 📦 Embed Pods Frameworks */,
-				B2555ACDFB991AC960942B8D /* 📦 Copy Pods Resources */,
+				D1233591E0CDA1B19F57F825 /* [CP] Embed Pods Frameworks */,
+				B2555ACDFB991AC960942B8D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -387,6 +411,7 @@
 				TargetAttributes = {
 					52471A8C1CD9AF2E006865C6 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = G6788ACX5G;
 					};
 				};
 			};
@@ -452,14 +477,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		B2555ACDFB991AC960942B8D /* 📦 Copy Pods Resources */ = {
+		B2555ACDFB991AC960942B8D /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -467,14 +492,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-qiitareader/Pods-qiitareader-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D1233591E0CDA1B19F57F825 /* 📦 Embed Pods Frameworks */ = {
+		D1233591E0CDA1B19F57F825 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -482,14 +507,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-qiitareader/Pods-qiitareader-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F79A1D8321A44E0D12CC1E0F /* 📦 Check Pods Manifest.lock */ = {
+		F79A1D8321A44E0D12CC1E0F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -623,6 +648,8 @@
 			baseConfigurationReference = 59A95AFB59F6F713D7B3BD57 /* Pods-qiitareader.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -635,6 +662,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = hiroshings.qiitareader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -643,6 +671,8 @@
 			baseConfigurationReference = D099A7D6A6B2AD2C49A5D14A /* Pods-qiitareader.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -655,6 +685,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = hiroshings.qiitareader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
