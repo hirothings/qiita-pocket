@@ -19,7 +19,7 @@ class WebViewController: UIViewController, WKNavigationDelegate {
     var refreshBtn = UIBarButtonItem()
     
     var webview: WKWebView!
-    var url: NSURL?    
+    var url: URL?    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,21 +31,21 @@ class WebViewController: UIViewController, WKNavigationDelegate {
         containerView.addSubview(webview!)
         
         // 上辺の制約
-        webview.topAnchor.constraintEqualToAnchor(containerView.topAnchor, constant: 0.0).active = true
+        webview.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 0.0).isActive = true
         // 下辺の制約
-        webview.bottomAnchor.constraintEqualToAnchor(containerView.bottomAnchor, constant: 0.0).active = true
+        webview.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 0.0).isActive = true
         // 左辺の制約
-        webview.leadingAnchor.constraintEqualToAnchor(containerView.leadingAnchor, constant: 0.0).active = true
+        webview.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 0.0).isActive = true
         // 右辺の制約
-        webview.trailingAnchor.constraintEqualToAnchor(containerView.trailingAnchor, constant: 0.0).active = true
+        webview.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: 0.0).isActive = true
     
         
         guard let _ = url else {
             return
         }
         
-        let request = NSURLRequest(URL: url!)
-        webview.loadRequest(request)
+        let request = URLRequest(url: url!)
+        webview.load(request)
         
         // スワイプで戻る・進むできるようにする
         webview.allowsBackForwardNavigationGestures = true
@@ -63,11 +63,11 @@ class WebViewController: UIViewController, WKNavigationDelegate {
         let backBtnImage = UIImage(named: "back")
         let fowardBtnImage = UIImage(named: "next")
         
-        let flexbleItem = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
+        let flexbleItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         
-        goBackBtn = UIBarButtonItem(image: backBtnImage, style: .Plain, target: self, action: #selector(goBack))
-        goFowardBtn = UIBarButtonItem(image: fowardBtnImage, style: .Plain, target: self, action: #selector(goFoward))
-        refreshBtn = UIBarButtonItem(barButtonSystemItem: .Refresh, target: self, action: #selector(refresh))
+        goBackBtn = UIBarButtonItem(image: backBtnImage, style: .plain, target: self, action: #selector(goBack))
+        goFowardBtn = UIBarButtonItem(image: fowardBtnImage, style: .plain, target: self, action: #selector(goFoward))
+        refreshBtn = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refresh))
         
         toolbar.items = [goBackBtn, goFowardBtn, flexbleItem, refreshBtn]
     }
@@ -88,35 +88,35 @@ class WebViewController: UIViewController, WKNavigationDelegate {
         webview.reload()
     }
     
-    func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         if webview.canGoBack {
             goBackBtn.tintColor = nil
         } else {
-            goBackBtn.tintColor = UIColor.grayColor()
+            goBackBtn.tintColor = UIColor.gray
         }
         
         if webview.canGoForward {
             goFowardBtn.tintColor = nil
         } else {
-            goFowardBtn.tintColor = UIColor.grayColor()
+            goFowardBtn.tintColor = UIColor.gray
         }
     }
     
-    func webView(webView: WKWebView, decidePolicyForNavigationAction navigationAction: WKNavigationAction, decisionHandler: (WKNavigationActionPolicy) -> Void) {
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         
-        guard let url = navigationAction.request.URL else {
-            decisionHandler(.Cancel)
+        guard let url = navigationAction.request.url else {
+            decisionHandler(.cancel)
             return
         }
         
-        if navigationAction.navigationType == WKNavigationType.LinkActivated {
-            if navigationAction.targetFrame == nil || !(navigationAction.targetFrame!.mainFrame) {
-                webview.loadRequest(NSURLRequest.init(URL: url))
-                decisionHandler(.Cancel)
+        if navigationAction.navigationType == WKNavigationType.linkActivated {
+            if navigationAction.targetFrame == nil || !(navigationAction.targetFrame!.isMainFrame) {
+                webview.load(URLRequest.init(url: url))
+                decisionHandler(.cancel)
                 return
             }
         }
         
-        decisionHandler(.Allow)
+        decisionHandler(.allow)
     }
 }

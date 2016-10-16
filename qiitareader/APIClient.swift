@@ -9,36 +9,32 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import RxSwift
+import RxCocoa
 
 class APIClient: NSObject {
     
-    static func apiRequest(apiResponse: (responseArticles: [[String: String?]]) -> ()) {
+    
+    // MARK: - Properties
+    
+    let baseUrl = "https://qiita.com/api/v2"
+    static let sharedInstance = APIClient()
+    fileprivate let manager = SessionManager()
+    
+    func request(_ method: Alamofire.HTTPMethod = .get, path: String) -> Observable<AnyObject> {
         
-        var articles: [[String: String?]] = []
-        
-        Alamofire.request(.GET, "https://qiita.com/api/v2/items")
-            .responseJSON { response in
-                
-            guard let object = response.result.value else {
-                return
-            }
-            
-            let json = JSON(object)
-            var article: [String: String?] = [:]
-            
-            json.forEach { (_, json) in
-                                
-                article = [
-                    "title": json["title"].string,
-                    "user": json["user"]["id"].string,
-                    "profile_image_url": json["user"]["profile_image_url"].string,
-                    "url": json["url"].string,
-                ]
-                articles.append(article)
-            }
-                // 自作complete delegate を使ってもOK
-            
-            apiResponse(responseArticles: articles)
+        if let request = self.manager.request(self.buildPath(path)).request {
+            return self.manager.session.rx.JSON(request)
         }
+        else {
+            fatalError("Invalid request")
+        }
+    }
+    
+    /// "/"が先頭にある場合、それ以降の文字列を取得
+    func buildPath(_ path: String) -> URL {
+        
+        let trimmedPath = path.hasPrefix("/") ? path.substring(to: path.characters.index(after: path.startIndex)) : path
+        return URL(string: baseUrl + "/" + trimmedPath)!
     }
 }
