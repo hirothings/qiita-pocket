@@ -19,17 +19,19 @@ class Article {
     let user: String
     let profile_image_url: String
     let url: String
+    let tags: [String]
     
     static let apiClient = APIClient.sharedInstance
     
     
     // MARK: - Initializers
     
-    init(title: String, user: String, profile_image_url: String, url: String) {
+    init(title: String, user: String, profile_image_url: String, url: String, tags: [String]) {
         self.title = title
         self.user = user
         self.profile_image_url = profile_image_url
         self.url = url
+        self.tags = tags
     }
     
     
@@ -48,15 +50,18 @@ class Article {
     
     static func parseJson(_ response: [AnyObject]) -> [Article] {
         
+        print("新着記事response：")
+        dump(response)
+        
         return response.map { result in
             let json = JSON(result)
             let title = json["title"].stringValue
             let user = json["user"]["id"].stringValue
             let profile_image_url = json["user"]["profile_image_url"].stringValue
             let url = json["url"].stringValue
+            let tags = json["tags"].arrayValue.map( {$0["name"].stringValue} )
             
-            let article = Article(title: title, user: user, profile_image_url: profile_image_url, url: url)
-            dump(article)
+            let article = Article(title: title, user: user, profile_image_url: profile_image_url, url: url, tags: tags)
             return article
         }
 

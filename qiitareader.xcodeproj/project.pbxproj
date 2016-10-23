@@ -14,13 +14,15 @@
 		524C29E91CD9B73300A9B40E /* ArticleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524C29E81CD9B73300A9B40E /* ArticleListViewController.swift */; };
 		5290851A1CD9CF5700ED7434 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529085191CD9CF5700ED7434 /* APIClient.swift */; };
 		52D86FDC1CDDE0DB00606614 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D86FDB1CDDE0DB00606614 /* WebViewController.swift */; };
-		6C7FEF321D3CB62C00D0A36C /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C7FEF301D3CB62C00D0A36C /* RxCocoa.framework */; };
-		6C7FEF331D3CB62C00D0A36C /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C7FEF311D3CB62C00D0A36C /* RxSwift.framework */; };
 		6C837D261D3CC0E700A2EA80 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C837D251D3CC0E700A2EA80 /* Article.swift */; };
 		6CA49CB01DB3569900853D00 /* WebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CA49CAF1DB3569900853D00 /* WebImage.framework */; };
 		6CA49CB91DB3592A00853D00 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CA49CB71DB3592A00853D00 /* Alamofire.framework */; };
 		6CA49CBA1DB3592A00853D00 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CA49CB81DB3592A00853D00 /* SwiftyJSON.framework */; };
 		6CA95EE31D3CE3910005FA7E /* Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA95EE21D3CE3910005FA7E /* Dependencies.swift */; };
+		6CBB0B1A1DB3ACBA007CCC11 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CBB0B191DB3ACBA007CCC11 /* RxSwift.framework */; };
+		6CE385421DBCA5C200E67B6E /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE385411DBCA5C200E67B6E /* MainTabBarController.swift */; };
+		6CE385441DBCA8A000E67B6E /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE385431DBCA8A000E67B6E /* ArticleTableViewCell.swift */; };
+		6CE385461DBCAAA500E67B6E /* ArticleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CE385451DBCAAA500E67B6E /* ArticleTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,13 +35,15 @@
 		524C29E81CD9B73300A9B40E /* ArticleListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleListViewController.swift; sourceTree = "<group>"; };
 		529085191CD9CF5700ED7434 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		52D86FDB1CDDE0DB00606614 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
-		6C7FEF301D3CB62C00D0A36C /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = "../../Library/Developer/Xcode/DerivedData/qiitareader-gailodgvkmfzbhfyeuhdqzsgkhjj/Build/Products/Debug-iphoneos/RxCocoa/RxCocoa.framework"; sourceTree = "<group>"; };
-		6C7FEF311D3CB62C00D0A36C /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "../../Library/Developer/Xcode/DerivedData/qiitareader-gailodgvkmfzbhfyeuhdqzsgkhjj/Build/Products/Debug-iphoneos/RxSwift/RxSwift.framework"; sourceTree = "<group>"; };
 		6C837D251D3CC0E700A2EA80 /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		6CA49CAF1DB3569900853D00 /* WebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebImage.framework; path = Carthage/Build/iOS/WebImage.framework; sourceTree = "<group>"; };
 		6CA49CB71DB3592A00853D00 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		6CA49CB81DB3592A00853D00 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		6CA95EE21D3CE3910005FA7E /* Dependencies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dependencies.swift; sourceTree = "<group>"; };
+		6CBB0B191DB3ACBA007CCC11 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		6CE385411DBCA5C200E67B6E /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		6CE385431DBCA8A000E67B6E /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArticleTableViewCell.swift; path = qiitareader/Views/ArticleTableViewCell.swift; sourceTree = "<group>"; };
+		6CE385451DBCAAA500E67B6E /* ArticleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArticleTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,11 +51,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6CBB0B1A1DB3ACBA007CCC11 /* RxSwift.framework in Frameworks */,
 				6CA49CB91DB3592A00853D00 /* Alamofire.framework in Frameworks */,
 				6CA49CBA1DB3592A00853D00 /* SwiftyJSON.framework in Frameworks */,
 				6CA49CB01DB3569900853D00 /* WebImage.framework in Frameworks */,
-				6C7FEF321D3CB62C00D0A36C /* RxCocoa.framework in Frameworks */,
-				6C7FEF331D3CB62C00D0A36C /* RxSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,11 +64,10 @@
 		19989F1DB404BCE9479B50AF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6CBB0B191DB3ACBA007CCC11 /* RxSwift.framework */,
 				6CA49CB71DB3592A00853D00 /* Alamofire.framework */,
 				6CA49CB81DB3592A00853D00 /* SwiftyJSON.framework */,
 				6CA49CAF1DB3569900853D00 /* WebImage.framework */,
-				6C7FEF301D3CB62C00D0A36C /* RxCocoa.framework */,
-				6C7FEF311D3CB62C00D0A36C /* RxSwift.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -93,6 +95,7 @@
 				6C7FEF2C1D3CB47400D0A36C /* ViewModels */,
 				529EE5921CDCC9A70066F06B /* Views */,
 				524C29E81CD9B73300A9B40E /* ArticleListViewController.swift */,
+				6CE385411DBCA5C200E67B6E /* MainTabBarController.swift */,
 				6C7FEF2D1D3CB47F00D0A36C /* Models */,
 				529085191CD9CF5700ED7434 /* APIClient.swift */,
 				52471A901CD9AF2F006865C6 /* AppDelegate.swift */,
@@ -110,6 +113,8 @@
 		529EE5921CDCC9A70066F06B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6CE385431DBCA8A000E67B6E /* ArticleTableViewCell.swift */,
+				6CE385451DBCAAA500E67B6E /* ArticleTableViewCell.xib */,
 			);
 			name = Views;
 			path = ..;
@@ -172,6 +177,7 @@
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = G6788ACX5G;
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -198,6 +204,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6CE385461DBCAAA500E67B6E /* ArticleTableViewCell.xib in Resources */,
 				52471A9B1CD9AF2F006865C6 /* LaunchScreen.storyboard in Resources */,
 				52471A981CD9AF2F006865C6 /* Assets.xcassets in Resources */,
 				52471A961CD9AF2F006865C6 /* Main.storyboard in Resources */,
@@ -235,6 +242,8 @@
 				6CA95EE31D3CE3910005FA7E /* Dependencies.swift in Sources */,
 				52471A911CD9AF2F006865C6 /* AppDelegate.swift in Sources */,
 				524C29E91CD9B73300A9B40E /* ArticleListViewController.swift in Sources */,
+				6CE385421DBCA5C200E67B6E /* MainTabBarController.swift in Sources */,
+				6CE385441DBCA8A000E67B6E /* ArticleTableViewCell.swift in Sources */,
 				5290851A1CD9CF5700ED7434 /* APIClient.swift in Sources */,
 				6C837D261D3CC0E700A2EA80 /* Article.swift in Sources */,
 				52D86FDC1CDDE0DB00606614 /* WebViewController.swift in Sources */,
@@ -303,7 +312,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -345,7 +354,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -359,20 +368,20 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Build/Products/Debug-iphonesimulator/Alamofire",
-					"$(PROJECT_DIR)/Build/Products/Debug-iphonesimulator/SwiftyJSON",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = qiitareader/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = hiroshings.qiitareader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -383,15 +392,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Build/Products/Debug-iphonesimulator/Alamofire",
-					"$(PROJECT_DIR)/Build/Products/Debug-iphonesimulator/SwiftyJSON",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = qiitareader/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = hiroshings.qiitareader;

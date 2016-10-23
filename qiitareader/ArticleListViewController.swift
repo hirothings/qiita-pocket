@@ -11,7 +11,7 @@ import WebImage
 import RxSwift
 
 
-class ArticleListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ArticleListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
 
     @IBOutlet weak var table: UITableView!
 
@@ -25,12 +25,11 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        table.delegate = self
-        table.dataSource = self
-        
         table.rowHeight = 40.0
         table.separatorInset = UIEdgeInsets.zero
         title = "新着記事"
+        
+        setupSearchBar()
         
         refreshControll = UIRefreshControl()
         refreshControll.attributedTitle = NSAttributedString(string: "下に引っ張って更新")
@@ -47,21 +46,12 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
     /// tableViewのcellを生成
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = table.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath)
+        let cell = table.dequeueReusableCell(withIdentifier: "ArticleTableViewCell", for: indexPath) as! ArticleTableViewCell
         let article = articles[indexPath.row]
         
-        
-        // ほんとはcell内で生成したほうが綺麗
-        
-        // 投稿者イメージの生成
-        let url = URL(string: article.profile_image_url)
-        let imageView = table.viewWithTag(1) as! UIImageView
-        imageView.sd_setImage(with: url)
-        
-        // 投稿タイトルの生成
-        let label = table.viewWithTag(2) as! UILabel
-        label.text = article.title
-        label.lineBreakMode = .byTruncatingTail
+        print("cell生成")
+//        cell.setCell(article: article)
+//        label.lineBreakMode = .byTruncatingTail
         
         return cell
     }
@@ -96,12 +86,30 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
                 return Article.fetch()
             }
             .subscribe(onNext: { [unowned self] result in
+                
+                print("fetch done")
+                
                 self.articles = result
-                self.refreshControll.endRefreshing()
+                self.table.delegate = self
+                self.table.dataSource = self
                 self.table.reloadData()
+                
+                self.refreshControll.endRefreshing()
             })
             .addDisposableTo(bag)
     }
 
 
+    private func setupSearchBar() {
+        
+        let navigationBarFrame: CGRect = self.navigationController!.navigationBar.bounds
+        let searchBar: UISearchBar = UISearchBar(frame: navigationBarFrame)
+        
+        searchBar.delegate = self
+        searchBar.placeholder = "タグを検索"
+        searchBar.showsCancelButton = true
+        searchBar.autocapitalizationType = .none
+        searchBar.keyboardType = .default
+        navigationItem.titleView = searchBar
+    }
 }
