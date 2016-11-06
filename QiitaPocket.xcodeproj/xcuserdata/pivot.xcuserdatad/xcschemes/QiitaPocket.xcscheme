@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0800"
+   LastUpgradeVersion = "0810"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "52471A8C1CD9AF2E006865C6"
-               BuildableName = "qiitareader.app"
-               BlueprintName = "qiitareader"
-               ReferencedContainer = "container:qiitareader.xcodeproj">
+               BuildableName = "QiitaPocket.app"
+               BlueprintName = "QiitaPocket"
+               ReferencedContainer = "container:QiitaPocket.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "52471A8C1CD9AF2E006865C6"
-            BuildableName = "qiitareader.app"
-            BlueprintName = "qiitareader"
-            ReferencedContainer = "container:qiitareader.xcodeproj">
+            BuildableName = "QiitaPocket.app"
+            BlueprintName = "QiitaPocket"
+            ReferencedContainer = "container:QiitaPocket.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "52471A8C1CD9AF2E006865C6"
-            BuildableName = "qiitareader.app"
-            BlueprintName = "qiitareader"
-            ReferencedContainer = "container:qiitareader.xcodeproj">
+            BuildableName = "QiitaPocket.app"
+            BlueprintName = "QiitaPocket"
+            ReferencedContainer = "container:QiitaPocket.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "52471A8C1CD9AF2E006865C6"
-            BuildableName = "qiitareader.app"
-            BlueprintName = "qiitareader"
-            ReferencedContainer = "container:qiitareader.xcodeproj">
+            BuildableName = "QiitaPocket.app"
+            BlueprintName = "QiitaPocket"
+            ReferencedContainer = "container:QiitaPocket.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

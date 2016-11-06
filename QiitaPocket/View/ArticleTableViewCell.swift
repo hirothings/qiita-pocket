@@ -10,13 +10,23 @@ import UIKit
 
 class ArticleTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var profileImageView: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var detailLabel: UILabel!
-    @IBOutlet weak var readLaterButton: UIButton!
+    
+    @IBOutlet var profileImageView: UIImageView!
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var detailLabel: UILabel!
+    @IBOutlet var readLaterButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+    }
+    
+    var cellType: Article! {
+        didSet {
+            self.titleLabel.text = cellType.title
+            self.detailLabel.text = cellType.tags.first! // TODO: 複数タグを表示
+            let url = URL(string: cellType.profile_image_url)
+            self.profileImageView.sd_setImage(with: url)
+        }
     }
     
     func setCell(article: Article) {

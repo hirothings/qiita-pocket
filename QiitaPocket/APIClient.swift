@@ -21,10 +21,10 @@ class APIClient: NSObject {
     static let sharedInstance = APIClient()
     fileprivate let manager = SessionManager()
     
-    func request(_ method: Alamofire.HTTPMethod = .get, path: String) -> Observable<AnyObject> {
+    func request(_ method: Alamofire.HTTPMethod = .get, path: String) -> Observable<Any> {
         
         if let request = self.manager.request(self.buildPath(path)).request {
-            return self.manager.session.rx.JSON(request)
+            return self.manager.session.rx.json(request: request)
         }
         else {
             fatalError("Invalid request")

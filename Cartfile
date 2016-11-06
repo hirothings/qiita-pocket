@@ -1,4 +1,4 @@
 github "Alamofire/Alamofire"
 github "SwiftyJSON/SwiftyJSON"
 github "rs/SDWebImage"
-github "ReactiveX/RxSwift" "3.0.0-beta.2"
+github "ReactiveX/RxSwift"

@@ -94,6 +94,7 @@ class WebViewController: UIViewController, WKNavigationDelegate {
         } else {
             goBackBtn.tintColor = UIColor.gray
         }
+
         
         if webview.canGoForward {
             goFowardBtn.tintColor = nil

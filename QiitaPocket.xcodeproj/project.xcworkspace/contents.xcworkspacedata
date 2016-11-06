@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:qiitareader.xcodeproj">
+      location = "self:/Users/pivot/localApache/qiitaReader/QiitaPocket.xcodeproj">
    </FileRef>
 </Workspace>

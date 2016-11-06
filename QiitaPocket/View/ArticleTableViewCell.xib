@@ -1,43 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner">
-            <connections>
-                <outlet property="detailLabel" destination="gRs-2T-kbr" id="Iz7-L5-PBD"/>
-                <outlet property="profileImageView" destination="74U-jd-24w" id="8Qe-w9-ObS"/>
-                <outlet property="readLaterButton" destination="XKd-f4-312" id="9f1-al-PPd"/>
-                <outlet property="titleLabel" destination="YBv-3D-3Fh" id="g0R-aG-Rdf"/>
-            </connections>
-        </placeholder>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="73" id="1Va-DE-qjS" customClass="ArticleTableViewCell" customModule="qiitareader" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CustomCell" rowHeight="73" id="1Va-DE-qjS" customClass="ArticleTableViewCell" customModule="QiitaPocket">
             <rect key="frame" x="0.0" y="0.0" width="389" height="73"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1Va-DE-qjS" id="uyq-wd-osF">
-                <frame key="frameInset" width="389" height="72"/>
+                <rect key="frame" x="0.0" y="0.0" width="389" height="73"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="74U-jd-24w">
+                        <rect key="frame" x="0.0" y="0.0" width="75" height="73"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="75" id="akH-mP-CcK"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YBv-3D-3Fh">
+                        <rect key="frame" x="91" y="8" width="36" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gRs-2T-kbr">
+                        <rect key="frame" x="91" y="50" width="31" height="15"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.47450980539999998" green="0.48235294220000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XKd-f4-312">
+                        <rect key="frame" x="346" y="21" width="22" height="32"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="32" id="A33-n3-JWr"/>
                             <constraint firstAttribute="width" constant="22" id="fdx-H6-0iM"/>
@@ -58,7 +57,13 @@
                     <constraint firstItem="gRs-2T-kbr" firstAttribute="leading" secondItem="74U-jd-24w" secondAttribute="trailing" constant="16" id="xe6-PM-vdG"/>
                 </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="144.5" y="-425.5"/>
+            <connections>
+                <outlet property="detailLabel" destination="gRs-2T-kbr" id="qeF-ay-GDI"/>
+                <outlet property="profileImageView" destination="74U-jd-24w" id="SfN-MT-5qN"/>
+                <outlet property="readLaterButton" destination="XKd-f4-312" id="LEt-iX-6l8"/>
+                <outlet property="titleLabel" destination="YBv-3D-3Fh" id="ZXW-NV-UCz"/>
+            </connections>
+            <point key="canvasLocation" x="246" y="-485"/>
         </tableViewCell>
     </objects>
     <resources>
