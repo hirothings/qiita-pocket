@@ -25,7 +25,7 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        table.rowHeight = 40.0
+        table.rowHeight = 72.0
         table.separatorInset = UIEdgeInsets.zero
         title = "新着記事"
         
@@ -75,6 +75,7 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
             case "toWebView":
                 let webView: WebViewController = segue.destination as! WebViewController
                 webView.url = postUrl
+                webView.hidesBottomBarWhenPushed = true
             default:
                 break
         }

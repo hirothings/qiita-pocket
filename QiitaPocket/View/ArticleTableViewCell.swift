@@ -9,7 +9,6 @@
 import UIKit
 
 class ArticleTableViewCell: UITableViewCell {
-
     
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -23,7 +22,6 @@ class ArticleTableViewCell: UITableViewCell {
     func setCell(article: Article) {
         self.titleLabel.text = article.title
         self.detailLabel.text = article.tags.first! // TODO: 複数タグを表示
-        
         let url = URL(string: article.profile_image_url)
         self.profileImageView.sd_setImage(with: url)
     }
