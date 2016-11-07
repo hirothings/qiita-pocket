@@ -19,6 +19,7 @@
 		6CA49CB91DB3592A00853D00 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CA49CB71DB3592A00853D00 /* Alamofire.framework */; };
 		6CA49CBA1DB3592A00853D00 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CA49CB81DB3592A00853D00 /* SwiftyJSON.framework */; };
 		6CBB0B1A1DB3ACBA007CCC11 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CBB0B191DB3ACBA007CCC11 /* RxSwift.framework */; };
+		6CEB9B331DD0A64F00FCBBB7 /* ArticleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CEB9B321DD0A64F00FCBBB7 /* ArticleTableViewCell.xib */; };
 		6CFF8A391DCDCEE300CAC7ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6CFF8A351DCDCEE300CAC7ED /* LaunchScreen.storyboard */; };
 		6CFF8A3A1DCDCEE300CAC7ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6CFF8A371DCDCEE300CAC7ED /* Main.storyboard */; };
 /* End PBXBuildFile section */
@@ -32,7 +33,6 @@
 		6C0468751DCDC3AA00917A5D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6C0468771DCDC3AA00917A5D /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		6C0468791DCDC3AA00917A5D /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
-		6C04687A1DCDC3AA00917A5D /* ArticleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArticleTableViewCell.xib; sourceTree = "<group>"; };
 		6C04687C1DCDC3AA00917A5D /* ArticleListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleListViewController.swift; sourceTree = "<group>"; };
 		6C04687D1DCDC3AA00917A5D /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		6C04687E1DCDC3AA00917A5D /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
@@ -40,6 +40,7 @@
 		6CA49CB71DB3592A00853D00 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		6CA49CB81DB3592A00853D00 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		6CBB0B191DB3ACBA007CCC11 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		6CEB9B321DD0A64F00FCBBB7 /* ArticleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArticleTableViewCell.xib; sourceTree = "<group>"; };
 		6CFF8A361DCDCEE300CAC7ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6CFF8A381DCDCEE300CAC7ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -115,8 +116,8 @@
 		6C0468781DCDC3AA00917A5D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				6CEB9B321DD0A64F00FCBBB7 /* ArticleTableViewCell.xib */,
 				6C0468791DCDC3AA00917A5D /* ArticleTableViewCell.swift */,
-				6C04687A1DCDC3AA00917A5D /* ArticleTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -210,6 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6CFF8A391DCDCEE300CAC7ED /* LaunchScreen.storyboard in Resources */,
+				6CEB9B331DD0A64F00FCBBB7 /* ArticleTableViewCell.xib in Resources */,
 				6CFF8A3A1DCDCEE300CAC7ED /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

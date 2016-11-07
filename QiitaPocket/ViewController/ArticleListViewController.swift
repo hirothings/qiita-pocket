@@ -53,7 +53,6 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
         let article = articles[indexPath.row]
         
         print("cell生成: \(cell)")
-        cell.cellType = article
         cell.setCell(article: article)
 //        label.lineBreakMode = .byTruncatingTail
         
