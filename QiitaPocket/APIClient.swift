@@ -12,17 +12,20 @@ import SwiftyJSON
 import RxSwift
 import RxCocoa
 
-class APIClient: NSObject {
+class APIClient {
     
     
     // MARK: - Properties
     
     let baseUrl = "https://qiita.com/api/v2"
+    
     static let sharedInstance = APIClient()
-    fileprivate let manager = SessionManager()
+    private let manager = SessionManager()
+
+    private init() {}
+    
     
     func request(_ method: Alamofire.HTTPMethod = .get, path: String) -> Observable<Any> {
-        
         if let request = self.manager.request(self.buildPath(path)).request {
             return self.manager.session.rx.json(request: request)
         }
@@ -33,7 +36,6 @@ class APIClient: NSObject {
     
     /// "/"が先頭にある場合、それ以降の文字列を取得
     func buildPath(_ path: String) -> URL {
-        
         let trimmedPath = path.hasPrefix("/") ? path.substring(to: path.characters.index(after: path.startIndex)) : path
         return URL(string: baseUrl + "/" + trimmedPath)!
     }

@@ -50,21 +50,43 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
     /// tableViewのcellを生成
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = table.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! ArticleTableViewCell
-        let article = articles[indexPath.row]
+        cell.article = articles[indexPath.row]
         
-        print("cell生成: \(cell)")
-        cell.setCell(article: article)
-//        label.lineBreakMode = .byTruncatingTail
+        cell.swipeLocation.asObservable()
+            .subscribe(onNext: { sender in
+                guard let gestures = sender?.gestureRecognizers else { return }
+                guard let gesture = gestures.first else { return }
+                let location = gesture.location(in: self.table)
+                let swipeIndexPath = self.table.indexPathForRow(at: location)
+                print(swipeIndexPath?.row)
+            })
+            .addDisposableTo(bag)
+        
+//        cell.checkReadLater.asObservable()
+//            .subscribe(onNext: { _ in
+//                
+//            })
         
         return cell
     }
     
     /// tableViewタップ時の処理
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        print("tap index: \(indexPath.row)")
         let article = articles[indexPath.row]
 
         postUrl = URL(string: article.url)
         performSegue(withIdentifier: "toWebView", sender: nil)
+    }
+    
+    func deleteTableRow(_ sender: AnyObject?) {
+        guard let gestures = sender?.gestureRecognizers else { return }
+        guard let gesture = gestures.first else { return }
+        let location = gesture.location(in: table)
+        let swipeIndexPath = table.indexPathForRow(at: location)
+        
+        print(swipeIndexPath?.row)
     }
     
     
@@ -105,7 +127,6 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
             })
             .addDisposableTo(bag)
     }
-
 
     private func setupSearchBar() {
         let navigationBarFrame: CGRect = self.navigationController!.navigationBar.bounds

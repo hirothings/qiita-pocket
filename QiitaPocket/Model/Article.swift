@@ -51,7 +51,6 @@ class Article {
     static func parseJson(_ response: [AnyObject]) -> [Article] {
         
         print("新着記事response：")
-//        dump(response)
         
         return response.map { result in
             let json = JSON(result)
