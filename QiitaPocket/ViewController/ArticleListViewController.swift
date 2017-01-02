@@ -2,7 +2,7 @@
 //  ArticleListViewController.swift
 //  
 //
-//  Created by 坂本 浩 on 2016/05/04.
+//  Created by hirothings on 2016/05/04.
 //
 //
 
@@ -52,41 +52,31 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
         let cell = table.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! ArticleTableViewCell
         cell.article = articles[indexPath.row]
         
-        cell.swipeLocation.asObservable()
-            .subscribe(onNext: { sender in
-                guard let gestures = sender?.gestureRecognizers else { return }
-                guard let gesture = gestures.first else { return }
-                let location = gesture.location(in: self.table)
-                let swipeIndexPath = self.table.indexPathForRow(at: location)
-                print(swipeIndexPath?.row)
+        cell.checkReadLater.asObservable()
+            .subscribe(onNext: { [weak self] swipeIndexPath in
+                guard let `self` = self else { return }
+                self.deleteTableRow(indexPath: swipeIndexPath)
             })
             .addDisposableTo(bag)
-        
-//        cell.checkReadLater.asObservable()
-//            .subscribe(onNext: { _ in
-//                
-//            })
         
         return cell
     }
     
-    /// tableViewタップ時の処理
+    /// tableViewタップ時webViewに遷移する
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        print("tap index: \(indexPath.row)")
         let article = articles[indexPath.row]
 
         postUrl = URL(string: article.url)
         performSegue(withIdentifier: "toWebView", sender: nil)
     }
     
-    func deleteTableRow(_ sender: AnyObject?) {
-        guard let gestures = sender?.gestureRecognizers else { return }
-        guard let gesture = gestures.first else { return }
-        let location = gesture.location(in: table)
-        let swipeIndexPath = table.indexPathForRow(at: location)
-        
-        print(swipeIndexPath?.row)
+    
+    func deleteTableRow(indexPath: IndexPath) {
+        self.table.beginUpdates()
+        self.table.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
+        self.articles.remove(at: indexPath.row)
+        print("swipeIndexPath: \(indexPath.row)")
+        self.table.endUpdates()
     }
     
     

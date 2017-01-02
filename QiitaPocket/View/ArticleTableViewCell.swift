@@ -2,7 +2,7 @@
 //  ArticleTableViewCell.swift
 //  qiitareader
 //
-//  Created by 坂本 浩 on 2016/10/23.
+//  Created by hirothings on 2016/10/23.
 //  Copyright © 2016年 hiroshings. All rights reserved.
 //
 
@@ -17,8 +17,7 @@ class ArticleTableViewCell: UITableViewCell {
     @IBOutlet weak var readLaterButton: UIButton!
     @IBOutlet weak var cardView: UIView!
     
-    let swipeLocation = PublishSubject<AnyObject?>()
-    let checkReadLater = PublishSubject<Void>()
+    let checkReadLater = PublishSubject<IndexPath>()
         
     var article: Article! {
         didSet {
@@ -29,6 +28,8 @@ class ArticleTableViewCell: UITableViewCell {
         }
     }
     
+    private var swipeLocation: CGPoint = CGPoint()
+    private var swipeIndexPath: IndexPath = IndexPath()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,16 +39,18 @@ class ArticleTableViewCell: UITableViewCell {
         self.cardView.addGestureRecognizer(swipeRecognizer)
     }
     
+    
     func onRightSwipe(_ gesture: UIPanGestureRecognizer) {
         self.contentView.backgroundColor = UIColor.green
-        print(gesture.translation(in: self).x)
         let translation = gesture.translation(in: self)
+        guard let tableView = self.superview?.superview as? UITableView else { return }
+
 
         switch gesture.state {
         case .began:
             print("began")
-            swipeLocation.onNext(gesture)
-//            UIApplication.shared.sendAction(#selector(ArticleListViewController.deleteTableRow(_:)), to: nil, from: cardView, for: nil)
+            swipeLocation = gesture.location(in: tableView)
+            swipeIndexPath = tableView.indexPathForRow(at: swipeLocation)!
         case .changed:
             print("changed")
             if 0 < translation.x {
@@ -56,7 +59,7 @@ class ArticleTableViewCell: UITableViewCell {
         case .ended:
             print("ended")
             if 100 < translation.x {
-                checkReadLater.onNext(())
+                checkReadLater.onNext(swipeIndexPath)
             }
             UIView.animate(withDuration: 0.1, animations: { [weak self] in
                 self?.cardView.frame.origin.x = 0
