@@ -2,7 +2,7 @@
 //  WebViewController.swift
 //  qiitareader
 //
-//  Created by 坂本 浩 on 2016/05/07.
+//  Created by hirothings on 2016/05/07.
 //  Copyright © 2016年 hiroshings. All rights reserved.
 //
 

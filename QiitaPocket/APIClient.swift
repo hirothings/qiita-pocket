@@ -2,7 +2,7 @@
 //  APIClient.swift
 //  qiitareader
 //
-//  Created by 坂本 浩 on 2016/05/04.
+//  Created by hirothings on 2016/05/04.
 //  Copyright © 2016年 hiroshings. All rights reserved.
 //
 

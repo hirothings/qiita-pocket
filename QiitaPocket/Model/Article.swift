@@ -2,7 +2,7 @@
 //  Article.swift
 //  qiitareader
 //
-//  Created by 坂本 浩 on 2016/07/18.
+//  Created by hirothings on 2016/07/18.
 //  Copyright © 2016年 hiroshings. All rights reserved.
 //
 
