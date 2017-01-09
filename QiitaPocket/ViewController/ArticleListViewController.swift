@@ -17,24 +17,22 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
 
     var articles: [Article] = []
     var postUrl: URL?
-    var refreshControll: UIRefreshControl!
+    var refreshControll = UIRefreshControl()
     
     private let bag = DisposeBag()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         table.rowHeight = 72.0
         table.separatorInset = UIEdgeInsets.zero
-        title = "新着記事"
         
         let nib: UINib = UINib(nibName: "ArticleTableViewCell", bundle: nil)
         self.table.register(nib, forCellReuseIdentifier: "CustomCell")
         
         setupSearchBar()
         
-        refreshControll = UIRefreshControl()
         pullToRefresh()
         table.addSubview(refreshControll)
     }
@@ -53,6 +51,7 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
         cell.article = articles[indexPath.row]
         
         cell.checkReadLater.asObservable()
+            .skip(1)
             .subscribe(onNext: { [weak self] swipeIndexPath in
                 guard let `self` = self else { return }
                 self.deleteTableRow(indexPath: swipeIndexPath)
@@ -72,11 +71,13 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
     
     
     func deleteTableRow(indexPath: IndexPath) {
-        self.table.beginUpdates()
-        self.table.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
-        self.articles.remove(at: indexPath.row)
         print("swipeIndexPath: \(indexPath.row)")
+
+        self.table.beginUpdates()
+        self.articles.remove(at: indexPath.row)
+        self.table.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
         self.table.endUpdates()
+        dump(articles)
     }
     
     

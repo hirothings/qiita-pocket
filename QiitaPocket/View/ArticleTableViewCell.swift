@@ -18,6 +18,7 @@ class ArticleTableViewCell: UITableViewCell {
     @IBOutlet weak var cardView: UIView!
     
     let checkReadLater = PublishSubject<IndexPath>()
+    var swipeGesture = UIPanGestureRecognizer()
         
     var article: Article! {
         didSet {
@@ -34,30 +35,41 @@ class ArticleTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        let swipeRecognizer = UIPanGestureRecognizer(target: self, action: #selector(self.onRightSwipe(_:)))
-        swipeRecognizer.delegate = self
-        self.cardView.addGestureRecognizer(swipeRecognizer)
+        swipeGesture = UIPanGestureRecognizer(target: self, action: #selector(self.onRightSwipe(_:)))
+        swipeGesture.delegate = self
+        self.cardView.addGestureRecognizer(swipeGesture)
     }
     
     
     func onRightSwipe(_ gesture: UIPanGestureRecognizer) {
         self.contentView.backgroundColor = UIColor.green
         let translation = gesture.translation(in: self)
+        print("x: \(fabs(gesture.velocity(in: self).x))")
+        print("y: \(fabs(gesture.velocity(in: self).y))")
+        print(translation.x)
+        print(translation.y)
+
         guard let tableView = self.superview?.superview as? UITableView else { return }
+        tableView.panGestureRecognizer.isEnabled = true // tableviewのscrollを復帰する
 
-
+        // 縦スクロール時は、横スワイプ感知せずreturn
+        let verticalGesture = fabs(gesture.velocity(in: self).y) > fabs(gesture.velocity(in: self).x) + 200
+        if verticalGesture {
+            print("vertical gesture")
+            return
+        }
+        
         switch gesture.state {
         case .began:
-            print("began")
+            print("swipe began")
             swipeLocation = gesture.location(in: tableView)
             swipeIndexPath = tableView.indexPathForRow(at: swipeLocation)!
         case .changed:
-            print("changed")
-            if 0 < translation.x {
+            if 20.0 < translation.x { // 右スワイプ20pt以上を感知する
+                tableView.panGestureRecognizer.isEnabled = false // 右スワイプ中はtableviewのscrollを切る
                 self.cardView.frame.origin.x = translation.x
             }
         case .ended:
-            print("ended")
             if 100 < translation.x {
                 checkReadLater.onNext(swipeIndexPath)
             }
@@ -68,5 +80,10 @@ class ArticleTableViewCell: UITableViewCell {
             break
         }
 
+    }
+    
+    
+    override func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
 }

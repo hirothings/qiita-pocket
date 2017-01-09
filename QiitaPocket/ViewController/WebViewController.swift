@@ -18,17 +18,16 @@ class WebViewController: UIViewController, WKNavigationDelegate {
     var goFowardBtn = UIBarButtonItem()
     var refreshBtn = UIBarButtonItem()
     
-    var webview: WKWebView!
+    var webview = WKWebView()
     var url: URL?    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        webview = WKWebView()
         webview.navigationDelegate = self
         webview.translatesAutoresizingMaskIntoConstraints = false
         
-        containerView.addSubview(webview!)
+        containerView.addSubview(webview)
         
         // 上辺の制約
         webview.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 0.0).isActive = true
