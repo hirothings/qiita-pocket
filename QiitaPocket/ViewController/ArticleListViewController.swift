@@ -11,7 +11,7 @@ import WebImage
 import RxSwift
 
 
-class ArticleListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+class ArticleListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, SwipeCellDelegate {
 
     @IBOutlet weak var table: UITableView!
 
@@ -49,14 +49,7 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = table.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! ArticleTableViewCell
         cell.article = articles[indexPath.row]
-        
-        cell.checkReadLater.asObservable()
-            .skip(1)
-            .subscribe(onNext: { [weak self] swipeIndexPath in
-                guard let `self` = self else { return }
-                self.deleteTableRow(indexPath: swipeIndexPath)
-            })
-            .addDisposableTo(bag)
+        cell.delegate = self
         
         return cell
     }
@@ -70,14 +63,13 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     
-    func deleteTableRow(indexPath: IndexPath) {
-        print("swipeIndexPath: \(indexPath.row)")
-
+    // MARK: - SwipeCellDelegate
+    
+    func didSwipeReadLater(at indexPath: IndexPath) {
         self.table.beginUpdates()
         self.articles.remove(at: indexPath.row)
         self.table.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
         self.table.endUpdates()
-        dump(articles)
     }
     
     

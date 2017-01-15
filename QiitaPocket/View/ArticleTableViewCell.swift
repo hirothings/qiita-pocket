@@ -9,6 +9,10 @@
 import UIKit
 import RxSwift
 
+protocol SwipeCellDelegate: class {
+    func didSwipeReadLater(at indexPath: IndexPath)
+}
+
 class ArticleTableViewCell: UITableViewCell {
     
     @IBOutlet weak var profileImageView: UIImageView!
@@ -17,8 +21,9 @@ class ArticleTableViewCell: UITableViewCell {
     @IBOutlet weak var readLaterButton: UIButton!
     @IBOutlet weak var cardView: UIView!
     
-    let checkReadLater = PublishSubject<IndexPath>()
     var swipeGesture = UIPanGestureRecognizer()
+    
+    weak var delegate: SwipeCellDelegate?
         
     var article: Article! {
         didSet {
@@ -31,6 +36,7 @@ class ArticleTableViewCell: UITableViewCell {
     
     private var swipeLocation: CGPoint = CGPoint()
     private var swipeIndexPath: IndexPath = IndexPath()
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -71,7 +77,7 @@ class ArticleTableViewCell: UITableViewCell {
             }
         case .ended:
             if 100 < translation.x {
-                checkReadLater.onNext(swipeIndexPath)
+                self.delegate?.didSwipeReadLater(at: swipeIndexPath)
             }
             UIView.animate(withDuration: 0.1, animations: { [weak self] in
                 self?.cardView.frame.origin.x = 0
