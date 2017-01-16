@@ -1,4 +1,5 @@
-github "Alamofire/Alamofire"
-github "SwiftyJSON/SwiftyJSON"
-github "rs/SDWebImage"
-github "ReactiveX/RxSwift"
+github "Alamofire/Alamofire" ~> 4.2
+github "SwiftyJSON/SwiftyJSON" ~> 3.0
+github "rs/SDWebImage" ~> 3.8
+github "ReactiveX/RxSwift" ~> 3.0
+github "realm/realm-cocoa" ~> 2.2
