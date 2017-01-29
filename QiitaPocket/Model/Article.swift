@@ -7,38 +7,32 @@
 //
 
 import Foundation
+import RealmSwift
 import RxSwift
 import SwiftyJSON
 
-class Article {
+class Article: Object {
     
-    
-    // MARK: - Properties
-    
-    let title: String
-    let user: String
-    let profile_image_url: String
-    let url: String
-    let tags: [String]
+    dynamic var createdAt: String = ""
+    dynamic var id: String = ""
+    dynamic var title: String = ""
+    dynamic var user: String = ""
+    dynamic var profile_image_url: String = ""
+    dynamic var url: String = ""
+    let tags: List<Tag> = List<Tag>()
+}
+
+
+class Tag: Object {
+    dynamic var name: String = ""
+}
+
+
+extension Article {
     
     static let apiClient = APIClient.sharedInstance
-    
-    
-    // MARK: - Initializers
-    
-    init(title: String, user: String, profile_image_url: String, url: String, tags: [String]) {
-        self.title = title
-        self.user = user
-        self.profile_image_url = profile_image_url
-        self.url = url
-        self.tags = tags
-    }
-    
-    
-    // MARK: - Static methods
-    
+
     static func fetch() -> Observable<[Article]> {
-        
         return self.apiClient.request(path: "items")
             .observeOn(Dependencies.sharedInstance.backgroundScheduler)
             .map { response in
@@ -49,20 +43,26 @@ class Article {
     }
     
     static func parseJson(_ response: [AnyObject]) -> [Article] {
-        
-        print("新着記事response：")
-        
         return response.map { result in
             let json = JSON(result)
-            let title = json["title"].stringValue
-            let user = json["user"]["id"].stringValue
-            let profile_image_url = json["user"]["profile_image_url"].stringValue
-            let url = json["url"].stringValue
-            let tags = json["tags"].arrayValue.map( {$0["name"].stringValue} )
+            let article = Article()
             
-            let article = Article(title: title, user: user, profile_image_url: profile_image_url, url: url, tags: tags)
+            let createdAt = json["created_at"].stringValue
+            article.createdAt = Util.convertDate(str: createdAt, format: "yyyy.MM.dd HH:mm:ss")
+            article.id = json["id"].stringValue
+            article.title = json["title"].stringValue
+            article.user = json["user"]["id"].stringValue
+            article.profile_image_url = json["user"]["profile_image_url"].stringValue
+            article.url = json["url"].stringValue
+            
+            let _tags = json["tags"].arrayValue.map( {$0["name"].stringValue} )
+            for _tag in _tags {
+                let tag = Tag()
+                tag.name = _tag
+                article.tags.append(tag)
+            }
+
             return article
         }
-
     }
 }

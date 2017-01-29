@@ -28,7 +28,7 @@ class ArticleTableViewCell: UITableViewCell {
     var article: Article! {
         didSet {
             self.titleLabel.text = article.title
-            self.detailLabel.text = article.tags.first! // TODO: 複数タグを表示
+            self.detailLabel.text = article.tags.first?.name // TODO: 複数件表示
             let url = URL(string: article.profile_image_url)
             self.profileImageView.sd_setImage(with: url)
         }
