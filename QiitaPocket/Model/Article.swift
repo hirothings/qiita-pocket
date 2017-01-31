@@ -11,8 +11,8 @@ import RealmSwift
 import RxSwift
 import SwiftyJSON
 
-class Article: Object {
-    
+final class Article: Object {
+
     dynamic var createdAt: String = ""
     dynamic var id: String = ""
     dynamic var title: String = ""
@@ -20,10 +20,14 @@ class Article: Object {
     dynamic var profile_image_url: String = ""
     dynamic var url: String = ""
     let tags: List<Tag> = List<Tag>()
+    
+    override class func primaryKey() -> String? {
+        return "id"
+    }
 }
 
 
-class Tag: Object {
+final class Tag: Object {
     dynamic var name: String = ""
 }
 
@@ -55,10 +59,11 @@ extension Article {
             article.profile_image_url = json["user"]["profile_image_url"].stringValue
             article.url = json["url"].stringValue
             
-            let _tags = json["tags"].arrayValue.map( {$0["name"].stringValue} )
-            for _tag in _tags {
-                let tag = Tag()
-                tag.name = _tag
+            let tags = json["tags"].arrayValue
+                        .map { $0["name"].stringValue }
+                        .flatMap { Tag(value: $0) }
+            
+            for tag in tags {
                 article.tags.append(tag)
             }
 
