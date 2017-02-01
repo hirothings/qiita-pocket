@@ -17,14 +17,14 @@ class APIClient {
     
     // MARK: - Properties
     
-    let baseUrl = "https://qiita.com/api/v2"
+    private let baseUrl = "https://qiita.com/api/v2"
     
     static let sharedInstance = APIClient()
     private let manager = SessionManager()
 
     private init() {}
     
-    
+    // TODO: エラー処理
     func request(_ method: Alamofire.HTTPMethod = .get, path: String) -> Observable<Any> {
         if let request = self.manager.request(self.buildPath(path)).request {
             return self.manager.session.rx.json(request: request)

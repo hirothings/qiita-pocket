@@ -29,6 +29,11 @@ final class Article: Object {
 
 final class Tag: Object {
     dynamic var name: String = ""
+    
+    override convenience init(value: Any) {
+        self.init()
+        self.name = value as! String
+    }
 }
 
 
@@ -51,6 +56,8 @@ extension Article {
             let json = JSON(result)
             let article = Article()
             
+            dump(json)
+            
             let createdAt = json["created_at"].stringValue
             article.createdAt = Util.convertDate(str: createdAt, format: "yyyy.MM.dd HH:mm:ss")
             article.id = json["id"].stringValue
@@ -64,7 +71,7 @@ extension Article {
                         .flatMap { Tag(value: $0) }
             
             for tag in tags {
-                article.tags.append(tag)
+                article.tags.append(tag) // imutableだからappendしかない？
             }
 
             return article

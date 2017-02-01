@@ -19,7 +19,9 @@ class WebViewController: UIViewController, WKNavigationDelegate {
     var refreshBtn = UIBarButtonItem()
     
     var webview = WKWebView()
-    var url: URL?    
+    var url: URL?
+    
+    // TODO: VCのイニシャライザでurl渡してみる
 
     override func viewDidLoad() {
         super.viewDidLoad()
