@@ -113,13 +113,26 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
 
     private func setupSearchBar() {
         let navigationBarFrame: CGRect = self.navigationController!.navigationBar.bounds
-        let searchBar: UISearchBar = UISearchBar(frame: navigationBarFrame)
+        let searchBar = UISearchBar(frame: navigationBarFrame)
         
         searchBar.delegate = self
         searchBar.placeholder = "タグを検索"
         searchBar.showsCancelButton = true
         searchBar.autocapitalizationType = .none
         searchBar.keyboardType = .default
+        searchBar.tintColor = UIColor.gray
         navigationItem.titleView = searchBar
+    }
+
+    
+    // MARK: - UISearchBarDelegate
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        searchBar.endEditing(true)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        // TODO: API通信
     }
 }
