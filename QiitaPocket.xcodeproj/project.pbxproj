@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5438C6751E06A15800EBA8FA /* ArticleListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5438C6741E06A15800EBA8FA /* ArticleListViewModel.swift */; };
+		5473C7601E43728700AE31E9 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5473C75F1E43728700AE31E9 /* UserSettings.swift */; };
 		54FAA58A1E3DD62600C09411 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54FAA5881E3DD62600C09411 /* Realm.framework */; };
 		54FAA58B1E3DD62600C09411 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54FAA5891E3DD62600C09411 /* RealmSwift.framework */; };
 		54FAA58D1E3DE0C000C09411 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FAA58C1E3DE0C000C09411 /* Util.swift */; };
@@ -33,6 +34,7 @@
 /* Begin PBXFileReference section */
 		52471A8D1CD9AF2E006865C6 /* QiitaPocket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QiitaPocket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5438C6741E06A15800EBA8FA /* ArticleListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleListViewModel.swift; sourceTree = "<group>"; };
+		5473C75F1E43728700AE31E9 /* UserSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		54FAA5881E3DD62600C09411 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		54FAA5891E3DD62600C09411 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		54FAA58C1E3DE0C000C09411 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				6C509BE41DD13BD500740AF2 /* ViewController */,
 				6C509BE81DD13BD500740AF2 /* ViewModel */,
 				54FAA58C1E3DE0C000C09411 /* Util.swift */,
+				5473C75F1E43728700AE31E9 /* UserSettings.swift */,
 			);
 			path = QiitaPocket;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				54FAA58D1E3DE0C000C09411 /* Util.swift in Sources */,
+				5473C7601E43728700AE31E9 /* UserSettings.swift in Sources */,
 				6C509BF11DD13BD500740AF2 /* ArticleTableViewCell.swift in Sources */,
 				6C509BF01DD13BD500740AF2 /* Article.swift in Sources */,
 				54FD95C01E2B78400061866A /* ArticleManager.swift in Sources */,
