@@ -11,5 +11,28 @@ import RxSwift
 
 class ArticleListViewModel {
     
-    let fetchNotification: PublishSubject<Void> = PublishSubject()
+    let fetchTrigger = PublishSubject<Void>()
+    let fetchNotification = PublishSubject<Void>()
+    
+    private let bag = DisposeBag()
+    
+    init() {
+        fetchTrigger
+            .flatMap {
+                Article.fetch()
+            }
+            .observeOn(Dependencies.sharedInstance.mainScheduler)
+            .subscribe(
+                onNext: { (response: Any) in
+                    let articles = Article.parseJson(object: response)
+                },
+                onError: { (error) in
+                    print("error")
+                },
+                onCompleted: {
+                    print("Completed")
+                })
+                .addDisposableTo(bag)
+    }
+
 }

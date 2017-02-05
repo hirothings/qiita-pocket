@@ -8,34 +8,43 @@
 
 import Foundation
 import Alamofire
-import SwiftyJSON
 import RxSwift
-import RxCocoa
 
 class APIClient {
-    
     
     // MARK: - Properties
     
     private let baseUrl = "https://qiita.com/api/v2"
     
-    static let sharedInstance = APIClient()
+    static let instance = APIClient()
     private let manager = SessionManager()
 
     private init() {}
-    
-    // TODO: エラー処理
-    func request(_ method: Alamofire.HTTPMethod = .get, path: String) -> Observable<Any> {
-        if let request = self.manager.request(self.buildPath(path)).request {
-            return self.manager.session.rx.json(request: request)
-        }
-        else {
-            fatalError("Invalid request")
+
+    /// Observable化したAPIレスポンスを返す
+    func call(mehod: Alamofire.HTTPMethod = .get, path: String) -> Observable<Any> {
+        return Observable.create { [unowned self] (observer) -> Disposable in
+
+            self.manager.request(self.buildPath(path))
+                .responseJSON { response in
+                    
+                    // TODO: if DEBUG
+                    debugPrint(response)
+                    
+                    switch response.result {
+                    case .success(let value):
+                        observer.on(.next(value))
+                        observer.on(.completed)
+                    case .failure(let error):
+                        observer.on(.error(error))
+                    }
+                }
+            return Disposables.create()
         }
     }
     
     /// "/"が先頭にある場合、それ以降の文字列を取得
-    func buildPath(_ path: String) -> URL {
+    private func buildPath(_ path: String) -> URL {
         let trimmedPath = path.hasPrefix("/") ? path.substring(to: path.characters.index(after: path.startIndex)) : path
         return URL(string: baseUrl + "/" + trimmedPath)!
     }

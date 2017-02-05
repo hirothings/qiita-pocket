@@ -39,24 +39,22 @@ final class Tag: Object {
 
 extension Article {
     
-    static let apiClient = APIClient.sharedInstance
-
-    static func fetch() -> Observable<[Article]> {
-        return self.apiClient.request(path: "items")
-            .observeOn(Dependencies.sharedInstance.backgroundScheduler)
-            .map { response in
-                guard let response = response as? [AnyObject] else { fatalError("Cast failed") }
-                return self.parseJson(response)
-            }
-            .observeOn(Dependencies.sharedInstance.mainScheduler)
+    static let apiClient = APIClient.instance
+    
+    static func fetch() -> Observable<Any> {
+        return self.apiClient.call(path: "items")
+                        .observeOn(Dependencies.sharedInstance.backgroundScheduler)
     }
     
-    static func parseJson(_ response: [AnyObject]) -> [Article] {
-        return response.map { result in
-            let json = JSON(result)
+    // TODO: Query付きのリクエストを発行
+    static func fetch(with query: String) -> Observable<Any>  {
+        return self.apiClient.call(path: "")
+    }
+    
+    static func parseJson(object: Any) -> [Article] {
+        let json = JSON(object)
+        return json.map { _ in
             let article = Article()
-            
-            dump(json)
             
             let createdAt = json["created_at"].stringValue
             article.createdAt = Util.convertDate(str: createdAt, format: "yyyy.MM.dd HH:mm:ss")
@@ -67,13 +65,13 @@ extension Article {
             article.url = json["url"].stringValue
             
             let tags = json["tags"].arrayValue
-                        .map { $0["name"].stringValue }
-                        .flatMap { Tag(value: $0) }
+                .map { $0["name"].stringValue }
+                .flatMap { Tag(value: $0) }
             
             for tag in tags {
                 article.tags.append(tag) // imutableだからappendしかない？
             }
-
+            
             return article
         }
     }

@@ -19,12 +19,13 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
     var postUrl: URL?
     var refreshControll = UIRefreshControl()
     
+    private let viewModel = ArticleListViewModel()
     private let bag = DisposeBag()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         table.rowHeight = 72.0
         table.separatorInset = UIEdgeInsets.zero
         
@@ -32,12 +33,14 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
         self.table.register(nib, forCellReuseIdentifier: "CustomCell")
         
         setupSearchBar()
-        
-        pullToRefresh()
+
+        self.viewModel.fetchTrigger.onNext(())
+//        pullToRefresh()
+    
         table.addSubview(refreshControll)
     }
-    
-    
+
+
     // MARK: - TableView Delegate
 
     /// tableViewの行数を指定
@@ -90,25 +93,26 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
     // MARK: - Private Method
     
     private func pullToRefresh() {
-        self.refreshControll.rx.controlEvent(.valueChanged)
-            .asObservable()
-            .startWith(())
-            .flatMap {
-                Article.fetch()
-            }
-            .subscribe(onNext: { [unowned self] result in
-                
-                print("fetch done")
-                
-                self.articles = result
-                self.table.delegate = self
-                self.table.dataSource = self
-
-                self.table.reloadData()
-                
-                self.refreshControll.endRefreshing()
-            })
-            .addDisposableTo(bag)
+//        self.refreshControll.rx.controlEvent(.valueChanged)
+//            .asObservable()
+//            .startWith(())
+//            .flatMap { [weak self] in
+//                guard let `self` = self else {return}
+//                self.viewModel.fetchTrigger.onNext(())
+//            }
+//            .subscribe(onNext: { [unowned self] result in
+//                
+//                print("fetch done")
+//                
+//                self.articles = result
+//                self.table.delegate = self
+//                self.table.dataSource = self
+//
+//                self.table.reloadData()
+//                
+//                self.refreshControll.endRefreshing()
+//            })
+//            .addDisposableTo(bag)
     }
 
     private func setupSearchBar() {
