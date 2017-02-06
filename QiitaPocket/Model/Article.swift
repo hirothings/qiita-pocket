@@ -41,13 +41,13 @@ extension Article {
     
     static let apiClient = APIClient.instance
     
-    static func fetch() -> Observable<Any> {
+    static func fetch() -> Observable<[Article]> {
         return self.apiClient.call(path: "items")
                         .observeOn(Dependencies.sharedInstance.backgroundScheduler)
     }
     
     // TODO: Query付きのリクエストを発行
-    static func fetch(with query: String) -> Observable<Any>  {
+    static func fetch(with query: String) -> Observable<[Article]>  {
         return self.apiClient.call(path: "")
     }
     

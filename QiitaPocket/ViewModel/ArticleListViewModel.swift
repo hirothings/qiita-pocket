@@ -24,7 +24,8 @@ class ArticleListViewModel {
             .observeOn(Dependencies.sharedInstance.mainScheduler)
             .subscribe(
                 onNext: { (response: Any) in
-                    let articles = Article.parseJson(object: response)
+                    dump(response)
+//                    let articles = Article.parseJson(object: response)
                 },
                 onError: { (error) in
                     print("error")

@@ -22,24 +22,25 @@ class APIClient {
     private init() {}
 
     /// Observable化したAPIレスポンスを返す
-    func call(mehod: Alamofire.HTTPMethod = .get, path: String) -> Observable<Any> {
-        return Observable.create { [unowned self] (observer) -> Disposable in
+    func call(path: String, mehod: Alamofire.HTTPMethod = .get) -> Observable<[Article]> {
+        return Observable.create { [unowned self] observer -> Disposable in
 
             self.manager.request(self.buildPath(path))
                 .responseJSON { response in
                     
                     // TODO: if DEBUG
-                    debugPrint(response)
+//                    debugPrint(response)
                     
                     switch response.result {
                     case .success(let value):
-                        observer.on(.next(value))
+                        let articles = Article.parseJson(object: value)
+                        observer.on(.next(articles))
                         observer.on(.completed)
                     case .failure(let error):
                         observer.on(.error(error))
                     }
                 }
-            return Disposables.create()
+            return Disposables.create {}
         }
     }
     
