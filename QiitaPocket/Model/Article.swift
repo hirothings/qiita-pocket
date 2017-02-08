@@ -39,7 +39,7 @@ final class Tag: Object {
 
 extension Article {
     
-    static let apiClient = APIClient.instance
+    static let apiClient = APIClient()
     
     static func fetch() -> Observable<[Article]> {
         return self.apiClient.call(path: "items")
@@ -51,9 +51,9 @@ extension Article {
         return self.apiClient.call(path: "")
     }
     
-    static func parseJson(object: Any) -> [Article] {
-        let json = JSON(object)
-        return json.map { _ in
+    static func parseJSON(response: [Any]) -> [Article] {
+        return response.map { res in
+            let json = JSON(res)
             let article = Article()
             
             let createdAt = json["created_at"].stringValue

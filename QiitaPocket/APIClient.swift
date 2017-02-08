@@ -15,32 +15,33 @@ class APIClient {
     // MARK: - Properties
     
     private let baseUrl = "https://qiita.com/api/v2"
-    
-    static let instance = APIClient()
-    private let manager = SessionManager()
-
-    private init() {}
 
     /// Observable化したAPIレスポンスを返す
     func call(path: String, mehod: Alamofire.HTTPMethod = .get) -> Observable<[Article]> {
         return Observable.create { [unowned self] observer -> Disposable in
-
-            self.manager.request(self.buildPath(path))
+            let request = Alamofire.request(self.buildPath(path))
                 .responseJSON { response in
                     
                     // TODO: if DEBUG
-//                    debugPrint(response)
+                    // debugPrint(response)
                     
                     switch response.result {
                     case .success(let value):
-                        let articles = Article.parseJson(object: value)
-                        observer.on(.next(articles))
+                        if let json = value as? [Any] {
+                            let articles = Article.parseJSON(response: json)
+                            observer.on(.next(articles))
+                        }
                         observer.on(.completed)
                     case .failure(let error):
                         observer.on(.error(error))
                     }
                 }
-            return Disposables.create {}
+            
+            request.resume()
+            
+            return Disposables.create {
+                request.cancel()
+            }
         }
     }
     
