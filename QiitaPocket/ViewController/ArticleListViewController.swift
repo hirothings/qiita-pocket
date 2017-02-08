@@ -9,6 +9,7 @@
 import UIKit
 import WebImage
 import RxSwift
+import RxCocoa
 
 
 class ArticleListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, SwipeCellDelegate {
@@ -32,11 +33,27 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
         let nib: UINib = UINib(nibName: "ArticleTableViewCell", bundle: nil)
         self.table.register(nib, forCellReuseIdentifier: "CustomCell")
         
-        setupSearchBar()
+        self.refreshControll.rx.controlEvent(.valueChanged)
+            .startWith(())
+            .bindTo(self.viewModel.fetchTrigger)
+            .addDisposableTo(bag)
+        
+        self.viewModel.fetchNotification
+            .subscribe(onNext: { [unowned self] articles in
 
-        self.viewModel.fetchTrigger.onNext(())
-//        pullToRefresh()
-    
+                print("fetch done")
+
+                self.articles = articles
+                self.table.delegate = self
+                self.table.dataSource = self
+
+                self.table.reloadData()
+
+                self.refreshControll.endRefreshing()
+            })
+            .addDisposableTo(bag)
+
+        setupSearchBar()
         table.addSubview(refreshControll)
     }
 
@@ -91,29 +108,6 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
     
     
     // MARK: - Private Method
-    
-    private func pullToRefresh() {
-//        self.refreshControll.rx.controlEvent(.valueChanged)
-//            .asObservable()
-//            .startWith(())
-//            .flatMap { [weak self] in
-//                guard let `self` = self else {return}
-//                self.viewModel.fetchTrigger.onNext(())
-//            }
-//            .subscribe(onNext: { [unowned self] result in
-//                
-//                print("fetch done")
-//                
-//                self.articles = result
-//                self.table.delegate = self
-//                self.table.dataSource = self
-//
-//                self.table.reloadData()
-//                
-//                self.refreshControll.endRefreshing()
-//            })
-//            .addDisposableTo(bag)
-    }
 
     private func setupSearchBar() {
         let navigationBarFrame: CGRect = self.navigationController!.navigationBar.bounds

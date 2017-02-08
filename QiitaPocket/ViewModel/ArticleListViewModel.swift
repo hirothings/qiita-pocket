@@ -12,7 +12,7 @@ import RxSwift
 class ArticleListViewModel {
     
     let fetchTrigger = PublishSubject<Void>()
-    let fetchNotification = PublishSubject<Void>()
+    let fetchNotification = PublishSubject<[Article]>()
     
     private let bag = DisposeBag()
     
@@ -23,9 +23,10 @@ class ArticleListViewModel {
             }
             .observeOn(Dependencies.sharedInstance.mainScheduler)
             .subscribe(
-                onNext: { (response: Any) in
-                    dump(response)
-//                    let articles = Article.parseJson(object: response)
+                onNext: { [weak self] (articles: [Article]) in
+                    guard let `self` = self else { return }
+                    dump(articles)
+                    self.fetchNotification.onNext(articles)
                 },
                 onError: { (error) in
                     print("error")
