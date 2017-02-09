@@ -131,6 +131,6 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        // TODO: API通信
+        viewModel.fetchTagPostsTrigger.onNext(searchBar.text!)
     }
 }

@@ -47,8 +47,11 @@ extension Article {
     }
     
     // TODO: Query付きのリクエストを発行
-    static func fetch(with query: String) -> Observable<[Article]>  {
-        return self.apiClient.call(path: "")
+    static func fetch(with tag: String) -> Observable<[Article]>  {
+        let query = "tag:\(tag)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        let path = "items?" + "query=" + query
+        print("path: \(path)")
+        return self.apiClient.call(path: path)
     }
     
     static func parseJSON(response: [Any]) -> [Article] {

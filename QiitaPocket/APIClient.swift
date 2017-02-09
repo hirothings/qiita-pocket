@@ -18,7 +18,8 @@ class APIClient {
 
     /// Observable化したAPIレスポンスを返す
     func call(path: String, mehod: Alamofire.HTTPMethod = .get) -> Observable<[Article]> {
-        return Observable.create { [unowned self] observer -> Disposable in
+        return Observable.create { [weak self] observer -> Disposable in
+            guard let `self` = self else { return Disposables.create {} }
             let request = Alamofire.request(self.buildPath(path))
                 .responseJSON { response in
                     
