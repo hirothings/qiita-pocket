@@ -12,7 +12,7 @@ import RxSwift
 import RxCocoa
 
 
-class ArticleListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, SwipeCellDelegate {
+class ArticleListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SwipeCellDelegate, UISearchBarDelegate {
 
     @IBOutlet weak var table: UITableView!
 
@@ -21,6 +21,7 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
     var refreshControll = UIRefreshControl()
     
     private let viewModel = ArticleListViewModel()
+    private var searchSettingVC = SearchSettingViewController()
     private let bag = DisposeBag()
     
     
@@ -33,11 +34,19 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
         let nib: UINib = UINib(nibName: "ArticleTableViewCell", bundle: nil)
         self.table.register(nib, forCellReuseIdentifier: "CustomCell")
         
+        // 検索モードのChildViewControllerをセット
+        searchSettingVC = self.storyboard!.instantiateViewController(withIdentifier: "SearchSettingViewController") as! SearchSettingViewController
+        self.addChildViewController(searchSettingVC)
+        self.view.addSubview(searchSettingVC.view)
+        searchSettingVC.didMove(toParentViewController: self)
+        searchSettingVC.view.alpha = 0
+        
+        // bind
         self.refreshControll.rx.controlEvent(.valueChanged)
             .startWith(())
             .bindTo(self.viewModel.fetchTrigger)
             .addDisposableTo(bag)
-        
+
         self.viewModel.fetchNotification
             .subscribe(onNext: { [unowned self] articles in
 
@@ -125,12 +134,18 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
     
     // MARK: - UISearchBarDelegate
     
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchSettingVC.view.fadeIn()
+    }
+    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.text = ""
+        searchSettingVC.view.fadeOut()
         searchBar.endEditing(true)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         viewModel.fetchTagPostsTrigger.onNext(searchBar.text!)
     }
+
 }
