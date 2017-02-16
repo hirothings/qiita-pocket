@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AAx-FF-Xre">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AAx-FF-Xre">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -30,7 +30,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8If-M3-sd9" id="aXv-Gz-zyB">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <userGuides>
                                                 <userLayoutGuide location="75" affinity="minX"/>
@@ -79,7 +79,95 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s1N-I9-4aM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1663" y="1179"/>
+            <point key="canvasLocation" x="1494" y="1150"/>
+        </scene>
+        <!--Search Setting View Controller-->
+        <scene sceneID="Qsb-TP-VSB">
+            <objects>
+                <viewController storyboardIdentifier="SearchSettingViewController" id="yZi-lx-9Yr" customClass="SearchSettingViewController" customModule="QiitaPocket" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hkl-Pe-n3s"/>
+                        <viewControllerLayoutGuide type="bottom" id="nhC-IM-Yqc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2Be-rW-ZFW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YfV-ud-C6h">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a1f-7c-hrm" userLabel="Content View">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ソート" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bd7-Kf-e9h">
+                                                <rect key="frame" x="23" y="8" width="43" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="期間" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqz-KW-Akx">
+                                                <rect key="frame" x="23" y="103" width="66" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="WjI-dJ-Zc9">
+                                                <rect key="frame" x="23" y="37" width="137" height="29"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <segments>
+                                                    <segment title="新着順"/>
+                                                    <segment title="イイね順"/>
+                                                </segments>
+                                            </segmentedControl>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="hWv-6E-OuB">
+                                                <rect key="frame" x="23" y="132" width="255" height="29"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <segments>
+                                                    <segment title="すべて"/>
+                                                    <segment title="1ヶ月"/>
+                                                    <segment title="1週間"/>
+                                                </segments>
+                                            </segmentedControl>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CEk-MI-tGM">
+                                                <rect key="frame" x="0.0" y="238" width="375" height="429"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </tableView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="検索履歴" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dnf-LL-7hd">
+                                                <rect key="frame" x="23" y="198" width="107" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="a1f-7c-hrm" secondAttribute="trailing" id="Mc3-zL-3Lo"/>
+                                    <constraint firstItem="a1f-7c-hrm" firstAttribute="top" secondItem="YfV-ud-C6h" secondAttribute="top" id="c3c-xu-WdD"/>
+                                    <constraint firstItem="a1f-7c-hrm" firstAttribute="leading" secondItem="YfV-ud-C6h" secondAttribute="leading" id="cTk-CJ-HJf"/>
+                                    <constraint firstAttribute="bottom" secondItem="a1f-7c-hrm" secondAttribute="bottom" id="da8-j2-pEu"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="a1f-7c-hrm" firstAttribute="width" secondItem="2Be-rW-ZFW" secondAttribute="width" id="MhO-5K-3JO"/>
+                            <constraint firstItem="YfV-ud-C6h" firstAttribute="leading" secondItem="2Be-rW-ZFW" secondAttribute="leading" id="biW-cu-Jm5"/>
+                            <constraint firstItem="YfV-ud-C6h" firstAttribute="top" secondItem="2Be-rW-ZFW" secondAttribute="top" id="lDY-g7-Cd1"/>
+                            <constraint firstItem="nhC-IM-Yqc" firstAttribute="top" secondItem="YfV-ud-C6h" secondAttribute="bottom" id="ogR-qF-2mi"/>
+                            <constraint firstAttribute="trailing" secondItem="YfV-ud-C6h" secondAttribute="trailing" id="pVd-9i-vW3"/>
+                            <constraint firstItem="a1f-7c-hrm" firstAttribute="height" secondItem="2Be-rW-ZFW" secondAttribute="height" priority="250" id="qGX-fZ-2eo"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XjO-LV-Y0v" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2212" y="1149.1754122938532"/>
         </scene>
         <!--Web View Controller-->
         <scene sceneID="X9m-hp-dal">
@@ -134,7 +222,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZqM-Pg-4R1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3457.5" y="398.23943661971833"/>
+            <point key="canvasLocation" x="3153" y="385"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="NiQ-4q-Tdl">
