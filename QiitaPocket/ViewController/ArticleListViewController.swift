@@ -121,6 +121,7 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
         searchBar.autocapitalizationType = .none
         searchBar.keyboardType = .default
         searchBar.tintColor = UIColor.gray
+        searchBar.text = UserSettings.getCurrentSearchTag()
         navigationItem.titleView = searchBar
     }
     
