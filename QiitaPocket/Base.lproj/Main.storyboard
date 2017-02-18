@@ -99,51 +99,77 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a1f-7c-hrm" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ソート" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bd7-Kf-e9h">
-                                                <rect key="frame" x="23" y="8" width="43" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="検索履歴" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dnf-LL-7hd">
+                                                <rect key="frame" x="16" y="186" width="57.5" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="期間" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqz-KW-Akx">
-                                                <rect key="frame" x="23" y="103" width="66" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="WjI-dJ-Zc9">
-                                                <rect key="frame" x="23" y="37" width="137" height="29"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <segments>
-                                                    <segment title="新着順"/>
-                                                    <segment title="イイね順"/>
-                                                </segments>
-                                            </segmentedControl>
-                                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="hWv-6E-OuB">
-                                                <rect key="frame" x="23" y="132" width="255" height="29"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <segments>
-                                                    <segment title="すべて"/>
-                                                    <segment title="1ヶ月"/>
-                                                    <segment title="1週間"/>
-                                                </segments>
-                                            </segmentedControl>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CEk-MI-tGM">
-                                                <rect key="frame" x="0.0" y="238" width="375" height="429"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="naa-YE-kge">
+                                                <rect key="frame" x="16" y="16" width="137" height="55"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ソート" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bd7-Kf-e9h">
+                                                        <rect key="frame" x="0.0" y="0.0" width="137" height="17"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="WjI-dJ-Zc9">
+                                                        <rect key="frame" x="0.0" y="27" width="137" height="29"/>
+                                                        <segments>
+                                                            <segment title="新着順"/>
+                                                            <segment title="イイね順"/>
+                                                        </segments>
+                                                    </segmentedControl>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="CKb-ax-5B5">
+                                                <rect key="frame" x="16" y="101" width="164" height="55"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="期間" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqz-KW-Akx">
+                                                        <rect key="frame" x="0.0" y="0.0" width="164" height="17"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="hWv-6E-OuB">
+                                                        <rect key="frame" x="0.0" y="27" width="164" height="29"/>
+                                                        <segments>
+                                                            <segment title="すべて"/>
+                                                            <segment title="1ヶ月"/>
+                                                            <segment title="1週間"/>
+                                                        </segments>
+                                                    </segmentedControl>
+                                                </subviews>
+                                            </stackView>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cGN-aq-6kP">
+                                                <rect key="frame" x="0.0" y="223" width="375" height="444"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <prototypes>
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CustomCell" id="mMS-hL-NND">
+                                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mMS-hL-NND" id="XKb-XC-cEd">
+                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                        </tableViewCellContentView>
+                                                    </tableViewCell>
+                                                </prototypes>
                                             </tableView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="検索履歴" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dnf-LL-7hd">
-                                                <rect key="frame" x="23" y="198" width="107" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="cGN-aq-6kP" firstAttribute="leading" secondItem="a1f-7c-hrm" secondAttribute="leading" id="1U0-Be-YVJ"/>
+                                            <constraint firstItem="CKb-ax-5B5" firstAttribute="top" secondItem="naa-YE-kge" secondAttribute="bottom" constant="30" id="3wI-Ce-8kW"/>
+                                            <constraint firstItem="dnf-LL-7hd" firstAttribute="top" secondItem="CKb-ax-5B5" secondAttribute="bottom" constant="30" id="DTw-i2-dX6"/>
+                                            <constraint firstItem="dnf-LL-7hd" firstAttribute="leading" secondItem="a1f-7c-hrm" secondAttribute="leading" constant="16" id="HfX-dv-aL8"/>
+                                            <constraint firstAttribute="trailing" secondItem="cGN-aq-6kP" secondAttribute="trailing" id="Np2-rZ-TvK"/>
+                                            <constraint firstItem="naa-YE-kge" firstAttribute="leading" secondItem="a1f-7c-hrm" secondAttribute="leading" constant="16" id="UxR-C7-CLo"/>
+                                            <constraint firstItem="cGN-aq-6kP" firstAttribute="top" secondItem="dnf-LL-7hd" secondAttribute="bottom" constant="20" id="Yi0-2R-Idk"/>
+                                            <constraint firstItem="naa-YE-kge" firstAttribute="top" secondItem="a1f-7c-hrm" secondAttribute="top" constant="16" id="gWk-AJ-mpu"/>
+                                            <constraint firstItem="CKb-ax-5B5" firstAttribute="leading" secondItem="a1f-7c-hrm" secondAttribute="leading" constant="16" id="zXU-Xd-w5A"/>
+                                            <constraint firstAttribute="bottom" secondItem="cGN-aq-6kP" secondAttribute="bottom" id="zp6-PB-qNY"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -156,23 +182,26 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="a1f-7c-hrm" firstAttribute="width" secondItem="2Be-rW-ZFW" secondAttribute="width" id="MhO-5K-3JO"/>
-                            <constraint firstItem="YfV-ud-C6h" firstAttribute="leading" secondItem="2Be-rW-ZFW" secondAttribute="leading" id="biW-cu-Jm5"/>
-                            <constraint firstItem="YfV-ud-C6h" firstAttribute="top" secondItem="2Be-rW-ZFW" secondAttribute="top" id="lDY-g7-Cd1"/>
-                            <constraint firstItem="nhC-IM-Yqc" firstAttribute="top" secondItem="YfV-ud-C6h" secondAttribute="bottom" id="ogR-qF-2mi"/>
-                            <constraint firstAttribute="trailing" secondItem="YfV-ud-C6h" secondAttribute="trailing" id="pVd-9i-vW3"/>
-                            <constraint firstItem="a1f-7c-hrm" firstAttribute="height" secondItem="2Be-rW-ZFW" secondAttribute="height" priority="250" id="qGX-fZ-2eo"/>
+                            <constraint firstItem="YfV-ud-C6h" firstAttribute="top" secondItem="2Be-rW-ZFW" secondAttribute="top" id="A3a-9v-hJx"/>
+                            <constraint firstItem="a1f-7c-hrm" firstAttribute="height" secondItem="2Be-rW-ZFW" secondAttribute="height" id="DZw-yk-FPK"/>
+                            <constraint firstAttribute="bottom" secondItem="YfV-ud-C6h" secondAttribute="bottom" id="dqV-Zm-3cI"/>
+                            <constraint firstItem="a1f-7c-hrm" firstAttribute="width" secondItem="2Be-rW-ZFW" secondAttribute="width" id="inu-9O-iHS"/>
+                            <constraint firstItem="YfV-ud-C6h" firstAttribute="leading" secondItem="2Be-rW-ZFW" secondAttribute="leading" id="oDu-R4-rzN"/>
+                            <constraint firstAttribute="trailing" secondItem="YfV-ud-C6h" secondAttribute="trailing" id="q2j-BU-oET"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="contentView" destination="a1f-7c-hrm" id="I6g-ta-T6q"/>
+                        <outlet property="contentViewHeight" destination="DZw-yk-FPK" id="eqr-0X-cDl"/>
                         <outlet property="periodSegment" destination="hWv-6E-OuB" id="a7W-d7-24M"/>
-                        <outlet property="searchHistoryTableView" destination="CEk-MI-tGM" id="dQb-xg-pRU"/>
+                        <outlet property="scrollView" destination="YfV-ud-C6h" id="EDx-lP-InO"/>
                         <outlet property="sortSegment" destination="WjI-dJ-Zc9" id="oUA-yd-Z08"/>
+                        <outlet property="tableView" destination="cGN-aq-6kP" id="ESj-Ul-1EL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XjO-LV-Y0v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2212" y="1149.1754122938532"/>
+            <point key="canvasLocation" x="2248.8000000000002" y="1148.2758620689656"/>
         </scene>
         <!--Web View Controller-->
         <scene sceneID="X9m-hp-dal">
