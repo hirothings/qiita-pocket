@@ -12,23 +12,28 @@ import Foundation
 enum UserSettings: String {
     
     case searchHistory
-    case searchLimit
-    case searchMode
+    case searchSort
+    case searchPeriod
     case searchTag
     
     // Int
     func set(value: Int) {
         UserDefaults.standard.set(value, forKey: self.rawValue)
     }
-    func get() -> Int {
+    func integer() -> Int {
         return UserDefaults.standard.integer(forKey: self.rawValue)
+    }
+    
+    // String
+    func string() -> String? {
+        return UserDefaults.standard.string(forKey: self.rawValue)
     }
     
     // Object
     func set(value: Any) {
         UserDefaults.standard.set(value, forKey: self.rawValue)
     }
-    func get() -> Any? {
+    func object() -> Any? {
         return UserDefaults.standard.object(forKey: self.rawValue)
     }
     
