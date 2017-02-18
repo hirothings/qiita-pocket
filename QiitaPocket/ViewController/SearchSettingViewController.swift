@@ -10,25 +10,55 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class SearchSettingViewController: UIViewController, UITableViewDelegate {
+class SearchSettingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var sortSegment: UISegmentedControl!
     @IBOutlet weak var periodSegment: UISegmentedControl!
-    @IBOutlet weak var searchHistoryTableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var contentViewHeight: NSLayoutConstraint!
     
     private let bag = DisposeBag()
+    let items = ["test", "test2", "test3", "test4", "test5", "test6", "test7", "test8", "test9", "test10"]
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         initSegmentValue()
         saveSearchSettings()
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
     }
     
+    override func viewDidLayoutSubviews() {
+        let tablecellHeight: CGFloat = 44.0
+        // tableView分の高さを追加する
+        contentViewHeight.constant = tablecellHeight * CGFloat(items.count)
+    }
+    
+    
+    // MARK: - TableView Delegate
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return items.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath)
+        cell.textLabel?.text = items[indexPath.row]
+        return cell
+    }
+    
+    
+    // MARK: - Private Method
+    
     func initSegmentValue() {
-        guard let sort = UserSettings.searchSort.string(), let sortType = SearchSort(rawValue: sort) else {
+        guard let sortType = UserSettings.getSearchSort() else {
             return
         }
-        guard let period = UserSettings.searchPeriod.string(), let periodType = SearchPeriod(rawValue: period) else {
+        guard let periodType = UserSettings.getSearchPeriod() else {
             return
         }
         
@@ -54,9 +84,9 @@ class SearchSettingViewController: UIViewController, UITableViewDelegate {
             .subscribe(onNext: { index in
                 switch index {
                 case 0:
-                    UserSettings.searchSort.set(value: SearchSort.recent.rawValue)
+                    UserSettings.setSearchSort(SearchSort.recent)
                 case 1:
-                    UserSettings.searchSort.set(value: SearchSort.popular.rawValue)
+                    UserSettings.setSearchSort(SearchSort.popular)
                 default:
                     break
                 }
@@ -67,15 +97,16 @@ class SearchSettingViewController: UIViewController, UITableViewDelegate {
             .subscribe(onNext: { index in
                 switch index {
                 case 0:
-                    UserSettings.searchPeriod.set(value: SearchPeriod.all.rawValue)
+                    UserSettings.setSearchPeriod(SearchPeriod.all)
                 case 1:
-                    UserSettings.searchPeriod.set(value: SearchPeriod.month.rawValue)
+                    UserSettings.setSearchPeriod(SearchPeriod.month)
                 case 2:
-                    UserSettings.searchPeriod.set(value: SearchPeriod.week.rawValue)
+                    UserSettings.setSearchPeriod(SearchPeriod.week)
                 default:
                     break
                 }
             })
             .addDisposableTo(bag)
     }
+    
 }
