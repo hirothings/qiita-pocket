@@ -124,6 +124,17 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
         navigationItem.titleView = searchBar
     }
     
+    private func updateSearchState(tag: String) {
+        UserSettings.setCurrentSearchTag(name: tag)
+        
+        var historyList = UserSettings.getSearchHistory()
+        historyList.insert(tag, at: 0)
+        if historyList.count > 10 {
+            historyList.removeLast()
+        }
+        UserSettings.setSearchHistory(list: historyList)
+    }
+    
     
     // MARK: - UISearchBarDelegate
     
@@ -145,6 +156,7 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.endEditing(true)
+        updateSearchState(tag: searchBar.text!)
         viewModel.fetchTagPostsTrigger.onNext(searchBar.text!)
     }
 }
