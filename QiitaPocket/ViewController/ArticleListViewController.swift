@@ -156,6 +156,11 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        // 検索モードのChildViewControllerを削除
+        searchSettingVC.willMove(toParentViewController: self)
+        searchSettingVC.view.removeFromSuperview()
+        searchSettingVC.removeFromParentViewController()
+        
         searchBar.endEditing(true)
         updateSearchState(tag: searchBar.text!)
         viewModel.fetchTagPostsTrigger.onNext(searchBar.text!)
