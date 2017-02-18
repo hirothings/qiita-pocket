@@ -21,11 +21,13 @@ class UserSettings {
     
     // 検索履歴
     static func getSearchHistory() -> [String] {
-        UserDefaults.standard.register(defaults: ["SearchHistory": []])
-        return UserDefaults.standard.object(forKey: "SearchHistory") as! Array<String>
+        let strArray: [String] = []
+        UserDefaults.standard.register(defaults: ["SearchHistory": strArray])
+        return UserDefaults.standard.stringArray(forKey: "SearchHistory")!
     }
     static func setSearchHistory(list: [String]) {
         UserDefaults.standard.set(list, forKey: "SearchHistory")
+        UserDefaults.standard.synchronize()
     }
     
     // 検索順
@@ -36,8 +38,8 @@ class UserSettings {
         return SearchSort(rawValue: rawValue)
     }
     static func setSearchSort(_ searchSort: SearchSort) {
-        UserDefaults.standard.set(searchSort.rawValue, forKey: "SearchHistory")
-        UserDefaults.standard.object(forKey: "SearchHistory")
+        UserDefaults.standard.set(searchSort.rawValue, forKey: "SearchSort")
+        UserDefaults.standard.object(forKey: "SearchSort")
     }
     
     // 期間
