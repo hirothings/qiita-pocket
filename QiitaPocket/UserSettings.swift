@@ -39,7 +39,6 @@ class UserSettings {
     }
     static func setSearchSort(_ searchSort: SearchSort) {
         UserDefaults.standard.set(searchSort.rawValue, forKey: "SearchSort")
-        UserDefaults.standard.object(forKey: "SearchSort")
     }
     
     // 期間
@@ -51,7 +50,6 @@ class UserSettings {
     }
     static func setSearchPeriod(_ searchPeriod: SearchPeriod) {
         UserDefaults.standard.set(searchPeriod.rawValue, forKey: "SearchPeriod")
-        UserDefaults.standard.object(forKey: "SearchPeriod")
     }
     
     // delete
