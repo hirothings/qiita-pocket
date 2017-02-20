@@ -37,6 +37,7 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
         // bind
         self.refreshControll.rx.controlEvent(.valueChanged)
             .startWith(())
+            .flatMap { Observable.just(UserSettings.getCurrentSearchTag()) }
             .bindTo(self.viewModel.fetchTrigger)
             .addDisposableTo(bag)
 
@@ -163,6 +164,6 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
         
         searchBar.endEditing(true)
         updateSearchState(tag: searchBar.text!)
-        viewModel.fetchTagPostsTrigger.onNext(searchBar.text!)
+        viewModel.fetchTrigger.onNext(searchBar.text!)
     }
 }

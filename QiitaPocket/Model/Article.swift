@@ -41,15 +41,13 @@ extension Article {
     
     static let apiClient = APIClient()
     
-    static func fetch() -> Observable<[Article]> {
-        return self.apiClient.call(path: "items")
-                        .observeOn(Dependencies.sharedInstance.backgroundScheduler)
-    }
-    
     // TODO: Query付きのリクエストを発行
     static func fetch(with tag: String) -> Observable<[Article]>  {
-        let query = "tag:\(tag)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-        let path = "items?" + "query=" + query
+        var path = "items"
+        if tag != "" {
+            let query = "tag:\(tag)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+            path = path + "?" + "query=" + query
+        }
         print("path: \(path)")
         return self.apiClient.call(path: path)
     }
