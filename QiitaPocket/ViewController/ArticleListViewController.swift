@@ -130,12 +130,8 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
     private func updateSearchState(tag: String) {
         UserSettings.setCurrentSearchTag(name: tag)
         
-        var historyList = UserSettings.getSearchHistory()
-        historyList.insert(tag, at: 0)
-        if historyList.count > 10 {
-            historyList.removeLast()
-        }
-        UserSettings.setSearchHistory(list: historyList)
+        let searchHistory = SearchHistory(history: tag)
+        UserSettings.setSearchHistory(list: searchHistory.items)
     }
     
     
