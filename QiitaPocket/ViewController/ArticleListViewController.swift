@@ -123,6 +123,7 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
         searchBar.keyboardType = .default
         searchBar.tintColor = UIColor.gray
         searchBar.text = UserSettings.getCurrentSearchTag()
+        searchBar.enablesReturnKeyAutomatically = false
         navigationItem.titleView = searchBar
     }
     
