@@ -18,9 +18,7 @@ class SearchSettingViewController: UIViewController, UITableViewDataSource, UITa
     @IBOutlet weak var contentViewHeight: NSLayoutConstraint!
     
     private let bag = DisposeBag()
-    private let searchHistoryList: [String] = {
-        return UserSettings.getSearchHistory()
-    }()
+    private let searchHistoryList: [String] = SearchHistory.list
     
     override func viewDidLoad() {
         super.viewDidLoad()

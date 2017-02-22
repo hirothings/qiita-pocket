@@ -10,14 +10,24 @@ import Foundation
 
 struct SearchHistory {
     
-    var items: [String]
+    static var list: [String] {
+      return UserSettings.getSearchHistory()
+    }
     
-    init(history: String, max: Int = 10) {
-        self.items = UserSettings.getSearchHistory()
-        self.items.insert(history, at: 0)
-
-        if self.items.count > max {
-            self.items.removeLast()
+    private let max = 10
+    
+    init() {}
+    
+    
+    func add(history: String) {
+        if history == "" { return }
+        
+        var list = UserSettings.getSearchHistory()
+        list.insert(history, at: 0)
+        
+        if list.count > max {
+            list.removeLast()
         }
+        UserSettings.setSearchHistory(list: list)
     }
 }

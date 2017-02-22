@@ -130,8 +130,8 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
     private func updateSearchState(tag: String) {
         UserSettings.setCurrentSearchTag(name: tag)
         
-        let searchHistory = SearchHistory(history: tag)
-        UserSettings.setSearchHistory(list: searchHistory.items)
+        let searchHistory = SearchHistory()
+        searchHistory.add(history: tag)
     }
     
     
