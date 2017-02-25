@@ -20,7 +20,7 @@ struct SearchHistory {
     
     
     func add(tag: String) {
-        if tag == "" { return }
+        if tag.isEmpty { return }
         
         var tags = UserSettings.getSearchHistory()
         tags.insert(tag, at: 0)
