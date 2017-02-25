@@ -118,12 +118,20 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
         
         searchBar.delegate = self
         searchBar.placeholder = "タグを検索"
-        searchBar.showsCancelButton = true
+        searchBar.showsCancelButton = false
         searchBar.autocapitalizationType = .none
         searchBar.keyboardType = .default
         searchBar.tintColor = UIColor.gray
         searchBar.text = UserSettings.getCurrentSearchTag()
         searchBar.enablesReturnKeyAutomatically = false
+        for subView in searchBar.subviews {
+            for secondSubView in subView.subviews {
+                if secondSubView is UITextField {
+                    secondSubView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.3)
+                    break
+                }
+            }
+        }
         navigationItem.titleView = searchBar
     }
     
@@ -138,6 +146,7 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
     // MARK: - UISearchBarDelegate
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
         // 検索モードのChildViewControllerをセット
         searchSettingVC = self.storyboard!.instantiateViewController(withIdentifier: "SearchSettingViewController") as! SearchSettingViewController
         self.addChildViewController(searchSettingVC)
@@ -146,6 +155,7 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
         // 検索モードのChildViewControllerを削除
         searchSettingVC.willMove(toParentViewController: self)
         searchSettingVC.view.removeFromSuperview()
