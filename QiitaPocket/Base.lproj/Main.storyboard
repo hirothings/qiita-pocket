@@ -96,10 +96,10 @@
             </objects>
             <point key="canvasLocation" x="1494" y="1150"/>
         </scene>
-        <!--Search Setting View Controller-->
+        <!--Search Article View Controller-->
         <scene sceneID="Qsb-TP-VSB">
             <objects>
-                <viewController storyboardIdentifier="SearchSettingViewController" id="yZi-lx-9Yr" customClass="SearchSettingViewController" customModule="QiitaPocket" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchArticleViewController" id="yZi-lx-9Yr" customClass="SearchArticleViewController" customModule="QiitaPocket" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hkl-Pe-n3s"/>
                         <viewControllerLayoutGuide type="bottom" id="nhC-IM-Yqc"/>

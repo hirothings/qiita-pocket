@@ -1,5 +1,5 @@
 //
-//  SearchSettingViewController.swift
+//  SearchArticleViewController.swift
 //  QiitaPocket
 //
 //  Created by hirothings on 2017/02/11.
@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class SearchSettingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class SearchArticleViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var sortSegment: UISegmentedControl!
     @IBOutlet weak var periodSegment: UISegmentedControl!
