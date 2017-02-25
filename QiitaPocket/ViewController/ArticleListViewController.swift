@@ -14,7 +14,7 @@ import RxCocoa
 
 class ArticleListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SwipeCellDelegate, UISearchBarDelegate {
 
-    @IBOutlet weak var table: UITableView!
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var noneDataLabel: UILabel!
 
@@ -30,14 +30,14 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        table.rowHeight = 72.0
-        table.separatorInset = UIEdgeInsets.zero
-        table.isHidden = true
+        tableView.rowHeight = 72.0
+        tableView.separatorInset = UIEdgeInsets.zero
+        tableView.isHidden = true
         noneDataLabel.isHidden = true
         activityIndicatorView.hidesWhenStopped = true
         
         let nib: UINib = UINib(nibName: "ArticleTableViewCell", bundle: nil)
-        self.table.register(nib, forCellReuseIdentifier: "CustomCell")
+        self.tableView.register(nib, forCellReuseIdentifier: "CustomCell")
         
         // bind
         refreshControll.rx.controlEvent(.valueChanged)
@@ -52,10 +52,10 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
                 print("fetch done")
 
                 self.articles = articles
-                self.table.delegate = self
-                self.table.dataSource = self
-                self.table.reloadData()
-                self.table.isHidden = false
+                self.tableView.delegate = self
+                self.tableView.dataSource = self
+                self.tableView.reloadData()
+                self.tableView.isHidden = false
                 self.refreshControll.endRefreshing()
             })
             .addDisposableTo(bag)
@@ -77,7 +77,7 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
             .addDisposableTo(bag)
 
         setupSearchBar()
-        table.refreshControl = refreshControll
+        tableView.refreshControl = refreshControll
     }
 
 
@@ -90,7 +90,7 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
     
     /// tableViewのcellを生成
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = table.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! ArticleTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! ArticleTableViewCell
         cell.article = articles[indexPath.row]
         cell.delegate = self
         
@@ -109,10 +109,10 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
     // MARK: - SwipeCellDelegate
     
     func didSwipeReadLater(at indexPath: IndexPath) {
-        self.table.beginUpdates()
+        self.tableView.beginUpdates()
         self.articles.remove(at: indexPath.row)
-        self.table.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
-        self.table.endUpdates()
+        self.tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
+        self.tableView.endUpdates()
     }
     
     
@@ -192,6 +192,6 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
         searchBar.endEditing(true)
         updateSearchState(tag: searchBar.text!)
         viewModel.fetchTrigger.onNext(searchBar.text!)
-        self.table.isHidden = true
+        self.tableView.isHidden = true
     }
 }

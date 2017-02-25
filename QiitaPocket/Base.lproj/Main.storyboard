@@ -69,7 +69,7 @@
                     <connections>
                         <outlet property="activityIndicatorView" destination="2sy-Ix-rgN" id="p9H-SX-QMJ"/>
                         <outlet property="noneDataLabel" destination="rux-eZ-sJz" id="OcK-P2-hmF"/>
-                        <outlet property="table" destination="LNL-OX-88e" id="Hmh-au-eXV"/>
+                        <outlet property="tableView" destination="LNL-OX-88e" id="eKu-ch-UM6"/>
                         <segue destination="fS7-0f-ewK" kind="show" identifier="toWebView" id="0kY-Cg-MNr"/>
                     </connections>
                 </viewController>
