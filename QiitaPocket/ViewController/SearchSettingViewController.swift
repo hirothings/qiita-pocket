@@ -18,7 +18,7 @@ class SearchSettingViewController: UIViewController, UITableViewDataSource, UITa
     @IBOutlet weak var contentViewHeight: NSLayoutConstraint!
     
     private let bag = DisposeBag()
-    private let searchHistoryList: [String] = SearchHistory.list
+    private let searchHistories: [String] = SearchHistory.tags
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,19 +34,19 @@ class SearchSettingViewController: UIViewController, UITableViewDataSource, UITa
     override func viewDidLayoutSubviews() {
         let tablecellHeight: CGFloat = 44.0
         // tableView分の高さを追加する
-        contentViewHeight.constant = tablecellHeight * CGFloat(searchHistoryList.count)
+        contentViewHeight.constant = tablecellHeight * CGFloat(searchHistories.count)
     }
     
     
     // MARK: - TableView Delegate
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return searchHistoryList.count
+        return searchHistories.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath)
-        cell.textLabel?.text = searchHistoryList[indexPath.row]
+        cell.textLabel?.text = searchHistories[indexPath.row]
         return cell
     }
     

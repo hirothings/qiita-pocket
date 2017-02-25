@@ -10,7 +10,7 @@ import Foundation
 
 struct SearchHistory {
     
-    static var list: [String] {
+    static var tags: [String] {
       return UserSettings.getSearchHistory()
     }
     
@@ -19,15 +19,15 @@ struct SearchHistory {
     init() {}
     
     
-    func add(history: String) {
-        if history == "" { return }
+    func add(tag: String) {
+        if tag == "" { return }
         
-        var list = UserSettings.getSearchHistory()
-        list.insert(history, at: 0)
+        var tags = UserSettings.getSearchHistory()
+        tags.insert(tag, at: 0)
         
-        if list.count > max {
-            list.removeLast()
+        if tags.count > max {
+            tags.removeLast()
         }
-        UserSettings.setSearchHistory(list: list)
+        UserSettings.setSearchHistory(tags: tags)
     }
 }

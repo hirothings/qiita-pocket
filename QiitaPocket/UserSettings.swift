@@ -25,8 +25,8 @@ class UserSettings {
         UserDefaults.standard.register(defaults: ["SearchHistory": strArray])
         return UserDefaults.standard.stringArray(forKey: "SearchHistory")!
     }
-    static func setSearchHistory(list: [String]) {
-        UserDefaults.standard.set(list, forKey: "SearchHistory")
+    static func setSearchHistory(tags: [String]) {
+        UserDefaults.standard.set(tags, forKey: "SearchHistory")
         UserDefaults.standard.synchronize()
     }
     
