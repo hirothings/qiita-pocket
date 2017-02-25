@@ -15,6 +15,8 @@ import RxCocoa
 class ArticleListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SwipeCellDelegate, UISearchBarDelegate {
 
     @IBOutlet weak var table: UITableView!
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    @IBOutlet weak var noneDataLabel: UILabel!
 
     var articles: [Article] = []
     var postUrl: URL?
@@ -30,18 +32,21 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
         
         table.rowHeight = 72.0
         table.separatorInset = UIEdgeInsets.zero
+        table.isHidden = true
+        noneDataLabel.isHidden = true
+        activityIndicatorView.hidesWhenStopped = true
         
         let nib: UINib = UINib(nibName: "ArticleTableViewCell", bundle: nil)
         self.table.register(nib, forCellReuseIdentifier: "CustomCell")
-
+        
         // bind
-        self.refreshControll.rx.controlEvent(.valueChanged)
+        refreshControll.rx.controlEvent(.valueChanged)
             .startWith(())
             .flatMap { Observable.just(UserSettings.getCurrentSearchTag()) }
             .bindTo(self.viewModel.fetchTrigger)
             .addDisposableTo(bag)
 
-        self.viewModel.fetchNotification
+        viewModel.fetchNotification
             .subscribe(onNext: { [unowned self] articles in
 
                 print("fetch done")
@@ -49,15 +54,30 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
                 self.articles = articles
                 self.table.delegate = self
                 self.table.dataSource = self
-
                 self.table.reloadData()
-
+                self.table.isHidden = false
                 self.refreshControll.endRefreshing()
             })
             .addDisposableTo(bag)
+        
+        viewModel.isLoading.asDriver()
+            .do(onNext: { [weak self] in
+                self?.noneDataLabel.isHidden = $0
+            })
+            .drive(UIApplication.shared.rx.isNetworkActivityIndicatorVisible)
+            .addDisposableTo(bag)
+            
+        viewModel.isLoading.asDriver()
+            .drive(activityIndicatorView.rx.isAnimating)
+            .addDisposableTo(bag)
+        
+        viewModel.hasData.asObservable()
+            .skip(1)
+            .bindTo(noneDataLabel.rx.isHidden)
+            .addDisposableTo(bag)
 
         setupSearchBar()
-        table.addSubview(refreshControll)
+        table.refreshControl = refreshControll
     }
 
 
@@ -172,5 +192,6 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
         searchBar.endEditing(true)
         updateSearchState(tag: searchBar.text!)
         viewModel.fetchTrigger.onNext(searchBar.text!)
+        self.table.isHidden = true
     }
 }
