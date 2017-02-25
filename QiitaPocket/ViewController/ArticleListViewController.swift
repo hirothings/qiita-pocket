@@ -46,7 +46,7 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
             .bindTo(self.viewModel.fetchTrigger)
             .addDisposableTo(bag)
 
-        viewModel.fetchNotification
+        viewModel.fetchSucceed
             .subscribe(onNext: { [unowned self] articles in
 
                 print("fetch done")

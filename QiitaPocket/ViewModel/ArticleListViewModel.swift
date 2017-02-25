@@ -12,7 +12,7 @@ import RxSwift
 class ArticleListViewModel {
     
     let fetchTrigger = PublishSubject<String>()
-    let fetchNotification = PublishSubject<[Article]>()
+    let fetchSucceed = PublishSubject<[Article]>()
     let searchBarTitle = Variable("")
     var isLoading = Variable(false)
     var hasData = Variable(false)
@@ -38,7 +38,7 @@ class ArticleListViewModel {
                     guard let `self` = self else { return }
                     if articles.isNotEmpty {
                         self.hasData.value = true
-                        self.fetchNotification.onNext(articles)
+                        self.fetchSucceed.onNext(articles)
                     }
                     else {
                         self.hasData.value = false
