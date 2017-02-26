@@ -17,20 +17,20 @@ class APIClient {
     private let baseUrl = "https://qiita.com/api/v2"
 
     /// Observable化したAPIレスポンスを返す
-    func call(path: String, mehod: Alamofire.HTTPMethod = .get) -> Observable<[Article]> {
+    func call<ResponseObject: JSONDecodable>(path: String, mehod: Alamofire.HTTPMethod = .get) -> Observable<ResponseObject> {
+        
         return Observable.create { [weak self] observer -> Disposable in
             guard let `self` = self else { return Disposables.create {} }
             let request = Alamofire.request(self.buildPath(path))
                 .responseJSON { response in
                     
-                    // TODO: if DEBUG
                     // debugPrint(response)
                     
                     switch response.result {
                     case .success(let value):
                         if let json = value as? [Any] {
-                            let articles = Article.parseJSON(response: json)
-                            observer.on(.next(articles))
+                            let responseObject = ResponseObject(json: json)
+                            observer.on(.next(responseObject))
                         }
                         observer.on(.completed)
                     case .failure(let error):

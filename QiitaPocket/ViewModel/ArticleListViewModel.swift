@@ -27,15 +27,16 @@ class ArticleListViewModel {
                 self.searchBarTitle.value = tag // TODO: 検索設定追加
             })
             .flatMap { tag in
-                Article.fetch(with: tag)
+                Articles.fetch(with: tag)
             }
             .do(onNext: { [unowned self] _ in
                 self.isLoading.value = false
             })
             .observeOn(Dependencies.sharedInstance.mainScheduler)
             .subscribe(
-                onNext: { [weak self] (articles: [Article]) in
+                onNext: { [weak self] (model: Articles) in
                     guard let `self` = self else { return }
+                    let articles = model.items
                     if articles.isNotEmpty {
                         self.hasData.value = true
                         self.fetchSucceed.onNext(articles)
