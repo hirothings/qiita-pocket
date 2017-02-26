@@ -36,11 +36,11 @@ class ArticleTableViewCell: UITableViewCell {
     
     private var swipeLocation: CGPoint = CGPoint()
     private var swipeIndexPath: IndexPath = IndexPath()
-    
+
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
         swipeGesture = UIPanGestureRecognizer(target: self, action: #selector(self.onRightSwipe(_:)))
         swipeGesture.delegate = self
         self.cardView.addGestureRecognizer(swipeGesture)
@@ -48,12 +48,8 @@ class ArticleTableViewCell: UITableViewCell {
     
     
     func onRightSwipe(_ gesture: UIPanGestureRecognizer) {
-        self.contentView.backgroundColor = UIColor.green
+        self.contentView.backgroundColor = UIColor.theme
         let translation = gesture.translation(in: self)
-        print("x: \(fabs(gesture.velocity(in: self).x))")
-        print("y: \(fabs(gesture.velocity(in: self).y))")
-        print(translation.x)
-        print(translation.y)
 
         guard let tableView = self.superview?.superview as? UITableView else { return }
         tableView.panGestureRecognizer.isEnabled = true // tableviewのscrollを復帰する
@@ -77,11 +73,20 @@ class ArticleTableViewCell: UITableViewCell {
             }
         case .ended:
             if 100 < translation.x {
-                self.delegate?.didSwipeReadLater(at: swipeIndexPath)
+                UIView.animate(
+                    withDuration: 0.1,
+                    animations: { [unowned self] in
+                        self.cardView.frame.origin.x = UIScreen.main.bounds.width
+                    },
+                    completion: { [unowned self] _ in
+                        self.delegate?.didSwipeReadLater(at: self.swipeIndexPath)
+                    })
             }
-            UIView.animate(withDuration: 0.1, animations: { [weak self] in
-                self?.cardView.frame.origin.x = 0
-            })
+            else {
+                UIView.animate(withDuration: 0.1, animations: { [unowned self] in
+                    self.cardView.frame.origin.x = 0
+                })
+            }
         default:
             break
         }
