@@ -7,34 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		541723B51E61D54F007A65BD /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541723B41E61D54F007A65BD /* ArrayExtension.swift */; };
-		5438C6751E06A15800EBA8FA /* ArticleListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5438C6741E06A15800EBA8FA /* ArticleListViewModel.swift */; };
-		54566D851E58254900BABFC6 /* SearchType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54566D841E58254900BABFC6 /* SearchType.swift */; };
-		54571C951E5B341E00580471 /* SearchHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54571C941E5B341E00580471 /* SearchHistory.swift */; };
-		5473C7601E43728700AE31E9 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5473C75F1E43728700AE31E9 /* UserSettings.swift */; };
-		548A10001E4F5B09006B3681 /* SearchArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548A0FFF1E4F5B09006B3681 /* SearchArticleViewController.swift */; };
-		548A10061E55EA17006B3681 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548A10051E55EA17006B3681 /* UIViewExtension.swift */; };
-		54CD4D441E62AC9F00F15B5B /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D431E62AC9F00F15B5B /* UIColorExtension.swift */; };
-		54CD4D461E62B79100F15B5B /* JSONDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D451E62B79100F15B5B /* JSONDecodable.swift */; };
-		54CD4D481E62B84800F15B5B /* Articles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D471E62B84800F15B5B /* Articles.swift */; };
-		54CD4D4A1E62CD0100F15B5B /* QiitaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D491E62CD0100F15B5B /* QiitaAPI.swift */; };
-		54CD4D4C1E62CE4400F15B5B /* QiitaRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D4B1E62CE4400F15B5B /* QiitaRequest.swift */; };
+		54CD4D741E62D99500F15B5B /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D511E62D99500F15B5B /* APIClient.swift */; };
+		54CD4D751E62D99500F15B5B /* Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D521E62D99500F15B5B /* Dependencies.swift */; };
+		54CD4D761E62D99500F15B5B /* JSONDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D531E62D99500F15B5B /* JSONDecodable.swift */; };
+		54CD4D771E62D99500F15B5B /* QiitaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D541E62D99500F15B5B /* QiitaAPI.swift */; };
+		54CD4D781E62D99500F15B5B /* QiitaRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D551E62D99500F15B5B /* QiitaRequest.swift */; };
+		54CD4D791E62D99500F15B5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D561E62D99500F15B5B /* AppDelegate.swift */; };
+		54CD4D7A1E62D99500F15B5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54CD4D571E62D99500F15B5B /* Assets.xcassets */; };
+		54CD4D7B1E62D99500F15B5B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54CD4D581E62D99500F15B5B /* LaunchScreen.storyboard */; };
+		54CD4D7C1E62D99500F15B5B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54CD4D5A1E62D99500F15B5B /* Main.storyboard */; };
+		54CD4D7D1E62D99500F15B5B /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D5D1E62D99500F15B5B /* ArrayExtension.swift */; };
+		54CD4D7E1E62D99500F15B5B /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D5E1E62D99500F15B5B /* UIColorExtension.swift */; };
+		54CD4D7F1E62D99500F15B5B /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D5F1E62D99500F15B5B /* UIViewExtension.swift */; };
+		54CD4D801E62D99500F15B5B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54CD4D601E62D99500F15B5B /* Info.plist */; };
+		54CD4D811E62D99500F15B5B /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D621E62D99500F15B5B /* Article.swift */; };
+		54CD4D821E62D99500F15B5B /* ArticleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D631E62D99500F15B5B /* ArticleManager.swift */; };
+		54CD4D831E62D99500F15B5B /* Articles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D641E62D99500F15B5B /* Articles.swift */; };
+		54CD4D841E62D99500F15B5B /* SearchHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D651E62D99500F15B5B /* SearchHistory.swift */; };
+		54CD4D851E62D99500F15B5B /* SearchType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D661E62D99500F15B5B /* SearchType.swift */; };
+		54CD4D861E62D99500F15B5B /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D681E62D99500F15B5B /* UserSettings.swift */; };
+		54CD4D871E62D99500F15B5B /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D691E62D99500F15B5B /* Util.swift */; };
+		54CD4D881E62D99500F15B5B /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D6B1E62D99500F15B5B /* ArticleTableViewCell.swift */; };
+		54CD4D891E62D99500F15B5B /* ArticleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54CD4D6C1E62D99500F15B5B /* ArticleTableViewCell.xib */; };
+		54CD4D8A1E62D99500F15B5B /* ArticleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D6E1E62D99500F15B5B /* ArticleListViewController.swift */; };
+		54CD4D8B1E62D99500F15B5B /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D6F1E62D99500F15B5B /* MainTabBarController.swift */; };
+		54CD4D8C1E62D99500F15B5B /* SearchArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D701E62D99500F15B5B /* SearchArticleViewController.swift */; };
+		54CD4D8D1E62D99500F15B5B /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D711E62D99500F15B5B /* WebViewController.swift */; };
+		54CD4D8E1E62D99500F15B5B /* ArticleListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D731E62D99500F15B5B /* ArticleListViewModel.swift */; };
 		54FAA58A1E3DD62600C09411 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54FAA5881E3DD62600C09411 /* Realm.framework */; };
 		54FAA58B1E3DD62600C09411 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54FAA5891E3DD62600C09411 /* RealmSwift.framework */; };
-		54FAA58D1E3DE0C000C09411 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FAA58C1E3DE0C000C09411 /* Util.swift */; };
-		54FD95C01E2B78400061866A /* ArticleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FD95BF1E2B78400061866A /* ArticleManager.swift */; };
-		6C509BE91DD13BD500740AF2 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C509BD61DD13BD500740AF2 /* APIClient.swift */; };
-		6C509BEA1DD13BD500740AF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C509BD71DD13BD500740AF2 /* AppDelegate.swift */; };
-		6C509BEB1DD13BD500740AF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C509BD81DD13BD500740AF2 /* Assets.xcassets */; };
-		6C509BEC1DD13BD500740AF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C509BD91DD13BD500740AF2 /* LaunchScreen.storyboard */; };
-		6C509BED1DD13BD500740AF2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C509BDB1DD13BD500740AF2 /* Main.storyboard */; };
-		6C509BEE1DD13BD500740AF2 /* Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C509BDD1DD13BD500740AF2 /* Dependencies.swift */; };
-		6C509BF01DD13BD500740AF2 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C509BE01DD13BD500740AF2 /* Article.swift */; };
-		6C509BF11DD13BD500740AF2 /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C509BE21DD13BD500740AF2 /* ArticleTableViewCell.swift */; };
-		6C509BF21DD13BD500740AF2 /* ArticleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C509BE31DD13BD500740AF2 /* ArticleTableViewCell.xib */; };
-		6C509BF31DD13BD500740AF2 /* ArticleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C509BE51DD13BD500740AF2 /* ArticleListViewController.swift */; };
-		6C509BF41DD13BD500740AF2 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C509BE61DD13BD500740AF2 /* MainTabBarController.swift */; };
-		6C509BF51DD13BD500740AF2 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C509BE71DD13BD500740AF2 /* WebViewController.swift */; };
 		6CA49CB01DB3569900853D00 /* WebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CA49CAF1DB3569900853D00 /* WebImage.framework */; };
 		6CA49CB91DB3592A00853D00 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CA49CB71DB3592A00853D00 /* Alamofire.framework */; };
 		6CA49CBA1DB3592A00853D00 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CA49CB81DB3592A00853D00 /* SwiftyJSON.framework */; };
@@ -43,35 +44,35 @@
 
 /* Begin PBXFileReference section */
 		52471A8D1CD9AF2E006865C6 /* QiitaPocket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QiitaPocket.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		541723B41E61D54F007A65BD /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
-		5438C6741E06A15800EBA8FA /* ArticleListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleListViewModel.swift; sourceTree = "<group>"; };
-		54566D841E58254900BABFC6 /* SearchType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchType.swift; sourceTree = "<group>"; };
-		54571C941E5B341E00580471 /* SearchHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchHistory.swift; sourceTree = "<group>"; };
-		5473C75F1E43728700AE31E9 /* UserSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
-		548A0FFF1E4F5B09006B3681 /* SearchArticleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchArticleViewController.swift; sourceTree = "<group>"; };
-		548A10051E55EA17006B3681 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
-		54CD4D431E62AC9F00F15B5B /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
-		54CD4D451E62B79100F15B5B /* JSONDecodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONDecodable.swift; sourceTree = "<group>"; };
-		54CD4D471E62B84800F15B5B /* Articles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Articles.swift; sourceTree = "<group>"; };
-		54CD4D491E62CD0100F15B5B /* QiitaAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QiitaAPI.swift; sourceTree = "<group>"; };
-		54CD4D4B1E62CE4400F15B5B /* QiitaRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QiitaRequest.swift; sourceTree = "<group>"; };
+		54CD4D511E62D99500F15B5B /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		54CD4D521E62D99500F15B5B /* Dependencies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dependencies.swift; sourceTree = "<group>"; };
+		54CD4D531E62D99500F15B5B /* JSONDecodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONDecodable.swift; sourceTree = "<group>"; };
+		54CD4D541E62D99500F15B5B /* QiitaAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QiitaAPI.swift; sourceTree = "<group>"; };
+		54CD4D551E62D99500F15B5B /* QiitaRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QiitaRequest.swift; sourceTree = "<group>"; };
+		54CD4D561E62D99500F15B5B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		54CD4D571E62D99500F15B5B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		54CD4D591E62D99500F15B5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		54CD4D5B1E62D99500F15B5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		54CD4D5D1E62D99500F15B5B /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
+		54CD4D5E1E62D99500F15B5B /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		54CD4D5F1E62D99500F15B5B /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		54CD4D601E62D99500F15B5B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		54CD4D621E62D99500F15B5B /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
+		54CD4D631E62D99500F15B5B /* ArticleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleManager.swift; sourceTree = "<group>"; };
+		54CD4D641E62D99500F15B5B /* Articles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Articles.swift; sourceTree = "<group>"; };
+		54CD4D651E62D99500F15B5B /* SearchHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchHistory.swift; sourceTree = "<group>"; };
+		54CD4D661E62D99500F15B5B /* SearchType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchType.swift; sourceTree = "<group>"; };
+		54CD4D681E62D99500F15B5B /* UserSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
+		54CD4D691E62D99500F15B5B /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		54CD4D6B1E62D99500F15B5B /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
+		54CD4D6C1E62D99500F15B5B /* ArticleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArticleTableViewCell.xib; sourceTree = "<group>"; };
+		54CD4D6E1E62D99500F15B5B /* ArticleListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleListViewController.swift; sourceTree = "<group>"; };
+		54CD4D6F1E62D99500F15B5B /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		54CD4D701E62D99500F15B5B /* SearchArticleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchArticleViewController.swift; sourceTree = "<group>"; };
+		54CD4D711E62D99500F15B5B /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		54CD4D731E62D99500F15B5B /* ArticleListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleListViewModel.swift; sourceTree = "<group>"; };
 		54FAA5881E3DD62600C09411 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		54FAA5891E3DD62600C09411 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
-		54FAA58C1E3DE0C000C09411 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
-		54FD95BF1E2B78400061866A /* ArticleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleManager.swift; sourceTree = "<group>"; };
-		6C509BD61DD13BD500740AF2 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
-		6C509BD71DD13BD500740AF2 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		6C509BD81DD13BD500740AF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		6C509BDA1DD13BD500740AF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		6C509BDC1DD13BD500740AF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		6C509BDD1DD13BD500740AF2 /* Dependencies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dependencies.swift; sourceTree = "<group>"; };
-		6C509BDE1DD13BD500740AF2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6C509BE01DD13BD500740AF2 /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
-		6C509BE21DD13BD500740AF2 /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
-		6C509BE31DD13BD500740AF2 /* ArticleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArticleTableViewCell.xib; sourceTree = "<group>"; };
-		6C509BE51DD13BD500740AF2 /* ArticleListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleListViewController.swift; sourceTree = "<group>"; };
-		6C509BE61DD13BD500740AF2 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
-		6C509BE71DD13BD500740AF2 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		6CA49CAF1DB3569900853D00 /* WebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebImage.framework; path = Carthage/Build/iOS/WebImage.framework; sourceTree = "<group>"; };
 		6CA49CB71DB3592A00853D00 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		6CA49CB81DB3592A00853D00 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
@@ -111,7 +112,7 @@
 		52471A841CD9AF2E006865C6 = {
 			isa = PBXGroup;
 			children = (
-				6C509BD51DD13BD500740AF2 /* QiitaPocket */,
+				54CD4D4F1E62D99500F15B5B /* QiitaPocket */,
 				52471A8E1CD9AF2E006865C6 /* Products */,
 				19989F1DB404BCE9479B50AF /* Frameworks */,
 			);
@@ -125,68 +126,92 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		6C509BD51DD13BD500740AF2 /* QiitaPocket */ = {
+		54CD4D4F1E62D99500F15B5B /* QiitaPocket */ = {
 			isa = PBXGroup;
 			children = (
-				6C509BD61DD13BD500740AF2 /* APIClient.swift */,
-				54CD4D491E62CD0100F15B5B /* QiitaAPI.swift */,
-				54CD4D4B1E62CE4400F15B5B /* QiitaRequest.swift */,
-				54CD4D451E62B79100F15B5B /* JSONDecodable.swift */,
-				54CD4D431E62AC9F00F15B5B /* UIColorExtension.swift */,
-				6C509BD71DD13BD500740AF2 /* AppDelegate.swift */,
-				548A10051E55EA17006B3681 /* UIViewExtension.swift */,
-				541723B41E61D54F007A65BD /* ArrayExtension.swift */,
-				6C509BD81DD13BD500740AF2 /* Assets.xcassets */,
-				6C509BD91DD13BD500740AF2 /* LaunchScreen.storyboard */,
-				6C509BDB1DD13BD500740AF2 /* Main.storyboard */,
-				6C509BDD1DD13BD500740AF2 /* Dependencies.swift */,
-				6C509BDE1DD13BD500740AF2 /* Info.plist */,
-				6C509BDF1DD13BD500740AF2 /* Model */,
-				6C509BE11DD13BD500740AF2 /* View */,
-				6C509BE41DD13BD500740AF2 /* ViewController */,
-				6C509BE81DD13BD500740AF2 /* ViewModel */,
-				54FAA58C1E3DE0C000C09411 /* Util.swift */,
-				5473C75F1E43728700AE31E9 /* UserSettings.swift */,
-				54571C941E5B341E00580471 /* SearchHistory.swift */,
-				54566D841E58254900BABFC6 /* SearchType.swift */,
+				54CD4D501E62D99500F15B5B /* API */,
+				54CD4D561E62D99500F15B5B /* AppDelegate.swift */,
+				54CD4D571E62D99500F15B5B /* Assets.xcassets */,
+				54CD4D581E62D99500F15B5B /* LaunchScreen.storyboard */,
+				54CD4D5A1E62D99500F15B5B /* Main.storyboard */,
+				54CD4D5C1E62D99500F15B5B /* Extension */,
+				54CD4D601E62D99500F15B5B /* Info.plist */,
+				54CD4D611E62D99500F15B5B /* Model */,
+				54CD4D671E62D99500F15B5B /* Util */,
+				54CD4D6A1E62D99500F15B5B /* View */,
+				54CD4D6D1E62D99500F15B5B /* ViewController */,
+				54CD4D721E62D99500F15B5B /* ViewModel */,
 			);
 			path = QiitaPocket;
 			sourceTree = "<group>";
 		};
-		6C509BDF1DD13BD500740AF2 /* Model */ = {
+		54CD4D501E62D99500F15B5B /* API */ = {
 			isa = PBXGroup;
 			children = (
-				6C509BE01DD13BD500740AF2 /* Article.swift */,
-				54CD4D471E62B84800F15B5B /* Articles.swift */,
-				54FD95BF1E2B78400061866A /* ArticleManager.swift */,
+				54CD4D511E62D99500F15B5B /* APIClient.swift */,
+				54CD4D521E62D99500F15B5B /* Dependencies.swift */,
+				54CD4D531E62D99500F15B5B /* JSONDecodable.swift */,
+				54CD4D541E62D99500F15B5B /* QiitaAPI.swift */,
+				54CD4D551E62D99500F15B5B /* QiitaRequest.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		54CD4D5C1E62D99500F15B5B /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				54CD4D5D1E62D99500F15B5B /* ArrayExtension.swift */,
+				54CD4D5E1E62D99500F15B5B /* UIColorExtension.swift */,
+				54CD4D5F1E62D99500F15B5B /* UIViewExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		54CD4D611E62D99500F15B5B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				54CD4D621E62D99500F15B5B /* Article.swift */,
+				54CD4D631E62D99500F15B5B /* ArticleManager.swift */,
+				54CD4D641E62D99500F15B5B /* Articles.swift */,
+				54CD4D651E62D99500F15B5B /* SearchHistory.swift */,
+				54CD4D661E62D99500F15B5B /* SearchType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		6C509BE11DD13BD500740AF2 /* View */ = {
+		54CD4D671E62D99500F15B5B /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				6C509BE21DD13BD500740AF2 /* ArticleTableViewCell.swift */,
-				6C509BE31DD13BD500740AF2 /* ArticleTableViewCell.xib */,
+				54CD4D681E62D99500F15B5B /* UserSettings.swift */,
+				54CD4D691E62D99500F15B5B /* Util.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		54CD4D6A1E62D99500F15B5B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				54CD4D6B1E62D99500F15B5B /* ArticleTableViewCell.swift */,
+				54CD4D6C1E62D99500F15B5B /* ArticleTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		6C509BE41DD13BD500740AF2 /* ViewController */ = {
+		54CD4D6D1E62D99500F15B5B /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				6C509BE51DD13BD500740AF2 /* ArticleListViewController.swift */,
-				6C509BE61DD13BD500740AF2 /* MainTabBarController.swift */,
-				6C509BE71DD13BD500740AF2 /* WebViewController.swift */,
-				548A0FFF1E4F5B09006B3681 /* SearchArticleViewController.swift */,
+				54CD4D6E1E62D99500F15B5B /* ArticleListViewController.swift */,
+				54CD4D6F1E62D99500F15B5B /* MainTabBarController.swift */,
+				54CD4D701E62D99500F15B5B /* SearchArticleViewController.swift */,
+				54CD4D711E62D99500F15B5B /* WebViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		6C509BE81DD13BD500740AF2 /* ViewModel */ = {
+		54CD4D721E62D99500F15B5B /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				5438C6741E06A15800EBA8FA /* ArticleListViewModel.swift */,
+				54CD4D731E62D99500F15B5B /* ArticleListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -253,10 +278,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6C509BF21DD13BD500740AF2 /* ArticleTableViewCell.xib in Resources */,
-				6C509BED1DD13BD500740AF2 /* Main.storyboard in Resources */,
-				6C509BEB1DD13BD500740AF2 /* Assets.xcassets in Resources */,
-				6C509BEC1DD13BD500740AF2 /* LaunchScreen.storyboard in Resources */,
+				54CD4D891E62D99500F15B5B /* ArticleTableViewCell.xib in Resources */,
+				54CD4D801E62D99500F15B5B /* Info.plist in Resources */,
+				54CD4D7C1E62D99500F15B5B /* Main.storyboard in Resources */,
+				54CD4D7A1E62D99500F15B5B /* Assets.xcassets in Resources */,
+				54CD4D7B1E62D99500F15B5B /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,46 +316,46 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				54FAA58D1E3DE0C000C09411 /* Util.swift in Sources */,
-				541723B51E61D54F007A65BD /* ArrayExtension.swift in Sources */,
-				5473C7601E43728700AE31E9 /* UserSettings.swift in Sources */,
-				54566D851E58254900BABFC6 /* SearchType.swift in Sources */,
-				6C509BF11DD13BD500740AF2 /* ArticleTableViewCell.swift in Sources */,
-				54CD4D441E62AC9F00F15B5B /* UIColorExtension.swift in Sources */,
-				6C509BF01DD13BD500740AF2 /* Article.swift in Sources */,
-				548A10061E55EA17006B3681 /* UIViewExtension.swift in Sources */,
-				54CD4D461E62B79100F15B5B /* JSONDecodable.swift in Sources */,
-				54571C951E5B341E00580471 /* SearchHistory.swift in Sources */,
-				54FD95C01E2B78400061866A /* ArticleManager.swift in Sources */,
-				6C509BEE1DD13BD500740AF2 /* Dependencies.swift in Sources */,
-				54CD4D4C1E62CE4400F15B5B /* QiitaRequest.swift in Sources */,
-				6C509BF41DD13BD500740AF2 /* MainTabBarController.swift in Sources */,
-				5438C6751E06A15800EBA8FA /* ArticleListViewModel.swift in Sources */,
-				548A10001E4F5B09006B3681 /* SearchArticleViewController.swift in Sources */,
-				6C509BF31DD13BD500740AF2 /* ArticleListViewController.swift in Sources */,
-				54CD4D481E62B84800F15B5B /* Articles.swift in Sources */,
-				6C509BEA1DD13BD500740AF2 /* AppDelegate.swift in Sources */,
-				54CD4D4A1E62CD0100F15B5B /* QiitaAPI.swift in Sources */,
-				6C509BE91DD13BD500740AF2 /* APIClient.swift in Sources */,
-				6C509BF51DD13BD500740AF2 /* WebViewController.swift in Sources */,
+				54CD4D791E62D99500F15B5B /* AppDelegate.swift in Sources */,
+				54CD4D761E62D99500F15B5B /* JSONDecodable.swift in Sources */,
+				54CD4D821E62D99500F15B5B /* ArticleManager.swift in Sources */,
+				54CD4D8C1E62D99500F15B5B /* SearchArticleViewController.swift in Sources */,
+				54CD4D8D1E62D99500F15B5B /* WebViewController.swift in Sources */,
+				54CD4D871E62D99500F15B5B /* Util.swift in Sources */,
+				54CD4D851E62D99500F15B5B /* SearchType.swift in Sources */,
+				54CD4D841E62D99500F15B5B /* SearchHistory.swift in Sources */,
+				54CD4D751E62D99500F15B5B /* Dependencies.swift in Sources */,
+				54CD4D8E1E62D99500F15B5B /* ArticleListViewModel.swift in Sources */,
+				54CD4D831E62D99500F15B5B /* Articles.swift in Sources */,
+				54CD4D7E1E62D99500F15B5B /* UIColorExtension.swift in Sources */,
+				54CD4D811E62D99500F15B5B /* Article.swift in Sources */,
+				54CD4D881E62D99500F15B5B /* ArticleTableViewCell.swift in Sources */,
+				54CD4D741E62D99500F15B5B /* APIClient.swift in Sources */,
+				54CD4D7D1E62D99500F15B5B /* ArrayExtension.swift in Sources */,
+				54CD4D8B1E62D99500F15B5B /* MainTabBarController.swift in Sources */,
+				54CD4D7F1E62D99500F15B5B /* UIViewExtension.swift in Sources */,
+				54CD4D781E62D99500F15B5B /* QiitaRequest.swift in Sources */,
+				54CD4D8A1E62D99500F15B5B /* ArticleListViewController.swift in Sources */,
+				54CD4D861E62D99500F15B5B /* UserSettings.swift in Sources */,
+				54CD4D771E62D99500F15B5B /* QiitaAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		6C509BD91DD13BD500740AF2 /* LaunchScreen.storyboard */ = {
+		54CD4D581E62D99500F15B5B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				6C509BDA1DD13BD500740AF2 /* Base */,
+				54CD4D591E62D99500F15B5B /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		6C509BDB1DD13BD500740AF2 /* Main.storyboard */ = {
+		54CD4D5A1E62D99500F15B5B /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				6C509BDC1DD13BD500740AF2 /* Base */,
+				54CD4D5B1E62D99500F15B5B /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
