@@ -14,22 +14,23 @@ class APIClient {
     
     // MARK: - Properties
     
-    private let baseUrl = "https://qiita.com/api/v2"
-
     /// Observable化したAPIレスポンスを返す
-    func call<ResponseObject: JSONDecodable>(path: String, mehod: Alamofire.HTTPMethod = .get) -> Observable<ResponseObject> {
+    func call<Request: QiitaRequest>(request: Request) -> Observable<Request.ResponseObject> {
         
         return Observable.create { [weak self] observer -> Disposable in
             guard let `self` = self else { return Disposables.create {} }
-            let request = Alamofire.request(self.buildPath(path))
+            
+            let url = self.buildPath(baseURL: request.baseURL, path: request.path)
+            
+            let request = Alamofire.request(url, method: request.method, parameters: request.parameters)
                 .responseJSON { response in
                     
-                    // debugPrint(response)
+                     debugPrint(response)
                     
                     switch response.result {
                     case .success(let value):
                         if let json = value as? [Any] {
-                            let responseObject = ResponseObject(json: json)
+                            let responseObject = Request.ResponseObject(json: json)
                             observer.on(.next(responseObject))
                         }
                         observer.on(.completed)
@@ -47,8 +48,8 @@ class APIClient {
     }
     
     /// "/"が先頭にある場合、それ以降の文字列を取得
-    private func buildPath(_ path: String) -> URL {
+    private func buildPath(baseURL: String, path: String) -> URL {
         let trimmedPath = path.hasPrefix("/") ? path.substring(to: path.characters.index(after: path.startIndex)) : path
-        return URL(string: baseUrl + "/" + trimmedPath)!
+        return URL(string: baseURL + "/" + trimmedPath)!
     }
 }

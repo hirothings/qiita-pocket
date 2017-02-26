@@ -40,15 +40,8 @@ struct Articles: JSONDecodable {
         }
     }
 
-
-    // TODO: Query付きのリクエストを発行
     static func fetch(with tag: String) -> Observable<Articles>  {
-        var path = "items"
-        if tag != "" {
-            let query = "tag:\(tag)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-            path = path + "?" + "query=" + query
-        }
-        print("path: \(path)")
-        return self.apiClient.call(path: path)
+        let request = QiitaAPI.SearchArticles(tag: tag)
+        return self.apiClient.call(request: request)
     }
 }
