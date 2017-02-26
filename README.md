@@ -1,2 +1,2 @@
-# qiita-pocket
-Read later Qiita APP in Swift
+# Qiita Pocket
+あとで読むQiitaアプリです。 Swiftで作ってます
