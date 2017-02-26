@@ -181,6 +181,7 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
         searchArticleVC.view.removeFromSuperview()
         searchArticleVC.removeFromParentViewController()
         searchBar.endEditing(true)
+        searchBar.showsCancelButton = false
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -190,6 +191,8 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
         searchArticleVC.removeFromParentViewController()
         
         searchBar.endEditing(true)
+        searchBar.showsCancelButton = false
+
         updateSearchState(tag: searchBar.text!)
         viewModel.fetchTrigger.onNext(searchBar.text!)
         self.tableView.isHidden = true
