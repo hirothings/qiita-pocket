@@ -18,6 +18,7 @@
 		54CD4D461E62B79100F15B5B /* JSONDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D451E62B79100F15B5B /* JSONDecodable.swift */; };
 		54CD4D481E62B84800F15B5B /* Articles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D471E62B84800F15B5B /* Articles.swift */; };
 		54CD4D4A1E62CD0100F15B5B /* QiitaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D491E62CD0100F15B5B /* QiitaAPI.swift */; };
+		54CD4D4C1E62CE4400F15B5B /* QiitaRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D4B1E62CE4400F15B5B /* QiitaRequest.swift */; };
 		54FAA58A1E3DD62600C09411 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54FAA5881E3DD62600C09411 /* Realm.framework */; };
 		54FAA58B1E3DD62600C09411 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54FAA5891E3DD62600C09411 /* RealmSwift.framework */; };
 		54FAA58D1E3DE0C000C09411 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54FAA58C1E3DE0C000C09411 /* Util.swift */; };
@@ -53,6 +54,7 @@
 		54CD4D451E62B79100F15B5B /* JSONDecodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONDecodable.swift; sourceTree = "<group>"; };
 		54CD4D471E62B84800F15B5B /* Articles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Articles.swift; sourceTree = "<group>"; };
 		54CD4D491E62CD0100F15B5B /* QiitaAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QiitaAPI.swift; sourceTree = "<group>"; };
+		54CD4D4B1E62CE4400F15B5B /* QiitaRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QiitaRequest.swift; sourceTree = "<group>"; };
 		54FAA5881E3DD62600C09411 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		54FAA5891E3DD62600C09411 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		54FAA58C1E3DE0C000C09411 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 			children = (
 				6C509BD61DD13BD500740AF2 /* APIClient.swift */,
 				54CD4D491E62CD0100F15B5B /* QiitaAPI.swift */,
+				54CD4D4B1E62CE4400F15B5B /* QiitaRequest.swift */,
 				54CD4D451E62B79100F15B5B /* JSONDecodable.swift */,
 				54CD4D431E62AC9F00F15B5B /* UIColorExtension.swift */,
 				6C509BD71DD13BD500740AF2 /* AppDelegate.swift */,
@@ -299,6 +302,7 @@
 				54571C951E5B341E00580471 /* SearchHistory.swift in Sources */,
 				54FD95C01E2B78400061866A /* ArticleManager.swift in Sources */,
 				6C509BEE1DD13BD500740AF2 /* Dependencies.swift in Sources */,
+				54CD4D4C1E62CE4400F15B5B /* QiitaRequest.swift in Sources */,
 				6C509BF41DD13BD500740AF2 /* MainTabBarController.swift in Sources */,
 				5438C6751E06A15800EBA8FA /* ArticleListViewModel.swift in Sources */,
 				548A10001E4F5B09006B3681 /* SearchArticleViewController.swift in Sources */,
