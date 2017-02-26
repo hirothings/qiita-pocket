@@ -1,2 +1,2 @@
 # Qiita Pocket
-あとで読むQiitaアプリです。 Swiftで作ってます
+Lead it later APP for Qiita Users (Swift3.0 / Xcode8)
