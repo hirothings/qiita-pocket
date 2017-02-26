@@ -1,2 +1,2 @@
 # Qiita Pocket
-Lead it later APP for Qiita Users (Swift3.0 / Xcode8)
+あとで読むQiita APP (Swift3.0 / Xcode8)
