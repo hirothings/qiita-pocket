@@ -109,10 +109,14 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
     // MARK: - SwipeCellDelegate
     
     func didSwipeReadLater(at indexPath: IndexPath) {
-        self.tableView.beginUpdates()
-        self.articles.remove(at: indexPath.row)
-        self.tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
-        self.tableView.endUpdates()
+        tableView.beginUpdates()
+        
+        let article = articles[indexPath.row]
+        ArticleManager.update(article: article) // Realmに記事を保存
+        
+        articles.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
+        tableView.endUpdates()
     }
     
     

@@ -19,21 +19,19 @@ final class ArticleManager {
     }
     
     /// 追加・更新
-    static func update(article: Object) -> Error? {
+    static func update(article: Article) {
         do {
             try realm.write {
                 realm.add(article, update: true)
             }
         }
-        catch let error {
+        catch _ {
             // TODO: error処理
-            return error
         }
-        return nil
     }
     
     /// 削除
-    static func delete(article: Object) -> Error? {
+    static func delete(article: Article) -> Error? {
         do {
             try realm.write {
                 realm.delete(article)
