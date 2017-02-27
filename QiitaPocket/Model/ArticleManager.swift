@@ -31,15 +31,14 @@ final class ArticleManager {
     }
     
     /// 削除
-    static func delete(article: Article) -> Error? {
+    static func delete(article: Article) {
         do {
             try realm.write {
                 realm.delete(article)
             }
         }
-        catch let error {
-            return error
+        catch let _ {
+            // TODO: error処理
         }
-        return nil
     }
 }
