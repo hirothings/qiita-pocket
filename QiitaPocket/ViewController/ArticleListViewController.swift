@@ -23,6 +23,7 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
     
     private let viewModel = ArticleListViewModel()
     private var searchArticleVC = SearchArticleViewController()
+    private var searchBar = UISearchBar()
     private let bag = DisposeBag()
     
     
@@ -37,6 +38,9 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
         
         let nib: UINib = UINib(nibName: "ArticleTableViewCell", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: "CustomCell")
+        
+        setupSearchBar()
+        tableView.refreshControl = refreshControll
         
         // bind
         refreshControll.rx.controlEvent(.valueChanged)
@@ -74,9 +78,6 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
             .skip(1)
             .bindTo(noneDataLabel.rx.isHidden)
             .addDisposableTo(bag)
-
-        setupSearchBar()
-        tableView.refreshControl = refreshControll
     }
 
 
@@ -137,7 +138,7 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
 
     private func setupSearchBar() {
         let navigationBarFrame: CGRect = self.navigationController!.navigationBar.bounds
-        let searchBar = UISearchBar(frame: navigationBarFrame)
+        searchBar = UISearchBar(frame: navigationBarFrame)
         
         searchBar.delegate = self
         searchBar.placeholder = "タグを検索"
@@ -158,6 +159,7 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
         navigationItem.titleView = searchBar
     }
     
+    // TODO: viewModelに処理移す
     private func updateSearchState(tag: String) {
         UserSettings.setCurrentSearchTag(name: tag)
         
@@ -165,34 +167,50 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
         searchHistory.add(tag: tag)
     }
     
-    
-    // MARK: - UISearchBarDelegate
-    
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchBar.showsCancelButton = true
-        // 検索モードのChildViewControllerをセット
+    /// 検索ViewControllerをセット
+    private func setupSearchArticleVC() {
         searchArticleVC = self.storyboard!.instantiateViewController(withIdentifier: "SearchArticleViewController") as! SearchArticleViewController
         self.addChildViewController(searchArticleVC)
         self.view.addSubview(searchArticleVC.view)
         searchArticleVC.didMove(toParentViewController: self)
+        
+        // 検索履歴タップ時のイベント
+        searchArticleVC.didSelectSearchHistory
+            .subscribe(onNext: { [unowned self] (tag: String) in
+                self.searchBar.text = tag
+                self.updateSearchState(tag: tag)
+                self.viewModel.fetchTrigger.onNext(tag)
+                self.searchBar.endEditing(true)
+                self.searchBar.showsCancelButton = false
+                self.removeSearchArticleVC()
+                self.tableView.isHidden = true
+            })
+            .addDisposableTo(bag)
     }
     
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.showsCancelButton = false
-        // 検索モードのChildViewControllerを削除
+    /// 検索ViewControllerを削除
+    private func removeSearchArticleVC() {
         searchArticleVC.willMove(toParentViewController: self)
         searchArticleVC.view.removeFromSuperview()
         searchArticleVC.removeFromParentViewController()
+    }
+    
+    
+    // MARK: - UISearchBarDelegate
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        setupSearchArticleVC()
+        searchBar.showsCancelButton = true
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        removeSearchArticleVC()
         searchBar.endEditing(true)
         searchBar.showsCancelButton = false
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        // 検索モードのChildViewControllerを削除
-        searchArticleVC.willMove(toParentViewController: self)
-        searchArticleVC.view.removeFromSuperview()
-        searchArticleVC.removeFromParentViewController()
-        
+        removeSearchArticleVC()
         searchBar.endEditing(true)
         searchBar.showsCancelButton = false
 
