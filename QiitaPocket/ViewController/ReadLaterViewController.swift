@@ -23,6 +23,7 @@ final class ReadLaterViewController: UIViewController, UITableViewDataSource, UI
     }()
 
     var postUrl: URL?
+    var notificationToken: NotificationToken?
     
     private let bag = DisposeBag()
     
@@ -39,6 +40,26 @@ final class ReadLaterViewController: UIViewController, UITableViewDataSource, UI
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        // Realm更新時、reloadDataする
+        notificationToken = articles.addNotificationBlock { [weak self] (change: RealmCollectionChange) in
+            guard let tableView = self?.tableView else { return }
+            
+            switch change {
+            case .initial:
+                tableView.reloadData()
+            case .update(_, deletions: _, insertions: _, modifications: _):
+                tableView.reloadData()
+            case .error(let error):
+                // TODO: エラー処理
+                fatalError("\(error)")
+                break
+            }
+        }
+    }
+    
+    deinit {
+        notificationToken?.stop()
     }
 
 
