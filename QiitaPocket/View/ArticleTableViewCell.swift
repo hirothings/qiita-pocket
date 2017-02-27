@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WebImage
 import RxSwift
 
 protocol SwipeCellDelegate: class {
