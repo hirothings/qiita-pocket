@@ -10,10 +10,11 @@ import UIKit
 import RxSwift
 import RxCocoa
 import RealmSwift
+import XLPagerTabStrip
 
 
 // TODO: 共通化
-final class ReadLaterViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SwipeCellDelegate {
+final class ReadLaterViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SwipeCellDelegate, IndicatorInfoProvider {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -30,8 +31,6 @@ final class ReadLaterViewController: UIViewController, UITableViewDataSource, UI
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.navigationItem.title = "後で読む"
 
         tableView.rowHeight = 72.0
         tableView.separatorInset = UIEdgeInsets.zero
@@ -60,6 +59,13 @@ final class ReadLaterViewController: UIViewController, UITableViewDataSource, UI
     
     deinit {
         notificationToken?.stop()
+    }
+    
+    
+    // MARK: - IndicatorInfoProvider
+    
+    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
+        return IndicatorInfo(title: "後で読む")
     }
 
 

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		542265E91E64059000C7AA45 /* ReadLaterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542265E81E64059000C7AA45 /* ReadLaterViewController.swift */; };
 		542265EB1E640C2400C7AA45 /* XLPagerTabStrip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 542265EA1E640C2400C7AA45 /* XLPagerTabStrip.framework */; };
+		542265EE1E64283B00C7AA45 /* ReadLaterTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542265ED1E64283B00C7AA45 /* ReadLaterTabViewController.swift */; };
+		542265F01E642A2C00C7AA45 /* ArchiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542265EF1E642A2C00C7AA45 /* ArchiveViewController.swift */; };
 		54CD4D741E62D99500F15B5B /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D511E62D99500F15B5B /* APIClient.swift */; };
 		54CD4D751E62D99500F15B5B /* Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D521E62D99500F15B5B /* Dependencies.swift */; };
 		54CD4D761E62D99500F15B5B /* JSONDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D531E62D99500F15B5B /* JSONDecodable.swift */; };
@@ -47,6 +49,8 @@
 		52471A8D1CD9AF2E006865C6 /* QiitaPocket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QiitaPocket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		542265E81E64059000C7AA45 /* ReadLaterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadLaterViewController.swift; sourceTree = "<group>"; };
 		542265EA1E640C2400C7AA45 /* XLPagerTabStrip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XLPagerTabStrip.framework; path = Carthage/Build/iOS/XLPagerTabStrip.framework; sourceTree = "<group>"; };
+		542265ED1E64283B00C7AA45 /* ReadLaterTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadLaterTabViewController.swift; sourceTree = "<group>"; };
+		542265EF1E642A2C00C7AA45 /* ArchiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArchiveViewController.swift; sourceTree = "<group>"; };
 		54CD4D511E62D99500F15B5B /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		54CD4D521E62D99500F15B5B /* Dependencies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dependencies.swift; sourceTree = "<group>"; };
 		54CD4D531E62D99500F15B5B /* JSONDecodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONDecodable.swift; sourceTree = "<group>"; };
@@ -210,6 +214,8 @@
 				54CD4D701E62D99500F15B5B /* SearchArticleViewController.swift */,
 				54CD4D711E62D99500F15B5B /* WebViewController.swift */,
 				542265E81E64059000C7AA45 /* ReadLaterViewController.swift */,
+				542265EF1E642A2C00C7AA45 /* ArchiveViewController.swift */,
+				542265ED1E64283B00C7AA45 /* ReadLaterTabViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -332,6 +338,7 @@
 				54CD4D851E62D99500F15B5B /* SearchType.swift in Sources */,
 				54CD4D841E62D99500F15B5B /* SearchHistory.swift in Sources */,
 				54CD4D751E62D99500F15B5B /* Dependencies.swift in Sources */,
+				542265EE1E64283B00C7AA45 /* ReadLaterTabViewController.swift in Sources */,
 				54CD4D8E1E62D99500F15B5B /* ArticleListViewModel.swift in Sources */,
 				54CD4D831E62D99500F15B5B /* Articles.swift in Sources */,
 				54CD4D7E1E62D99500F15B5B /* UIColorExtension.swift in Sources */,
@@ -344,6 +351,7 @@
 				54CD4D781E62D99500F15B5B /* QiitaRequest.swift in Sources */,
 				54CD4D8A1E62D99500F15B5B /* ArticleListViewController.swift in Sources */,
 				54CD4D861E62D99500F15B5B /* UserSettings.swift in Sources */,
+				542265F01E642A2C00C7AA45 /* ArchiveViewController.swift in Sources */,
 				54CD4D771E62D99500F15B5B /* QiitaAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

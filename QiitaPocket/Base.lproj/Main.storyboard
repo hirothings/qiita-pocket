@@ -80,17 +80,17 @@
         <!--Read Later View Controller-->
         <scene sceneID="XW7-yk-5hF">
             <objects>
-                <viewController id="9h7-8d-LWO" customClass="ReadLaterViewController" customModule="QiitaPocket" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ReadLaterViewController" id="9h7-8d-LWO" customClass="ReadLaterViewController" customModule="QiitaPocket" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4JI-Vj-cLf"/>
                         <viewControllerLayoutGuide type="bottom" id="WSM-fb-iKu"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="aFd-s1-dja">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oEl-Jp-fLV">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CustomCell" id="fhf-Kc-zBD">
@@ -120,7 +120,26 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s1N-I9-4aM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2222" y="1101"/>
+            <point key="canvasLocation" x="2913" y="1148"/>
+        </scene>
+        <!--Read Later Tab View Controller-->
+        <scene sceneID="YBt-6t-jhh">
+            <objects>
+                <viewController id="1fh-gM-0xb" customClass="ReadLaterTabViewController" customModule="QiitaPocket" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SOY-JD-Mmx"/>
+                        <viewControllerLayoutGuide type="bottom" id="hSt-sP-3Lz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="MCu-fh-m7a">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="dGu-sd-T7y"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KK0-sU-3Qz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2222" y="1149"/>
         </scene>
         <!--Search Article View Controller-->
         <scene sceneID="Qsb-TP-VSB">
@@ -252,7 +271,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XjO-LV-Y0v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3188" y="1148.2758620689656"/>
+            <point key="canvasLocation" x="2222" y="-304"/>
+        </scene>
+        <!--Archive View Controller-->
+        <scene sceneID="xb5-HZ-g14">
+            <objects>
+                <viewController storyboardIdentifier="ArchiveViewController" id="vPv-Ye-tTK" customClass="ArchiveViewController" customModule="QiitaPocket" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Iye-vH-Ex2"/>
+                        <viewControllerLayoutGuide type="bottom" id="3di-3M-5pA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="SI9-xp-UDA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HuP-aH-0W2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3711" y="1147"/>
         </scene>
         <!--Web View Controller-->
         <scene sceneID="X9m-hp-dal">
@@ -263,15 +300,15 @@
                         <viewControllerLayoutGuide type="bottom" id="y7n-EQ-z9T"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="x01-ba-5Ld">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HQd-GL-f78">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="574"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                                 <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bF7-2l-iUE">
-                                <rect key="frame" x="0.0" y="574" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items/>
                             </toolbar>
                         </subviews>
@@ -307,7 +344,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZqM-Pg-4R1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3153" y="385"/>
+            <point key="canvasLocation" x="3687" y="411"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="NiQ-4q-Tdl">
@@ -360,7 +397,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="9h7-8d-LWO" kind="relationship" relationship="rootViewController" id="Qvt-6a-QIJ"/>
+                        <segue destination="1fh-gM-0xb" kind="relationship" relationship="rootViewController" id="SOl-RY-tJx"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mwc-bh-Wco" userLabel="First Responder" sceneMemberID="firstResponder"/>
