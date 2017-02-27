@@ -34,6 +34,7 @@ class ReadLaterTabViewController: ButtonBarPagerTabStripViewController {
 
         buttonBarView.removeFromSuperview()
         navigationController?.navigationBar.addSubview(buttonBarView)
+        self.containerView.bounces = false // cellスワイプと競合するので、bouncesを切る
     }
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
