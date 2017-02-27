@@ -107,7 +107,7 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
     
     // MARK: - SwipeCellDelegate
     
-    func didSwipeReadLater(at indexPath: IndexPath) {
+    func didSwipeCell(at indexPath: IndexPath) {
         tableView.beginUpdates()
         
         let article = articles[indexPath.row]

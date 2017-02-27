@@ -11,7 +11,7 @@ import WebImage
 import RxSwift
 
 protocol SwipeCellDelegate: class {
-    func didSwipeReadLater(at indexPath: IndexPath)
+    func didSwipeCell(at indexPath: IndexPath)
 }
 
 class ArticleTableViewCell: UITableViewCell {
@@ -80,7 +80,7 @@ class ArticleTableViewCell: UITableViewCell {
                         self.cardView.frame.origin.x = UIScreen.main.bounds.width
                     },
                     completion: { [unowned self] _ in
-                        self.delegate?.didSwipeReadLater(at: self.swipeIndexPath)
+                        self.delegate?.didSwipeCell(at: self.swipeIndexPath)
                     })
             }
             else {
