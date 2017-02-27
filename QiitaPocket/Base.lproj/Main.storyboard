@@ -39,7 +39,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8If-M3-sd9" id="aXv-Gz-zyB">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <userGuides>
                                                 <userLayoutGuide location="75" affinity="minX"/>
@@ -77,10 +77,10 @@
             </objects>
             <point key="canvasLocation" x="2223" y="385"/>
         </scene>
-        <!--後で読む-->
+        <!--Read Later View Controller-->
         <scene sceneID="XW7-yk-5hF">
             <objects>
-                <viewController id="9h7-8d-LWO" sceneMemberID="viewController">
+                <viewController id="9h7-8d-LWO" customClass="ReadLaterViewController" customModule="QiitaPocket" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4JI-Vj-cLf"/>
                         <viewControllerLayoutGuide type="bottom" id="WSM-fb-iKu"/>
@@ -88,13 +88,39 @@
                     <view key="view" contentMode="scaleToFill" id="aFd-s1-dja">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oEl-Jp-fLV">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CustomCell" id="fhf-Kc-zBD">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fhf-Kc-zBD" id="72j-qq-wQk">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="oEl-Jp-fLV" firstAttribute="leading" secondItem="aFd-s1-dja" secondAttribute="leading" id="5uy-ts-PmV"/>
+                            <constraint firstAttribute="trailing" secondItem="oEl-Jp-fLV" secondAttribute="trailing" id="Krt-Oh-9Xa"/>
+                            <constraint firstItem="oEl-Jp-fLV" firstAttribute="top" secondItem="aFd-s1-dja" secondAttribute="top" id="LwY-S1-Jaa"/>
+                            <constraint firstItem="WSM-fb-iKu" firstAttribute="top" secondItem="oEl-Jp-fLV" secondAttribute="bottom" id="ppb-NK-feA"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" tag="1" title="後で読む" id="1oS-yd-PUO"/>
+                    <navigationItem key="navigationItem" id="b9E-gi-yVm"/>
+                    <connections>
+                        <outlet property="tableView" destination="oEl-Jp-fLV" id="m7a-mH-Y0T"/>
+                        <segue destination="fS7-0f-ewK" kind="show" identifier="toWebView" id="iey-Hh-eqC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s1N-I9-4aM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1494" y="1150"/>
+            <point key="canvasLocation" x="2222" y="1101"/>
         </scene>
         <!--Search Article View Controller-->
         <scene sceneID="Qsb-TP-VSB">
@@ -226,7 +252,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XjO-LV-Y0v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2248.8000000000002" y="1148.2758620689656"/>
+            <point key="canvasLocation" x="3188" y="1148.2758620689656"/>
         </scene>
         <!--Web View Controller-->
         <scene sceneID="X9m-hp-dal">
@@ -237,15 +263,15 @@
                         <viewControllerLayoutGuide type="bottom" id="y7n-EQ-z9T"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="x01-ba-5Ld">
-                        <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HQd-GL-f78">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="510"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="574"/>
                                 <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bF7-2l-iUE">
-                                <rect key="frame" x="0.0" y="510" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="574" width="375" height="44"/>
                                 <items/>
                             </toolbar>
                         </subviews>
@@ -296,7 +322,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="oqQ-8c-pSf" kind="relationship" relationship="viewControllers" id="2Ff-PA-q10"/>
-                        <segue destination="9h7-8d-LWO" kind="relationship" relationship="viewControllers" id="get-6J-UFO"/>
+                        <segue destination="Yto-5F-N17" kind="relationship" relationship="viewControllers" id="get-6J-UFO"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r5j-gM-cgv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -322,5 +348,27 @@
             </objects>
             <point key="canvasLocation" x="1495" y="385"/>
         </scene>
+        <!--後で読む-->
+        <scene sceneID="jWy-gN-Epl">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Yto-5F-N17" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" tag="1" title="後で読む" id="1oS-yd-PUO"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Mld-gb-DUW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="9h7-8d-LWO" kind="relationship" relationship="rootViewController" id="Qvt-6a-QIJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mwc-bh-Wco" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1493.5999999999999" y="1149.1754122938532"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="iey-Hh-eqC"/>
+    </inferredMetricsTieBreakers>
 </document>

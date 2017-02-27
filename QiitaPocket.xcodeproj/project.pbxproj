@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		542265E91E64059000C7AA45 /* ReadLaterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542265E81E64059000C7AA45 /* ReadLaterViewController.swift */; };
+		542265EB1E640C2400C7AA45 /* XLPagerTabStrip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 542265EA1E640C2400C7AA45 /* XLPagerTabStrip.framework */; };
 		54CD4D741E62D99500F15B5B /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D511E62D99500F15B5B /* APIClient.swift */; };
 		54CD4D751E62D99500F15B5B /* Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D521E62D99500F15B5B /* Dependencies.swift */; };
 		54CD4D761E62D99500F15B5B /* JSONDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D531E62D99500F15B5B /* JSONDecodable.swift */; };
@@ -44,6 +46,8 @@
 
 /* Begin PBXFileReference section */
 		52471A8D1CD9AF2E006865C6 /* QiitaPocket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QiitaPocket.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		542265E81E64059000C7AA45 /* ReadLaterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadLaterViewController.swift; sourceTree = "<group>"; };
+		542265EA1E640C2400C7AA45 /* XLPagerTabStrip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XLPagerTabStrip.framework; path = Carthage/Build/iOS/XLPagerTabStrip.framework; sourceTree = "<group>"; };
 		54CD4D511E62D99500F15B5B /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		54CD4D521E62D99500F15B5B /* Dependencies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dependencies.swift; sourceTree = "<group>"; };
 		54CD4D531E62D99500F15B5B /* JSONDecodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONDecodable.swift; sourceTree = "<group>"; };
@@ -84,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				542265EB1E640C2400C7AA45 /* XLPagerTabStrip.framework in Frameworks */,
 				54FAA58A1E3DD62600C09411 /* Realm.framework in Frameworks */,
 				54FAA58B1E3DD62600C09411 /* RealmSwift.framework in Frameworks */,
 				6CBB0B1A1DB3ACBA007CCC11 /* RxSwift.framework in Frameworks */,
@@ -99,6 +104,7 @@
 		19989F1DB404BCE9479B50AF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				542265EA1E640C2400C7AA45 /* XLPagerTabStrip.framework */,
 				54FAA5881E3DD62600C09411 /* Realm.framework */,
 				54FAA5891E3DD62600C09411 /* RealmSwift.framework */,
 				6CBB0B191DB3ACBA007CCC11 /* RxSwift.framework */,
@@ -204,6 +210,7 @@
 				54CD4D6F1E62D99500F15B5B /* MainTabBarController.swift */,
 				54CD4D701E62D99500F15B5B /* SearchArticleViewController.swift */,
 				54CD4D711E62D99500F15B5B /* WebViewController.swift */,
+				542265E81E64059000C7AA45 /* ReadLaterViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -302,6 +309,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/XLPagerTabStrip.framework",
 			);
 			outputPaths = (
 			);
@@ -316,6 +324,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				542265E91E64059000C7AA45 /* ReadLaterViewController.swift in Sources */,
 				54CD4D791E62D99500F15B5B /* AppDelegate.swift in Sources */,
 				54CD4D761E62D99500F15B5B /* JSONDecodable.swift in Sources */,
 				54CD4D821E62D99500F15B5B /* ArticleManager.swift in Sources */,
