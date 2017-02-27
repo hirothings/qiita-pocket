@@ -21,7 +21,6 @@
 		54CD4D7D1E62D99500F15B5B /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D5D1E62D99500F15B5B /* ArrayExtension.swift */; };
 		54CD4D7E1E62D99500F15B5B /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D5E1E62D99500F15B5B /* UIColorExtension.swift */; };
 		54CD4D7F1E62D99500F15B5B /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D5F1E62D99500F15B5B /* UIViewExtension.swift */; };
-		54CD4D801E62D99500F15B5B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54CD4D601E62D99500F15B5B /* Info.plist */; };
 		54CD4D811E62D99500F15B5B /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D621E62D99500F15B5B /* Article.swift */; };
 		54CD4D821E62D99500F15B5B /* ArticleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D631E62D99500F15B5B /* ArticleManager.swift */; };
 		54CD4D831E62D99500F15B5B /* Articles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D641E62D99500F15B5B /* Articles.swift */; };
@@ -286,7 +285,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				54CD4D891E62D99500F15B5B /* ArticleTableViewCell.xib in Resources */,
-				54CD4D801E62D99500F15B5B /* Info.plist in Resources */,
 				54CD4D7C1E62D99500F15B5B /* Main.storyboard in Resources */,
 				54CD4D7A1E62D99500F15B5B /* Assets.xcassets in Resources */,
 				54CD4D7B1E62D99500F15B5B /* LaunchScreen.storyboard in Resources */,

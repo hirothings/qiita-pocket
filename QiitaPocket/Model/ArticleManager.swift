@@ -37,7 +37,7 @@ final class ArticleManager {
                 realm.delete(article)
             }
         }
-        catch let _ {
+        catch _ {
             // TODO: error処理
         }
     }
