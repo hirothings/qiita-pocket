@@ -18,9 +18,8 @@ final class ReadLaterViewController: UIViewController, UITableViewDataSource, UI
 
     @IBOutlet weak var tableView: UITableView!
     
-    // TODO: Articlesの更新
     var articles: Results<Article> = {
-        return ArticleManager.getAll()
+        return ArticleManager.getReadLaters()
     }()
 
     var postUrl: URL?

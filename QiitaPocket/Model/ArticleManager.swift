@@ -18,10 +18,34 @@ final class ArticleManager {
         return realm.objects(Article.self)
     }
     
-    /// 追加・更新
-    static func update(article: Article) {
+    /// 後で読むを取得
+    static func getReadLaters() -> Results<Article> {
+        return realm.objects(Article.self).filter("saveState == '\(SaveState.readLater.rawValue)'")
+    }
+    
+    /// アーカイブを取得
+    static func getArchives() -> Results<Article> {
+        return realm.objects(Article.self).filter("saveState == '\(SaveState.archive.rawValue)'")
+    }
+    
+    /// 後で読むに追加
+    static func add(readLater article: Article) {
         do {
             try realm.write {
+                article.saveStateType = .readLater
+                realm.add(article, update: true)
+            }
+        }
+        catch _ {
+            // TODO: error処理
+        }
+    }
+    
+    /// アーカイブに追加
+    static func add(archive article: Article) {
+        do {
+            try realm.write {
+                article.saveStateType = .archive
                 realm.add(article, update: true)
             }
         }

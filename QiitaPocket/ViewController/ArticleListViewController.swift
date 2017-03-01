@@ -112,7 +112,7 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
         tableView.beginUpdates()
         
         let article = articles[indexPath.row]
-        ArticleManager.update(article: article) // Realmに記事を保存
+        ArticleManager.add(readLater: article) // Realmに記事を保存
         
         articles.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
