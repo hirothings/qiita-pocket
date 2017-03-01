@@ -19,7 +19,8 @@ enum SaveState: String {
 
 final class Article: Object {
 
-    dynamic var createdAt: String = ""
+    dynamic var updatedAt: Date = Date()
+    dynamic var publishedAt: String = ""
     dynamic var id: String = ""
     dynamic var title: String = ""
     dynamic var user: String = ""

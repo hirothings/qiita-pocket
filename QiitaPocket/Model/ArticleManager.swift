@@ -20,12 +20,12 @@ final class ArticleManager {
     
     /// 後で読むを取得
     static func getReadLaters() -> Results<Article> {
-        return realm.objects(Article.self).filter("saveState == '\(SaveState.readLater.rawValue)'")
+        return realm.objects(Article.self).filter("saveState == '\(SaveState.readLater.rawValue)'").sorted(byKeyPath: "updatedAt", ascending: false)
     }
     
     /// アーカイブを取得
     static func getArchives() -> Results<Article> {
-        return realm.objects(Article.self).filter("saveState == '\(SaveState.archive.rawValue)'")
+        return realm.objects(Article.self).filter("saveState == '\(SaveState.archive.rawValue)'").sorted(byKeyPath: "updatedAt", ascending: false)
     }
     
     /// 後で読むに追加
@@ -33,6 +33,7 @@ final class ArticleManager {
         do {
             try realm.write {
                 article.saveStateType = .readLater
+                article.updatedAt = Date()
                 realm.add(article, update: true)
             }
         }
@@ -46,6 +47,7 @@ final class ArticleManager {
         do {
             try realm.write {
                 article.saveStateType = .archive
+                article.updatedAt = Date()
                 realm.add(article, update: true)
             }
         }
