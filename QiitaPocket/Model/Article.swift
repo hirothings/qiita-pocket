@@ -11,6 +11,12 @@ import RealmSwift
 import RxSwift
 import SwiftyJSON
 
+enum SaveState: String {
+    case none
+    case readLater
+    case archive
+}
+
 final class Article: Object {
 
     dynamic var createdAt: String = ""
@@ -19,7 +25,17 @@ final class Article: Object {
     dynamic var user: String = ""
     dynamic var profile_image_url: String = ""
     dynamic var url: String = ""
+    dynamic var saveState: String = SaveState.none.rawValue
     let tags: List<Tag> = List<Tag>()
+    
+    var saveStateType: SaveState {
+        get {
+            return SaveState(rawValue: saveState)!
+        }
+        set {
+            saveState = newValue.rawValue
+        }
+    }
     
     override class func primaryKey() -> String? {
         return "id"
@@ -34,9 +50,4 @@ final class Tag: Object {
         self.init()
         self.name = value as! String
     }
-}
-
-
-extension Article {
-
 }
