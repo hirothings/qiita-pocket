@@ -18,7 +18,7 @@ final class ArticleTableViewCell: UITableViewCell, SwipeCellType {
     @IBOutlet weak var cardView: UIView!
     
     var swipeGesture = UIPanGestureRecognizer()
-    var swipeIndexPath: IndexPath = IndexPath()
+    var swipeIndexPath: IndexPath!
     var preTransration: CGPoint?
     
     weak var delegate: SwipeCellDelegate?
@@ -37,11 +37,11 @@ final class ArticleTableViewCell: UITableViewCell, SwipeCellType {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        swipeGesture.delegate = self
         swipeGesture.rx.event.bindNext { [weak self] (gesture: UIPanGestureRecognizer) in
             self?.onRightSwipe(gesture)
         }
         .addDisposableTo(bag)
-        swipeGesture.delegate = self
         self.cardView.addGestureRecognizer(swipeGesture)
     }
     

@@ -16,7 +16,7 @@ protocol SwipeCellType {
     weak var cardView: UIView! { get }
     weak var delegate: SwipeCellDelegate? { get }
     var swipeGesture: UIPanGestureRecognizer { get }
-    var swipeIndexPath: IndexPath { get set }
+    var swipeIndexPath: IndexPath! { get set }
     var preTransration: CGPoint? { get set }
     mutating func onRightSwipe(_ gesture: UIPanGestureRecognizer)
 }
