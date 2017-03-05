@@ -13,7 +13,7 @@ protocol SwipeCellDelegate: class {
 }
 
 protocol SwipeCellType {
-    weak var cardView: UIView! { get }
+    weak var articleView: ArticleView! { get }
     weak var delegate: SwipeCellDelegate? { get }
     var swipeGesture: UIPanGestureRecognizer { get }
     var swipeIndexPath: IndexPath! { get set }
@@ -40,14 +40,14 @@ extension SwipeCellType where Self: UITableViewCell {
             // トランジション方向が、-x方向の場合、閾値を考慮せずカードを移動させる
             if let preTransration = preTransration {
                 if translation.x < preTransration.x {
-                    self.cardView.frame.origin.x = translation.x
+                    self.articleView.frame.origin.x = translation.x
                 }
             }
             
             // トランジション方向が閾値を超えた場合、セルを右スワイプ中とみなす
             if 30.0 < translation.x {
                 preTransration = translation
-                self.cardView.frame.origin.x = translation.x
+                self.articleView.frame.origin.x = translation.x
                 tableView.panGestureRecognizer.isEnabled = false // 右スワイプ中はtableviewのscrollを切る
             }
             
@@ -56,7 +56,7 @@ extension SwipeCellType where Self: UITableViewCell {
                 UIView.animate(
                     withDuration: 0.1,
                     animations: { [unowned self] in
-                        self.cardView.frame.origin.x = UIScreen.main.bounds.width
+                        self.articleView.frame.origin.x = UIScreen.main.bounds.width
                     },
                     completion: { [unowned self] _ in
                         self.delegate?.didSwipeCell(at: self.swipeIndexPath)
@@ -64,7 +64,7 @@ extension SwipeCellType where Self: UITableViewCell {
             }
             else {
                 UIView.animate(withDuration: 0.1, animations: { [unowned self] in
-                    self.cardView.frame.origin.x = 0
+                    self.articleView.frame.origin.x = 0
                 })
             }
             tableView.panGestureRecognizer.isEnabled = true // tableviewのscrollを復帰する

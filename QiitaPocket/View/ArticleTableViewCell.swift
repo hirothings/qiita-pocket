@@ -11,12 +11,8 @@ import WebImage
 import RxSwift
 
 final class ArticleTableViewCell: UITableViewCell, SwipeCellType {
-    @IBOutlet weak var profileImageView: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var detailLabel: UILabel!
-    @IBOutlet weak var readLaterButton: UIButton!
-    @IBOutlet weak var cardView: UIView!
     
+    @IBOutlet weak var articleView: ArticleView!
     var swipeGesture = UIPanGestureRecognizer()
     var swipeIndexPath: IndexPath!
     var preTransration: CGPoint?
@@ -25,10 +21,10 @@ final class ArticleTableViewCell: UITableViewCell, SwipeCellType {
     
     var article: Article! {
         didSet {
-            self.titleLabel.text = article.title
-            self.detailLabel.text = article.tags.first?.name // TODO: 複数件表示
+            articleView.titleLabel.text = article.title
+            articleView.tagLabel.text = article.tags.first?.name // TODO: 複数件表示
             let url = URL(string: article.profile_image_url)
-            self.profileImageView.sd_setImage(with: url)
+            articleView.profileImageView.sd_setImage(with: url)
         }
     }
     
@@ -42,7 +38,7 @@ final class ArticleTableViewCell: UITableViewCell, SwipeCellType {
             self?.onRightSwipe(gesture)
         }
         .addDisposableTo(bag)
-        self.cardView.addGestureRecognizer(swipeGesture)
+        self.articleView.addGestureRecognizer(swipeGesture)
     }
     
     override func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
