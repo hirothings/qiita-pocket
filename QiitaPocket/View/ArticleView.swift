@@ -11,7 +11,6 @@ import UIKit
 @IBDesignable
 class ArticleView: UIView {
 
-    @IBOutlet var contentView: UIView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var authorID: UILabel!
@@ -30,9 +29,14 @@ class ArticleView: UIView {
     }
 
     private func initview() {
-        Bundle.main.loadNibNamed("ArticleView", owner: self, options: nil)
-        bounds = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 103.0)
-        contentView.frame = bounds
-        addSubview(contentView)
+        let view = Bundle.main.loadNibNamed("ArticleView", owner: self, options: nil)!.first as! UIView
+        addSubview(view)
+        
+        // カスタムViewのサイズを自分自身と同じサイズにする
+        view.translatesAutoresizingMaskIntoConstraints = false
+        self.topAnchor.constraint(equalTo: view.topAnchor, constant: 0.0).isActive = true
+        self.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0.0).isActive = true
+        self.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0.0).isActive = true
+        self.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0.0).isActive = true
     }
 }
