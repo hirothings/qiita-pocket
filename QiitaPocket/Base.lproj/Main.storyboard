@@ -384,9 +384,10 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oqQ-8c-pSf" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="探す" id="cxM-RB-B2f"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="RiW-v2-Rj0">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="RiW-v2-Rj0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.0" green="0.73902446030000002" blue="0.43167161939999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

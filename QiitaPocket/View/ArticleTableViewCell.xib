@@ -15,25 +15,38 @@
             <rect key="frame" x="0.0" y="0.0" width="389" height="103"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1Va-DE-qjS" id="uyq-wd-osF">
-                <rect key="frame" x="0.0" y="0.0" width="389" height="102"/>
+                <rect key="frame" x="0.0" y="0.0" width="389" height="102.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-read-later_white" translatesAutoresizingMaskIntoConstraints="NO" id="X3o-Sy-u78">
+                        <rect key="frame" x="16" y="35" width="20" height="31"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="BST-Ru-MF4"/>
+                            <constraint firstAttribute="height" constant="31" id="MKM-I8-LaR"/>
+                        </constraints>
+                    </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e1Q-dk-Gbz" customClass="ArticleView" customModule="QiitaPocket" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="389" height="103"/>
+                        <rect key="frame" x="0.0" y="0.0" width="389" height="102"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </subviews>
+                <color key="backgroundColor" red="0.076431877910000001" green="0.75004607440000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
-                    <constraint firstItem="e1Q-dk-Gbz" firstAttribute="top" secondItem="uyq-wd-osF" secondAttribute="top" id="FSF-Eu-5bq"/>
-                    <constraint firstAttribute="trailing" secondItem="e1Q-dk-Gbz" secondAttribute="trailing" id="Ngs-JB-YGr"/>
-                    <constraint firstItem="e1Q-dk-Gbz" firstAttribute="leading" secondItem="uyq-wd-osF" secondAttribute="leading" id="RFf-YE-BhB"/>
-                    <constraint firstAttribute="bottom" secondItem="e1Q-dk-Gbz" secondAttribute="bottom" id="vfz-da-Wm4"/>
+                    <constraint firstAttribute="trailing" secondItem="e1Q-dk-Gbz" secondAttribute="trailing" id="ARY-PG-Cem"/>
+                    <constraint firstItem="X3o-Sy-u78" firstAttribute="leading" secondItem="uyq-wd-osF" secondAttribute="leading" constant="16" id="LQC-Wo-GNt"/>
+                    <constraint firstItem="e1Q-dk-Gbz" firstAttribute="top" secondItem="uyq-wd-osF" secondAttribute="top" id="ZY3-Op-h5h"/>
+                    <constraint firstAttribute="bottom" secondItem="e1Q-dk-Gbz" secondAttribute="bottom" id="l62-xp-JZd"/>
+                    <constraint firstItem="e1Q-dk-Gbz" firstAttribute="leading" secondItem="uyq-wd-osF" secondAttribute="leading" id="oBs-dt-ct1"/>
+                    <constraint firstItem="X3o-Sy-u78" firstAttribute="centerY" secondItem="uyq-wd-osF" secondAttribute="centerY" id="vf0-wU-8pJ"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="articleView" destination="e1Q-dk-Gbz" id="6Ig-I1-2Mm"/>
             </connections>
-            <point key="canvasLocation" x="245.5" y="-485"/>
+            <point key="canvasLocation" x="245.5" y="-485.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="ic-read-later_white" width="16" height="16"/>
+    </resources>
 </document>

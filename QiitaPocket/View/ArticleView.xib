@@ -25,10 +25,10 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="03o-rw-cSR">
-                    <rect key="frame" x="6" y="6" width="402" height="91"/>
+                    <rect key="frame" x="12" y="6" width="390" height="91"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JavaScript" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oNG-Yc-6Fa">
-                            <rect key="frame" x="0.0" y="41.5" width="59.5" height="15.5"/>
+                            <rect key="frame" x="0.0" y="42.5" width="59.5" height="14.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" red="0.47450980539999998" green="0.48235294220000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -61,14 +61,14 @@
                                 </label>
                             </subviews>
                         </stackView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="【初級】知ってるつもりだったJavaScriptの基礎知識" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yhl-Xe-cfC">
-                            <rect key="frame" x="0.0" y="22.5" width="367" height="17"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="749" text="【初級】知ってるつもりだったJavaScriptの基礎知識" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yhl-Xe-cfC">
+                            <rect key="frame" x="0.0" y="22.5" width="355" height="16"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Vv7-Dm-Orp">
-                            <rect key="frame" x="326" y="69" width="76" height="22"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vv7-Dm-Orp">
+                            <rect key="frame" x="322" y="69" width="68" height="22"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-like" translatesAutoresizingMaskIntoConstraints="NO" id="G7D-gT-DaO">
                                     <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
@@ -77,8 +77,8 @@
                                         <constraint firstAttribute="width" constant="22" id="thA-Q4-NGP"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12000" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hew-Ed-Tfo">
-                                    <rect key="frame" x="30" y="0.0" width="46" height="22"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12000" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hew-Ed-Tfo">
+                                    <rect key="frame" x="22" y="0.0" width="46" height="22"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="46" id="v4G-k2-Vqy"/>
                                     </constraints>
@@ -88,16 +88,26 @@
                                 </label>
                             </subviews>
                         </stackView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ub-ly-DjE">
+                            <rect key="frame" x="360" y="20.5" width="30" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="30" id="CWm-GW-rsQ"/>
+                                <constraint firstAttribute="height" constant="30" id="TEY-Fp-xdj"/>
+                            </constraints>
+                            <state key="normal" image="ic-read-later_disabled"/>
+                        </button>
                     </subviews>
                     <constraints>
+                        <constraint firstAttribute="trailing" secondItem="7ub-ly-DjE" secondAttribute="trailing" id="5bu-S4-WBa"/>
                         <constraint firstItem="Yhl-Xe-cfC" firstAttribute="leading" secondItem="03o-rw-cSR" secondAttribute="leading" id="DQ6-da-CI8"/>
                         <constraint firstAttribute="bottom" secondItem="Vv7-Dm-Orp" secondAttribute="bottom" id="Eis-Ie-WtC"/>
                         <constraint firstAttribute="trailing" secondItem="Vv7-Dm-Orp" secondAttribute="trailing" id="Faq-Rc-1Ig"/>
                         <constraint firstAttribute="bottom" secondItem="aNN-4h-J25" secondAttribute="bottom" id="GjW-UC-rVq"/>
                         <constraint firstItem="aNN-4h-J25" firstAttribute="leading" secondItem="03o-rw-cSR" secondAttribute="leading" id="QHM-tO-aMG"/>
                         <constraint firstAttribute="trailing" secondItem="Yhl-Xe-cfC" secondAttribute="trailing" constant="35" id="WeY-ga-jmz"/>
+                        <constraint firstItem="7ub-ly-DjE" firstAttribute="centerY" secondItem="03o-rw-cSR" secondAttribute="centerY" constant="-10" id="cBt-SS-emw"/>
                         <constraint firstItem="Yhl-Xe-cfC" firstAttribute="top" secondItem="me1-tK-2xQ" secondAttribute="bottom" constant="8" id="htD-we-iFd"/>
-                        <constraint firstItem="oNG-Yc-6Fa" firstAttribute="top" secondItem="Yhl-Xe-cfC" secondAttribute="bottom" constant="2" id="qUU-uJ-nyK"/>
+                        <constraint firstItem="oNG-Yc-6Fa" firstAttribute="top" secondItem="Yhl-Xe-cfC" secondAttribute="bottom" constant="4" id="qUU-uJ-nyK"/>
                         <constraint firstItem="oNG-Yc-6Fa" firstAttribute="leading" secondItem="03o-rw-cSR" secondAttribute="leading" id="sXd-0f-W3I"/>
                         <constraint firstItem="aNN-4h-J25" firstAttribute="top" secondItem="oNG-Yc-6Fa" secondAttribute="bottom" constant="8" id="v5s-QN-cEj"/>
                         <constraint firstItem="me1-tK-2xQ" firstAttribute="top" secondItem="03o-rw-cSR" secondAttribute="top" id="wfh-m2-it8"/>
@@ -107,9 +117,9 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="03o-rw-cSR" secondAttribute="trailing" constant="6" id="Juz-cA-odg"/>
+                <constraint firstAttribute="trailing" secondItem="03o-rw-cSR" secondAttribute="trailing" constant="12" id="Juz-cA-odg"/>
                 <constraint firstAttribute="bottom" secondItem="03o-rw-cSR" secondAttribute="bottom" constant="6" id="XWm-4D-Sn9"/>
-                <constraint firstItem="03o-rw-cSR" firstAttribute="leading" secondItem="dtc-tD-8JM" secondAttribute="leading" constant="6" id="dhb-fp-cNI"/>
+                <constraint firstItem="03o-rw-cSR" firstAttribute="leading" secondItem="dtc-tD-8JM" secondAttribute="leading" constant="12" id="dhb-fp-cNI"/>
                 <constraint firstItem="03o-rw-cSR" firstAttribute="top" secondItem="dtc-tD-8JM" secondAttribute="top" constant="6" id="iGa-1a-e3z"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
@@ -119,5 +129,6 @@
     </objects>
     <resources>
         <image name="ic-like" width="16" height="16"/>
+        <image name="ic-read-later_disabled" width="16" height="16"/>
     </resources>
 </document>

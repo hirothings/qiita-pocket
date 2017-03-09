@@ -8,7 +8,6 @@
 
 import UIKit
 
-@IBDesignable
 class ArticleView: UIView {
 
     @IBOutlet weak var dateLabel: UILabel!
