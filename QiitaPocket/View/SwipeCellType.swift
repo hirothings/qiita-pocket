@@ -12,18 +12,18 @@ protocol SwipeCellDelegate: class {
     func didSwipeCell(at indexPath: IndexPath)
 }
 
-protocol SwipeCellType {
+protocol SwipeCellType: class {
     weak var articleView: ArticleView! { get }
     weak var delegate: SwipeCellDelegate? { get }
     var swipeGesture: UIPanGestureRecognizer { get }
     var swipeIndexPath: IndexPath! { get set }
     var preTransration: CGPoint? { get set }
-    mutating func onRightSwipe(_ gesture: UIPanGestureRecognizer)
+    func onRightSwipe(_ gesture: UIPanGestureRecognizer)
 }
 
 extension SwipeCellType where Self: UITableViewCell {
     
-    mutating func onRightSwipe(_ gesture: UIPanGestureRecognizer) {
+    func onRightSwipe(_ gesture: UIPanGestureRecognizer) {
         let translation = gesture.translation(in: self)
         
         guard let tableView = self.superview?.superview as? UITableView else { return }
