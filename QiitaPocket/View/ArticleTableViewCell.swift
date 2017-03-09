@@ -18,6 +18,8 @@ final class ArticleTableViewCell: UITableViewCell, SwipeCellType {
     var preTransration: CGPoint?
     
     weak var delegate: SwipeCellDelegate?
+    private var recycleBag = DisposeBag()
+
     
     var article: Article! {
         didSet {
@@ -25,20 +27,22 @@ final class ArticleTableViewCell: UITableViewCell, SwipeCellType {
             articleView.tagLabel.text = article.tags.first?.name // TODO: 複数件表示
             let url = URL(string: article.profile_image_url)
             articleView.profileImageView.sd_setImage(with: url)
+            swipeGesture.rx.event.bindNext { [weak self] (gesture: UIPanGestureRecognizer) in
+                self?.onRightSwipe(gesture)
+            }
+            .addDisposableTo(recycleBag)
         }
     }
-    
-    private var bag = DisposeBag()
-
     
     override func awakeFromNib() {
         super.awakeFromNib()
         swipeGesture.delegate = self
-        swipeGesture.rx.event.bindNext { [weak self] (gesture: UIPanGestureRecognizer) in
-            self?.onRightSwipe(gesture)
-        }
-        .addDisposableTo(bag)
         self.articleView.addGestureRecognizer(swipeGesture)
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        recycleBag = DisposeBag()
     }
     
     override func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
