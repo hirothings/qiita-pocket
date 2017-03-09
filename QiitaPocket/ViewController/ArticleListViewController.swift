@@ -23,7 +23,7 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
     
     private let viewModel = ArticleListViewModel()
     private var searchArticleVC = SearchArticleViewController()
-    private var searchBar = UISearchBar()
+    private var searchBar: UISearchBar!
     private let bag = DisposeBag()
     
     
@@ -36,10 +36,13 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
         noneDataLabel.isHidden = true
         activityIndicatorView.hidesWhenStopped = true
         
+        let nvc = self.navigationController as! ArticleListNavigationController
+        searchBar = nvc.searchBar
+        searchBar.delegate = self
+        
         let nib: UINib = UINib(nibName: "ArticleTableViewCell", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: "CustomCell")
         
-        setupSearchBar()
         tableView.refreshControl = refreshControll
         
         // bind
@@ -135,29 +138,6 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
     
     
     // MARK: - Private Method
-
-    private func setupSearchBar() {
-        let navigationBarFrame: CGRect = self.navigationController!.navigationBar.bounds
-        searchBar = UISearchBar(frame: navigationBarFrame)
-        
-        searchBar.delegate = self
-        searchBar.placeholder = "タグを検索"
-        searchBar.showsCancelButton = false
-        searchBar.autocapitalizationType = .none
-        searchBar.keyboardType = .default
-        searchBar.tintColor = UIColor.gray
-        searchBar.text = UserSettings.getCurrentSearchTag()
-        searchBar.enablesReturnKeyAutomatically = false
-        for subView in searchBar.subviews {
-            for secondSubView in subView.subviews {
-                if secondSubView is UITextField {
-                    secondSubView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.3)
-                    break
-                }
-            }
-        }
-        navigationItem.titleView = searchBar
-    }
     
     // TODO: viewModelに処理移す
     private func updateSearchState(tag: String) {

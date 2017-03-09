@@ -381,13 +381,15 @@
         <!--探す-->
         <scene sceneID="UYq-ez-B0e">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oqQ-8c-pSf" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oqQ-8c-pSf" customClass="ArticleListNavigationController" customModule="QiitaPocket" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="探す" id="cxM-RB-B2f"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="RiW-v2-Rj0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.0" green="0.73902446030000002" blue="0.43167161939999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
