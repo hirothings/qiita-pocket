@@ -7,20 +7,50 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class ArticleListNavigationController: UINavigationController {
     
-    var searchBar: UISearchBar!
+    var searchBar = UISearchBar()
+    private let bag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupLogoImage()
         setupSearchBar()
+        setupSettingButton()
+    }
+    
+    private func setupLogoImage() {
+        let logoImageView = UIImageView(image: #imageLiteral(resourceName: "logo"))
+        logoImageView.frame = CGRect(x: 0, y: 0, width: 26, height: 26)
+        logoImageView.contentMode = .scaleAspectFit
+        let imageItem = UIBarButtonItem(customView: logoImageView)
+        let spacer = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+        spacer.width = -10.0
+        navigationBar.topItem?.leftBarButtonItems = [spacer, imageItem]
+    }
+    
+    private func setupSettingButton() {
+        let settingImageView = UIImageView(image: #imageLiteral(resourceName: "ic-setting"))
+        settingImageView.frame = CGRect(x: 0, y: 0, width: 12, height: 12)
+        settingImageView.contentMode = .scaleAspectFit
+        settingImageView.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer()
+        tapGesture.rx.event.bindNext { _ in
+            print("TODO")
+        }
+        .addDisposableTo(bag)
+        settingImageView.addGestureRecognizer(tapGesture)
+        let rightButton = UIBarButtonItem(customView: settingImageView)
+        let spacer = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+        spacer.width = 10
+        navigationBar.topItem?.rightBarButtonItems = [rightButton, spacer]
     }
     
     private func setupSearchBar() {
-        let navigationBarFrame: CGRect = self.navigationBar.bounds
-        searchBar = UISearchBar(frame: navigationBarFrame)
-        
         searchBar.placeholder = "タグを検索"
         searchBar.showsCancelButton = false
         searchBar.autocapitalizationType = .none
