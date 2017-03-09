@@ -30,7 +30,7 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.estimatedRowHeight = 72.0
+        tableView.estimatedRowHeight = 103.0
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.isHidden = true
         noneDataLabel.isHidden = true
