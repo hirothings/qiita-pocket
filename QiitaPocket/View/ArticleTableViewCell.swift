@@ -23,6 +23,7 @@ final class ArticleTableViewCell: UITableViewCell, SwipeCellType {
     
     var article: Article! {
         didSet {
+            articleView.dateLabel.text = article.publishedAt
             articleView.titleLabel.text = article.title
             articleView.tagLabel.text = article.tags.first?.name // TODO: 複数件表示
             let url = URL(string: article.profile_image_url)
