@@ -31,6 +31,10 @@ class ArticleView: UIView {
         let view = Bundle.main.loadNibNamed("ArticleView", owner: self, options: nil)!.first as! UIView
         addSubview(view)
         
+        // profile画像を丸くする
+        profileImageView.layer.cornerRadius = profileImageView.frame.size.width * 0.5
+        profileImageView.clipsToBounds = true
+        
         // カスタムViewのサイズを自分自身と同じサイズにする
         view.translatesAutoresizingMaskIntoConstraints = false
         self.topAnchor.constraint(equalTo: view.topAnchor, constant: 0.0).isActive = true
