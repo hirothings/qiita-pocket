@@ -45,6 +45,10 @@ class ArticleListNavigationController: UINavigationController {
         setupSettingButton()
     }
     
+    func unsetSettingButton() {
+        navigationBar.topItem?.rightBarButtonItems?.removeAll()
+    }
+    
     func setupSettingButton() {
         let spacer = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
         spacer.width = 10

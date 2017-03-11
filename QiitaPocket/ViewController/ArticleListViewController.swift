@@ -25,6 +25,7 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
     private var searchArticleVC = SearchArticleViewController()
     private var searchBar: UISearchBar!
     private let bag = DisposeBag()
+    private var nvc: ArticleListNavigationController!
     
     
     override func viewDidLoad() {
@@ -36,7 +37,7 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
         noneDataLabel.isHidden = true
         activityIndicatorView.hidesWhenStopped = true
         
-        let nvc = self.navigationController as! ArticleListNavigationController
+        nvc = self.navigationController as! ArticleListNavigationController
         searchBar = nvc.searchBar
         searchBar.delegate = self
         
@@ -166,6 +167,8 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
                 self.tableView.isHidden = true
             })
             .addDisposableTo(bag)
+        
+        nvc.unsetSettingButton()
     }
     
     /// 検索ViewControllerを削除
@@ -173,6 +176,7 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
         searchArticleVC.willMove(toParentViewController: self)
         searchArticleVC.view.removeFromSuperview()
         searchArticleVC.removeFromParentViewController()
+        nvc.setupSettingButton()
     }
     
     
