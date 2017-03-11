@@ -14,40 +14,47 @@ class ArticleListNavigationController: UINavigationController {
     
     var searchBar = UISearchBar()
     private let bag = DisposeBag()
+    
+    private let settingButton: UIBarButtonItem = {
+        let settingImageView = UIImageView(image: #imageLiteral(resourceName: "ic-setting"))
+        settingImageView.frame = CGRect(x: 0, y: 0, width: 12, height: 12)
+        settingImageView.contentMode = .scaleAspectFit
+        settingImageView.isUserInteractionEnabled = true
+        return UIBarButtonItem(customView: settingImageView)
+    }()
+    
+    private let logoImageItem: UIBarButtonItem = {
+        let logoImageView = UIImageView(image: #imageLiteral(resourceName: "logo"))
+        logoImageView.frame = CGRect(x: 0, y: 0, width: 26, height: 26)
+        logoImageView.contentMode = .scaleAspectFit
+        return UIBarButtonItem(customView: logoImageView)
+    }()
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // TODO:
+        settingButton.rx.tap.bindNext { _ in
+                print("TODO")
+            }
+            .addDisposableTo(bag)
         
         setupLogoImage()
         setupSearchBar()
         setupSettingButton()
     }
     
-    private func setupLogoImage() {
-        let logoImageView = UIImageView(image: #imageLiteral(resourceName: "logo"))
-        logoImageView.frame = CGRect(x: 0, y: 0, width: 26, height: 26)
-        logoImageView.contentMode = .scaleAspectFit
-        let imageItem = UIBarButtonItem(customView: logoImageView)
-        let spacer = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
-        spacer.width = -10.0
-        navigationBar.topItem?.leftBarButtonItems = [spacer, imageItem]
-    }
-    
-    private func setupSettingButton() {
-        let settingImageView = UIImageView(image: #imageLiteral(resourceName: "ic-setting"))
-        settingImageView.frame = CGRect(x: 0, y: 0, width: 12, height: 12)
-        settingImageView.contentMode = .scaleAspectFit
-        settingImageView.isUserInteractionEnabled = true
-        let tapGesture = UITapGestureRecognizer()
-        tapGesture.rx.event.bindNext { _ in
-            print("TODO")
-        }
-        .addDisposableTo(bag)
-        settingImageView.addGestureRecognizer(tapGesture)
-        let rightButton = UIBarButtonItem(customView: settingImageView)
+    func setupSettingButton() {
         let spacer = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
         spacer.width = 10
-        navigationBar.topItem?.rightBarButtonItems = [rightButton, spacer]
+        navigationBar.topItem?.rightBarButtonItems = [settingButton, spacer]
+    }
+
+    private func setupLogoImage() {
+        let spacer = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+        spacer.width = -10.0
+        navigationBar.topItem?.leftBarButtonItems = [spacer, logoImageItem]
     }
     
     private func setupSearchBar() {
