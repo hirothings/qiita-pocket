@@ -30,19 +30,43 @@ final class QiitaAPI {
             }
         }
     }
-
     
-    /// ストック情報のリクエスト
-    struct SearchStocks: QiitaRequest {
+    /// 過去1週間分の記事のリクエスト
+    struct SearchWeeklyPost: QiitaRequest {
         
-        typealias ResponseObject = Stocks
+        typealias ResponseObject = Articles
         
-        let itemID: String
+        let tag: String
+        let page: String
         
         var path: String {
-            return "items/\(itemID)/stockers"
+            return "search"
         }
         
-        var parameters: [String : Any]? { return nil }
+        var parameters: [String: Any]? {
+            
+            let oneWeekAgo: String = {
+                let now = Date()
+                let oneWeekAgo = Date(timeInterval: -60 * 60 * 24 * 7, since: now)
+                let formatter = DateFormatter()
+                formatter.dateFormat = "yyyy-MM-dd"
+                return formatter.string(from: oneWeekAgo)
+            }()
+            
+            var params: [String: String] = [
+                "page": page,
+                "per_page": "100", // 100が上限
+            ]
+            
+            if tag.isEmpty {
+                // RateLimit緩和のため、キーワードなしは3件以上はストックされている前提で記事を取得する
+                params["q"] = "created:>" + oneWeekAgo + " stocks:" + ">3"
+                return params
+            }
+            else {
+                params["q"] = tag + " created:>" + oneWeekAgo + " stocks:" + ">1"
+                return params
+            }
+        }
     }
 }
