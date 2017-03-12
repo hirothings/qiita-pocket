@@ -69,7 +69,7 @@ class APIClient {
         guard let serializedLinks = header?["Link"] as? String else { return nil }
         print(serializedLinks)
         do {
-            let regex = try NSRegularExpression(pattern: "(?<=&page=)(.+?)(?=&)", options: .allowCommentsAndWhitespace)
+            let regex = try NSRegularExpression(pattern: "(?<=page=)(.+?)(?=&)(?=.*rel=\"next\")", options: .allowCommentsAndWhitespace)
             guard let match = regex.firstMatch(in: serializedLinks,
                                                options: NSRegularExpression.MatchingOptions(),
                                                range: NSRange(location: 0, length: serializedLinks.characters.count)) else { return nil }
