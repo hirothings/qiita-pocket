@@ -62,7 +62,7 @@ class ArticleListNavigationController: UINavigationController {
     }
     
     private func setupSearchBar() {
-        searchBar.placeholder = "タグを検索"
+        searchBar.placeholder = "キーワードを入力"
         searchBar.showsCancelButton = false
         searchBar.autocapitalizationType = .none
         searchBar.keyboardType = .default

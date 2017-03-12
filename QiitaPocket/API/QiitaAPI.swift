@@ -26,7 +26,7 @@ final class QiitaAPI {
                 return nil
             }
             else {
-                return ["query": "tag:" + tag]
+                return ["query": tag]
             }
         }
     }
