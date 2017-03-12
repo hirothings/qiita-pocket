@@ -30,26 +30,15 @@ class UserSettings {
         UserDefaults.standard.synchronize()
     }
     
-    // 検索順
-    static func getSearchSort() -> SearchSort? {
-        guard let rawValue = UserDefaults.standard.string(forKey: "SearchSort") else {
+    // 検索タイプ
+    static func getSearchType() -> SearchType? {
+        guard let rawValue = UserDefaults.standard.string(forKey: "SearchType") else {
             return nil
         }
-        return SearchSort(rawValue: rawValue)
+        return SearchType(rawValue: rawValue)
     }
-    static func setSearchSort(_ searchSort: SearchSort) {
-        UserDefaults.standard.set(searchSort.rawValue, forKey: "SearchSort")
-    }
-    
-    // 期間
-    static func getSearchPeriod() -> SearchPeriod? {
-        guard let rawValue = UserDefaults.standard.string(forKey: "SearchPeriod") else {
-            return nil
-        }
-        return SearchPeriod(rawValue: rawValue)
-    }
-    static func setSearchPeriod(_ searchPeriod: SearchPeriod) {
-        UserDefaults.standard.set(searchPeriod.rawValue, forKey: "SearchPeriod")
+    static func setSearchType(_ searchType: SearchType) {
+        UserDefaults.standard.set(searchType.rawValue, forKey: "SearchType")
     }
     
     // delete

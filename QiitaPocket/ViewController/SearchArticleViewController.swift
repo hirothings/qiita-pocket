@@ -12,8 +12,7 @@ import RxCocoa
 
 class SearchArticleViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet weak var sortSegment: UISegmentedControl!
-    @IBOutlet weak var periodSegment: UISegmentedControl!
+    @IBOutlet weak var searchTypeSegment: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var contentViewHeight: NSLayoutConstraint!
     
@@ -61,53 +60,26 @@ class SearchArticleViewController: UIViewController, UITableViewDataSource, UITa
     // MARK: - Private Method
     
     func initSegmentValue() {
-        guard let sortType = UserSettings.getSearchSort() else {
-            return
-        }
-        guard let periodType = UserSettings.getSearchPeriod() else {
+        guard let searchType = UserSettings.getSearchType() else {
             return
         }
         
-        switch sortType {
+        switch searchType {
+        case .rank:
+            searchTypeSegment.selectedSegmentIndex = 0
         case .recent:
-            sortSegment.selectedSegmentIndex = 0
-        case .popular:
-            sortSegment.selectedSegmentIndex = 1
-        }
-        
-        switch periodType {
-        case .all:
-            periodSegment.selectedSegmentIndex = 0
-        case .month:
-            periodSegment.selectedSegmentIndex = 1
-        case .week:
-            periodSegment.selectedSegmentIndex = 2
+            searchTypeSegment.selectedSegmentIndex = 1
         }
     }
     
     func saveSearchSettings() {
-        sortSegment.rx.value
+        searchTypeSegment.rx.value
             .subscribe(onNext: { index in
                 switch index {
                 case 0:
-                    UserSettings.setSearchSort(SearchSort.recent)
+                    UserSettings.setSearchType(SearchType.rank)
                 case 1:
-                    UserSettings.setSearchSort(SearchSort.popular)
-                default:
-                    break
-                }
-            })
-            .addDisposableTo(bag)
-        
-        periodSegment.rx.value
-            .subscribe(onNext: { index in
-                switch index {
-                case 0:
-                    UserSettings.setSearchPeriod(SearchPeriod.all)
-                case 1:
-                    UserSettings.setSearchPeriod(SearchPeriod.month)
-                case 2:
-                    UserSettings.setSearchPeriod(SearchPeriod.week)
+                    UserSettings.setSearchType(SearchType.recent)
                 default:
                     break
                 }
