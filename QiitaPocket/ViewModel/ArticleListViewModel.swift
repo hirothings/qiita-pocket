@@ -71,7 +71,8 @@ class ArticleListViewModel {
                             self.fetchRankingTrigger.onNext((keyword: currentKeyword, page: nextPage))
                         }
                         else {
-                            self.fetchSucceed.onNext(articles)
+                            let sortedArticles = self.sortByStockCount(articles)
+                            self.fetchSucceed.onNext(sortedArticles)
                         }
                     }
                     else {
@@ -123,5 +124,17 @@ class ArticleListViewModel {
             )
             .addDisposableTo(bag)
     }
+    
+    
+    // MARK: - Private Method
 
+    /// ストック順に記事をソートする
+    private func sortByStockCount(_ articles: [Article]) -> [Article] {
+        let sortedArticles = articles
+            .flatMap { ($0, $0.stockCount) }
+            .sorted { $0.1 > $1.1 }[0..<20] // 20件まで
+            .map { $0.0 }
+        
+        return sortedArticles
+    }
 }
