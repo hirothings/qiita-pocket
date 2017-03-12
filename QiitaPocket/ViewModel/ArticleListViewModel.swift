@@ -17,7 +17,7 @@ class ArticleListViewModel {
     var isLoading = Variable(false)
     var hasData = Variable(false)
     
-    private let fetchRankingTrigger = PublishSubject<String>()
+    private let fetchRankingTrigger = PublishSubject<(keyword: String, page: String)>()
     private let fetchRecentTrigger = PublishSubject<String>()
     private let bag = DisposeBag()
 
@@ -32,13 +32,13 @@ class ArticleListViewModel {
             if let searchType = UserSettings.getSearchType() {
                 switch searchType {
                 case .rank:
-                    self.fetchRankingTrigger.onNext(keyword)
+                    self.fetchRankingTrigger.onNext((keyword: keyword, page: "1"))
                 case .recent:
                     self.fetchRecentTrigger.onNext(keyword)
                 }
             }
             else {
-                self.fetchRankingTrigger.onNext(keyword)
+                self.fetchRankingTrigger.onNext((keyword: keyword, page: "1"))
             }
         }
         .addDisposableTo(bag)
@@ -46,8 +46,48 @@ class ArticleListViewModel {
 
     
     func configureRanking() {
+        var currentKeyword: String = ""
         
+        fetchRankingTrigger
+            .do(onNext: { [unowned self] in
+                self.isLoading.value = true
+                self.searchBarTitle.value = $0.keyword // TODO: 検索設定追加
+                currentKeyword = $0.keyword // キャプチャできる用にスコープ外にキーワードを渡す
+            })
+            .flatMap {
+                Articles.fetchWeeklyPost(with: $0.keyword, page: $0.page)
+            }
+            .do(onNext: { [unowned self] _ in
+                self.isLoading.value = false
+            })
+            .observeOn(Dependencies.sharedInstance.mainScheduler)
+            .subscribe(
+                onNext: { [weak self] (model: Articles) in
+                    guard let `self` = self else { return }
+                    let articles = model.items
+                    if articles.isNotEmpty {
+                        self.hasData.value = true
+                        if let nextPage = model.nextPage {
+                            self.fetchRankingTrigger.onNext((keyword: currentKeyword, page: nextPage))
+                        }
+                        else {
+                            self.fetchSucceed.onNext(articles)
+                        }
+                    }
+                    else {
+                        self.hasData.value = false
+                    }
+                },
+                onError: { (error) in
+                    print("error")
+                },
+                onCompleted: {
+                    print("Completed")
+                }
+            )
+            .addDisposableTo(bag)
     }
+    
     
     func configureRecentArticle() {
         fetchRecentTrigger
