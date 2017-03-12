@@ -23,6 +23,8 @@ struct SearchHistory {
         if tag.isEmpty { return }
         
         var tags = UserSettings.getSearchHistory()
+        if let _ = tags.index(of: tag) { return } // 重複して登録させない
+
         tags.insert(tag, at: 0)
         
         if tags.count > max {
