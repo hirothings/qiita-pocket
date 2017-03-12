@@ -15,6 +15,7 @@ class ArticleView: UIView {
     @IBOutlet weak var authorID: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tagLabel: UILabel!
+    @IBOutlet weak var stockCount: UILabel!
 
     override init(frame: CGRect) {
         super.init(frame: frame)

@@ -28,7 +28,7 @@ final class Article: Object {
     dynamic var url: String = ""
     dynamic var saveState: String = SaveState.none.rawValue
     let tags: List<Tag> = List<Tag>()
-    let stockCount = RealmOptional<Int>()
+    dynamic var stockCount: Int = 0
     
     var saveStateType: SaveState {
         get {
