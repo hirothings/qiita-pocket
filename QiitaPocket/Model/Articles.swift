@@ -25,7 +25,7 @@ struct Articles: JSONDecodable {
             article.publishedAt = Util.setDisplayDate(str: createdAt, format: "yyyy.MM.dd")
             article.id = json["id"].stringValue
             article.title = json["title"].stringValue
-            article.user = json["user"]["id"].stringValue
+            article.author = json["user"]["url_name"].stringValue
             article.profile_image_url = json["user"]["profile_image_url"].stringValue
             article.url = json["url"].stringValue
             

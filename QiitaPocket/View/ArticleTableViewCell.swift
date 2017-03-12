@@ -23,12 +23,13 @@ final class ArticleTableViewCell: UITableViewCell, SwipeCellType {
     
     var article: Article! {
         didSet {
-            articleView.dateLabel.text = article.publishedAt
+            articleView.dateLabel.text = "\(article.publishedAt) 投稿"
             articleView.titleLabel.text = article.title
             articleView.tagLabel.text = article.tags.first?.name // TODO: 複数件表示
+            articleView.authorID.text = article.author
             let url = URL(string: article.profile_image_url)
             articleView.profileImageView.sd_setImage(with: url)
-            articleView.stockCount.text = "\(article.stockCount) 投稿"
+            articleView.stockCount.text = "\(article.stockCount)"
             swipeGesture.rx.event.bindNext { [weak self] (gesture: UIPanGestureRecognizer) in
                 self?.onRightSwipe(gesture)
             }

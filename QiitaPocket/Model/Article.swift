@@ -23,7 +23,7 @@ final class Article: Object {
     dynamic var publishedAt: String = ""
     dynamic var id: String = ""
     dynamic var title: String = ""
-    dynamic var user: String = ""
+    dynamic var author: String = ""
     dynamic var profile_image_url: String = ""
     dynamic var url: String = ""
     dynamic var saveState: String = SaveState.none.rawValue
