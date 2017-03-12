@@ -17,7 +17,6 @@ class ArticleListViewModel {
     var isLoading = Variable(false)
     var hasData = Variable(false)
     private let bag = DisposeBag()
-
     
     init() {
         
@@ -39,7 +38,7 @@ class ArticleListViewModel {
                     let articles = model.items
                     if articles.isNotEmpty {
                         self.hasData.value = true
-                        self.fetchSucceed.onNext(articles)
+                        self.setStocks(articls: articles)
                     }
                     else {
                         self.hasData.value = false
@@ -55,4 +54,25 @@ class ArticleListViewModel {
             .addDisposableTo(bag)
     }
 
+    func setStocks(articls: [Article]) {
+        
+        for (i, article) in articls.enumerated() {
+            Stocks.fetch(with: article.id)
+                .subscribe(
+                    onNext: { [weak self] (stocks: Stocks) in
+                        article.stockCount.value = stocks.count
+                        if i == articls.count - 1 {
+                            self?.fetchSucceed.onNext(articls)
+                        }
+                    },
+                    onError: { (error) in
+                        print("error")
+                    },
+                    onCompleted: {
+                        print("Completed")
+                    }
+                )
+                .addDisposableTo(bag)
+        }
+    }
 }

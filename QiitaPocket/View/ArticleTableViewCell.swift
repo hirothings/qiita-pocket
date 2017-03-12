@@ -28,6 +28,12 @@ final class ArticleTableViewCell: UITableViewCell, SwipeCellType {
             articleView.tagLabel.text = article.tags.first?.name // TODO: 複数件表示
             let url = URL(string: article.profile_image_url)
             articleView.profileImageView.sd_setImage(with: url)
+            if let stockCount = article.stockCount.value {
+                articleView.likeCount.text = "\(stockCount)"
+            }
+            else {
+                articleView.likeCount.text = "---"
+            }
             swipeGesture.rx.event.bindNext { [weak self] (gesture: UIPanGestureRecognizer) in
                 self?.onRightSwipe(gesture)
             }
