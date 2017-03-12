@@ -16,12 +16,41 @@ class ArticleListViewModel {
     let searchBarTitle = Variable("")
     var isLoading = Variable(false)
     var hasData = Variable(false)
+    
+    private let fetchRankingTrigger = PublishSubject<String>()
+    private let fetchRecentTrigger = PublishSubject<String>()
     private let bag = DisposeBag()
 
     
     init() {
         
-        fetchTrigger
+        configureRanking()
+        configureRecentArticle()
+        
+        // TODO: model化
+        fetchTrigger.bindNext { (keyword: String) in
+            if let searchType = UserSettings.getSearchType() {
+                switch searchType {
+                case .rank:
+                    self.fetchRankingTrigger.onNext(keyword)
+                case .recent:
+                    self.fetchRecentTrigger.onNext(keyword)
+                }
+            }
+            else {
+                self.fetchRankingTrigger.onNext(keyword)
+            }
+        }
+        .addDisposableTo(bag)
+    }
+
+    
+    func configureRanking() {
+        
+    }
+    
+    func configureRecentArticle() {
+        fetchRecentTrigger
             .do(onNext: { [unowned self] tag in
                 self.isLoading.value = true
                 self.searchBarTitle.value = tag // TODO: 検索設定追加
