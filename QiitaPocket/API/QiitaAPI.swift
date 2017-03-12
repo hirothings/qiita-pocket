@@ -9,6 +9,8 @@
 import Foundation
 
 final class QiitaAPI {
+    
+    /// 投稿記事のリクエスト
     struct SearchArticles: QiitaRequest {
         
         typealias ResponseObject = Articles
@@ -27,5 +29,19 @@ final class QiitaAPI {
                 return ["query": "tag:" + tag]
             }
         }
+    }
+    
+    /// ストック情報のリクエスト
+    struct SearchStocks: QiitaRequest {
+        
+        typealias ResponseObject = Stocks
+        
+        let itemID: String
+        
+        var path: String {
+            return "items/\(itemID)/stockers"
+        }
+        
+        var parameters: [String : Any]? { return nil }
     }
 }

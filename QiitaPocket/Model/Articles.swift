@@ -21,7 +21,7 @@ struct Articles: JSONDecodable {
             let article = Article()
             
             let createdAt = json["created_at"].stringValue
-            article.createdAt = Util.convertDate(str: createdAt, format: "yyyy.MM.dd HH:mm:ss")
+            article.publishedAt = Util.setDisplayDate(str: createdAt, format: "yyyy.MM.dd HH:mm:ss")
             article.id = json["id"].stringValue
             article.title = json["title"].stringValue
             article.user = json["user"]["id"].stringValue

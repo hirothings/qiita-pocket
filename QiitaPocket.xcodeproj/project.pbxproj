@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		540B1D831E74648500D6DD17 /* Stocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540B1D821E74648500D6DD17 /* Stocks.swift */; };
+		540B1D871E75166300D6DD17 /* KeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540B1D861E75166300D6DD17 /* KeyManager.swift */; };
+		540B1D891E75206700D6DD17 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 540B1D881E75206700D6DD17 /* Keys.plist */; };
+		540C90EA1E717AAE0073D43E /* ArticleListNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540C90E91E717AAE0073D43E /* ArticleListNavigationController.swift */; };
+		542265E91E64059000C7AA45 /* ReadLaterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542265E81E64059000C7AA45 /* ReadLaterViewController.swift */; };
+		542265EB1E640C2400C7AA45 /* XLPagerTabStrip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 542265EA1E640C2400C7AA45 /* XLPagerTabStrip.framework */; };
+		542265EE1E64283B00C7AA45 /* ReadLaterTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542265ED1E64283B00C7AA45 /* ReadLaterTabViewController.swift */; };
+		542265F01E642A2C00C7AA45 /* ArchiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542265EF1E642A2C00C7AA45 /* ArchiveViewController.swift */; };
+		54BB71BD1E6AF8D30020DB9D /* SwipeCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BB71BC1E6AF8D30020DB9D /* SwipeCellType.swift */; };
+		54BB71BF1E6AFC240020DB9D /* ArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BB71BE1E6AFC240020DB9D /* ArticleView.swift */; };
+		54BB71C11E6AFC320020DB9D /* ArticleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54BB71C01E6AFC320020DB9D /* ArticleView.xib */; };
 		54CD4D741E62D99500F15B5B /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D511E62D99500F15B5B /* APIClient.swift */; };
 		54CD4D751E62D99500F15B5B /* Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D521E62D99500F15B5B /* Dependencies.swift */; };
 		54CD4D761E62D99500F15B5B /* JSONDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D531E62D99500F15B5B /* JSONDecodable.swift */; };
@@ -19,7 +30,6 @@
 		54CD4D7D1E62D99500F15B5B /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D5D1E62D99500F15B5B /* ArrayExtension.swift */; };
 		54CD4D7E1E62D99500F15B5B /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D5E1E62D99500F15B5B /* UIColorExtension.swift */; };
 		54CD4D7F1E62D99500F15B5B /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D5F1E62D99500F15B5B /* UIViewExtension.swift */; };
-		54CD4D801E62D99500F15B5B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54CD4D601E62D99500F15B5B /* Info.plist */; };
 		54CD4D811E62D99500F15B5B /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D621E62D99500F15B5B /* Article.swift */; };
 		54CD4D821E62D99500F15B5B /* ArticleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D631E62D99500F15B5B /* ArticleManager.swift */; };
 		54CD4D831E62D99500F15B5B /* Articles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D641E62D99500F15B5B /* Articles.swift */; };
@@ -44,6 +54,17 @@
 
 /* Begin PBXFileReference section */
 		52471A8D1CD9AF2E006865C6 /* QiitaPocket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QiitaPocket.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		540B1D821E74648500D6DD17 /* Stocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stocks.swift; sourceTree = "<group>"; };
+		540B1D861E75166300D6DD17 /* KeyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyManager.swift; sourceTree = "<group>"; };
+		540B1D881E75206700D6DD17 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
+		540C90E91E717AAE0073D43E /* ArticleListNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleListNavigationController.swift; sourceTree = "<group>"; };
+		542265E81E64059000C7AA45 /* ReadLaterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadLaterViewController.swift; sourceTree = "<group>"; };
+		542265EA1E640C2400C7AA45 /* XLPagerTabStrip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XLPagerTabStrip.framework; path = Carthage/Build/iOS/XLPagerTabStrip.framework; sourceTree = "<group>"; };
+		542265ED1E64283B00C7AA45 /* ReadLaterTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadLaterTabViewController.swift; sourceTree = "<group>"; };
+		542265EF1E642A2C00C7AA45 /* ArchiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArchiveViewController.swift; sourceTree = "<group>"; };
+		54BB71BC1E6AF8D30020DB9D /* SwipeCellType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeCellType.swift; sourceTree = "<group>"; };
+		54BB71BE1E6AFC240020DB9D /* ArticleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleView.swift; sourceTree = "<group>"; };
+		54BB71C01E6AFC320020DB9D /* ArticleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArticleView.xib; sourceTree = "<group>"; };
 		54CD4D511E62D99500F15B5B /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		54CD4D521E62D99500F15B5B /* Dependencies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dependencies.swift; sourceTree = "<group>"; };
 		54CD4D531E62D99500F15B5B /* JSONDecodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONDecodable.swift; sourceTree = "<group>"; };
@@ -84,6 +105,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				542265EB1E640C2400C7AA45 /* XLPagerTabStrip.framework in Frameworks */,
 				54FAA58A1E3DD62600C09411 /* Realm.framework in Frameworks */,
 				54FAA58B1E3DD62600C09411 /* RealmSwift.framework in Frameworks */,
 				6CBB0B1A1DB3ACBA007CCC11 /* RxSwift.framework in Frameworks */,
@@ -99,6 +121,7 @@
 		19989F1DB404BCE9479B50AF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				542265EA1E640C2400C7AA45 /* XLPagerTabStrip.framework */,
 				54FAA5881E3DD62600C09411 /* Realm.framework */,
 				54FAA5891E3DD62600C09411 /* RealmSwift.framework */,
 				6CBB0B191DB3ACBA007CCC11 /* RxSwift.framework */,
@@ -136,6 +159,7 @@
 				54CD4D5A1E62D99500F15B5B /* Main.storyboard */,
 				54CD4D5C1E62D99500F15B5B /* Extension */,
 				54CD4D601E62D99500F15B5B /* Info.plist */,
+				540B1D881E75206700D6DD17 /* Keys.plist */,
 				54CD4D611E62D99500F15B5B /* Model */,
 				54CD4D671E62D99500F15B5B /* Util */,
 				54CD4D6A1E62D99500F15B5B /* View */,
@@ -175,6 +199,7 @@
 				54CD4D641E62D99500F15B5B /* Articles.swift */,
 				54CD4D651E62D99500F15B5B /* SearchHistory.swift */,
 				54CD4D661E62D99500F15B5B /* SearchType.swift */,
+				540B1D821E74648500D6DD17 /* Stocks.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -184,6 +209,7 @@
 			children = (
 				54CD4D681E62D99500F15B5B /* UserSettings.swift */,
 				54CD4D691E62D99500F15B5B /* Util.swift */,
+				540B1D861E75166300D6DD17 /* KeyManager.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -192,7 +218,10 @@
 			isa = PBXGroup;
 			children = (
 				54CD4D6B1E62D99500F15B5B /* ArticleTableViewCell.swift */,
+				54BB71BC1E6AF8D30020DB9D /* SwipeCellType.swift */,
 				54CD4D6C1E62D99500F15B5B /* ArticleTableViewCell.xib */,
+				54BB71BE1E6AFC240020DB9D /* ArticleView.swift */,
+				54BB71C01E6AFC320020DB9D /* ArticleView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -201,9 +230,13 @@
 			isa = PBXGroup;
 			children = (
 				54CD4D6E1E62D99500F15B5B /* ArticleListViewController.swift */,
+				540C90E91E717AAE0073D43E /* ArticleListNavigationController.swift */,
 				54CD4D6F1E62D99500F15B5B /* MainTabBarController.swift */,
 				54CD4D701E62D99500F15B5B /* SearchArticleViewController.swift */,
 				54CD4D711E62D99500F15B5B /* WebViewController.swift */,
+				542265E81E64059000C7AA45 /* ReadLaterViewController.swift */,
+				542265EF1E642A2C00C7AA45 /* ArchiveViewController.swift */,
+				542265ED1E64283B00C7AA45 /* ReadLaterTabViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -278,8 +311,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				540B1D891E75206700D6DD17 /* Keys.plist in Resources */,
+				54BB71C11E6AFC320020DB9D /* ArticleView.xib in Resources */,
 				54CD4D891E62D99500F15B5B /* ArticleTableViewCell.xib in Resources */,
-				54CD4D801E62D99500F15B5B /* Info.plist in Resources */,
 				54CD4D7C1E62D99500F15B5B /* Main.storyboard in Resources */,
 				54CD4D7A1E62D99500F15B5B /* Assets.xcassets in Resources */,
 				54CD4D7B1E62D99500F15B5B /* LaunchScreen.storyboard in Resources */,
@@ -302,6 +336,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/XLPagerTabStrip.framework",
 			);
 			outputPaths = (
 			);
@@ -316,6 +351,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				542265E91E64059000C7AA45 /* ReadLaterViewController.swift in Sources */,
 				54CD4D791E62D99500F15B5B /* AppDelegate.swift in Sources */,
 				54CD4D761E62D99500F15B5B /* JSONDecodable.swift in Sources */,
 				54CD4D821E62D99500F15B5B /* ArticleManager.swift in Sources */,
@@ -325,18 +361,25 @@
 				54CD4D851E62D99500F15B5B /* SearchType.swift in Sources */,
 				54CD4D841E62D99500F15B5B /* SearchHistory.swift in Sources */,
 				54CD4D751E62D99500F15B5B /* Dependencies.swift in Sources */,
+				542265EE1E64283B00C7AA45 /* ReadLaterTabViewController.swift in Sources */,
+				540B1D871E75166300D6DD17 /* KeyManager.swift in Sources */,
 				54CD4D8E1E62D99500F15B5B /* ArticleListViewModel.swift in Sources */,
 				54CD4D831E62D99500F15B5B /* Articles.swift in Sources */,
 				54CD4D7E1E62D99500F15B5B /* UIColorExtension.swift in Sources */,
 				54CD4D811E62D99500F15B5B /* Article.swift in Sources */,
 				54CD4D881E62D99500F15B5B /* ArticleTableViewCell.swift in Sources */,
+				54BB71BF1E6AFC240020DB9D /* ArticleView.swift in Sources */,
+				54BB71BD1E6AF8D30020DB9D /* SwipeCellType.swift in Sources */,
 				54CD4D741E62D99500F15B5B /* APIClient.swift in Sources */,
 				54CD4D7D1E62D99500F15B5B /* ArrayExtension.swift in Sources */,
+				540B1D831E74648500D6DD17 /* Stocks.swift in Sources */,
 				54CD4D8B1E62D99500F15B5B /* MainTabBarController.swift in Sources */,
 				54CD4D7F1E62D99500F15B5B /* UIViewExtension.swift in Sources */,
 				54CD4D781E62D99500F15B5B /* QiitaRequest.swift in Sources */,
 				54CD4D8A1E62D99500F15B5B /* ArticleListViewController.swift in Sources */,
+				540C90EA1E717AAE0073D43E /* ArticleListNavigationController.swift in Sources */,
 				54CD4D861E62D99500F15B5B /* UserSettings.swift in Sources */,
+				542265F01E642A2C00C7AA45 /* ArchiveViewController.swift in Sources */,
 				54CD4D771E62D99500F15B5B /* QiitaAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

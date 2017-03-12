@@ -7,92 +7,44 @@
 //
 
 import UIKit
+import WebImage
 import RxSwift
 
-protocol SwipeCellDelegate: class {
-    func didSwipeReadLater(at indexPath: IndexPath)
-}
-
-class ArticleTableViewCell: UITableViewCell {
+final class ArticleTableViewCell: UITableViewCell, SwipeCellType {
     
-    @IBOutlet weak var profileImageView: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var detailLabel: UILabel!
-    @IBOutlet weak var readLaterButton: UIButton!
-    @IBOutlet weak var cardView: UIView!
-    
+    @IBOutlet weak var articleView: ArticleView!
     var swipeGesture = UIPanGestureRecognizer()
+    var swipeIndexPath: IndexPath!
+    var preTransration: CGPoint?
     
     weak var delegate: SwipeCellDelegate?
-        
+    private var recycleBag = DisposeBag()
+
+    
     var article: Article! {
         didSet {
-            self.titleLabel.text = article.title
-            self.detailLabel.text = article.tags.first?.name // TODO: 複数件表示
+            articleView.dateLabel.text = article.publishedAt
+            articleView.titleLabel.text = article.title
+            articleView.tagLabel.text = article.tags.first?.name // TODO: 複数件表示
             let url = URL(string: article.profile_image_url)
-            self.profileImageView.sd_setImage(with: url)
+            articleView.profileImageView.sd_setImage(with: url)
+            swipeGesture.rx.event.bindNext { [weak self] (gesture: UIPanGestureRecognizer) in
+                self?.onRightSwipe(gesture)
+            }
+            .addDisposableTo(recycleBag)
         }
     }
-    
-    private var swipeLocation: CGPoint = CGPoint()
-    private var swipeIndexPath: IndexPath = IndexPath()
-
     
     override func awakeFromNib() {
         super.awakeFromNib()
-
-        swipeGesture = UIPanGestureRecognizer(target: self, action: #selector(self.onRightSwipe(_:)))
         swipeGesture.delegate = self
-        self.cardView.addGestureRecognizer(swipeGesture)
+        self.articleView.addGestureRecognizer(swipeGesture)
     }
     
-    
-    func onRightSwipe(_ gesture: UIPanGestureRecognizer) {
-        self.contentView.backgroundColor = UIColor.theme
-        let translation = gesture.translation(in: self)
-
-        guard let tableView = self.superview?.superview as? UITableView else { return }
-        tableView.panGestureRecognizer.isEnabled = true // tableviewのscrollを復帰する
-
-        // 縦スクロール時は、横スワイプ感知せずreturn
-        let verticalGesture = fabs(gesture.velocity(in: self).y) > fabs(gesture.velocity(in: self).x) + 200
-        if verticalGesture {
-            print("vertical gesture")
-            return
-        }
-        
-        switch gesture.state {
-        case .began:
-            print("swipe began")
-            swipeLocation = gesture.location(in: tableView)
-            swipeIndexPath = tableView.indexPathForRow(at: swipeLocation)!
-        case .changed:
-            if 20.0 < translation.x { // 右スワイプ20pt以上を感知する
-                tableView.panGestureRecognizer.isEnabled = false // 右スワイプ中はtableviewのscrollを切る
-                self.cardView.frame.origin.x = translation.x
-            }
-        case .ended:
-            if 100 < translation.x {
-                UIView.animate(
-                    withDuration: 0.1,
-                    animations: { [unowned self] in
-                        self.cardView.frame.origin.x = UIScreen.main.bounds.width
-                    },
-                    completion: { [unowned self] _ in
-                        self.delegate?.didSwipeReadLater(at: self.swipeIndexPath)
-                    })
-            }
-            else {
-                UIView.animate(withDuration: 0.1, animations: { [unowned self] in
-                    self.cardView.frame.origin.x = 0
-                })
-            }
-        default:
-            break
-        }
-
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        recycleBag = DisposeBag()
     }
-    
     
     override func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true

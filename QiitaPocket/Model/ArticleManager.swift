@@ -18,10 +18,36 @@ final class ArticleManager {
         return realm.objects(Article.self)
     }
     
-    /// 追加・更新
-    static func update(article: Article) {
+    /// 後で読むを取得
+    static func getReadLaters() -> Results<Article> {
+        return realm.objects(Article.self).filter("saveState == '\(SaveState.readLater.rawValue)'").sorted(byKeyPath: "updatedAt", ascending: false)
+    }
+    
+    /// アーカイブを取得
+    static func getArchives() -> Results<Article> {
+        return realm.objects(Article.self).filter("saveState == '\(SaveState.archive.rawValue)'").sorted(byKeyPath: "updatedAt", ascending: false)
+    }
+    
+    /// 後で読むに追加
+    static func add(readLater article: Article) {
         do {
             try realm.write {
+                article.saveStateType = .readLater
+                article.updatedAt = Date()
+                realm.add(article, update: true)
+            }
+        }
+        catch _ {
+            // TODO: error処理
+        }
+    }
+    
+    /// アーカイブに追加
+    static func add(archive article: Article) {
+        do {
+            try realm.write {
+                article.saveStateType = .archive
+                article.updatedAt = Date()
                 realm.add(article, update: true)
             }
         }
@@ -31,15 +57,14 @@ final class ArticleManager {
     }
     
     /// 削除
-    static func delete(article: Article) -> Error? {
+    static func delete(article: Article) {
         do {
             try realm.write {
                 realm.delete(article)
             }
         }
-        catch let error {
-            return error
+        catch _ {
+            // TODO: error処理
         }
-        return nil
     }
 }

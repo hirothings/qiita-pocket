@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import WebImage
 import RxSwift
 import RxCocoa
 
@@ -24,20 +23,28 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
     
     private let viewModel = ArticleListViewModel()
     private var searchArticleVC = SearchArticleViewController()
+    private var searchBar: UISearchBar!
     private let bag = DisposeBag()
+    private var nvc: ArticleListNavigationController!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.rowHeight = 72.0
-        tableView.separatorInset = UIEdgeInsets.zero
+        tableView.estimatedRowHeight = 103.0
+        tableView.rowHeight = UITableViewAutomaticDimension
         tableView.isHidden = true
         noneDataLabel.isHidden = true
         activityIndicatorView.hidesWhenStopped = true
         
+        nvc = self.navigationController as! ArticleListNavigationController
+        searchBar = nvc.searchBar
+        searchBar.delegate = self
+        
         let nib: UINib = UINib(nibName: "ArticleTableViewCell", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: "CustomCell")
+        
+        tableView.refreshControl = refreshControll
         
         // bind
         refreshControll.rx.controlEvent(.valueChanged)
@@ -75,9 +82,6 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
             .skip(1)
             .bindTo(noneDataLabel.rx.isHidden)
             .addDisposableTo(bag)
-
-        setupSearchBar()
-        tableView.refreshControl = refreshControll
     }
 
 
@@ -108,11 +112,11 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
     
     // MARK: - SwipeCellDelegate
     
-    func didSwipeReadLater(at indexPath: IndexPath) {
+    func didSwipeCell(at indexPath: IndexPath) {
         tableView.beginUpdates()
         
         let article = articles[indexPath.row]
-        ArticleManager.update(article: article) // Realmに記事を保存
+        ArticleManager.add(readLater: article) // Realmに記事を保存
         
         articles.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
@@ -135,30 +139,8 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
     
     
     // MARK: - Private Method
-
-    private func setupSearchBar() {
-        let navigationBarFrame: CGRect = self.navigationController!.navigationBar.bounds
-        let searchBar = UISearchBar(frame: navigationBarFrame)
-        
-        searchBar.delegate = self
-        searchBar.placeholder = "タグを検索"
-        searchBar.showsCancelButton = false
-        searchBar.autocapitalizationType = .none
-        searchBar.keyboardType = .default
-        searchBar.tintColor = UIColor.gray
-        searchBar.text = UserSettings.getCurrentSearchTag()
-        searchBar.enablesReturnKeyAutomatically = false
-        for subView in searchBar.subviews {
-            for secondSubView in subView.subviews {
-                if secondSubView is UITextField {
-                    secondSubView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.3)
-                    break
-                }
-            }
-        }
-        navigationItem.titleView = searchBar
-    }
     
+    // TODO: viewModelに処理移す
     private func updateSearchState(tag: String) {
         UserSettings.setCurrentSearchTag(name: tag)
         
@@ -166,34 +148,53 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
         searchHistory.add(tag: tag)
     }
     
-    
-    // MARK: - UISearchBarDelegate
-    
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchBar.showsCancelButton = true
-        // 検索モードのChildViewControllerをセット
+    /// 検索ViewControllerをセット
+    private func setupSearchArticleVC() {
         searchArticleVC = self.storyboard!.instantiateViewController(withIdentifier: "SearchArticleViewController") as! SearchArticleViewController
         self.addChildViewController(searchArticleVC)
         self.view.addSubview(searchArticleVC.view)
         searchArticleVC.didMove(toParentViewController: self)
+        
+        // 検索履歴タップ時のイベント
+        searchArticleVC.didSelectSearchHistory
+            .subscribe(onNext: { [unowned self] (tag: String) in
+                self.searchBar.text = tag
+                self.updateSearchState(tag: tag)
+                self.viewModel.fetchTrigger.onNext(tag)
+                self.searchBar.endEditing(true)
+                self.searchBar.showsCancelButton = false
+                self.removeSearchArticleVC()
+                self.tableView.isHidden = true
+            })
+            .addDisposableTo(bag)
+        
+        nvc.unsetSettingButton()
     }
     
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.showsCancelButton = false
-        // 検索モードのChildViewControllerを削除
+    /// 検索ViewControllerを削除
+    private func removeSearchArticleVC() {
         searchArticleVC.willMove(toParentViewController: self)
         searchArticleVC.view.removeFromSuperview()
         searchArticleVC.removeFromParentViewController()
+        nvc.setupSettingButton()
+    }
+    
+    
+    // MARK: - UISearchBarDelegate
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        setupSearchArticleVC()
+        searchBar.showsCancelButton = true
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        removeSearchArticleVC()
         searchBar.endEditing(true)
         searchBar.showsCancelButton = false
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        // 検索モードのChildViewControllerを削除
-        searchArticleVC.willMove(toParentViewController: self)
-        searchArticleVC.view.removeFromSuperview()
-        searchArticleVC.removeFromParentViewController()
-        
+        removeSearchArticleVC()
         searchBar.endEditing(true)
         searchBar.showsCancelButton = false
 

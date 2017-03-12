@@ -10,7 +10,7 @@ import Foundation
 
 class Util {
     
-    static func convertDate(str: String, format: String) -> String {
+    static func setDisplayDate(str: String, format: String) -> String {
         let inFormatter = DateFormatter()
         inFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
         let date = inFormatter.date(from: str)!

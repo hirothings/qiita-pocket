@@ -17,6 +17,8 @@ class SearchArticleViewController: UIViewController, UITableViewDataSource, UITa
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var contentViewHeight: NSLayoutConstraint!
     
+    var didSelectSearchHistory = PublishSubject<String>()
+    
     private let bag = DisposeBag()
     private let searchHistories: [String] = SearchHistory.tags
     
@@ -48,6 +50,11 @@ class SearchArticleViewController: UIViewController, UITableViewDataSource, UITa
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath)
         cell.textLabel?.text = searchHistories[indexPath.row]
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let history = searchHistories[indexPath.row]
+        didSelectSearchHistory.onNext(history)
     }
     
     
