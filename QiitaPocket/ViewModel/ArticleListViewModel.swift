@@ -130,9 +130,10 @@ class ArticleListViewModel {
 
     /// ストック順に記事をソートする
     private func sortByStockCount(_ articles: [Article]) -> [Article] {
+        let rankLimit: Int = (articles.count > 20) ? 20 : articles.count // 20件以上の場合、20件までに絞る
         let sortedArticles = articles
             .flatMap { ($0, $0.stockCount) }
-            .sorted { $0.1 > $1.1 }[0..<20] // 20件まで
+            .sorted { $0.1 > $1.1 }[0..<rankLimit]
             .map { $0.0 }
         
         return sortedArticles
