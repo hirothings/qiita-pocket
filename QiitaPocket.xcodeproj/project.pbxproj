@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		540B1D831E74648500D6DD17 /* Stocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540B1D821E74648500D6DD17 /* Stocks.swift */; };
 		540C90EA1E717AAE0073D43E /* ArticleListNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540C90E91E717AAE0073D43E /* ArticleListNavigationController.swift */; };
 		542265E91E64059000C7AA45 /* ReadLaterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542265E81E64059000C7AA45 /* ReadLaterViewController.swift */; };
 		542265EB1E640C2400C7AA45 /* XLPagerTabStrip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 542265EA1E640C2400C7AA45 /* XLPagerTabStrip.framework */; };
@@ -51,6 +52,7 @@
 
 /* Begin PBXFileReference section */
 		52471A8D1CD9AF2E006865C6 /* QiitaPocket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QiitaPocket.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		540B1D821E74648500D6DD17 /* Stocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stocks.swift; sourceTree = "<group>"; };
 		540C90E91E717AAE0073D43E /* ArticleListNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleListNavigationController.swift; sourceTree = "<group>"; };
 		542265E81E64059000C7AA45 /* ReadLaterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadLaterViewController.swift; sourceTree = "<group>"; };
 		542265EA1E640C2400C7AA45 /* XLPagerTabStrip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XLPagerTabStrip.framework; path = Carthage/Build/iOS/XLPagerTabStrip.framework; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				54CD4D641E62D99500F15B5B /* Articles.swift */,
 				54CD4D651E62D99500F15B5B /* SearchHistory.swift */,
 				54CD4D661E62D99500F15B5B /* SearchType.swift */,
+				540B1D821E74648500D6DD17 /* Stocks.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -361,6 +364,7 @@
 				54BB71BD1E6AF8D30020DB9D /* SwipeCellType.swift in Sources */,
 				54CD4D741E62D99500F15B5B /* APIClient.swift in Sources */,
 				54CD4D7D1E62D99500F15B5B /* ArrayExtension.swift in Sources */,
+				540B1D831E74648500D6DD17 /* Stocks.swift in Sources */,
 				54CD4D8B1E62D99500F15B5B /* MainTabBarController.swift in Sources */,
 				54CD4D7F1E62D99500F15B5B /* UIViewExtension.swift in Sources */,
 				54CD4D781E62D99500F15B5B /* QiitaRequest.swift in Sources */,
