@@ -23,12 +23,12 @@ class APIClient {
             let url = self.buildPath(baseURL: request.baseURL, path: request.path)
             
             // TODO: ifDEBUG化
-            var authHeader: [String: String]?
-            if let token = KeyManager.testToken {
-                authHeader = ["Authorization": token]
-            }
+//            var authHeader: [String: String]?
+//            if let token = KeyManager.testToken {
+//                authHeader = ["Authorization": token]
+//            }
 
-            let request = Alamofire.request(url, method: request.method, parameters: request.parameters, headers: authHeader)
+            let request = Alamofire.request(url, method: request.method, parameters: request.parameters, headers: nil)
                 .responseJSON { response in
                     
                     let nextPage: String? = self.parseNextPage(header: response.response?.allHeaderFields)

@@ -18,7 +18,12 @@ final class QiitaAPI {
         let tag: String
 
         var path: String {
-            return "search"
+            if tag.isEmpty {
+                return "items"
+            }
+            else {
+                return "search"
+            }
         }
         
         var parameters: [String: Any]? {
