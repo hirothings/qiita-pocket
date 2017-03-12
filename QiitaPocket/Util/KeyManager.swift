@@ -16,7 +16,7 @@ struct KeyManager {
         guard let keys = getKeys() else {
             return nil
         }
-        return keys["TestToken"] as! String?
+        return keys["TestToken"] as? String
     }
     
     static func getKeys() -> [String: Any]? {
