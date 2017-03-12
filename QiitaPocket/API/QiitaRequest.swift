@@ -21,7 +21,7 @@ protocol QiitaRequest {
 
 extension QiitaRequest {
     var baseURL: String {
-        return "https://qiita.com/api/v2"
+        return "https://qiita.com/api/v1"
     }
     
     var method: HTTPMethod {

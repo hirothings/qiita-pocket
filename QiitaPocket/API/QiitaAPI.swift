@@ -18,7 +18,7 @@ final class QiitaAPI {
         let tag: String
 
         var path: String {
-            return "items"
+            return "search"
         }
         
         var parameters: [String: Any]? {
@@ -26,10 +26,11 @@ final class QiitaAPI {
                 return nil
             }
             else {
-                return ["query": tag]
+                return ["q": tag]
             }
         }
     }
+
     
     /// ストック情報のリクエスト
     struct SearchStocks: QiitaRequest {
