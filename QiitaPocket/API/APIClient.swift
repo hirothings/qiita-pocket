@@ -31,12 +31,17 @@ class APIClient {
             let request = Alamofire.request(url, method: request.method, parameters: request.parameters, headers: authHeader)
                 .responseJSON { response in
                     
-                     debugPrint(response)
-                    
+                    let nextPage: String? = self.parseNextPage(header: response.response?.allHeaderFields)
+
+                    // TODO: ifDEBUG化
+                    print("APIレスポンス -- ")
+                    debugPrint(response)
+                    print("/APIレスポンス -- ")
+
                     switch response.result {
                     case .success(let value):
                         if let json = value as? [Any] {
-                            let responseObject = Request.ResponseObject(json: json)
+                            let responseObject = Request.ResponseObject(json: json, nextPage: nextPage)
                             observer.on(.next(responseObject))
                         }
                         observer.on(.completed)
@@ -57,5 +62,30 @@ class APIClient {
     private func buildPath(baseURL: String, path: String) -> URL {
         let trimmedPath = path.hasPrefix("/") ? path.substring(to: path.characters.index(after: path.startIndex)) : path
         return URL(string: baseURL + "/" + trimmedPath)!
+    }
+    
+    /// 次のページ番号をLinkヘッダーからParseする
+    private func parseNextPage(header: [AnyHashable: Any]?) -> String? {
+        guard let serializedLinks = header?["Link"] as? String else { return nil }
+        print(serializedLinks)
+        do {
+            let regex = try NSRegularExpression(pattern: "(?<=&page=)(.+?)(?=&)", options: .allowCommentsAndWhitespace)
+            guard let match = regex.firstMatch(in: serializedLinks,
+                                               options: NSRegularExpression.MatchingOptions(),
+                                               range: NSRange(location: 0, length: serializedLinks.characters.count)) else { return nil }
+
+            let matcheStrings = (1 ..< match.numberOfRanges).map { rangeIndex -> String in
+                let range = match.rangeAt(rangeIndex) // マッチングした位置
+                // CharacterView型のindexに変換
+                let startIndex: String.CharacterView.Index = serializedLinks.characters.index(serializedLinks.startIndex, offsetBy: range.location)
+                let endIndex: String.CharacterView.Index = serializedLinks.characters.index(serializedLinks.startIndex, offsetBy: range.location + range.length)
+                let stringRange = startIndex ..< endIndex
+                return serializedLinks.substring(with: stringRange) // マッチした文字列を抜き出す
+            }
+            return matcheStrings.first
+        }
+        catch {
+            return nil
+        }
     }
 }
