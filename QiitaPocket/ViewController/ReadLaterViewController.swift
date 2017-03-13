@@ -56,6 +56,11 @@ final class ReadLaterViewController: UIViewController, UITableViewDataSource, UI
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
+    }
+    
     deinit {
         notificationToken?.stop()
     }

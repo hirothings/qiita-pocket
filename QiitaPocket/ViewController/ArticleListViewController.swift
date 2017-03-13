@@ -85,6 +85,11 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
             .bindTo(noneDataLabel.rx.isHidden)
             .addDisposableTo(bag)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
+    }
 
 
     // MARK: - TableView Delegate
