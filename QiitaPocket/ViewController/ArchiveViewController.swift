@@ -93,6 +93,7 @@ class ArchiveViewController: UIViewController, UITableViewDataSource, UITableVie
         
         postUrl = URL(string: article.url)
         performSegue(withIdentifier: "toWebView", sender: nil)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     

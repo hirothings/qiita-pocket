@@ -114,6 +114,7 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
 
         postUrl = URL(string: article.url)
         performSegue(withIdentifier: "toWebView", sender: nil)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     

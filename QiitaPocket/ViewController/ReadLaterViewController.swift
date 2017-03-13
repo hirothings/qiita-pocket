@@ -95,6 +95,7 @@ final class ReadLaterViewController: UIViewController, UITableViewDataSource, UI
         
         postUrl = URL(string: article.url)
         performSegue(withIdentifier: "toWebView", sender: nil)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     
