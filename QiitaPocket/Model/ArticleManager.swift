@@ -12,6 +12,13 @@ import RealmSwift
 final class ArticleManager {
     
     static let realm: Realm = try! Realm()
+    
+    static private var now: String = {
+        let now = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy.MM.dd HH:mm:ss"
+        return formatter.string(from: now)
+    }()
 
     /// 全件取得
     static func getAll() -> Results<Article> {
@@ -33,7 +40,7 @@ final class ArticleManager {
         do {
             try realm.write {
                 article.saveStateType = .readLater
-                article.updatedAt = Date()
+                article.updatedAt = now
                 realm.add(article, update: true)
             }
         }
@@ -47,7 +54,7 @@ final class ArticleManager {
         do {
             try realm.write {
                 article.saveStateType = .archive
-                article.updatedAt = Date()
+                article.updatedAt = now
                 realm.add(article, update: true)
             }
         }
