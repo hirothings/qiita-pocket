@@ -42,6 +42,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="articleView" destination="e1Q-dk-Gbz" id="6Ig-I1-2Mm"/>
+                <outlet property="readLaterIcon" destination="X3o-Sy-u78" id="Ut4-35-sCA"/>
             </connections>
             <point key="canvasLocation" x="245.5" y="-485.5"/>
         </tableViewCell>

@@ -34,4 +34,15 @@ final class ArchiveTableViewCell: UITableViewCell {
             articleView.stockCount.text = "\(article.stockCount)"
         }
     }
+    
+    
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        super.setHighlighted(true, animated: true)
+        if highlighted {
+            self.articleView.backgroundColor = UIColor.bg
+        }
+        else {
+            self.articleView.backgroundColor = UIColor.white
+        }
+    }
 }

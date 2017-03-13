@@ -13,6 +13,7 @@ import RxSwift
 final class ArticleTableViewCell: UITableViewCell, SwipeCellType {
     
     @IBOutlet weak var articleView: ArticleView!
+    @IBOutlet weak var readLaterIcon: UIImageView!
     var swipeGesture = UIPanGestureRecognizer()
     var swipeIndexPath: IndexPath!
     var preTransration: CGPoint?
@@ -46,6 +47,17 @@ final class ArticleTableViewCell: UITableViewCell, SwipeCellType {
     override func prepareForReuse() {
         super.prepareForReuse()
         recycleBag = DisposeBag()
+    }
+    
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        super.setHighlighted(true, animated: true)
+        if highlighted {
+            self.articleView.backgroundColor = UIColor.bg
+        }
+        else {
+            self.articleView.backgroundColor = UIColor.white
+            self.contentView.backgroundColor = UIColor.theme
+        }
     }
     
     override func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
