@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ArticleView" customModule="QiitaPocket" customModuleProvider="target">
             <connections>
+                <outlet property="actionButton" destination="7ub-ly-DjE" id="eUc-3Q-Wrb"/>
                 <outlet property="authorID" destination="uIN-6j-OA1" id="z9D-Cv-dOI"/>
                 <outlet property="dateLabel" destination="me1-tK-2xQ" id="90j-PB-72f"/>
                 <outlet property="profileImageView" destination="11Z-Sz-cUh" id="j8X-Ay-bZr"/>

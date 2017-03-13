@@ -35,6 +35,7 @@ final class ArticleTableViewCell: UITableViewCell, SwipeCellType {
                 self?.onRightSwipe(gesture)
             }
             .addDisposableTo(recycleBag)
+            articleView.articleSaveState = article.saveStateType
         }
     }
     

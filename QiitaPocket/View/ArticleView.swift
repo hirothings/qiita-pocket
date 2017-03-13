@@ -16,6 +16,23 @@ class ArticleView: UIView {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tagLabel: UILabel!
     @IBOutlet weak var stockCount: UILabel!
+    @IBOutlet weak var actionButton: UIButton!
+    
+    var articleSaveState: SaveState = .none {
+        willSet(state) {
+            switch state {
+            case .none:
+                self.actionButton.setImage(#imageLiteral(resourceName: "ic-read-later_disabled"), for: .normal)
+                self.actionButton.setImage(#imageLiteral(resourceName: "ic-read-later"), for: .highlighted)
+            case .readLater:
+                self.actionButton.setImage(#imageLiteral(resourceName: "ic-check_disabled"), for: .normal)
+                self.actionButton.setImage(#imageLiteral(resourceName: "ic-check"), for: .highlighted)
+            case .archive:
+                self.actionButton.setImage(#imageLiteral(resourceName: "ic-delete"), for: .normal)
+                self.actionButton.setImage(#imageLiteral(resourceName: "ic-delete_on"), for: .highlighted)
+            }
+        }
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
