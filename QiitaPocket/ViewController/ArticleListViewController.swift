@@ -33,6 +33,8 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
         
         tableView.estimatedRowHeight = 103.0
         tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.separatorInset = UIEdgeInsets.zero
+
         tableView.isHidden = true
         noneDataLabel.isHidden = true
         activityIndicatorView.hidesWhenStopped = true
