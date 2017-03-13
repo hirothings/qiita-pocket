@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="389" height="103"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1Va-DE-qjS" id="uyq-wd-osF">
-                <rect key="frame" x="0.0" y="0.0" width="389" height="102.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="389" height="102"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-read-later_white" translatesAutoresizingMaskIntoConstraints="NO" id="X3o-Sy-u78">
@@ -30,7 +30,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </subviews>
-                <color key="backgroundColor" red="0.076431877910000001" green="0.75004607440000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <color key="backgroundColor" red="0.074509803921568626" green="0.74901960784313726" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="e1Q-dk-Gbz" secondAttribute="trailing" id="ARY-PG-Cem"/>
                     <constraint firstItem="X3o-Sy-u78" firstAttribute="leading" secondItem="uyq-wd-osF" secondAttribute="leading" constant="16" id="LQC-Wo-GNt"/>

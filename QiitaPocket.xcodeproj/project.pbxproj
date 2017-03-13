@@ -43,6 +43,8 @@
 		54CD4D8C1E62D99500F15B5B /* SearchArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D701E62D99500F15B5B /* SearchArticleViewController.swift */; };
 		54CD4D8D1E62D99500F15B5B /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D711E62D99500F15B5B /* WebViewController.swift */; };
 		54CD4D8E1E62D99500F15B5B /* ArticleListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D731E62D99500F15B5B /* ArticleListViewModel.swift */; };
+		54D5713A1E765D77000C0D21 /* ReadLaterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D571391E765D77000C0D21 /* ReadLaterTableViewCell.swift */; };
+		54D5713C1E765DC0000C0D21 /* ReadLaterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54D5713B1E765DC0000C0D21 /* ReadLaterTableViewCell.xib */; };
 		54FAA58A1E3DD62600C09411 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54FAA5881E3DD62600C09411 /* Realm.framework */; };
 		54FAA58B1E3DD62600C09411 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54FAA5891E3DD62600C09411 /* RealmSwift.framework */; };
 		6CA49CB01DB3569900853D00 /* WebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CA49CAF1DB3569900853D00 /* WebImage.framework */; };
@@ -90,6 +92,8 @@
 		54CD4D701E62D99500F15B5B /* SearchArticleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchArticleViewController.swift; sourceTree = "<group>"; };
 		54CD4D711E62D99500F15B5B /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		54CD4D731E62D99500F15B5B /* ArticleListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleListViewModel.swift; sourceTree = "<group>"; };
+		54D571391E765D77000C0D21 /* ReadLaterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadLaterTableViewCell.swift; sourceTree = "<group>"; };
+		54D5713B1E765DC0000C0D21 /* ReadLaterTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReadLaterTableViewCell.xib; sourceTree = "<group>"; };
 		54FAA5881E3DD62600C09411 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		54FAA5891E3DD62600C09411 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		6CA49CAF1DB3569900853D00 /* WebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebImage.framework; path = Carthage/Build/iOS/WebImage.framework; sourceTree = "<group>"; };
@@ -215,8 +219,10 @@
 			isa = PBXGroup;
 			children = (
 				54CD4D6B1E62D99500F15B5B /* ArticleTableViewCell.swift */,
+				54D571391E765D77000C0D21 /* ReadLaterTableViewCell.swift */,
 				54BB71BC1E6AF8D30020DB9D /* SwipeCellType.swift */,
 				54CD4D6C1E62D99500F15B5B /* ArticleTableViewCell.xib */,
+				54D5713B1E765DC0000C0D21 /* ReadLaterTableViewCell.xib */,
 				54BB71BE1E6AFC240020DB9D /* ArticleView.swift */,
 				54BB71C01E6AFC320020DB9D /* ArticleView.xib */,
 			);
@@ -310,6 +316,7 @@
 			files = (
 				540B1D891E75206700D6DD17 /* Keys.plist in Resources */,
 				54BB71C11E6AFC320020DB9D /* ArticleView.xib in Resources */,
+				54D5713C1E765DC0000C0D21 /* ReadLaterTableViewCell.xib in Resources */,
 				54CD4D891E62D99500F15B5B /* ArticleTableViewCell.xib in Resources */,
 				54CD4D7C1E62D99500F15B5B /* Main.storyboard in Resources */,
 				54CD4D7A1E62D99500F15B5B /* Assets.xcassets in Resources */,
@@ -374,6 +381,7 @@
 				54CD4D781E62D99500F15B5B /* QiitaRequest.swift in Sources */,
 				54CD4D8A1E62D99500F15B5B /* ArticleListViewController.swift in Sources */,
 				540C90EA1E717AAE0073D43E /* ArticleListNavigationController.swift in Sources */,
+				54D5713A1E765D77000C0D21 /* ReadLaterTableViewCell.swift in Sources */,
 				54CD4D861E62D99500F15B5B /* UserSettings.swift in Sources */,
 				542265F01E642A2C00C7AA45 /* ArchiveViewController.swift in Sources */,
 				54CD4D771E62D99500F15B5B /* QiitaAPI.swift in Sources */,

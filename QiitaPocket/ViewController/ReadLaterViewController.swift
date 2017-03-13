@@ -12,8 +12,6 @@ import RxCocoa
 import RealmSwift
 import XLPagerTabStrip
 
-
-// TODO: 共通化
 final class ReadLaterViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SwipeCellDelegate, IndicatorInfoProvider {
 
     @IBOutlet weak var tableView: UITableView!
@@ -31,9 +29,11 @@ final class ReadLaterViewController: UIViewController, UITableViewDataSource, UI
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.rowHeight = 72.0
+        tableView.estimatedRowHeight = 103.0
+        tableView.rowHeight = UITableViewAutomaticDimension
         tableView.separatorInset = UIEdgeInsets.zero
-        let nib: UINib = UINib(nibName: "ArticleTableViewCell", bundle: nil)
+        
+        let nib: UINib = UINib(nibName: "ReadLaterTableViewCell", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: "CustomCell")
         
         tableView.delegate = self
@@ -77,7 +77,7 @@ final class ReadLaterViewController: UIViewController, UITableViewDataSource, UI
 
     /// tableViewのcellを生成
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! ArticleTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! ReadLaterTableViewCell
         cell.article = articles[indexPath.row]
         cell.delegate = self
         
@@ -98,8 +98,8 @@ final class ReadLaterViewController: UIViewController, UITableViewDataSource, UI
     func didSwipeCell(at indexPath: IndexPath) {
         tableView.beginUpdates()
         
-//        let article = articles[indexPath.row]
-        // TODO: 記事をアーカイブに移動させる
+        let article = articles[indexPath.row]
+        ArticleManager.add(archive: article)
 
         tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
         tableView.endUpdates()
