@@ -14,6 +14,8 @@
 		542265EB1E640C2400C7AA45 /* XLPagerTabStrip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 542265EA1E640C2400C7AA45 /* XLPagerTabStrip.framework */; };
 		542265EE1E64283B00C7AA45 /* ReadLaterTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542265ED1E64283B00C7AA45 /* ReadLaterTabViewController.swift */; };
 		542265F01E642A2C00C7AA45 /* ArchiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542265EF1E642A2C00C7AA45 /* ArchiveViewController.swift */; };
+		5457AADE1E767384000E3FE3 /* ArchiveTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5457AADC1E767384000E3FE3 /* ArchiveTableViewCell.swift */; };
+		5457AADF1E767384000E3FE3 /* ArchiveTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5457AADD1E767384000E3FE3 /* ArchiveTableViewCell.xib */; };
 		54BB71BD1E6AF8D30020DB9D /* SwipeCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BB71BC1E6AF8D30020DB9D /* SwipeCellType.swift */; };
 		54BB71BF1E6AFC240020DB9D /* ArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BB71BE1E6AFC240020DB9D /* ArticleView.swift */; };
 		54BB71C11E6AFC320020DB9D /* ArticleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54BB71C01E6AFC320020DB9D /* ArticleView.xib */; };
@@ -62,6 +64,8 @@
 		542265EA1E640C2400C7AA45 /* XLPagerTabStrip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XLPagerTabStrip.framework; path = Carthage/Build/iOS/XLPagerTabStrip.framework; sourceTree = "<group>"; };
 		542265ED1E64283B00C7AA45 /* ReadLaterTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadLaterTabViewController.swift; sourceTree = "<group>"; };
 		542265EF1E642A2C00C7AA45 /* ArchiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArchiveViewController.swift; sourceTree = "<group>"; };
+		5457AADC1E767384000E3FE3 /* ArchiveTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArchiveTableViewCell.swift; sourceTree = "<group>"; };
+		5457AADD1E767384000E3FE3 /* ArchiveTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArchiveTableViewCell.xib; sourceTree = "<group>"; };
 		54BB71BC1E6AF8D30020DB9D /* SwipeCellType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeCellType.swift; sourceTree = "<group>"; };
 		54BB71BE1E6AFC240020DB9D /* ArticleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleView.swift; sourceTree = "<group>"; };
 		54BB71C01E6AFC320020DB9D /* ArticleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArticleView.xib; sourceTree = "<group>"; };
@@ -218,6 +222,8 @@
 		54CD4D6A1E62D99500F15B5B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5457AADC1E767384000E3FE3 /* ArchiveTableViewCell.swift */,
+				5457AADD1E767384000E3FE3 /* ArchiveTableViewCell.xib */,
 				54CD4D6B1E62D99500F15B5B /* ArticleTableViewCell.swift */,
 				54D571391E765D77000C0D21 /* ReadLaterTableViewCell.swift */,
 				54BB71BC1E6AF8D30020DB9D /* SwipeCellType.swift */,
@@ -320,6 +326,7 @@
 				54CD4D891E62D99500F15B5B /* ArticleTableViewCell.xib in Resources */,
 				54CD4D7C1E62D99500F15B5B /* Main.storyboard in Resources */,
 				54CD4D7A1E62D99500F15B5B /* Assets.xcassets in Resources */,
+				5457AADF1E767384000E3FE3 /* ArchiveTableViewCell.xib in Resources */,
 				54CD4D7B1E62D99500F15B5B /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -376,6 +383,7 @@
 				54BB71BD1E6AF8D30020DB9D /* SwipeCellType.swift in Sources */,
 				54CD4D741E62D99500F15B5B /* APIClient.swift in Sources */,
 				54CD4D7D1E62D99500F15B5B /* ArrayExtension.swift in Sources */,
+				5457AADE1E767384000E3FE3 /* ArchiveTableViewCell.swift in Sources */,
 				54CD4D8B1E62D99500F15B5B /* MainTabBarController.swift in Sources */,
 				54CD4D7F1E62D99500F15B5B /* UIViewExtension.swift in Sources */,
 				54CD4D781E62D99500F15B5B /* QiitaRequest.swift in Sources */,

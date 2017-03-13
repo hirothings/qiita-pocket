@@ -33,7 +33,7 @@
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LNL-OX-88e">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CustomCell" id="8If-M3-sd9" customClass="ArticleTableViewCell" customModule="QiitaPocket" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="50"/>
@@ -53,7 +53,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.97931915521621704" green="0.9800599217414856" blue="0.97943383455276489" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="LNL-OX-88e" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="1dn-Vr-FWb"/>
                             <constraint firstItem="LNL-OX-88e" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="2qG-k9-FgC"/>
@@ -91,7 +91,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oEl-Jp-fLV">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CustomCell" id="fhf-Kc-zBD">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
@@ -104,7 +104,7 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="oEl-Jp-fLV" firstAttribute="leading" secondItem="aFd-s1-dja" secondAttribute="leading" id="5uy-ts-PmV"/>
                             <constraint firstAttribute="trailing" secondItem="oEl-Jp-fLV" secondAttribute="trailing" id="Krt-Oh-9Xa"/>
@@ -112,7 +112,6 @@
                             <constraint firstItem="oEl-Jp-fLV" firstAttribute="top" secondItem="4JI-Vj-cLf" secondAttribute="bottom" id="xdg-RC-ziw"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="b9E-gi-yVm"/>
                     <connections>
                         <outlet property="tableView" destination="oEl-Jp-fLV" id="m7a-mH-Y0T"/>
                         <segue destination="fS7-0f-ewK" kind="show" identifier="toWebView" id="iey-Hh-eqC"/>
@@ -120,7 +119,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s1N-I9-4aM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2912.8000000000002" y="1147.3763118440781"/>
+            <point key="canvasLocation" x="2898" y="1149"/>
         </scene>
         <!--Read Later Tab View Controller-->
         <scene sceneID="YBt-6t-jhh">
@@ -274,12 +273,39 @@
                     <view key="view" contentMode="scaleToFill" id="SI9-xp-UDA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="0.21964285710000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6p8-WN-bgW">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationWidth="10" reuseIdentifier="CustomCell" id="Uly-z8-rLP">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Uly-z8-rLP" id="gzt-ac-IQM">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6p8-WN-bgW" firstAttribute="leading" secondItem="SI9-xp-UDA" secondAttribute="leading" id="Hji-yG-lqq"/>
+                            <constraint firstItem="6p8-WN-bgW" firstAttribute="top" secondItem="Iye-vH-Ex2" secondAttribute="bottom" id="IxU-P3-icS"/>
+                            <constraint firstItem="3di-3M-5pA" firstAttribute="top" secondItem="6p8-WN-bgW" secondAttribute="bottom" id="WXW-LV-3a0"/>
+                            <constraint firstItem="6p8-WN-bgW" firstAttribute="top" secondItem="SI9-xp-UDA" secondAttribute="top" constant="20" id="dl5-Sy-0bL"/>
+                            <constraint firstAttribute="trailing" secondItem="6p8-WN-bgW" secondAttribute="trailing" id="ssa-hW-Jij"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="6p8-WN-bgW" id="KAe-1J-N0m"/>
+                        <segue destination="fS7-0f-ewK" kind="show" identifier="toWebView" id="RyL-dS-UKU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuP-aH-0W2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3711" y="1147"/>
+            <point key="canvasLocation" x="2897" y="1830"/>
         </scene>
         <!--Web View Controller-->
         <scene sceneID="X9m-hp-dal">
@@ -290,15 +316,15 @@
                         <viewControllerLayoutGuide type="bottom" id="y7n-EQ-z9T"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="x01-ba-5Ld">
-                        <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HQd-GL-f78">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="510"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                                 <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bF7-2l-iUE">
-                                <rect key="frame" x="0.0" y="510" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items/>
                             </toolbar>
                         </subviews>
@@ -334,7 +360,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZqM-Pg-4R1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3687" y="411"/>
+            <point key="canvasLocation" x="3682" y="431"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="NiQ-4q-Tdl">
@@ -400,6 +426,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="0kY-Cg-MNr"/>
+        <segue reference="iey-Hh-eqC"/>
     </inferredMetricsTieBreakers>
 </document>
