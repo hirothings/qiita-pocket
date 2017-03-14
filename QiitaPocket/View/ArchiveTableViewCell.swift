@@ -25,7 +25,7 @@ final class ArchiveTableViewCell: UITableViewCell {
     
     var article: Article! {
         didSet {
-            articleView.dateLabel.text = "\(article.updatedAt) 保存"
+            articleView.dateLabel.text = "\(article.formattedUpdatedAt) 保存"
             articleView.titleLabel.text = article.title
             articleView.tagLabel.text = article.tags.first?.name
             articleView.authorID.text = article.author
