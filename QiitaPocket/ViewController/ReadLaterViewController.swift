@@ -46,8 +46,14 @@ final class ReadLaterViewController: UIViewController, UITableViewDataSource, UI
             switch change {
             case .initial:
                 tableView.reloadData()
-            case .update(_, deletions: _, insertions: _, modifications: _):
-                tableView.reloadData()
+            case .update(_, deletions: let deletions, insertions: let insertions, modifications: let modifications):                tableView.beginUpdates()
+                tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0) }),
+                                     with: .automatic)
+                tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 0)}),
+                                     with: .automatic)
+                tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0) }),
+                                     with: .automatic)
+                tableView.endUpdates()
             case .error(let error):
                 // TODO: エラー処理
                 fatalError("\(error)")
@@ -102,13 +108,8 @@ final class ReadLaterViewController: UIViewController, UITableViewDataSource, UI
     // MARK: - SwipeCellDelegate
     
     func didSwipeCell(at indexPath: IndexPath) {
-        tableView.beginUpdates()
-        
         let article = articles[indexPath.row]
         ArticleManager.add(archive: article)
-
-        tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
-        tableView.endUpdates()
     }
 
 
