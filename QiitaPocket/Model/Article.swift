@@ -19,7 +19,7 @@ enum SaveState: String {
 
 final class Article: Object {
 
-    dynamic var updatedAt: String = ""
+    dynamic var updatedAt: Date = Date()
     dynamic var publishedAt: String = ""
     dynamic var id: String = ""
     dynamic var title: String = ""
@@ -37,6 +37,12 @@ final class Article: Object {
         set {
             saveState = newValue.rawValue
         }
+    }
+    
+    var formattedUpdatedAt: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy.MM.dd HH:mm:ss"
+        return formatter.string(from: updatedAt)
     }
     
     override class func primaryKey() -> String? {
