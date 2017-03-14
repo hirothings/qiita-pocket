@@ -25,7 +25,7 @@ final class ReadLaterTableViewCell: UITableViewCell, SwipeCellType {
     
     var article: Article! {
         didSet {
-            articleView.dateLabel.text = "\(article.updatedAt) 保存"
+            articleView.dateLabel.text = "\(article.formattedUpdatedAt) 保存"
             articleView.titleLabel.text = article.title
             articleView.tagLabel.text = article.tags.first?.name
             articleView.authorID.text = article.author
@@ -36,7 +36,18 @@ final class ReadLaterTableViewCell: UITableViewCell, SwipeCellType {
                     self?.onRightSwipe(gesture)
                 }
                 .addDisposableTo(recycleBag)
+            
             articleView.articleSaveState = article.saveStateType
+            articleView.actionButton.rx.tap
+                .bindNext { [weak self] in
+                    guard let `self` = self else { return }
+                    self.articleView.actionButton.isSelected = true
+                    
+                    guard let tableView = self.superview?.superview as? UITableView else { return }
+                    guard let indexPath = tableView.indexPath(for: self) else { return }
+                    self.delegate?.didSwipeCell(at: indexPath)
+                }
+                .addDisposableTo(recycleBag)
         }
     }
     
@@ -49,6 +60,7 @@ final class ReadLaterTableViewCell: UITableViewCell, SwipeCellType {
     override func prepareForReuse() {
         super.prepareForReuse()
         recycleBag = DisposeBag()
+        self.articleView.actionButton.isSelected = false
     }
     
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {

@@ -23,13 +23,13 @@ class ArticleView: UIView {
             switch state {
             case .none:
                 self.actionButton.setImage(#imageLiteral(resourceName: "ic-read-later_disabled"), for: .normal)
-                self.actionButton.setImage(#imageLiteral(resourceName: "ic-read-later"), for: .highlighted)
+                self.actionButton.setImage(#imageLiteral(resourceName: "ic-read-later"), for: .selected)
             case .readLater:
                 self.actionButton.setImage(#imageLiteral(resourceName: "ic-check_disabled"), for: .normal)
-                self.actionButton.setImage(#imageLiteral(resourceName: "ic-check"), for: .highlighted)
+                self.actionButton.setImage(#imageLiteral(resourceName: "ic-check"), for: .selected)
             case .archive:
                 self.actionButton.setImage(#imageLiteral(resourceName: "ic-delete"), for: .normal)
-                self.actionButton.setImage(#imageLiteral(resourceName: "ic-delete_on"), for: .highlighted)
+                self.actionButton.setImage(#imageLiteral(resourceName: "ic-delete_on"), for: .selected)
             }
         }
     }
@@ -51,6 +51,7 @@ class ArticleView: UIView {
         // profile画像を丸くする
         profileImageView.layer.cornerRadius = profileImageView.frame.size.width * 0.5
         profileImageView.clipsToBounds = true
+        
         
         // カスタムViewのサイズを自分自身と同じサイズにする
         view.translatesAutoresizingMaskIntoConstraints = false

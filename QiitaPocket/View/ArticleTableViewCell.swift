@@ -9,6 +9,7 @@
 import UIKit
 import WebImage
 import RxSwift
+import RxCocoa
 
 final class ArticleTableViewCell: UITableViewCell, SwipeCellType {
     
@@ -35,9 +36,21 @@ final class ArticleTableViewCell: UITableViewCell, SwipeCellType {
                 self?.onRightSwipe(gesture)
             }
             .addDisposableTo(recycleBag)
+
             articleView.articleSaveState = article.saveStateType
+            articleView.actionButton.rx.tap
+                .bindNext { [weak self] in
+                    guard let `self` = self else { return }
+                    self.articleView.actionButton.isSelected = true
+
+                    guard let tableView = self.superview?.superview as? UITableView else { return }
+                    guard let indexPath = tableView.indexPath(for: self) else { return }
+                    self.delegate?.didSwipeCell(at: indexPath)
+                }
+                .addDisposableTo(recycleBag)
         }
     }
+
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -48,6 +61,7 @@ final class ArticleTableViewCell: UITableViewCell, SwipeCellType {
     override func prepareForReuse() {
         super.prepareForReuse()
         recycleBag = DisposeBag()
+        self.articleView.actionButton.isSelected = false
     }
     
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {
