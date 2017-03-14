@@ -316,15 +316,15 @@
                         <viewControllerLayoutGuide type="bottom" id="y7n-EQ-z9T"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="x01-ba-5Ld">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HQd-GL-f78">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="510"/>
                                 <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bF7-2l-iUE">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="510" width="375" height="44"/>
                                 <items/>
                             </toolbar>
                         </subviews>
@@ -362,10 +362,10 @@
             </objects>
             <point key="canvasLocation" x="3682" y="431"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main Tab Bar Controller-->
         <scene sceneID="NiQ-4q-Tdl">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="AAx-FF-Xre" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="AAx-FF-Xre" customClass="MainTabBarController" customModule="QiitaPocket" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="pNS-WM-dAj"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="vBp-tE-X5x">
@@ -382,15 +382,19 @@
             </objects>
             <point key="canvasLocation" x="665.625" y="385.56338028169017"/>
         </scene>
-        <!--探す-->
+        <!--Article List Navigation Controller-->
         <scene sceneID="UYq-ez-B0e">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oqQ-8c-pSf" customClass="ArticleListNavigationController" customModule="QiitaPocket" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="探す" id="cxM-RB-B2f"/>
+                    <tabBarItem key="tabBarItem" title="" id="cxM-RB-B2f">
+                        <inset key="imageInsets" minX="0.0" minY="7" maxX="0.0" maxY="-7"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                    </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="RiW-v2-Rj0">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="RiW-v2-Rj0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.076431877910000001" green="0.75004607440000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                         </textAttributes>
@@ -404,11 +408,13 @@
             </objects>
             <point key="canvasLocation" x="1495" y="385"/>
         </scene>
-        <!--後で読む-->
+        <!--Navigation Controller-->
         <scene sceneID="jWy-gN-Epl">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Yto-5F-N17" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="1" title="後で読む" id="1oS-yd-PUO"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="" id="1oS-yd-PUO">
+                        <inset key="imageInsets" minX="0.0" minY="7" maxX="0.0" maxY="-7"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Mld-gb-DUW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -426,6 +432,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="RyL-dS-UKU"/>
+        <segue reference="0kY-Cg-MNr"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" red="0.30588235294117649" green="0.63921568627450975" blue="0.039215686274509803" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
