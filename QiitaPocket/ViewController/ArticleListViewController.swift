@@ -34,6 +34,7 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
         tableView.estimatedRowHeight = 103.0
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.separatorInset = UIEdgeInsets.zero
+        tableView.sectionHeaderHeight = 30.0
 
         tableView.isHidden = true
         noneDataLabel.isHidden = true
@@ -93,6 +94,38 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
 
 
     // MARK: - TableView Delegate
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let searchType = UserSettings.getSearchType() else { return nil }
+        let currentTag = UserSettings.getCurrentSearchTag()
+        
+        var text: String
+        switch searchType {
+        case .rank:
+            text = "週間ランキング"
+        case .recent:
+            text = "新着順"
+        }
+        
+        text = text + ": \(currentTag)"
+        
+        let label: UILabel = {
+            let lb = UILabel(frame: CGRect(x: 10.0, y: 0.0, width: self.view.bounds.width, height: 30.0))
+            lb.text = text
+            lb.textColor = UIColor.white
+            lb.font = UIFont.boldSystemFont(ofSize: 12.0)
+            return lb
+        }()
+        
+        let view: UIView = {
+            let v = UIView()
+            v.backgroundColor = UIColor.theme
+            return v
+        }()
+        
+        view.addSubview(label)
+        return view
+    }
 
     /// tableViewの行数を指定
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

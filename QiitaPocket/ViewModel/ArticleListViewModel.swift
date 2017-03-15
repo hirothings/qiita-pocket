@@ -27,7 +27,6 @@ class ArticleListViewModel {
         configureRanking()
         configureRecentArticle()
         
-        // TODO: model化
         fetchTrigger.bindNext { (keyword: String) in
             if let searchType = UserSettings.getSearchType() {
                 switch searchType {
