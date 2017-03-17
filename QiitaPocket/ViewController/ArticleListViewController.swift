@@ -144,9 +144,9 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
     /// tableViewタップ時webViewに遷移する
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let article = articles[indexPath.row]
-
-        postUrl = URL(string: article.url)
-        performSegue(withIdentifier: "toWebView", sender: nil)
+        
+        let safariVC = SafariViewController(url: URL(string: article.url)!)
+        self.present(safariVC, animated: true, completion: nil)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
