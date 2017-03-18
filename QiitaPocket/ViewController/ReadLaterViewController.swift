@@ -11,6 +11,7 @@ import RxSwift
 import RxCocoa
 import RealmSwift
 import XLPagerTabStrip
+import SafariServices
 
 final class ReadLaterViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SwipeCellDelegate, IndicatorInfoProvider {
 
@@ -20,7 +21,6 @@ final class ReadLaterViewController: UIViewController, UITableViewDataSource, UI
         return ArticleManager.getReadLaters()
     }()
 
-    var postUrl: URL?
     var notificationToken: NotificationToken?
     
     private let bag = DisposeBag()
@@ -99,8 +99,10 @@ final class ReadLaterViewController: UIViewController, UITableViewDataSource, UI
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let article = articles[indexPath.row]
         
-        postUrl = URL(string: article.url)
-        performSegue(withIdentifier: "toWebView", sender: nil)
+        guard let url = URL(string: article.url) else { return }
+        let safariVC = SFSafariViewController(url: url)
+        self.present(safariVC, animated: true, completion: nil)
+        
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -111,19 +113,4 @@ final class ReadLaterViewController: UIViewController, UITableViewDataSource, UI
         let article = articles[indexPath.row]
         ArticleManager.add(archive: article)
     }
-
-
-    // MARK: - Segue
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch segue.identifier! {
-        case "toWebView":
-            let webView: WebViewController = segue.destination as! WebViewController
-            webView.url = postUrl
-            webView.hidesBottomBarWhenPushed = true
-        default:
-            break
-        }
-    }
-
 }

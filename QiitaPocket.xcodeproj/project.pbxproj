@@ -43,7 +43,6 @@
 		54CD4D8A1E62D99500F15B5B /* ArticleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D6E1E62D99500F15B5B /* ArticleListViewController.swift */; };
 		54CD4D8B1E62D99500F15B5B /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D6F1E62D99500F15B5B /* MainTabBarController.swift */; };
 		54CD4D8C1E62D99500F15B5B /* SearchArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D701E62D99500F15B5B /* SearchArticleViewController.swift */; };
-		54CD4D8D1E62D99500F15B5B /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D711E62D99500F15B5B /* WebViewController.swift */; };
 		54CD4D8E1E62D99500F15B5B /* ArticleListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D731E62D99500F15B5B /* ArticleListViewModel.swift */; };
 		54D5713A1E765D77000C0D21 /* ReadLaterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D571391E765D77000C0D21 /* ReadLaterTableViewCell.swift */; };
 		54D5713C1E765DC0000C0D21 /* ReadLaterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54D5713B1E765DC0000C0D21 /* ReadLaterTableViewCell.xib */; };
@@ -94,7 +93,6 @@
 		54CD4D6E1E62D99500F15B5B /* ArticleListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleListViewController.swift; sourceTree = "<group>"; };
 		54CD4D6F1E62D99500F15B5B /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		54CD4D701E62D99500F15B5B /* SearchArticleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchArticleViewController.swift; sourceTree = "<group>"; };
-		54CD4D711E62D99500F15B5B /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		54CD4D731E62D99500F15B5B /* ArticleListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleListViewModel.swift; sourceTree = "<group>"; };
 		54D571391E765D77000C0D21 /* ReadLaterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadLaterTableViewCell.swift; sourceTree = "<group>"; };
 		54D5713B1E765DC0000C0D21 /* ReadLaterTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReadLaterTableViewCell.xib; sourceTree = "<group>"; };
@@ -242,7 +240,6 @@
 				540C90E91E717AAE0073D43E /* ArticleListNavigationController.swift */,
 				54CD4D6F1E62D99500F15B5B /* MainTabBarController.swift */,
 				54CD4D701E62D99500F15B5B /* SearchArticleViewController.swift */,
-				54CD4D711E62D99500F15B5B /* WebViewController.swift */,
 				542265E81E64059000C7AA45 /* ReadLaterViewController.swift */,
 				542265EF1E642A2C00C7AA45 /* ArchiveViewController.swift */,
 				542265ED1E64283B00C7AA45 /* ReadLaterTabViewController.swift */,
@@ -367,7 +364,6 @@
 				54CD4D761E62D99500F15B5B /* JSONDecodable.swift in Sources */,
 				54CD4D821E62D99500F15B5B /* ArticleManager.swift in Sources */,
 				54CD4D8C1E62D99500F15B5B /* SearchArticleViewController.swift in Sources */,
-				54CD4D8D1E62D99500F15B5B /* WebViewController.swift in Sources */,
 				54CD4D871E62D99500F15B5B /* Util.swift in Sources */,
 				54CD4D851E62D99500F15B5B /* SearchType.swift in Sources */,
 				54CD4D841E62D99500F15B5B /* SearchHistory.swift in Sources */,

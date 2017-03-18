@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -39,7 +38,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8If-M3-sd9" id="aXv-Gz-zyB">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <userGuides>
                                                 <userLayoutGuide location="75" affinity="minX"/>
@@ -70,7 +69,6 @@
                         <outlet property="activityIndicatorView" destination="2sy-Ix-rgN" id="p9H-SX-QMJ"/>
                         <outlet property="noneDataLabel" destination="rux-eZ-sJz" id="OcK-P2-hmF"/>
                         <outlet property="tableView" destination="LNL-OX-88e" id="eKu-ch-UM6"/>
-                        <segue destination="fS7-0f-ewK" kind="show" identifier="toWebView" id="0kY-Cg-MNr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -97,7 +95,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fhf-Kc-zBD" id="72j-qq-wQk">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -114,7 +112,6 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="oEl-Jp-fLV" id="m7a-mH-Y0T"/>
-                        <segue destination="fS7-0f-ewK" kind="show" identifier="toWebView" id="iey-Hh-eqC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s1N-I9-4aM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -205,7 +202,7 @@
                                                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mMS-hL-NND" id="XKb-XC-cEd">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                 </tableViewCellContentView>
                                                             </tableViewCell>
@@ -282,7 +279,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Uly-z8-rLP" id="gzt-ac-IQM">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -300,67 +297,11 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="6p8-WN-bgW" id="KAe-1J-N0m"/>
-                        <segue destination="fS7-0f-ewK" kind="show" identifier="toWebView" id="RyL-dS-UKU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuP-aH-0W2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2897" y="1830"/>
-        </scene>
-        <!--Web View Controller-->
-        <scene sceneID="X9m-hp-dal">
-            <objects>
-                <viewController id="fS7-0f-ewK" customClass="WebViewController" customModule="QiitaPocket" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="vr1-Eo-b53"/>
-                        <viewControllerLayoutGuide type="bottom" id="y7n-EQ-z9T"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="x01-ba-5Ld">
-                        <rect key="frame" x="0.0" y="64" width="375" height="554"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HQd-GL-f78">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="510"/>
-                                <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bF7-2l-iUE">
-                                <rect key="frame" x="0.0" y="510" width="375" height="44"/>
-                                <items/>
-                            </toolbar>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="HQd-GL-f78" firstAttribute="top" secondItem="bF7-2l-iUE" secondAttribute="bottom" id="GLb-bp-g1H"/>
-                            <constraint firstItem="bF7-2l-iUE" firstAttribute="top" secondItem="HQd-GL-f78" secondAttribute="bottom" id="IZn-so-1ip"/>
-                            <constraint firstItem="bF7-2l-iUE" firstAttribute="leading" secondItem="x01-ba-5Ld" secondAttribute="leading" id="MRo-OG-Da6"/>
-                            <constraint firstItem="HQd-GL-f78" firstAttribute="top" secondItem="vr1-Eo-b53" secondAttribute="bottom" id="Swh-Aa-8z7"/>
-                            <constraint firstItem="HQd-GL-f78" firstAttribute="top" secondItem="bF7-2l-iUE" secondAttribute="bottom" id="ecM-Sg-hzV"/>
-                            <constraint firstAttribute="trailing" secondItem="bF7-2l-iUE" secondAttribute="trailing" id="fPz-oB-zLu"/>
-                            <constraint firstItem="bF7-2l-iUE" firstAttribute="leading" secondItem="x01-ba-5Ld" secondAttribute="leading" id="fTI-w2-HLu"/>
-                            <constraint firstItem="y7n-EQ-z9T" firstAttribute="top" secondItem="bF7-2l-iUE" secondAttribute="bottom" id="g0F-Eu-yDb"/>
-                            <constraint firstItem="HQd-GL-f78" firstAttribute="leading" secondItem="x01-ba-5Ld" secondAttribute="leading" id="ntN-Dn-EjR"/>
-                            <constraint firstAttribute="trailing" secondItem="HQd-GL-f78" secondAttribute="trailing" id="oRF-0B-5Af"/>
-                            <constraint firstAttribute="trailing" secondItem="bF7-2l-iUE" secondAttribute="trailing" id="ujJ-qg-gLU"/>
-                            <constraint firstItem="HQd-GL-f78" firstAttribute="top" secondItem="x01-ba-5Ld" secondAttribute="topMargin" id="wFG-GH-2QP"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="GLb-bp-g1H"/>
-                                <exclude reference="Swh-Aa-8z7"/>
-                                <exclude reference="ecM-Sg-hzV"/>
-                                <exclude reference="fPz-oB-zLu"/>
-                                <exclude reference="fTI-w2-HLu"/>
-                            </mask>
-                        </variation>
-                    </view>
-                    <connections>
-                        <outlet property="containerView" destination="HQd-GL-f78" id="hUe-no-FpI"/>
-                        <outlet property="toolbar" destination="bF7-2l-iUE" id="5m2-6u-aCi"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZqM-Pg-4R1" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3682" y="431"/>
         </scene>
         <!--Main Tab Bar Controller-->
         <scene sceneID="NiQ-4q-Tdl">
@@ -391,7 +332,7 @@
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="RiW-v2-Rj0">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="RiW-v2-Rj0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.076431877910000001" green="0.75004607440000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -431,8 +372,5 @@
             <point key="canvasLocation" x="1493.5999999999999" y="1149.1754122938532"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="0kY-Cg-MNr"/>
-    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.30588235294117649" green="0.63921568627450975" blue="0.039215686274509803" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

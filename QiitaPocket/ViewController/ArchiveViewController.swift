@@ -11,6 +11,7 @@ import RxSwift
 import RxCocoa
 import RealmSwift
 import XLPagerTabStrip
+import SafariServices
 
 class ArchiveViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, IndicatorInfoProvider {
 
@@ -20,10 +21,10 @@ class ArchiveViewController: UIViewController, UITableViewDataSource, UITableVie
         return ArticleManager.getArchives()
     }()
     
-    var postUrl: URL?
     var notificationToken: NotificationToken?
-    
+
     private let bag = DisposeBag()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,22 +92,10 @@ class ArchiveViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let article = articles[indexPath.row]
         
-        postUrl = URL(string: article.url)
-        performSegue(withIdentifier: "toWebView", sender: nil)
+        guard let url = URL(string: article.url) else { return }
+        let safariVC = SFSafariViewController(url: url)
+        self.present(safariVC, animated: true, completion: nil)
+        
         tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-    
-    // MARK: - Segue
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch segue.identifier! {
-        case "toWebView":
-            let webView: WebViewController = segue.destination as! WebViewController
-            webView.url = postUrl
-            webView.hidesBottomBarWhenPushed = true
-        default:
-            break
-        }
     }
 }

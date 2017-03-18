@@ -9,7 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
-
+import SafariServices
 
 class ArticleListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SwipeCellDelegate, UISearchBarDelegate {
 
@@ -18,7 +18,6 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var noneDataLabel: UILabel!
 
     var articles: [Article] = []
-    var postUrl: URL?
     var refreshControll = UIRefreshControl()
     
     private let viewModel = ArticleListViewModel()
@@ -145,8 +144,10 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let article = articles[indexPath.row]
         
-        let safariVC = SafariViewController(url: URL(string: article.url)!)
+        guard let url = URL(string: article.url) else { return }
+        let safariVC = SFSafariViewController(url: url)
         self.present(safariVC, animated: true, completion: nil)
+        
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -162,20 +163,6 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
         articles.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
         tableView.endUpdates()
-    }
-    
-    
-    // MARK: - Segue
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch segue.identifier! {
-            case "toWebView":
-                let webView: WebViewController = segue.destination as! WebViewController
-                webView.url = postUrl
-                webView.hidesBottomBarWhenPushed = true
-            default:
-                break
-        }
     }
     
     
