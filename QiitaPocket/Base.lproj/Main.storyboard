@@ -323,13 +323,12 @@
             </objects>
             <point key="canvasLocation" x="665.625" y="385.56338028169017"/>
         </scene>
-        <!--Article List Navigation Controller-->
+        <!--検索-->
         <scene sceneID="UYq-ez-B0e">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oqQ-8c-pSf" customClass="ArticleListNavigationController" customModule="QiitaPocket" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" id="cxM-RB-B2f">
-                        <inset key="imageInsets" minX="0.0" minY="7" maxX="0.0" maxY="-7"/>
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                    <tabBarItem key="tabBarItem" title="検索" id="cxM-RB-B2f">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-2"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="RiW-v2-Rj0">
@@ -349,12 +348,12 @@
             </objects>
             <point key="canvasLocation" x="1495" y="385"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--あとで読む-->
         <scene sceneID="jWy-gN-Epl">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Yto-5F-N17" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="1" title="" id="1oS-yd-PUO">
-                        <inset key="imageInsets" minX="0.0" minY="7" maxX="0.0" maxY="-7"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="あとで読む" id="1oS-yd-PUO">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-2"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Mld-gb-DUW">

@@ -16,6 +16,21 @@ class MainTabBarController: UITabBarController {
         guard let searchButton = tabBar.items?.first else { return }
         guard let readLaterButton = tabBar.items?.last else { return }
         
+        // tabBar フォント調整
+        let normalAttributes: [String: Any] = [
+            NSFontAttributeName: UIFont.systemFont(ofSize: 10),
+            NSForegroundColorAttributeName: UIColor.disabled
+        ]
+        let selectedAttributes: [String: Any] = [
+            NSFontAttributeName: UIFont.systemFont(ofSize: 10),
+            NSForegroundColorAttributeName: UIColor.theme
+        ]
+        searchButton.setTitleTextAttributes(normalAttributes, for: .normal)
+        searchButton.setTitleTextAttributes(selectedAttributes, for: .selected)
+        readLaterButton.setTitleTextAttributes(normalAttributes, for: .normal)
+        readLaterButton.setTitleTextAttributes(selectedAttributes, for: .selected)
+        
+        // tabBar アイコン調整
         searchButton.image = #imageLiteral(resourceName: "ic-tab-search").withRenderingMode(.alwaysOriginal)
         readLaterButton.image = #imageLiteral(resourceName: "ic-tab-read-later").withRenderingMode(.alwaysOriginal)
         searchButton.selectedImage = #imageLiteral(resourceName: "ic-tab-search_selected").withRenderingMode(.alwaysOriginal)
