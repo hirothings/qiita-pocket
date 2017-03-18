@@ -75,7 +75,7 @@ final class ReadLaterViewController: UIViewController, UITableViewDataSource, UI
     // MARK: - IndicatorInfoProvider
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "後で読む")
+        return IndicatorInfo(title: "あとで読む")
     }
 
 
