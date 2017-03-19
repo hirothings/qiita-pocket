@@ -18,7 +18,8 @@ class ArticleView: UIView {
     @IBOutlet weak var stockCount: UILabel!
     @IBOutlet weak var actionButton: UIButton!
     @IBOutlet weak var rankLabel: UILabel!
-    
+    @IBOutlet weak var dateLabelLeftConstraint: NSLayoutConstraint!
+
     var articleSaveState: SaveState = .none {
         willSet(state) {
             switch state {
@@ -53,6 +54,9 @@ class ArticleView: UIView {
         profileImageView.layer.cornerRadius = profileImageView.frame.size.width * 0.5
         profileImageView.clipsToBounds = true
         
+        // 日時の左marginはトルツメしておく
+        rankLabel.text = nil
+        dateLabelLeftConstraint.constant = 5.0
         
         // カスタムViewのサイズを自分自身と同じサイズにする
         view.translatesAutoresizingMaskIntoConstraints = false

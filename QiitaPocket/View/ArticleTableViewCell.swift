@@ -50,6 +50,11 @@ final class ArticleTableViewCell: UITableViewCell, SwipeCellType {
             
             if let rank = article.rank.value {
                 articleView.rankLabel.text = "\(rank)"
+                articleView.dateLabelLeftConstraint.constant = 20.0
+            }
+            else {
+                articleView.rankLabel.text = nil
+                articleView.dateLabelLeftConstraint.constant = 5.0
             }
         }
     }

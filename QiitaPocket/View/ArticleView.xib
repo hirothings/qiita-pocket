@@ -15,6 +15,7 @@
                 <outlet property="actionButton" destination="7ub-ly-DjE" id="eUc-3Q-Wrb"/>
                 <outlet property="authorID" destination="uIN-6j-OA1" id="z9D-Cv-dOI"/>
                 <outlet property="dateLabel" destination="me1-tK-2xQ" id="90j-PB-72f"/>
+                <outlet property="dateLabelLeftConstraint" destination="IMG-uj-NuA" id="Cra-OG-kau"/>
                 <outlet property="profileImageView" destination="11Z-Sz-cUh" id="j8X-Ay-bZr"/>
                 <outlet property="rankLabel" destination="JQc-g5-1Yl" id="4FU-Pu-1XS"/>
                 <outlet property="stockCount" destination="d1t-zP-Ge5" id="Eab-R8-zbJ"/>
@@ -37,7 +38,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" verticalCompressionResistancePriority="752" text="2017.03.05 投稿" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="me1-tK-2xQ">
-                            <rect key="frame" x="30" y="0.0" width="90" height="14.5"/>
+                            <rect key="frame" x="23" y="0.0" width="90" height="14.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" red="0.47450980539999998" green="0.48235294220000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -97,7 +98,7 @@
                             </subviews>
                         </stackView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JQc-g5-1Yl">
-                            <rect key="frame" x="-5" y="-5" width="8" height="21"/>
+                            <rect key="frame" x="-5" y="-5" width="8" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -110,6 +111,7 @@
                         <constraint firstAttribute="trailing" secondItem="ckz-0k-9PX" secondAttribute="trailing" id="95H-2u-TUY"/>
                         <constraint firstItem="Yhl-Xe-cfC" firstAttribute="leading" secondItem="03o-rw-cSR" secondAttribute="leading" id="DQ6-da-CI8"/>
                         <constraint firstAttribute="bottom" secondItem="aNN-4h-J25" secondAttribute="bottom" id="GjW-UC-rVq"/>
+                        <constraint firstItem="me1-tK-2xQ" firstAttribute="leading" secondItem="JQc-g5-1Yl" secondAttribute="trailing" constant="20" id="IMG-uj-NuA"/>
                         <constraint firstItem="aNN-4h-J25" firstAttribute="leading" secondItem="03o-rw-cSR" secondAttribute="leading" id="QHM-tO-aMG"/>
                         <constraint firstItem="JQc-g5-1Yl" firstAttribute="leading" secondItem="03o-rw-cSR" secondAttribute="leading" constant="-5" id="SgK-bz-mC8"/>
                         <constraint firstAttribute="trailing" secondItem="Yhl-Xe-cfC" secondAttribute="trailing" constant="35" id="WeY-ga-jmz"/>
@@ -120,7 +122,6 @@
                         <constraint firstItem="oNG-Yc-6Fa" firstAttribute="leading" secondItem="03o-rw-cSR" secondAttribute="leading" id="sXd-0f-W3I"/>
                         <constraint firstItem="aNN-4h-J25" firstAttribute="top" secondItem="oNG-Yc-6Fa" secondAttribute="bottom" constant="8" id="v5s-QN-cEj"/>
                         <constraint firstItem="me1-tK-2xQ" firstAttribute="top" secondItem="03o-rw-cSR" secondAttribute="top" id="wfh-m2-it8"/>
-                        <constraint firstItem="me1-tK-2xQ" firstAttribute="leading" secondItem="03o-rw-cSR" secondAttribute="leading" constant="30" id="ytu-qW-azo"/>
                     </constraints>
                 </view>
             </subviews>
