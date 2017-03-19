@@ -84,7 +84,6 @@ class ArchiveViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! ArchiveTableViewCell
         cell.article = articles[indexPath.row]
-        cell.indexPath = indexPath
         
         return cell
     }

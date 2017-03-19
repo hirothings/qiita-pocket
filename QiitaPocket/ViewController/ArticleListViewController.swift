@@ -140,7 +140,6 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! ArticleTableViewCell
         cell.article = articles[indexPath.row]
-        cell.indexPath = indexPath
         cell.delegate = self
         
         return cell
@@ -167,7 +166,7 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
         ArticleManager.add(readLater: article) // Realmに記事を保存
         
         articles.remove(at: indexPath.row)
-        tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
+        tableView.deleteRows(at: [indexPath], with: .top)
         tableView.endUpdates()
     }
     

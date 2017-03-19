@@ -16,9 +16,7 @@ final class ArchiveTableViewCell: UITableViewCell {
     @IBOutlet weak var articleView: ArticleView!
     
     var swipeGesture = UIPanGestureRecognizer()
-    var swipeIndexPath: IndexPath!
     var preTransration: CGPoint?
-    var indexPath: IndexPath?
     
     weak var delegate: SwipeCellDelegate?
     private var recycleBag = DisposeBag()

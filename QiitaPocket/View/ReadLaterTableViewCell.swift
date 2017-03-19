@@ -18,7 +18,6 @@ final class ReadLaterTableViewCell: UITableViewCell, SwipeCellType {
     var swipeGesture = UIPanGestureRecognizer()
     var swipeIndexPath: IndexPath!
     var preTransration: CGPoint?
-    var indexPath: IndexPath?
     
     weak var delegate: SwipeCellDelegate?
     private var recycleBag = DisposeBag()
@@ -42,7 +41,9 @@ final class ReadLaterTableViewCell: UITableViewCell, SwipeCellType {
             articleView.actionButton.rx.tap
                 .bindNext { [weak self] in
                     guard let `self` = self else { return }
-                    guard let indexPath = self.indexPath else { return }
+                    guard let tableView = self.superview?.superview as? UITableView else { return }
+                    guard let indexPath = tableView.indexPath(for: self) else { return }
+                    
                     self.articleView.actionButton.isSelected = true
                     self.delegate?.didSwipeCell(at: indexPath)
                 }
