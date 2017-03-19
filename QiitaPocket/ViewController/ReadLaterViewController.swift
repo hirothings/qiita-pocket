@@ -48,11 +48,11 @@ final class ReadLaterViewController: UIViewController, UITableViewDataSource, UI
                 tableView.reloadData()
             case .update(_, deletions: let deletions, insertions: let insertions, modifications: let modifications):                tableView.beginUpdates()
                 tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0) }),
-                                     with: .automatic)
+                                     with: .top)
                 tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 0)}),
-                                     with: .automatic)
+                                     with: .top)
                 tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0) }),
-                                     with: .automatic)
+                                     with: .top)
                 tableView.endUpdates()
             case .error(let error):
                 // TODO: エラー処理
@@ -91,7 +91,6 @@ final class ReadLaterViewController: UIViewController, UITableViewDataSource, UI
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! ReadLaterTableViewCell
         cell.article = articles[indexPath.row]
         cell.delegate = self
-        cell.indexPath = indexPath
         
         return cell
     }
