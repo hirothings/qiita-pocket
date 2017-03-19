@@ -18,6 +18,7 @@ protocol SwipeCellType: class {
     var swipeGesture: UIPanGestureRecognizer { get }
     var swipeIndexPath: IndexPath! { get set }
     var preTransration: CGPoint? { get set }
+    var indexPath: IndexPath? { get }
     func onRightSwipe(_ gesture: UIPanGestureRecognizer)
 }
 
@@ -30,8 +31,7 @@ extension SwipeCellType where Self: UITableViewCell {
         
         switch gesture.state {
         case .began:
-            let swipeLocation: CGPoint = gesture.location(in: tableView)
-            swipeIndexPath = tableView.indexPathForRow(at: swipeLocation)!
+            break
             
         case .changed:
             // 左端より先にはスワイプさせない
@@ -59,7 +59,8 @@ extension SwipeCellType where Self: UITableViewCell {
                         self.articleView.frame.origin.x = UIScreen.main.bounds.width
                     },
                     completion: { [unowned self] _ in
-                        self.delegate?.didSwipeCell(at: self.swipeIndexPath)
+                        guard let indexPath = self.indexPath else { return }
+                        self.delegate?.didSwipeCell(at: indexPath)
                 })
             }
             else {

@@ -91,6 +91,7 @@ final class ReadLaterViewController: UIViewController, UITableViewDataSource, UI
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! ReadLaterTableViewCell
         cell.article = articles[indexPath.row]
         cell.delegate = self
+        cell.indexPath = indexPath
         
         return cell
     }

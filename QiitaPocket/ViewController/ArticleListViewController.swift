@@ -135,6 +135,7 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! ArticleTableViewCell
         cell.article = articles[indexPath.row]
+        cell.indexPath = indexPath
         cell.delegate = self
         
         return cell
