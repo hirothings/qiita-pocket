@@ -29,6 +29,7 @@ final class Article: Object {
     dynamic var saveState: String = SaveState.none.rawValue
     let tags: List<Tag> = List<Tag>()
     dynamic var stockCount: Int = 0
+    let rank = RealmOptional<Int>()
     
     var saveStateType: SaveState {
         get {

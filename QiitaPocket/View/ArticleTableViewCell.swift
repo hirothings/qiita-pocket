@@ -48,6 +48,10 @@ final class ArticleTableViewCell: UITableViewCell, SwipeCellType {
                     self.delegate?.didSwipeCell(at: indexPath)
                 }
                 .addDisposableTo(recycleBag)
+            
+            if let rank = article.rank.value {
+                articleView.rankLabel.text = "\(rank)"
+            }
         }
     }
 

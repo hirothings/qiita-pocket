@@ -17,6 +17,7 @@ class ArticleView: UIView {
     @IBOutlet weak var tagLabel: UILabel!
     @IBOutlet weak var stockCount: UILabel!
     @IBOutlet weak var actionButton: UIButton!
+    @IBOutlet weak var rankLabel: UILabel!
     
     var articleSaveState: SaveState = .none {
         willSet(state) {
