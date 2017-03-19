@@ -32,6 +32,7 @@ class UserSettings {
     
     // 検索タイプ
     static func getSearchType() -> SearchType? {
+        UserDefaults.standard.register(defaults: ["SearchType": "rank"])
         guard let rawValue = UserDefaults.standard.string(forKey: "SearchType") else {
             return nil
         }

@@ -106,7 +106,12 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
             text = "新着順"
         }
         
-        text = text + ": \(currentTag)"
+        if currentTag.isEmpty {
+            text += ": すべて"
+        }
+        else {
+            text += ": \(currentTag)"
+        }
         
         let label: UILabel = {
             let lb = UILabel(frame: CGRect(x: 10.0, y: 0.0, width: self.view.bounds.width, height: 30.0))
