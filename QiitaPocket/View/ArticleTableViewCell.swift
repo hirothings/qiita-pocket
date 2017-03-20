@@ -49,12 +49,23 @@ final class ArticleTableViewCell: UITableViewCell, SwipeCellType {
                 .addDisposableTo(recycleBag)
             
             if let rank = article.rank.value {
+                articleView.rankBadgeView.isHidden = false
                 articleView.rankLabel.text = "\(rank)"
+                switch rank {
+                case 1:
+                    articleView.rankBGImageView.tintColor = UIColor.rankGold
+                case 2:
+                    articleView.rankBGImageView.tintColor = UIColor.rankSilver
+                case 3:
+                    articleView.rankBGImageView.tintColor = UIColor.rankBronse
+                default:
+                    articleView.rankBGImageView.tintColor = UIColor.theme
+                }
                 articleView.dateLabelLeftConstraint.constant = 20.0
             }
             else {
-                articleView.rankLabel.text = nil
-                articleView.dateLabelLeftConstraint.constant = 5.0
+                articleView.rankBadgeView.isHidden = true
+                articleView.dateLabelLeftConstraint.constant = 0.0
             }
         }
     }

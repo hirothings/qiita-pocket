@@ -17,8 +17,16 @@ class ArticleView: UIView {
     @IBOutlet weak var tagLabel: UILabel!
     @IBOutlet weak var stockCount: UILabel!
     @IBOutlet weak var actionButton: UIButton!
+    @IBOutlet weak var rankBadgeView: UIView!
     @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var dateLabelLeftConstraint: NSLayoutConstraint!
+    
+    var rankBGImageView: UIImageView = {
+        let bgImage = #imageLiteral(resourceName: "ic-rank-bg").withRenderingMode(.alwaysTemplate)
+        let rankBGImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 53, height: 29))
+        rankBGImageView.image = bgImage
+        return rankBGImageView
+    }()
 
     var articleSaveState: SaveState = .none {
         willSet(state) {
@@ -55,8 +63,12 @@ class ArticleView: UIView {
         profileImageView.clipsToBounds = true
         
         // 日時の左marginはトルツメしておく
-        rankLabel.text = nil
-        dateLabelLeftConstraint.constant = 5.0
+        rankBadgeView.isHidden = true
+        dateLabelLeftConstraint.constant = 0.0
+        
+        // 最背面にランキング画像を置く
+        rankBadgeView.addSubview(rankBGImageView)
+        rankBadgeView.sendSubview(toBack: rankBGImageView)
         
         // カスタムViewのサイズを自分自身と同じサイズにする
         view.translatesAutoresizingMaskIntoConstraints = false
