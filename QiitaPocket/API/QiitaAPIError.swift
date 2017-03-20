@@ -10,13 +10,20 @@ import Foundation
 
 struct QiitaAPIError: Error {
     
+    var message: String = ""
+    
+    
     init?(json: Any) {
         guard let dict = json as? [String: Any] else {
             return nil
         }
         
-        guard let _ = dict["error"] as? String else {
+        guard let originMessage = dict["error"] as? String else {
             return nil
+        }
+        
+        if originMessage == "Rate limit exceeded." {
+            message = "Qiita APIのRateLimitに達しました。しばらく経ってからご利用ください"
         }
     }
 }
