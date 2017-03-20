@@ -22,8 +22,11 @@ struct QiitaAPIError: Error {
             return nil
         }
         
-        if originMessage == "Rate limit exceeded." {
+        switch originMessage {
+        case "Rate limit exceeded.":
             message = "Qiita APIのRateLimitに達しました。しばらく経ってからご利用ください"
+        default:
+            message = "APIエラーが発生しました"
         }
     }
 }
