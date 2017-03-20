@@ -90,7 +90,7 @@ class ArticleListViewModel {
                         break
                     }
                     self.isLoading.value = false
-                    self.configureRanking() // Disposeが破棄されるので、再度設定する
+                    self.configureRanking() // Disposeが破棄されるので、再度設定する TODO: 再起以外に方法はないのか？
                 },
                 onCompleted: {
                     print("Completed")
