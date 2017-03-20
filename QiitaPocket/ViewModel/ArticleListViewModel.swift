@@ -8,6 +8,7 @@
 
 import Foundation
 import RxSwift
+import UIKit
 
 class ArticleListViewModel {
     
@@ -79,13 +80,17 @@ class ArticleListViewModel {
                     }
                 },
                 onError: { (error) in
+                    // TODO: 判定が面倒なので、errorの種類自体をEnumにする
                     switch error {
                     case let qiitaError as QiitaAPIError:
-                        print("Qiitaエラーです")
-                        print(qiitaError.message)
+                        self.showAlert(message: qiitaError.message)
+                    case let connectionError as ConnectionError:
+                        self.showAlert(message: connectionError.message)
                     default:
-                        print("error")
+                        break
                     }
+                    self.isLoading.value = false
+                    self.configureRanking() // Disposeが破棄されるので、再度設定する
                 },
                 onCompleted: {
                     print("Completed")
@@ -121,7 +126,17 @@ class ArticleListViewModel {
                     }
                 },
                 onError: { (error) in
-                    print(error)
+                    // TODO: 判定が面倒なので、errorの種類自体をEnumにする
+                    switch error {
+                    case let qiitaError as QiitaAPIError:
+                        self.showAlert(message: qiitaError.message)
+                    case let connectionError as ConnectionError:
+                        self.showAlert(message: connectionError.message)
+                    default:
+                        break
+                    }
+                    self.isLoading.value = false
+                    self.configureRecentArticle() // Disposeが破棄されるので、再度設定する
                 },
                 onCompleted: {
                     print("Completed")
@@ -148,5 +163,14 @@ class ArticleListViewModel {
             }
         
         return sortedArticles
+    }
+    
+    private func showAlert(message: String) {
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        let defAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(defAction)
+        
+        guard let rootVC = UIApplication.shared.keyWindow?.rootViewController else { return }
+        rootVC.present(alert, animated: true, completion: nil)
     }
 }
