@@ -49,7 +49,8 @@ class APIClient {
                         }
                         observer.on(.completed)
                     case .failure(let error):
-                        observer.on(.error(error))
+                        let connectingError = ConnectionError(errorCode: error._code)
+                        observer.on(.error(connectingError))
                     }
                 }
             
