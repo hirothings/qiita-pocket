@@ -14,6 +14,7 @@
 		542265EB1E640C2400C7AA45 /* XLPagerTabStrip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 542265EA1E640C2400C7AA45 /* XLPagerTabStrip.framework */; };
 		542265EE1E64283B00C7AA45 /* ReadLaterTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542265ED1E64283B00C7AA45 /* ReadLaterTabViewController.swift */; };
 		542265F01E642A2C00C7AA45 /* ArchiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542265EF1E642A2C00C7AA45 /* ArchiveViewController.swift */; };
+		543B70CF1E7FB3C7009367E2 /* QiitaAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543B70CE1E7FB3C7009367E2 /* QiitaAPIError.swift */; };
 		5457AADE1E767384000E3FE3 /* ArchiveTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5457AADC1E767384000E3FE3 /* ArchiveTableViewCell.swift */; };
 		5457AADF1E767384000E3FE3 /* ArchiveTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5457AADD1E767384000E3FE3 /* ArchiveTableViewCell.xib */; };
 		54BB71BD1E6AF8D30020DB9D /* SwipeCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BB71BC1E6AF8D30020DB9D /* SwipeCellType.swift */; };
@@ -63,6 +64,7 @@
 		542265EA1E640C2400C7AA45 /* XLPagerTabStrip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XLPagerTabStrip.framework; path = Carthage/Build/iOS/XLPagerTabStrip.framework; sourceTree = "<group>"; };
 		542265ED1E64283B00C7AA45 /* ReadLaterTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadLaterTabViewController.swift; sourceTree = "<group>"; };
 		542265EF1E642A2C00C7AA45 /* ArchiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArchiveViewController.swift; sourceTree = "<group>"; };
+		543B70CE1E7FB3C7009367E2 /* QiitaAPIError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QiitaAPIError.swift; sourceTree = "<group>"; };
 		5457AADC1E767384000E3FE3 /* ArchiveTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArchiveTableViewCell.swift; sourceTree = "<group>"; };
 		5457AADD1E767384000E3FE3 /* ArchiveTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArchiveTableViewCell.xib; sourceTree = "<group>"; };
 		54BB71BC1E6AF8D30020DB9D /* SwipeCellType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeCellType.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				54CD4D521E62D99500F15B5B /* Dependencies.swift */,
 				54CD4D531E62D99500F15B5B /* JSONDecodable.swift */,
 				54CD4D541E62D99500F15B5B /* QiitaAPI.swift */,
+				543B70CE1E7FB3C7009367E2 /* QiitaAPIError.swift */,
 				54CD4D551E62D99500F15B5B /* QiitaRequest.swift */,
 			);
 			path = API;
@@ -365,6 +368,7 @@
 				54CD4D821E62D99500F15B5B /* ArticleManager.swift in Sources */,
 				54CD4D8C1E62D99500F15B5B /* SearchArticleViewController.swift in Sources */,
 				54CD4D871E62D99500F15B5B /* Util.swift in Sources */,
+				543B70CF1E7FB3C7009367E2 /* QiitaAPIError.swift in Sources */,
 				54CD4D851E62D99500F15B5B /* SearchType.swift in Sources */,
 				54CD4D841E62D99500F15B5B /* SearchHistory.swift in Sources */,
 				54CD4D751E62D99500F15B5B /* Dependencies.swift in Sources */,
@@ -418,6 +422,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -467,6 +472,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";

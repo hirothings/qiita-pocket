@@ -12,7 +12,6 @@ import RxSwift
 
 class APIClient {
     
-    // MARK: - Properties
     
     /// Observable化したAPIレスポンスを返す
     func call<Request: QiitaRequest>(request: Request) -> Observable<Request.ResponseObject> {
@@ -40,6 +39,10 @@ class APIClient {
 
                     switch response.result {
                     case .success(let value):
+                        // QiitaAPIのエラー処理
+                        if let qiitaAPIError = QiitaAPIError(json: value) {
+                            observer.onError(qiitaAPIError)
+                        }
                         if let json = value as? [Any] {
                             let responseObject = Request.ResponseObject(json: json, nextPage: nextPage)
                             observer.on(.next(responseObject))

@@ -79,7 +79,13 @@ class ArticleListViewModel {
                     }
                 },
                 onError: { (error) in
-                    print("error")
+                    switch error {
+                    case let qiitaError as QiitaAPIError:
+                        print("Qiitaエラーです")
+                        print(qiitaError.message)
+                    default:
+                        print("error")
+                    }
                 },
                 onCompleted: {
                     print("Completed")
@@ -115,7 +121,7 @@ class ArticleListViewModel {
                     }
                 },
                 onError: { (error) in
-                    print("error")
+                    print(error)
                 },
                 onCompleted: {
                     print("Completed")
