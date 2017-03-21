@@ -27,6 +27,7 @@ final class Article: Object {
     dynamic var profile_image_url: String = ""
     dynamic var url: String = ""
     dynamic var saveState: String = SaveState.none.rawValue
+    dynamic var hasSaved: Bool = false
     let tags: List<Tag> = List<Tag>()
     dynamic var stockCount: Int = 0
     let rank = RealmOptional<Int>()

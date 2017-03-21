@@ -72,7 +72,8 @@ class ArticleListViewModel {
                         }
                         else {
                             let sortedArticles = self.sortByStockCount(articles)
-                            self.fetchSucceed.onNext(sortedArticles)
+                            let addedStateArticles = self.addReadLaterState(sortedArticles)
+                            self.fetchSucceed.onNext(addedStateArticles)
                         }
                     }
                     else {
@@ -119,7 +120,8 @@ class ArticleListViewModel {
                     let articles = model.items
                     if articles.isNotEmpty {
                         self.hasData.value = true
-                        self.fetchSucceed.onNext(articles)
+                        let addedStateArticles = self.addReadLaterState(articles)
+                        self.fetchSucceed.onNext(addedStateArticles)
                     }
                     else {
                         self.hasData.value = false
@@ -163,6 +165,20 @@ class ArticleListViewModel {
             }
         
         return sortedArticles
+    }
+    
+    /// あとで読むステータスをarticleに付与する
+    private func addReadLaterState(_ articles: [Article]) -> [Article] {
+        let saveArtcleIDs: [String] = ArticleManager.getAll().map { $0.id }
+        articles.forEach { (article: Article) in
+            for id in saveArtcleIDs {
+                if article.id == id {
+                    article.hasSaved = true
+                    break
+                }
+            }
+        }
+        return articles
     }
     
     private func showAlert(message: String) {
