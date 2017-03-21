@@ -28,7 +28,7 @@ class ArticleView: UIView {
         return rankBGImageView
     }()
 
-    var articleSaveState: SaveState = .none {
+    var saveState: SaveState = .none {
         willSet(state) {
             switch state {
             case .none:

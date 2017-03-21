@@ -31,7 +31,7 @@ final class ArchiveTableViewCell: UITableViewCell {
             let url = URL(string: article.profile_image_url)
             articleView.profileImageView.sd_setImage(with: url)
             articleView.stockCount.text = "\(article.stockCount)"
-            articleView.articleSaveState = article.saveStateType
+            articleView.saveState = article.saveStateType
         }
     }
     

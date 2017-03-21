@@ -36,7 +36,7 @@ final class ArticleTableViewCell: UITableViewCell, SwipeCellType {
             }
             .addDisposableTo(recycleBag)
 
-            articleView.articleSaveState = article.saveStateType
+            articleView.saveState = article.saveStateType
             articleView.actionButton.rx.tap
                 .bindNext { [weak self] in
                     guard let `self` = self else { return }
@@ -67,6 +67,8 @@ final class ArticleTableViewCell: UITableViewCell, SwipeCellType {
                 articleView.rankBadgeView.isHidden = true
                 articleView.dateLabelLeftConstraint.constant = 0.0
             }
+            
+            articleView.actionButton.isSelected = article.hasSaved
         }
     }
 

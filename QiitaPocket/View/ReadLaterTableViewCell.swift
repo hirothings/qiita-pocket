@@ -37,7 +37,7 @@ final class ReadLaterTableViewCell: UITableViewCell, SwipeCellType {
                 }
                 .addDisposableTo(recycleBag)
             
-            articleView.articleSaveState = article.saveStateType
+            articleView.saveState = article.saveStateType
             articleView.actionButton.rx.tap
                 .bindNext { [weak self] in
                     guard let `self` = self else { return }
