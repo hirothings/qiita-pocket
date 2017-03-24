@@ -59,13 +59,11 @@ final class ArticleTableViewCell: UITableViewCell, SwipeCellType {
                 case 3:
                     articleView.rankBGImageView.tintColor = UIColor.rankBronse
                 default:
-                    articleView.rankBGImageView.tintColor = UIColor.theme
+                    articleView.rankBGImageView.tintColor = UIColor.disabled
                 }
-                articleView.dateLabelLeftConstraint.constant = 20.0
             }
             else {
                 articleView.rankBadgeView.isHidden = true
-                articleView.dateLabelLeftConstraint.constant = 0.0
             }
             
             articleView.actionButton.isSelected = article.hasSaved
