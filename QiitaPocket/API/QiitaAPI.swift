@@ -64,8 +64,8 @@ final class QiitaAPI {
             ]
             
             if tag.isEmpty {
-                // RateLimit緩和のため、キーワードなしは5件以上はストックされている前提で記事を取得する
-                params["q"] = "created:>" + oneWeekAgo + " stocks:" + ">5"
+                // RateLimit緩和のため、キーワードなしは7件以上はストックされている前提で記事を取得する
+                params["q"] = "created:>" + oneWeekAgo + " stocks:" + ">7"
                 return params
             }
             else {
