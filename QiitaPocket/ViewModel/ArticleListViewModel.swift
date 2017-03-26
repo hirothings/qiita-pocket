@@ -47,6 +47,7 @@ class ArticleListViewModel {
     
     func configureRanking() {
         var currentKeyword: String = ""
+        var articles: [Article] = []
         
         fetchRankingTrigger
             .do(onNext: { [unowned self] in
@@ -64,9 +65,10 @@ class ArticleListViewModel {
             .subscribe(
                 onNext: { [weak self] (model: Articles) in
                     guard let `self` = self else { return }
-                    let articles = model.items
-                    if articles.isNotEmpty {
+
+                    if model.items.isNotEmpty {
                         self.hasData.value = true
+                        articles += model.items
                         if let nextPage = model.nextPage {
                             self.fetchRankingTrigger.onNext((keyword: currentKeyword, page: nextPage))
                         }
@@ -74,6 +76,7 @@ class ArticleListViewModel {
                             let sortedArticles = self.sortByStockCount(articles)
                             let addedStateArticles = self.addReadLaterState(sortedArticles)
                             self.fetchSucceed.onNext(addedStateArticles)
+                            articles = []
                         }
                     }
                     else {
