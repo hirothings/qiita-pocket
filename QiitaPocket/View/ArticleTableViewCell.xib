@@ -15,14 +15,14 @@
             <rect key="frame" x="0.0" y="0.0" width="389" height="103"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1Va-DE-qjS" id="uyq-wd-osF">
-                <rect key="frame" x="0.0" y="0.0" width="389" height="102"/>
+                <rect key="frame" x="0.0" y="0.0" width="389" height="102.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-read-later_white" translatesAutoresizingMaskIntoConstraints="NO" id="X3o-Sy-u78">
-                        <rect key="frame" x="16" y="35" width="20" height="31"/>
+                        <rect key="frame" x="16" y="38.5" width="16" height="24"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="20" id="BST-Ru-MF4"/>
-                            <constraint firstAttribute="height" constant="31" id="MKM-I8-LaR"/>
+                            <constraint firstAttribute="width" constant="16" id="BST-Ru-MF4"/>
+                            <constraint firstAttribute="height" constant="24" id="MKM-I8-LaR"/>
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e1Q-dk-Gbz" customClass="ArticleView" customModule="QiitaPocket" customModuleProvider="target">

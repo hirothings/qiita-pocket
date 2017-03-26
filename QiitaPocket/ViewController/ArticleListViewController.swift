@@ -123,7 +123,12 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
         
         let view: UIView = {
             let v = UIView()
-            v.backgroundColor = UIColor.theme
+            switch searchType {
+            case .rank:
+                v.backgroundColor = UIColor.rankGold
+            case .recent:
+                v.backgroundColor = UIColor.theme
+            }
             return v
         }()
         
