@@ -60,12 +60,12 @@ final class QiitaAPI {
             
             var params: [String: String] = [
                 "page": page,
-                "per_page": "100", // 100が上限
+                "per_page": "50", // 100が上限
             ]
             
             if tag.isEmpty {
-                // RateLimit緩和のため、キーワードなしは7件以上はストックされている前提で記事を取得する
-                params["q"] = "created:>" + oneWeekAgo + " stocks:" + ">7"
+                // RateLimit緩和のため、キーワードなしは20件以上はストックされている前提で記事を取得する
+                params["q"] = "created:>" + oneWeekAgo + " stocks:" + ">20"
                 return params
             }
             else {
