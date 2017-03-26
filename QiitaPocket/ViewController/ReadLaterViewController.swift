@@ -109,7 +109,12 @@ final class ReadLaterViewController: UIViewController, UITableViewDataSource, UI
     
     // MARK: - SwipeCellDelegate
     
-    func didSwipeCell(at indexPath: IndexPath) {
+    func isSwipingCell(isSwiping: Bool) {
+        tableView.panGestureRecognizer.isEnabled = !(isSwiping)
+    }
+    
+    func didSwipe(cell: UITableViewCell) {
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
         let article = articles[indexPath.row]
         ArticleManager.add(archive: article)
     }

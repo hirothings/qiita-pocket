@@ -164,9 +164,13 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
     
     // MARK: - SwipeCellDelegate
     
-    func didSwipeCell(at indexPath: IndexPath) {
+    func isSwipingCell(isSwiping: Bool) {
+        tableView.panGestureRecognizer.isEnabled = !(isSwiping)
+    }
+    
+    func didSwipe(cell: UITableViewCell) {
         tableView.beginUpdates()
-        
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
         let article = articles[indexPath.row]
         ArticleManager.add(readLater: article) // Realmに記事を保存
         

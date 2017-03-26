@@ -40,11 +40,9 @@ final class ArticleTableViewCell: UITableViewCell, SwipeCellType {
             articleView.actionButton.rx.tap
                 .bindNext { [weak self] in
                     guard let `self` = self else { return }
-                    guard let tableView = self.superview?.superview as? UITableView else { return }
-                    guard let indexPath = tableView.indexPath(for: self) else { return }
                     
                     self.articleView.actionButton.isSelected = true
-                    self.delegate?.didSwipeCell(at: indexPath)
+                    self.delegate?.didSwipe(cell: self)
                 }
                 .addDisposableTo(recycleBag)
             

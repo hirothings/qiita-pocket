@@ -9,7 +9,8 @@
 import UIKit
 
 protocol SwipeCellDelegate: class {
-    func didSwipeCell(at indexPath: IndexPath)
+    func isSwipingCell(isSwiping: Bool)
+    func didSwipe(cell: UITableViewCell)
 }
 
 protocol SwipeCellType: class {
@@ -26,14 +27,9 @@ extension SwipeCellType where Self: UITableViewCell {
     func onRightSwipe(_ gesture: UIPanGestureRecognizer) {
         let translation = gesture.translation(in: self)
         
-        guard let tableView = self.superview?.superview as? UITableView else { return }
-        
         switch gesture.state {
         case .began:
-            let swipeLocation: CGPoint = gesture.location(in: tableView)
-            guard let indexPath = tableView.indexPathForRow(at: swipeLocation) else { return }
-            swipeIndexPath = indexPath
-            
+            break
         case .changed:
             // 左端より先にはスワイプさせない
             if translation.x < 0 { return }
@@ -47,7 +43,7 @@ extension SwipeCellType where Self: UITableViewCell {
             // Y軸へのトランジションが閾値以内の場合、セルを右スワイプ中とみなす
             if abs(translation.y) < 10 {
                 isSwiping = true
-                tableView.panGestureRecognizer.isEnabled = false // 右スワイプ中はtableviewのscrollを切る
+                self.delegate?.isSwipingCell(isSwiping: isSwiping)
             }
             
         case .ended:
@@ -58,7 +54,7 @@ extension SwipeCellType where Self: UITableViewCell {
                         self.articleView.frame.origin.x = UIScreen.main.bounds.width
                     },
                     completion: { [unowned self] _ in
-                        self.delegate?.didSwipeCell(at: self.swipeIndexPath)
+                        self.delegate?.didSwipe(cell: self)
                 })
             }
             else {
@@ -66,8 +62,8 @@ extension SwipeCellType where Self: UITableViewCell {
                     self.articleView.frame.origin.x = 0
                 })
             }
-            tableView.panGestureRecognizer.isEnabled = true // tableviewのscrollを復帰する
             isSwiping = false
+            self.delegate?.isSwipingCell(isSwiping: isSwiping)
         default:
             break
         }
