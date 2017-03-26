@@ -171,7 +171,7 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
         ArticleManager.add(readLater: article) // Realmに記事を保存
         
         articles.remove(at: indexPath.row)
-        tableView.deleteRows(at: [indexPath], with: .top)
+        tableView.deleteRows(at: [indexPath], with: .automatic)
         tableView.endUpdates()
     }
     
