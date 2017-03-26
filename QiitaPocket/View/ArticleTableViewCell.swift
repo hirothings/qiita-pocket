@@ -16,7 +16,7 @@ final class ArticleTableViewCell: UITableViewCell, SwipeCellType {
     @IBOutlet weak var articleView: ArticleView!
     @IBOutlet weak var readLaterIcon: UIImageView!
     var swipeGesture = UIPanGestureRecognizer()
-    var swipeIndexPath: IndexPath!
+    var swipeIndexPath: IndexPath = IndexPath()
     var isSwiping = false
     
     weak var delegate: SwipeCellDelegate?

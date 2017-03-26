@@ -16,7 +16,7 @@ protocol SwipeCellType: class {
     weak var articleView: ArticleView! { get }
     weak var delegate: SwipeCellDelegate? { get }
     var swipeGesture: UIPanGestureRecognizer { get }
-    var swipeIndexPath: IndexPath! { get set }
+    var swipeIndexPath: IndexPath { get set }
     var isSwiping: Bool { get set }
     func onRightSwipe(_ gesture: UIPanGestureRecognizer)
 }
@@ -31,7 +31,8 @@ extension SwipeCellType where Self: UITableViewCell {
         switch gesture.state {
         case .began:
             let swipeLocation: CGPoint = gesture.location(in: tableView)
-            swipeIndexPath = tableView.indexPathForRow(at: swipeLocation)!
+            guard let indexPath = tableView.indexPathForRow(at: swipeLocation) else { return }
+            swipeIndexPath = indexPath
             
         case .changed:
             // 左端より先にはスワイプさせない
