@@ -17,7 +17,7 @@ final class ReadLaterTableViewCell: UITableViewCell, SwipeCellType {
     
     var swipeGesture = UIPanGestureRecognizer()
     var swipeIndexPath: IndexPath!
-    var preTransration: CGPoint?
+    var isSwiping = false
     
     weak var delegate: SwipeCellDelegate?
     private var recycleBag = DisposeBag()

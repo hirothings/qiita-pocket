@@ -17,7 +17,7 @@ protocol SwipeCellType: class {
     weak var delegate: SwipeCellDelegate? { get }
     var swipeGesture: UIPanGestureRecognizer { get }
     var swipeIndexPath: IndexPath! { get set }
-    var preTransration: CGPoint? { get set }
+    var isSwiping: Bool { get set }
     func onRightSwipe(_ gesture: UIPanGestureRecognizer)
 }
 
@@ -37,17 +37,15 @@ extension SwipeCellType where Self: UITableViewCell {
             // 左端より先にはスワイプさせない
             if translation.x < 0 { return }
             
-            // トランジション方向が、-x方向の場合、閾値を考慮せずカードを移動させる
-            if let preTransration = preTransration {
-                if translation.x < preTransration.x {
-                    self.articleView.frame.origin.x = translation.x
-                }
+            // スワイプ中、cellを移動させる
+            if isSwiping == true {
+                self.articleView.frame.origin.x = translation.x
+                return
             }
             
-            // トランジション方向が閾値を超えた場合、セルを右スワイプ中とみなす
-            if 30.0 < translation.x {
-                preTransration = translation
-                self.articleView.frame.origin.x = translation.x
+            // Y軸へのトランジションが閾値以内の場合、セルを右スワイプ中とみなす
+            if abs(translation.y) < 10 {
+                isSwiping = true
                 tableView.panGestureRecognizer.isEnabled = false // 右スワイプ中はtableviewのscrollを切る
             }
             
@@ -68,7 +66,7 @@ extension SwipeCellType where Self: UITableViewCell {
                 })
             }
             tableView.panGestureRecognizer.isEnabled = true // tableviewのscrollを復帰する
-            preTransration = nil
+            isSwiping = false
         default:
             break
         }
