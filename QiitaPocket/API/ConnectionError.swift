@@ -15,7 +15,7 @@ struct ConnectionError: Error {
         
         switch errorCode {
         case -1001:
-            message = "通信がタイムアウトしました。通信環境の良い場所で再度お試しください"
+            message = "通信がタイムアウトしました。電波環境の良い場所で再度お試しください"
         case -1009:
             message = "ネットワークに接続されていません"
         default:
