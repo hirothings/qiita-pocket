@@ -10,8 +10,7 @@ import UIKit
 import WebImage
 import RxSwift
 
-// TODO: 共通化
-final class ReadLaterTableViewCell: UITableViewCell, SwipeCellType {
+final class ReadLaterTableViewCell: UITableViewCell, SwipeCellType, ArticleCellType {
     
     @IBOutlet weak var articleView: ArticleView!
     
@@ -25,19 +24,13 @@ final class ReadLaterTableViewCell: UITableViewCell, SwipeCellType {
     
     var article: Article! {
         didSet {
+            configureCell(article: article)
             articleView.dateLabel.text = "\(article.formattedUpdatedAt) 保存"
-            articleView.titleLabel.text = article.title
-            articleView.tagLabel.text = article.tags.first?.name
-            articleView.authorID.text = article.author
-            let url = URL(string: article.profile_image_url)
-            articleView.profileImageView.sd_setImage(with: url)
-            articleView.stockCount.text = "\(article.stockCount)"
             swipeGesture.rx.event.bindNext { [weak self] (gesture: UIPanGestureRecognizer) in
                     self?.onRightSwipe(gesture)
                 }
                 .addDisposableTo(recycleBag)
             
-            articleView.saveState = article.saveStateType
             articleView.actionButton.rx.tap
                 .bindNext { [weak self] in
                     guard let `self` = self else { return }

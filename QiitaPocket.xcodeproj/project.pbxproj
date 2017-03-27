@@ -18,6 +18,7 @@
 		543B70D11E7FC333009367E2 /* ConnectionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543B70D01E7FC333009367E2 /* ConnectionError.swift */; };
 		5457AADE1E767384000E3FE3 /* ArchiveTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5457AADC1E767384000E3FE3 /* ArchiveTableViewCell.swift */; };
 		5457AADF1E767384000E3FE3 /* ArchiveTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5457AADD1E767384000E3FE3 /* ArchiveTableViewCell.xib */; };
+		54674A501E89561A00247ABA /* ArticleCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54674A4F1E89561A00247ABA /* ArticleCellType.swift */; };
 		54BB71BD1E6AF8D30020DB9D /* SwipeCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BB71BC1E6AF8D30020DB9D /* SwipeCellType.swift */; };
 		54BB71BF1E6AFC240020DB9D /* ArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BB71BE1E6AFC240020DB9D /* ArticleView.swift */; };
 		54BB71C11E6AFC320020DB9D /* ArticleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54BB71C01E6AFC320020DB9D /* ArticleView.xib */; };
@@ -69,6 +70,7 @@
 		543B70D01E7FC333009367E2 /* ConnectionError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionError.swift; sourceTree = "<group>"; };
 		5457AADC1E767384000E3FE3 /* ArchiveTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArchiveTableViewCell.swift; sourceTree = "<group>"; };
 		5457AADD1E767384000E3FE3 /* ArchiveTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArchiveTableViewCell.xib; sourceTree = "<group>"; };
+		54674A4F1E89561A00247ABA /* ArticleCellType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleCellType.swift; sourceTree = "<group>"; };
 		54BB71BC1E6AF8D30020DB9D /* SwipeCellType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeCellType.swift; sourceTree = "<group>"; };
 		54BB71BE1E6AFC240020DB9D /* ArticleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleView.swift; sourceTree = "<group>"; };
 		54BB71C01E6AFC320020DB9D /* ArticleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArticleView.xib; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				5457AADC1E767384000E3FE3 /* ArchiveTableViewCell.swift */,
+				54674A4F1E89561A00247ABA /* ArticleCellType.swift */,
 				5457AADD1E767384000E3FE3 /* ArchiveTableViewCell.xib */,
 				54CD4D6B1E62D99500F15B5B /* ArticleTableViewCell.swift */,
 				54D571391E765D77000C0D21 /* ReadLaterTableViewCell.swift */,
@@ -379,6 +382,7 @@
 				542265EE1E64283B00C7AA45 /* ReadLaterTabViewController.swift in Sources */,
 				540B1D871E75166300D6DD17 /* KeyManager.swift in Sources */,
 				54CD4D8E1E62D99500F15B5B /* ArticleListViewModel.swift in Sources */,
+				54674A501E89561A00247ABA /* ArticleCellType.swift in Sources */,
 				54CD4D831E62D99500F15B5B /* Articles.swift in Sources */,
 				54CD4D7E1E62D99500F15B5B /* UIColorExtension.swift in Sources */,
 				54CD4D811E62D99500F15B5B /* Article.swift in Sources */,
