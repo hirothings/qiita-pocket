@@ -16,7 +16,9 @@ protocol ArticleCellType: class {
 extension ArticleCellType where Self: UITableViewCell {
     func configureCell(article: Article) {
         articleView.titleLabel.text = article.title
-        articleView.tagLabel.text = article.tags.first?.name
+        var tags: String = ""
+        article.tags.forEach { tags += "\($0.name) " }
+        articleView.tagLabel.text = tags
         articleView.authorID.text = article.author
         let url = URL(string: article.profile_image_url)
         articleView.profileImageView.sd_setImage(with: url)
