@@ -41,13 +41,13 @@ extension SwipeCellType where Self: UITableViewCell {
             }
             
             // Y軸へのトランジションが閾値以内の場合、セルを右スワイプ中とみなす
-            if abs(translation.y) < 10 {
+            if abs(translation.y) < 8 && translation.y < translation.x {
                 isSwiping = true
                 self.delegate?.isSwipingCell(isSwiping: isSwiping)
             }
             
         case .ended:
-            if 80.0 < translation.x {
+            if (UIScreen.main.bounds.width * 0.25) < translation.x {
                 UIView.animate(
                     withDuration: 0.1,
                     animations: { [unowned self] in
