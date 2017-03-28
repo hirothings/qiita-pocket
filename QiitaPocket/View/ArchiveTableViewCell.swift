@@ -14,10 +14,7 @@ final class ArchiveTableViewCell: UITableViewCell, ArticleCellType {
     
     @IBOutlet weak var articleView: ArticleView!
     
-    var swipeGesture = UIPanGestureRecognizer()
-    var preTransration: CGPoint?
-    
-    weak var delegate: SwipeCellDelegate?
+    weak var delegate: ArticleCellDelegate?
     private var recycleBag = DisposeBag()
     
     
@@ -25,6 +22,20 @@ final class ArchiveTableViewCell: UITableViewCell, ArticleCellType {
         didSet {
             configureCell(article: article)
             articleView.dateLabel.text = "\(article.formattedUpdatedAt) 保存"
+            articleView.actionButton.rx.tap
+                .bindNext { [weak self] in
+                    guard let `self` = self else { return }
+                    
+                    self.articleView.actionButton.isSelected = true
+                    self.delegate?.didTapActionButton(on: self)
+                }
+                .addDisposableTo(recycleBag)
         }
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        recycleBag = DisposeBag()
+        self.articleView.actionButton.isSelected = false
     }
 }

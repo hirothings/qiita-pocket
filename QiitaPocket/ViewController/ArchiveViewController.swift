@@ -13,7 +13,7 @@ import RealmSwift
 import XLPagerTabStrip
 import SafariServices
 
-class ArchiveViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, IndicatorInfoProvider {
+class ArchiveViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, IndicatorInfoProvider, ArticleCellDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -46,8 +46,15 @@ class ArchiveViewController: UIViewController, UITableViewDataSource, UITableVie
             switch change {
             case .initial:
                 tableView.reloadData()
-            case .update(_, deletions: _, insertions: _, modifications: _):
-                tableView.reloadData()
+            case .update(_, deletions: let deletions, insertions: let insertions, modifications: let modifications):
+                tableView.beginUpdates()
+                tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0) }),
+                                     with: .automatic)
+                tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 0)}),
+                                     with: .automatic)
+                tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0) }),
+                                     with: .automatic)
+                tableView.endUpdates()
             case .error(let error):
                 // TODO: エラー処理
                 fatalError("\(error)")
@@ -55,7 +62,7 @@ class ArchiveViewController: UIViewController, UITableViewDataSource, UITableVie
             }
         }
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.tableFooterView = UIView(frame: CGRect.zero)
@@ -84,6 +91,7 @@ class ArchiveViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! ArchiveTableViewCell
         cell.article = articles[indexPath.row]
+        cell.delegate = self
         
         return cell
     }
@@ -98,4 +106,14 @@ class ArchiveViewController: UIViewController, UITableViewDataSource, UITableVie
         
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    
+    // MARK: - ArticleCellDelegate
+    
+    func didTapActionButton(on cell: UITableViewCell) {
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        let article = articles[indexPath.row]
+        ArticleManager.delete(article: article)
+    }
+
 }

@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol ArticleCellDelegate: class {
+    func didTapActionButton(on cell: UITableViewCell)
+}
+
 protocol ArticleCellType: class {
     weak var articleView: ArticleView! { get }
     func configureCell(article: Article)
