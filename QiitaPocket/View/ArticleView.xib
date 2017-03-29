@@ -32,7 +32,7 @@
                     <rect key="frame" x="8" y="6" width="398" height="91"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JavaScript" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oNG-Yc-6Fa">
-                            <rect key="frame" x="0.0" y="40" width="337" height="17"/>
+                            <rect key="frame" x="0.0" y="40" width="327" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" red="0.47450980539999998" green="0.48235294220000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -65,12 +65,13 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ub-ly-DjE">
-                            <rect key="frame" x="372" y="23" width="26" height="26"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ub-ly-DjE">
+                            <rect key="frame" x="362" y="14" width="44" height="44"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="26" id="CWm-GW-rsQ"/>
-                                <constraint firstAttribute="height" constant="26" id="TEY-Fp-xdj"/>
+                                <constraint firstAttribute="width" constant="44" id="CWm-GW-rsQ"/>
+                                <constraint firstAttribute="height" constant="44" id="TEY-Fp-xdj"/>
                             </constraints>
+                            <inset key="imageEdgeInsets" minX="9" minY="9" maxX="9" maxY="9"/>
                             <state key="normal" image="ic-read-later_disabled"/>
                         </button>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="ckz-0k-9PX">
@@ -119,7 +120,6 @@
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="Yhl-Xe-cfC" firstAttribute="top" secondItem="M2Q-kt-kQs" secondAttribute="bottom" constant="4" id="4VV-3w-mhn"/>
-                        <constraint firstAttribute="trailing" secondItem="7ub-ly-DjE" secondAttribute="trailing" id="5bu-S4-WBa"/>
                         <constraint firstAttribute="trailing" secondItem="ckz-0k-9PX" secondAttribute="trailing" id="95H-2u-TUY"/>
                         <constraint firstItem="Yhl-Xe-cfC" firstAttribute="leading" secondItem="03o-rw-cSR" secondAttribute="leading" id="DQ6-da-CI8"/>
                         <constraint firstAttribute="bottom" secondItem="aNN-4h-J25" secondAttribute="bottom" id="GjW-UC-rVq"/>
@@ -135,6 +135,7 @@
                         <constraint firstItem="oNG-Yc-6Fa" firstAttribute="leading" secondItem="03o-rw-cSR" secondAttribute="leading" id="sXd-0f-W3I"/>
                         <constraint firstItem="aNN-4h-J25" firstAttribute="top" secondItem="oNG-Yc-6Fa" secondAttribute="bottom" constant="4" id="v5s-QN-cEj"/>
                         <constraint firstItem="me1-tK-2xQ" firstAttribute="top" secondItem="03o-rw-cSR" secondAttribute="top" id="wfh-m2-it8"/>
+                        <constraint firstAttribute="trailing" secondItem="7ub-ly-DjE" secondAttribute="trailing" constant="-8" id="xDw-tf-BIL"/>
                     </constraints>
                 </view>
             </subviews>

@@ -17,7 +17,7 @@ class ArticleListNavigationController: UINavigationController {
     
     private let settingButton: UIBarButtonItem = {
         let settingImageView = UIImageView(image: #imageLiteral(resourceName: "ic-setting"))
-        settingImageView.frame = CGRect(x: 0, y: 0, width: 12, height: 12)
+        settingImageView.frame = CGRect(x: 0, y: 0, width: 16, height: 16)
         settingImageView.contentMode = .scaleAspectFit
         settingImageView.isUserInteractionEnabled = true
         return UIBarButtonItem(customView: settingImageView)
@@ -51,7 +51,7 @@ class ArticleListNavigationController: UINavigationController {
     
     func setupSettingButton() {
         let spacer = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
-        spacer.width = 10
+        spacer.width = 14
         navigationBar.topItem?.rightBarButtonItems = [settingButton, spacer]
     }
 
