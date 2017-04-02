@@ -19,6 +19,8 @@
 		5457AADE1E767384000E3FE3 /* ArchiveTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5457AADC1E767384000E3FE3 /* ArchiveTableViewCell.swift */; };
 		5457AADF1E767384000E3FE3 /* ArchiveTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5457AADD1E767384000E3FE3 /* ArchiveTableViewCell.xib */; };
 		54674A501E89561A00247ABA /* ArticleCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54674A4F1E89561A00247ABA /* ArticleCellType.swift */; };
+		5495F4211E90D72E00F520FC /* OtherTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5495F4201E90D72E00F520FC /* OtherTableViewController.swift */; };
+		5495F4231E90EA8800F520FC /* OtherNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5495F4221E90EA8800F520FC /* OtherNavigationController.swift */; };
 		54BB71BD1E6AF8D30020DB9D /* SwipeCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BB71BC1E6AF8D30020DB9D /* SwipeCellType.swift */; };
 		54BB71BF1E6AFC240020DB9D /* ArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BB71BE1E6AFC240020DB9D /* ArticleView.swift */; };
 		54BB71C11E6AFC320020DB9D /* ArticleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54BB71C01E6AFC320020DB9D /* ArticleView.xib */; };
@@ -71,6 +73,8 @@
 		5457AADC1E767384000E3FE3 /* ArchiveTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArchiveTableViewCell.swift; sourceTree = "<group>"; };
 		5457AADD1E767384000E3FE3 /* ArchiveTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArchiveTableViewCell.xib; sourceTree = "<group>"; };
 		54674A4F1E89561A00247ABA /* ArticleCellType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleCellType.swift; sourceTree = "<group>"; };
+		5495F4201E90D72E00F520FC /* OtherTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherTableViewController.swift; sourceTree = "<group>"; };
+		5495F4221E90EA8800F520FC /* OtherNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherNavigationController.swift; sourceTree = "<group>"; };
 		54BB71BC1E6AF8D30020DB9D /* SwipeCellType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeCellType.swift; sourceTree = "<group>"; };
 		54BB71BE1E6AFC240020DB9D /* ArticleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleView.swift; sourceTree = "<group>"; };
 		54BB71C01E6AFC320020DB9D /* ArticleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArticleView.xib; sourceTree = "<group>"; };
@@ -246,6 +250,8 @@
 			isa = PBXGroup;
 			children = (
 				54CD4D6E1E62D99500F15B5B /* ArticleListViewController.swift */,
+				5495F4201E90D72E00F520FC /* OtherTableViewController.swift */,
+				5495F4221E90EA8800F520FC /* OtherNavigationController.swift */,
 				540C90E91E717AAE0073D43E /* ArticleListNavigationController.swift */,
 				54CD4D6F1E62D99500F15B5B /* MainTabBarController.swift */,
 				54CD4D701E62D99500F15B5B /* SearchArticleViewController.swift */,
@@ -368,6 +374,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5495F4211E90D72E00F520FC /* OtherTableViewController.swift in Sources */,
 				542265E91E64059000C7AA45 /* ReadLaterViewController.swift in Sources */,
 				54CD4D791E62D99500F15B5B /* AppDelegate.swift in Sources */,
 				54CD4D761E62D99500F15B5B /* JSONDecodable.swift in Sources */,
@@ -394,6 +401,7 @@
 				5457AADE1E767384000E3FE3 /* ArchiveTableViewCell.swift in Sources */,
 				54CD4D8B1E62D99500F15B5B /* MainTabBarController.swift in Sources */,
 				54CD4D7F1E62D99500F15B5B /* UIViewExtension.swift in Sources */,
+				5495F4231E90EA8800F520FC /* OtherNavigationController.swift in Sources */,
 				54CD4D781E62D99500F15B5B /* QiitaRequest.swift in Sources */,
 				54CD4D8A1E62D99500F15B5B /* ArticleListViewController.swift in Sources */,
 				540C90EA1E717AAE0073D43E /* ArticleListNavigationController.swift in Sources */,
