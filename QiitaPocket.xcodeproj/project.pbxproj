@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		540B1D871E75166300D6DD17 /* KeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540B1D861E75166300D6DD17 /* KeyManager.swift */; };
+		540B1D871E75166300D6DD17 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540B1D861E75166300D6DD17 /* FileManager.swift */; };
 		540B1D891E75206700D6DD17 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 540B1D881E75206700D6DD17 /* Keys.plist */; };
 		540C90EA1E717AAE0073D43E /* ArticleListNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540C90E91E717AAE0073D43E /* ArticleListNavigationController.swift */; };
 		542265E91E64059000C7AA45 /* ReadLaterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542265E81E64059000C7AA45 /* ReadLaterViewController.swift */; };
@@ -51,6 +51,7 @@
 		54CD4D8E1E62D99500F15B5B /* ArticleListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D731E62D99500F15B5B /* ArticleListViewModel.swift */; };
 		54D5713A1E765D77000C0D21 /* ReadLaterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D571391E765D77000C0D21 /* ReadLaterTableViewCell.swift */; };
 		54D5713C1E765DC0000C0D21 /* ReadLaterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54D5713B1E765DC0000C0D21 /* ReadLaterTableViewCell.xib */; };
+		54F7C7E21E989B8A0069258E /* Licenses.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54F7C7E11E989B8A0069258E /* Licenses.plist */; };
 		54FAA58A1E3DD62600C09411 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54FAA5881E3DD62600C09411 /* Realm.framework */; };
 		54FAA58B1E3DD62600C09411 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54FAA5891E3DD62600C09411 /* RealmSwift.framework */; };
 		6CA49CB01DB3569900853D00 /* WebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CA49CAF1DB3569900853D00 /* WebImage.framework */; };
@@ -61,7 +62,7 @@
 
 /* Begin PBXFileReference section */
 		52471A8D1CD9AF2E006865C6 /* QiitaPocket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QiitaPocket.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		540B1D861E75166300D6DD17 /* KeyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyManager.swift; sourceTree = "<group>"; };
+		540B1D861E75166300D6DD17 /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		540B1D881E75206700D6DD17 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		540C90E91E717AAE0073D43E /* ArticleListNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleListNavigationController.swift; sourceTree = "<group>"; };
 		542265E81E64059000C7AA45 /* ReadLaterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadLaterViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +107,7 @@
 		54CD4D731E62D99500F15B5B /* ArticleListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleListViewModel.swift; sourceTree = "<group>"; };
 		54D571391E765D77000C0D21 /* ReadLaterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadLaterTableViewCell.swift; sourceTree = "<group>"; };
 		54D5713B1E765DC0000C0D21 /* ReadLaterTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReadLaterTableViewCell.xib; sourceTree = "<group>"; };
+		54F7C7E11E989B8A0069258E /* Licenses.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Licenses.plist; sourceTree = "<group>"; };
 		54FAA5881E3DD62600C09411 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		54FAA5891E3DD62600C09411 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		6CA49CAF1DB3569900853D00 /* WebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebImage.framework; path = Carthage/Build/iOS/WebImage.framework; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				54CD4D5C1E62D99500F15B5B /* Extension */,
 				54CD4D601E62D99500F15B5B /* Info.plist */,
 				540B1D881E75206700D6DD17 /* Keys.plist */,
+				54F7C7E11E989B8A0069258E /* Licenses.plist */,
 				54CD4D611E62D99500F15B5B /* Model */,
 				54CD4D671E62D99500F15B5B /* Util */,
 				54CD4D6A1E62D99500F15B5B /* View */,
@@ -224,7 +227,7 @@
 			children = (
 				54CD4D681E62D99500F15B5B /* UserSettings.swift */,
 				54CD4D691E62D99500F15B5B /* Util.swift */,
-				540B1D861E75166300D6DD17 /* KeyManager.swift */,
+				540B1D861E75166300D6DD17 /* FileManager.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 			files = (
 				540B1D891E75206700D6DD17 /* Keys.plist in Resources */,
 				54BB71C11E6AFC320020DB9D /* ArticleView.xib in Resources */,
+				54F7C7E21E989B8A0069258E /* Licenses.plist in Resources */,
 				54D5713C1E765DC0000C0D21 /* ReadLaterTableViewCell.xib in Resources */,
 				54CD4D891E62D99500F15B5B /* ArticleTableViewCell.xib in Resources */,
 				54CD4D7C1E62D99500F15B5B /* Main.storyboard in Resources */,
@@ -387,7 +391,7 @@
 				54CD4D751E62D99500F15B5B /* Dependencies.swift in Sources */,
 				543B70D11E7FC333009367E2 /* ConnectionError.swift in Sources */,
 				542265EE1E64283B00C7AA45 /* ReadLaterTabViewController.swift in Sources */,
-				540B1D871E75166300D6DD17 /* KeyManager.swift in Sources */,
+				540B1D871E75166300D6DD17 /* FileManager.swift in Sources */,
 				54CD4D8E1E62D99500F15B5B /* ArticleListViewModel.swift in Sources */,
 				54674A501E89561A00247ABA /* ArticleCellType.swift in Sources */,
 				54CD4D831E62D99500F15B5B /* Articles.swift in Sources */,
