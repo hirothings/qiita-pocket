@@ -15,15 +15,23 @@ class OtherTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "その他"
+        self.tableView.separatorInset = UIEdgeInsets.zero
+        self.view.backgroundColor = UIColor.bg
     }
     
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        switch indexPath.row {
-//        case 0:
-//            <#code#>
-//        default:
-//            <#code#>
-//        }
-//    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 0:
+            let licenseVC = self.storyboard?.instantiateViewController(withIdentifier: "LicensesViewController")
+            self.navigationController?.pushViewController(licenseVC!, animated: true)
+        default:
+            break
+        }
+    }
 
 }
