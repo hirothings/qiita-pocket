@@ -154,7 +154,7 @@
         <!--Licenses View Controller-->
         <scene sceneID="Ekn-Yf-ob6">
             <objects>
-                <viewController id="CUp-Uv-kAM" customClass="LicensesViewController" customModule="QiitaPocket" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LicensesViewController" id="CUp-Uv-kAM" customClass="LicensesViewController" customModule="QiitaPocket" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZV5-mY-6gN"/>
                         <viewControllerLayoutGuide type="bottom" id="eJx-x8-L8r"/>
@@ -164,13 +164,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YZI-bv-Puj">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CustomCell" id="up5-jZ-ulg">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="up5-jZ-ulg" id="gDo-et-qD4">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="YZI-bv-Puj" firstAttribute="top" secondItem="ZV5-mY-6gN" secondAttribute="bottom" id="UCJ-Sa-Ce0"/>
+                            <constraint firstItem="YZI-bv-Puj" firstAttribute="top" secondItem="KuW-mv-vcx" secondAttribute="top" id="VY5-Zk-ZBk"/>
                             <constraint firstItem="YZI-bv-Puj" firstAttribute="leading" secondItem="KuW-mv-vcx" secondAttribute="leading" id="dN9-yB-GsJ"/>
                             <constraint firstAttribute="trailing" secondItem="YZI-bv-Puj" secondAttribute="trailing" id="r0v-Ak-JgT"/>
                             <constraint firstItem="eJx-x8-L8r" firstAttribute="top" secondItem="YZI-bv-Puj" secondAttribute="bottom" id="tbb-lS-aXj"/>
