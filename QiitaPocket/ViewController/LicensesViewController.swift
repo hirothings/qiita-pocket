@@ -45,4 +45,9 @@ class LicensesViewController: UIViewController, UITableViewDataSource, UITableVi
         cell.accessoryType = .disclosureIndicator
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let licenseText = license?.getLicenseText(index: indexPath.row) else { return }
+        print(licenseText)
+    }
 }

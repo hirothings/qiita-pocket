@@ -10,13 +10,21 @@ import Foundation
 
 struct License {
     
+    var items: [[String : Any]] = []
     var titles: [String] = []
     
     init?() {
         guard let licenses: [[String : Any]] = parsePlist(FileName.licenses) else {
             return nil
         }
-        titles = licenses.flatMap { $0["title"] as? String }
+        items = licenses
+        titles = items.flatMap { $0["title"] as? String }
+    }
+    
+    
+    func getLicenseText(index: Int) -> String? {
+        guard let item = items[safe: index] else { return nil }
+        return item["text"] as? String
     }
     
     
