@@ -102,6 +102,7 @@ class ArchiveViewController: UIViewController, UITableViewDataSource, UITableVie
         
         guard let url = URL(string: article.url) else { return }
         let safariVC = SFSafariViewController(url: url)
+        safariVC.modalPresentationStyle = .popover
         self.present(safariVC, animated: true, completion: nil)
         
         tableView.deselectRow(at: indexPath, animated: true)
