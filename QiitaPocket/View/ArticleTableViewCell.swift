@@ -15,6 +15,8 @@ final class ArticleTableViewCell: UITableViewCell, SwipeCellType, ArticleCellTyp
     
     @IBOutlet weak var articleView: ArticleView!
     @IBOutlet weak var readLaterIcon: UIImageView!
+    @IBOutlet weak var readLaterIconView: UIImageView!
+    
     var swipeGesture = UIPanGestureRecognizer()
     var swipeIndexPath: IndexPath = IndexPath()
     var isSwiping = false
@@ -27,9 +29,9 @@ final class ArticleTableViewCell: UITableViewCell, SwipeCellType, ArticleCellTyp
             configureCell(article: article)
             
             articleView.dateLabel.text = "\(article.publishedAt) 投稿"
-            
             swipeGesture.rx.event.bindNext { [weak self] (gesture: UIPanGestureRecognizer) in
-                self?.onRightSwipe(gesture)
+                guard let `self` = self else { return }
+                self.onRightSwipe(gesture, iconView: self.readLaterIconView)
             }
             .addDisposableTo(recycleBag)
 

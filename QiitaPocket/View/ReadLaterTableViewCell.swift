@@ -11,7 +11,8 @@ import WebImage
 import RxSwift
 
 final class ReadLaterTableViewCell: UITableViewCell, SwipeCellType, ArticleCellType {
-    
+
+    @IBOutlet weak var checkIconView: UIImageView!
     @IBOutlet weak var articleView: ArticleView!
     
     var swipeGesture = UIPanGestureRecognizer()
@@ -26,8 +27,10 @@ final class ReadLaterTableViewCell: UITableViewCell, SwipeCellType, ArticleCellT
         didSet {
             configureCell(article: article)
             articleView.dateLabel.text = "\(article.formattedUpdatedAt) 保存"
+            
             swipeGesture.rx.event.bindNext { [weak self] (gesture: UIPanGestureRecognizer) in
-                    self?.onRightSwipe(gesture)
+                    guard let `self` = self else { return }
+                    self.onRightSwipe(gesture, iconView: self.checkIconView)
                 }
                 .addDisposableTo(recycleBag)
             
