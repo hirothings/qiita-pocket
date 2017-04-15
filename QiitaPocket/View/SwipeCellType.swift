@@ -19,13 +19,14 @@ protocol SwipeCellType: class {
     var swipeGesture: UIPanGestureRecognizer { get }
     var swipeIndexPath: IndexPath { get set }
     var isSwiping: Bool { get set }
-    func onRightSwipe(_ gesture: UIPanGestureRecognizer)
+    func onRightSwipe(_ gesture: UIPanGestureRecognizer, iconView: UIImageView)
 }
 
 extension SwipeCellType where Self: UITableViewCell {
     
-    func onRightSwipe(_ gesture: UIPanGestureRecognizer) {
+    func onRightSwipe(_ gesture: UIPanGestureRecognizer, iconView: UIImageView) {
         let translation = gesture.translation(in: self)
+        let swipeThreshold: CGFloat = UIScreen.main.bounds.width * 0.25
         
         switch gesture.state {
         case .began:
@@ -37,17 +38,22 @@ extension SwipeCellType where Self: UITableViewCell {
             // スワイプ中、cellを移動させる
             if isSwiping == true {
                 self.articleView.frame.origin.x = translation.x
+                // アイコンの拡大・縮小
+                let ratio = translation.x / swipeThreshold
+                if 1.0 < ratio { return }
+                iconView.alpha = ratio
+                iconView.transform = CGAffineTransform(scaleX: ratio, y: ratio)
                 return
             }
             
             // Y軸へのトランジションが閾値以内の場合、セルを右スワイプ中とみなす
-            if abs(translation.y) < 8 && translation.y < translation.x {
+            if abs(translation.y) < 5 && translation.y < translation.x {
                 isSwiping = true
                 self.delegate?.isSwipingCell(isSwiping: isSwiping)
             }
             
         case .ended:
-            if (UIScreen.main.bounds.width * 0.25) < translation.x {
+            if (swipeThreshold) < translation.x {
                 UIView.animate(
                     withDuration: 0.1,
                     animations: { [unowned self] in
