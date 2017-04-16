@@ -26,7 +26,7 @@ extension SwipeCellType where Self: UITableViewCell {
     
     func onRightSwipe(_ gesture: UIPanGestureRecognizer, iconView: UIImageView) {
         let translation = gesture.translation(in: self)
-        let swipeThreshold: CGFloat = UIScreen.main.bounds.width * 0.25
+        let swipeThreshold: CGFloat = UIScreen.main.bounds.width * 0.35
         
         switch gesture.state {
         case .began:
