@@ -407,7 +407,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6p8-WN-bgW">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="597"/>
                                 <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationWidth="10" reuseIdentifier="CustomCell" id="Uly-z8-rLP">
@@ -425,7 +425,7 @@
                         <constraints>
                             <constraint firstItem="6p8-WN-bgW" firstAttribute="leading" secondItem="SI9-xp-UDA" secondAttribute="leading" id="Hji-yG-lqq"/>
                             <constraint firstItem="6p8-WN-bgW" firstAttribute="top" secondItem="Iye-vH-Ex2" secondAttribute="bottom" id="IxU-P3-icS"/>
-                            <constraint firstItem="3di-3M-5pA" firstAttribute="top" secondItem="6p8-WN-bgW" secondAttribute="bottom" id="WXW-LV-3a0"/>
+                            <constraint firstItem="3di-3M-5pA" firstAttribute="top" secondItem="6p8-WN-bgW" secondAttribute="bottom" constant="50" id="WXW-LV-3a0"/>
                             <constraint firstItem="6p8-WN-bgW" firstAttribute="top" secondItem="SI9-xp-UDA" secondAttribute="top" constant="20" id="dl5-Sy-0bL"/>
                             <constraint firstAttribute="trailing" secondItem="6p8-WN-bgW" secondAttribute="trailing" id="ssa-hW-Jij"/>
                         </constraints>
