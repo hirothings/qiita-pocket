@@ -13,7 +13,7 @@ import RealmSwift
 import XLPagerTabStrip
 import SafariServices
 
-class ArchiveViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, IndicatorInfoProvider, ArticleCellDelegate {
+class ArchiveViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, IndicatorInfoProvider, ArticleCellDelegate, BannerViewType {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -61,6 +61,7 @@ class ArchiveViewController: UIViewController, UITableViewDataSource, UITableVie
                 break
             }
         }
+        setupBannerView(containerView: self.view)
     }
 
     override func viewWillAppear(_ animated: Bool) {

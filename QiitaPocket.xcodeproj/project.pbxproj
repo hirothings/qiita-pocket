@@ -52,6 +52,8 @@
 		54CD4D8B1E62D99500F15B5B /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D6F1E62D99500F15B5B /* MainTabBarController.swift */; };
 		54CD4D8C1E62D99500F15B5B /* SearchArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D701E62D99500F15B5B /* SearchArticleViewController.swift */; };
 		54CD4D8E1E62D99500F15B5B /* ArticleListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CD4D731E62D99500F15B5B /* ArticleListViewModel.swift */; };
+		54D0D1201EA34ECA000B602E /* BannerViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D0D11F1EA34ECA000B602E /* BannerViewType.swift */; };
+		54D0D1221EA35A40000B602E /* OtherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D0D1211EA35A40000B602E /* OtherViewController.swift */; };
 		54D5713A1E765D77000C0D21 /* ReadLaterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D571391E765D77000C0D21 /* ReadLaterTableViewCell.swift */; };
 		54D5713C1E765DC0000C0D21 /* ReadLaterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54D5713B1E765DC0000C0D21 /* ReadLaterTableViewCell.xib */; };
 		54DC8F7C1EA1963A008F0E51 /* LicenseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DC8F7B1EA1963A008F0E51 /* LicenseDetailViewController.swift */; };
@@ -114,6 +116,8 @@
 		54CD4D6F1E62D99500F15B5B /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		54CD4D701E62D99500F15B5B /* SearchArticleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchArticleViewController.swift; sourceTree = "<group>"; };
 		54CD4D731E62D99500F15B5B /* ArticleListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleListViewModel.swift; sourceTree = "<group>"; };
+		54D0D11F1EA34ECA000B602E /* BannerViewType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerViewType.swift; sourceTree = "<group>"; };
+		54D0D1211EA35A40000B602E /* OtherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherViewController.swift; sourceTree = "<group>"; };
 		54D571391E765D77000C0D21 /* ReadLaterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadLaterTableViewCell.swift; sourceTree = "<group>"; };
 		54D5713B1E765DC0000C0D21 /* ReadLaterTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReadLaterTableViewCell.xib; sourceTree = "<group>"; };
 		54DC8F7B1EA1963A008F0E51 /* LicenseDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseDetailViewController.swift; sourceTree = "<group>"; };
@@ -289,6 +293,8 @@
 				542265EF1E642A2C00C7AA45 /* ArchiveViewController.swift */,
 				542265ED1E64283B00C7AA45 /* ReadLaterTabViewController.swift */,
 				547636E81E98A33500FCBB76 /* LicensesViewController.swift */,
+				54D0D11F1EA34ECA000B602E /* BannerViewType.swift */,
+				54D0D1211EA35A40000B602E /* OtherViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -489,6 +495,7 @@
 				547636EB1E9BCFF000FCBB76 /* License.swift in Sources */,
 				54674A501E89561A00247ABA /* ArticleCellType.swift in Sources */,
 				54CD4D831E62D99500F15B5B /* Articles.swift in Sources */,
+				54D0D1201EA34ECA000B602E /* BannerViewType.swift in Sources */,
 				54CD4D7E1E62D99500F15B5B /* UIColorExtension.swift in Sources */,
 				54CD4D811E62D99500F15B5B /* Article.swift in Sources */,
 				54CD4D881E62D99500F15B5B /* ArticleTableViewCell.swift in Sources */,
@@ -497,6 +504,7 @@
 				54CD4D741E62D99500F15B5B /* APIClient.swift in Sources */,
 				54CD4D7D1E62D99500F15B5B /* ArrayExtension.swift in Sources */,
 				5457AADE1E767384000E3FE3 /* ArchiveTableViewCell.swift in Sources */,
+				54D0D1221EA35A40000B602E /* OtherViewController.swift in Sources */,
 				54CD4D8B1E62D99500F15B5B /* MainTabBarController.swift in Sources */,
 				54CD4D7F1E62D99500F15B5B /* UIViewExtension.swift in Sources */,
 				5495F4231E90EA8800F520FC /* OtherNavigationController.swift in Sources */,
