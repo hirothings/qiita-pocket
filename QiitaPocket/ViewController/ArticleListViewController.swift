@@ -64,6 +64,8 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
                 self.tableView.delegate = self
                 self.tableView.dataSource = self
                 self.tableView.reloadData()
+                let topIndexPath = IndexPath(row: 0, section: 0)
+                self.tableView.scrollToRow(at: topIndexPath, at: .top, animated: false)
                 self.tableView.isHidden = false
                 self.refreshControll.endRefreshing()
             })
