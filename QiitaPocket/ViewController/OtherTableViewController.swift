@@ -15,7 +15,6 @@ class OtherTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "その他"
         self.tableView.separatorInset = UIEdgeInsets.zero
         self.view.backgroundColor = UIColor.bg
     }
