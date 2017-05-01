@@ -339,6 +339,30 @@
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mMS-hL-NND" id="XKb-XC-cEd">
                                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
+                                                                    <subviews>
+                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ySn-Qm-2lk">
+                                                                            <rect key="frame" x="341" y="10" width="24" height="24"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" constant="24" id="hqt-3E-eiQ"/>
+                                                                                <constraint firstAttribute="height" constant="24" id="nIa-nY-wEm"/>
+                                                                            </constraints>
+                                                                            <inset key="imageEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
+                                                                            <state key="normal" image="ic-delete_history"/>
+                                                                        </button>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZOT-9U-nfd">
+                                                                            <rect key="frame" x="14" y="21.5" width="317" height="0.0"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                    <constraints>
+                                                                        <constraint firstItem="ZOT-9U-nfd" firstAttribute="leading" secondItem="XKb-XC-cEd" secondAttribute="leading" constant="14" id="1ke-mo-AeN"/>
+                                                                        <constraint firstItem="ySn-Qm-2lk" firstAttribute="centerY" secondItem="XKb-XC-cEd" secondAttribute="centerY" id="bYM-2p-lkD"/>
+                                                                        <constraint firstItem="ZOT-9U-nfd" firstAttribute="centerY" secondItem="XKb-XC-cEd" secondAttribute="centerY" id="e66-oQ-Ztg"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="ySn-Qm-2lk" secondAttribute="trailing" constant="10" id="oLq-7e-7et"/>
+                                                                        <constraint firstItem="ySn-Qm-2lk" firstAttribute="leading" secondItem="ZOT-9U-nfd" secondAttribute="trailing" constant="10" id="pP0-NQ-t8y"/>
+                                                                    </constraints>
                                                                 </tableViewCellContentView>
                                                             </tableViewCell>
                                                         </prototypes>
@@ -392,7 +416,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XjO-LV-Y0v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2222" y="-304"/>
+            <point key="canvasLocation" x="2221.5999999999999" y="-304.4977511244378"/>
         </scene>
         <!--Archive View Controller-->
         <scene sceneID="xb5-HZ-g14">
@@ -525,5 +549,8 @@
             <point key="canvasLocation" x="3220" y="385"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ic-delete_history" width="24" height="24"/>
+    </resources>
     <color key="tintColor" red="0.30588235294117649" green="0.63921568627450975" blue="0.039215686274509803" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
