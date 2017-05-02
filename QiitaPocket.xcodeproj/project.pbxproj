@@ -60,6 +60,7 @@
 		54F7C7E21E989B8A0069258E /* Licenses.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54F7C7E11E989B8A0069258E /* Licenses.plist */; };
 		54FAA58A1E3DD62600C09411 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54FAA5881E3DD62600C09411 /* Realm.framework */; };
 		54FAA58B1E3DD62600C09411 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54FAA5891E3DD62600C09411 /* RealmSwift.framework */; };
+		6C9D3C9D1EB87141006B36B1 /* SearchHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9D3C9C1EB87141006B36B1 /* SearchHistoryTableViewCell.swift */; };
 		6CA49CB01DB3569900853D00 /* WebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CA49CAF1DB3569900853D00 /* WebImage.framework */; };
 		6CA49CB91DB3592A00853D00 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CA49CB71DB3592A00853D00 /* Alamofire.framework */; };
 		6CA49CBA1DB3592A00853D00 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CA49CB81DB3592A00853D00 /* SwiftyJSON.framework */; };
@@ -124,6 +125,7 @@
 		54F7C7E11E989B8A0069258E /* Licenses.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Licenses.plist; sourceTree = "<group>"; };
 		54FAA5881E3DD62600C09411 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		54FAA5891E3DD62600C09411 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		6C9D3C9C1EB87141006B36B1 /* SearchHistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchHistoryTableViewCell.swift; sourceTree = "<group>"; };
 		6CA49CAF1DB3569900853D00 /* WebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebImage.framework; path = Carthage/Build/iOS/WebImage.framework; sourceTree = "<group>"; };
 		6CA49CB71DB3592A00853D00 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		6CA49CB81DB3592A00853D00 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 				54D5713B1E765DC0000C0D21 /* ReadLaterTableViewCell.xib */,
 				54BB71BE1E6AFC240020DB9D /* ArticleView.swift */,
 				54BB71C01E6AFC320020DB9D /* ArticleView.xib */,
+				6C9D3C9C1EB87141006B36B1 /* SearchHistoryTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -488,6 +491,7 @@
 				543B70CF1E7FB3C7009367E2 /* QiitaAPIError.swift in Sources */,
 				54CD4D851E62D99500F15B5B /* SearchType.swift in Sources */,
 				54CD4D841E62D99500F15B5B /* SearchHistory.swift in Sources */,
+				6C9D3C9D1EB87141006B36B1 /* SearchHistoryTableViewCell.swift in Sources */,
 				54CD4D751E62D99500F15B5B /* Dependencies.swift in Sources */,
 				543B70D11E7FC333009367E2 /* ConnectionError.swift in Sources */,
 				542265EE1E64283B00C7AA45 /* ReadLaterTabViewController.swift in Sources */,
