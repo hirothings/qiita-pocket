@@ -10,7 +10,7 @@ import Foundation
 
 struct SearchHistory {
     
-    static var tags: [String] {
+    var tags: [String] {
       return UserSettings.getSearchHistory()
     }
     
@@ -22,7 +22,7 @@ struct SearchHistory {
     func add(tag: String) {
         if tag.isEmpty { return }
         
-        var tags = UserSettings.getSearchHistory()
+        var tags = self.tags
         if let _ = tags.index(of: tag) { return } // 重複して登録させない
 
         tags.insert(tag, at: 0)
@@ -30,6 +30,12 @@ struct SearchHistory {
         if tags.count > max {
             tags.removeLast()
         }
+        UserSettings.setSearchHistory(tags: tags)
+    }
+    
+    func delete(index: Int) {
+        var tags = self.tags
+        tags.remove(at: index)
         UserSettings.setSearchHistory(tags: tags)
     }
 }
