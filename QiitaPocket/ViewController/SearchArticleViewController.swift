@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class SearchArticleViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class SearchArticleViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SearchHistoryCellDelegate {
     
     @IBOutlet weak var searchTypeSegment: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
@@ -19,7 +19,7 @@ class SearchArticleViewController: UIViewController, UITableViewDataSource, UITa
     var didSelectSearchHistory = PublishSubject<String>()
     
     private let bag = DisposeBag()
-    private let searchHistories: [String] = SearchHistory.tags
+    private let searchHistory = SearchHistory()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,24 +35,25 @@ class SearchArticleViewController: UIViewController, UITableViewDataSource, UITa
     override func viewDidLayoutSubviews() {
         let tablecellHeight: CGFloat = 44.0
         // tableView分の高さを追加する
-        contentViewHeight.constant = tablecellHeight * CGFloat(searchHistories.count)
+        contentViewHeight.constant = tablecellHeight * CGFloat(searchHistory.tags.count)
     }
     
     
     // MARK: - TableView Delegate
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return searchHistories.count
+        return searchHistory.tags.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath)
-        cell.textLabel?.text = searchHistories[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SearchHistoryTableViewCell", for: indexPath) as! SearchHistoryTableViewCell
+        cell.titleLabel.text = searchHistory.tags[indexPath.row]
+        cell.delegate = self
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let history = searchHistories[indexPath.row]
+        let history = searchHistory.tags[indexPath.row]
         didSelectSearchHistory.onNext(history)
     }
     
@@ -85,6 +86,15 @@ class SearchArticleViewController: UIViewController, UITableViewDataSource, UITa
                 }
             })
             .addDisposableTo(bag)
+    }
+    
+    
+    // MARK: - SearchHistoryCellDelegate
+    
+    func didTapDeleteBtn(on cell: UITableViewCell) {
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        searchHistory.delete(index: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .automatic)
     }
     
 }
