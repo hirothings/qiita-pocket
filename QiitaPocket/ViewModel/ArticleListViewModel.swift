@@ -7,12 +7,12 @@
 //
 
 import Foundation
-import RxSwift
 import UIKit
+import RxSwift
+import RxCocoa
 
 class ArticleListViewModel {
     
-    let fetchTrigger = PublishSubject<String>()
     let fetchSucceed = PublishSubject<[Article]>()
     let searchBarTitle = Variable("")
     var isLoading = Variable(false)
@@ -23,7 +23,9 @@ class ArticleListViewModel {
     private let bag = DisposeBag()
 
     
-    init() {
+    init(scrollViewDidReachedBottom: Driver<Void>,
+         fetchTrigger: PublishSubject<String>
+         ) {
         
         configureRanking()
         configureRecentArticle()

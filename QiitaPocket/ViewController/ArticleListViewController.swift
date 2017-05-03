@@ -20,7 +20,8 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
     var articles: [Article] = []
     var refreshControll = UIRefreshControl()
     
-    private let viewModel = ArticleListViewModel()
+    private var viewModel: ArticleListViewModel!
+    private var fetchTrigger = PublishSubject<String>()
     private var searchArticleVC = SearchArticleViewController()
     private var searchBar: UISearchBar!
     private let bag = DisposeBag()
@@ -30,6 +31,11 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        viewModel = ArticleListViewModel(
+            scrollViewDidReachedBottom: tableView.rx.reachedBottom.asDriver(),
+            fetchTrigger: fetchTrigger
+        )
+            
         tableView.estimatedRowHeight = 103.0
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.separatorInset = UIEdgeInsets.zero
@@ -52,7 +58,7 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
         refreshControll.rx.controlEvent(.valueChanged)
             .startWith(())
             .flatMap { Observable.just(UserSettings.getCurrentSearchTag()) }
-            .bindTo(self.viewModel.fetchTrigger)
+            .bindTo(fetchTrigger)
             .addDisposableTo(bag)
 
         viewModel.fetchSucceed
@@ -205,7 +211,7 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
             .subscribe(onNext: { [unowned self] (tag: String) in
                 self.searchBar.text = tag
                 self.updateSearchState(tag: tag)
-                self.viewModel.fetchTrigger.onNext(tag)
+                self.fetchTrigger.onNext(tag)
                 self.searchBar.endEditing(true)
                 self.searchBar.showsCancelButton = false
                 self.removeSearchArticleVC()
@@ -244,7 +250,7 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
         searchBar.showsCancelButton = false
 
         updateSearchState(tag: searchBar.text!)
-        viewModel.fetchTrigger.onNext(searchBar.text!)
+        fetchTrigger.onNext(searchBar.text!)
         self.tableView.isHidden = true
     }
 }
