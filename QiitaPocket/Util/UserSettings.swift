@@ -31,12 +31,15 @@ class UserSettings {
     }
     
     // 検索タイプ
-    static func getSearchType() -> SearchType? {
+    static func getSearchType() -> SearchType {
         UserDefaults.standard.register(defaults: ["SearchType": "rank"])
         guard let rawValue = UserDefaults.standard.string(forKey: "SearchType") else {
-            return nil
+            return SearchType.rank
         }
-        return SearchType(rawValue: rawValue)
+        guard let searchType = SearchType(rawValue: rawValue) else {
+            return SearchType.rank
+        }
+        return searchType
     }
     static func setSearchType(_ searchType: SearchType) {
         UserDefaults.standard.set(searchType.rawValue, forKey: "SearchType")

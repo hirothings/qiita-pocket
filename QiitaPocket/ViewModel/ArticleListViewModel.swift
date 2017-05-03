@@ -11,6 +11,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+// TODO: インターフェースを作ってRecentとRankingのViewModel Classに分ける
 class ArticleListViewModel {
     
     let fetchSucceed = PublishSubject<[Article]>()
@@ -31,16 +32,12 @@ class ArticleListViewModel {
         configureRecentArticle()
         
         fetchTrigger.bindNext { (keyword: String) in
-            if let searchType = UserSettings.getSearchType() {
-                switch searchType {
-                case .rank:
-                    self.fetchRankingTrigger.onNext((keyword: keyword, page: "1"))
-                case .recent:
-                    self.fetchRecentTrigger.onNext(keyword)
-                }
-            }
-            else {
+            let searchType = UserSettings.getSearchType()
+            switch searchType {
+            case .rank:
                 self.fetchRankingTrigger.onNext((keyword: keyword, page: "1"))
+            case .recent:
+                self.fetchRecentTrigger.onNext((keyword: keyword, page: self.nextPage))
             }
         }
         .addDisposableTo(bag)
