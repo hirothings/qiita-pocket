@@ -103,7 +103,7 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
     // MARK: - TableView Delegate
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let searchType = UserSettings.getSearchType() else { return nil }
+        let searchType = UserSettings.getSearchType()
         let currentTag = UserSettings.getCurrentSearchTag()
         
         var text: String

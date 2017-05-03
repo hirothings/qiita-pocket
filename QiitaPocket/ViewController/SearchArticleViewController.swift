@@ -61,10 +61,7 @@ class SearchArticleViewController: UIViewController, UITableViewDataSource, UITa
     // MARK: - Private Method
     
     func initSegmentValue() {
-        guard let searchType = UserSettings.getSearchType() else {
-            return
-        }
-        
+        let searchType = UserSettings.getSearchType()
         switch searchType {
         case .rank:
             searchTypeSegment.selectedSegmentIndex = 0

@@ -16,6 +16,7 @@ final class QiitaAPI {
         typealias ResponseObject = Articles
         
         let tag: String
+        let page: String
 
         var path: String {
             if tag.isEmpty {
@@ -28,10 +29,10 @@ final class QiitaAPI {
         
         var parameters: [String: Any]? {
             if tag.isEmpty {
-                return nil
+                return ["page": page]
             }
             else {
-                return ["q": tag]
+                return ["page": page, "q": tag]
             }
         }
     }
