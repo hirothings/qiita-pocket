@@ -45,8 +45,8 @@ struct Articles: JSONDecodable {
         self.nextPage = nextPage
     }
 
-    static func fetch(with tag: String) -> Observable<Articles>  {
-        let request = QiitaAPI.SearchArticles(tag: tag)
+    static func fetch(with tag: String, page: String) -> Observable<Articles>  {
+        let request = QiitaAPI.SearchArticles(tag: tag, page: page)
         return self.apiClient.call(request: request)
     }
     
