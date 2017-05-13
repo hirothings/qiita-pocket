@@ -19,30 +19,40 @@ class RecentArticleViewModel: FetchArticleType {
     let scrollViewDidReachedBottom = PublishSubject<Void>()
     let alertTrigger = PublishSubject<String>()
     
-    private var fetchRecentTrigger: Observable<(keyword: String, page: String)> = Observable.empty()
+    private var fetchRecentTrigger = PublishSubject<(keyword: String, page: String)>()
     private let bag = DisposeBag()
     private var currentKeyword = ""
-    private var nextPage = "1"
+    private var nextPage: Int? = 1
     
     init(fetchTrigger: PublishSubject<String>) {
         
-        fetchRecentTrigger = fetchTrigger.asObserver()
+        fetchTrigger
             .map { [unowned self] keyword in
-                return (keyword, self.nextPage)
+                return (keyword: self.currentKeyword, page: "\(1)")
             }
+            .bind(to: fetchRecentTrigger)
+            .disposed(by: bag)
         
         configureRecentArticle()
-        
+        bindPagination()
+    }
+    
+    
+    // MARK: private method
+    
+    private func bindPagination() {
         scrollViewDidReachedBottom
-            .subscribe(onNext: { [weak self] in
-                guard let `self` = self else { return }
-                fetchTrigger.onNext(self.currentKeyword)
-            })
+            .filter { self.nextPage != nil }
+            .map { [unowned self] _ in
+                print("scrollView下まできた")
+                return (keyword: self.currentKeyword, page: "\(self.nextPage!)")
+            }
+            .bind(to: fetchRecentTrigger)
             .disposed(by: bag)
     }
 
     
-    func configureRecentArticle() {
+    private func configureRecentArticle() {
         fetchRecentTrigger
             .do(onNext: { [unowned self] tuple in
                 self.isLoading.value = true
@@ -63,8 +73,16 @@ class RecentArticleViewModel: FetchArticleType {
                         self.hasData.value = true
                         let addedStateArticles = self.addReadLaterState(_articles)
                         self.articles.value += addedStateArticles
+                        // TODO: 不要かもしれない
+                        if let nextPage = model.nextPage {
+                            self.nextPage! = Int(nextPage)!
+                        }
+                        else {
+                            self.nextPage = nil
+                        }
                     }
                     else {
+                        self.nextPage = nil
                         self.hasData.value = false
                     }
                 },
@@ -83,8 +101,7 @@ class RecentArticleViewModel: FetchArticleType {
             },
                 onCompleted: {
                     print("Completed")
-            }
-            )
+            })
             .addDisposableTo(bag)
     }
 }
