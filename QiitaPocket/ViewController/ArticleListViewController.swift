@@ -20,7 +20,7 @@ class ArticleListViewController: UIViewController, UISearchBarDelegate {
 
     var refreshControll = UIRefreshControl()
     
-    private var viewModel: ArticleListViewModel!
+    private var viewModel: FetchArticleType!
     private let dataSource = ArticleTableViewDataSource()
     
     private var fetchTrigger = PublishSubject<String>()
@@ -36,7 +36,8 @@ class ArticleListViewController: UIViewController, UISearchBarDelegate {
         let nib: UINib = UINib(nibName: "ArticleTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "ArticleTableViewCell")
         
-        viewModel = ArticleListViewModel(fetchTrigger: fetchTrigger)
+        let articleFactory = ArticleFactory(fetchTrigger: fetchTrigger)
+        viewModel = articleFactory.viewModel
         
         viewModel.articles
             .asObservable()

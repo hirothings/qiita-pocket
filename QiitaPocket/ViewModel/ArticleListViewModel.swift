@@ -12,7 +12,7 @@ import RxSwift
 import RxCocoa
 
 // TODO: インターフェースを作ってRecentとRankingのViewModel Classに分ける
-class ArticleListViewModel {
+class ArticleListViewModel: FetchArticleType {
     
     var articles = Variable<[Article]>([])
     let searchBarTitle = Variable("")
