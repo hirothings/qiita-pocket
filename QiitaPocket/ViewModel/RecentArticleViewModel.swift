@@ -28,6 +28,7 @@ class RecentArticleViewModel: FetchArticleType {
         
         fetchTrigger
             .map { [unowned self] keyword in
+                self.resetItems(keyword: keyword)
                 return (keyword: self.currentKeyword, page: "\(1)")
             }
             .bind(to: fetchRecentTrigger)
@@ -39,6 +40,12 @@ class RecentArticleViewModel: FetchArticleType {
     
     
     // MARK: private method
+    
+    private func resetItems(keyword: String) {
+        self.currentKeyword = keyword
+        articles.value = []
+        nextPage = 1
+    }
     
     private func bindPagination() {
         scrollViewDidReachedBottom

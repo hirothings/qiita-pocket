@@ -19,7 +19,7 @@ class ArticleFactory {
         case .rank:
             self.viewModel = ArticleListViewModel(fetchTrigger: fetchTrigger)
         case .recent:
-            self.viewModel = ArticleListViewModel(fetchTrigger: fetchTrigger)
+            self.viewModel = RecentArticleViewModel(fetchTrigger: fetchTrigger)
         }
     }
 }
