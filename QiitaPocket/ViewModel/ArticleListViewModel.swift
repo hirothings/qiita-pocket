@@ -14,24 +14,27 @@ import RxCocoa
 // TODO: インターフェースを作ってRecentとRankingのViewModel Classに分ける
 class ArticleListViewModel {
     
-    let fetchSucceed = PublishSubject<[Article]>()
+    var articles = Variable<[Article]>([])
     let searchBarTitle = Variable("")
     var isLoading = Variable(false)
     var hasData = Variable(false)
+    let scrollViewDidReachedBottom = PublishSubject<Void>()
     
     private let fetchRankingTrigger = PublishSubject<(keyword: String, page: String)>()
-    private let fetchRecentTrigger = PublishSubject<String>()
+    private let fetchRecentTrigger = PublishSubject<(keyword: String, page: String)>()
     private let bag = DisposeBag()
+    private var currentKeyword = ""
+    private var nextPage = "1"
 
     
-    init(scrollViewDidReachedBottom: Driver<Void>,
-         fetchTrigger: PublishSubject<String>
-         ) {
+    init(fetchTrigger: PublishSubject<String>) {
         
         configureRanking()
         configureRecentArticle()
         
         fetchTrigger.bindNext { (keyword: String) in
+            self.currentKeyword = keyword
+
             let searchType = UserSettings.getSearchType()
             switch searchType {
             case .rank:
@@ -41,18 +44,23 @@ class ArticleListViewModel {
             }
         }
         .addDisposableTo(bag)
+        
+        scrollViewDidReachedBottom
+            .subscribe(onNext: { [weak self] in
+                guard let `self` = self else { return }
+                fetchTrigger.onNext(self.currentKeyword)
+            })
+            .disposed(by: bag)
     }
 
     
     func configureRanking() {
-        var currentKeyword: String = ""
-        var articles: [Article] = []
+        var _articles: [Article] = []
         
         fetchRankingTrigger
             .do(onNext: { [unowned self] in
                 self.isLoading.value = true
                 self.searchBarTitle.value = $0.keyword // TODO: 検索設定追加
-                currentKeyword = $0.keyword // キャプチャできる用にスコープ外にキーワードを渡す
             })
             .flatMap {
                 Articles.fetchWeeklyPost(with: $0.keyword, page: $0.page)
@@ -67,15 +75,15 @@ class ArticleListViewModel {
 
                     if model.items.isNotEmpty {
                         self.hasData.value = true
-                        articles += model.items
+                        _articles += model.items
                         if let nextPage = model.nextPage {
-                            self.fetchRankingTrigger.onNext((keyword: currentKeyword, page: nextPage))
+                            self.fetchRankingTrigger.onNext((keyword: self.currentKeyword, page: nextPage))
                         }
                         else {
-                            let sortedArticles = self.sortByStockCount(articles)
+                            let sortedArticles = self.sortByStockCount(_articles)
                             let addedStateArticles = self.addReadLaterState(sortedArticles)
-                            self.fetchSucceed.onNext(addedStateArticles)
-                            articles = []
+                            self.articles.value = addedStateArticles
+                            _articles = []
                         }
                     }
                     else {
@@ -105,12 +113,12 @@ class ArticleListViewModel {
     
     func configureRecentArticle() {
         fetchRecentTrigger
-            .do(onNext: { [unowned self] tag in
+            .do(onNext: { [unowned self] tuple in
                 self.isLoading.value = true
-                self.searchBarTitle.value = tag // TODO: 検索設定追加
+                self.searchBarTitle.value = tuple.keyword // TODO: 検索設定追加
             })
-            .flatMap { tag in
-                Articles.fetch(with: tag)
+            .flatMap { tuple in
+                Articles.fetch(with: tuple.keyword, page: tuple.page)
             }
             .do(onNext: { [unowned self] _ in
                 self.isLoading.value = false
@@ -119,11 +127,11 @@ class ArticleListViewModel {
             .subscribe(
                 onNext: { [weak self] (model: Articles) in
                     guard let `self` = self else { return }
-                    let articles = model.items
-                    if articles.isNotEmpty {
+                    let _articles = model.items
+                    if _articles.isNotEmpty {
                         self.hasData.value = true
-                        let addedStateArticles = self.addReadLaterState(articles)
-                        self.fetchSucceed.onNext(addedStateArticles)
+                        let addedStateArticles = self.addReadLaterState(_articles)
+                        self.articles.value += addedStateArticles
                     }
                     else {
                         self.hasData.value = false
