@@ -215,7 +215,7 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
                 self.searchBar.endEditing(true)
                 self.searchBar.showsCancelButton = false
                 self.removeSearchArticleVC()
-                self.tableView.isHidden = true
+//                self.tableView.isHidden = true
             })
             .addDisposableTo(bag)
         
@@ -251,6 +251,6 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
 
         updateSearchState(tag: searchBar.text!)
         fetchTrigger.onNext(searchBar.text!)
-        self.tableView.isHidden = true
+//        self.tableView.isHidden = true
     }
 }
