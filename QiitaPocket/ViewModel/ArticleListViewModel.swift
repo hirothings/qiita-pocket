@@ -130,20 +130,6 @@ class ArticleListViewModel: FetchArticleType {
         return sortedArticles
     }
     
-    /// あとで読むステータスをarticleに付与する
-    private func addReadLaterState(_ articles: [Article]) -> [Article] {
-        let saveArtcleIDs: [String] = ArticleManager.getAll().map { $0.id }
-        articles.forEach { (article: Article) in
-            for id in saveArtcleIDs {
-                if article.id == id {
-                    article.hasSaved = true
-                    break
-                }
-            }
-        }
-        return articles
-    }
-    
     private func showAlert(message: String) {
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         let defAction = UIAlertAction(title: "OK", style: .default, handler: nil)
