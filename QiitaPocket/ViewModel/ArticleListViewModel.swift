@@ -19,6 +19,7 @@ class ArticleListViewModel: FetchArticleType {
     var isLoading = Variable(false)
     var hasData = Variable(false)
     let scrollViewDidReachedBottom = PublishSubject<Void>()
+    let alertTrigger = PublishSubject<String>()
     
     private let fetchRankingTrigger = PublishSubject<(keyword: String, page: String)>()
     private let fetchRecentTrigger = PublishSubject<(keyword: String, page: String)>()
@@ -30,7 +31,6 @@ class ArticleListViewModel: FetchArticleType {
     init(fetchTrigger: PublishSubject<String>) {
         
         configureRanking()
-        configureRecentArticle()
         
         fetchTrigger.bindNext { (keyword: String) in
             self.currentKeyword = keyword
@@ -94,9 +94,9 @@ class ArticleListViewModel: FetchArticleType {
                     // TODO: 判定が面倒なので、errorの種類自体をEnumにする
                     switch error {
                     case let qiitaError as QiitaAPIError:
-                        self.showAlert(message: qiitaError.message)
+                        self.alertTrigger.onNext(qiitaError.message)
                     case let connectionError as ConnectionError:
-                        self.showAlert(message: connectionError.message)
+                        self.alertTrigger.onNext(connectionError.message)
                     default:
                         break
                     }
@@ -128,14 +128,5 @@ class ArticleListViewModel: FetchArticleType {
             }
         
         return sortedArticles
-    }
-    
-    private func showAlert(message: String) {
-        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-        let defAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(defAction)
-        
-        guard let rootVC = UIApplication.shared.keyWindow?.rootViewController else { return }
-        rootVC.present(alert, animated: true, completion: nil)
     }
 }

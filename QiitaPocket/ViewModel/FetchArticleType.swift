@@ -14,6 +14,7 @@ protocol FetchArticleType {
     var isLoading: Variable<Bool> { get }
     var hasData: Variable<Bool> { get }
     var scrollViewDidReachedBottom: PublishSubject<Void> { get }
+    var alertTrigger: PublishSubject<String> { get }
     func addReadLaterState(_ articles: [Article]) -> [Article]
 }
 

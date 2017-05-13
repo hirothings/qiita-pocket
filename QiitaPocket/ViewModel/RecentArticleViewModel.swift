@@ -17,8 +17,9 @@ class RecentArticleViewModel: FetchArticleType {
     var isLoading = Variable(false)
     var hasData = Variable(false)
     let scrollViewDidReachedBottom = PublishSubject<Void>()
+    let alertTrigger = PublishSubject<String>()
     
-    private let fetchRecentTrigger: Observable<(keyword: String, page: String)>
+    private var fetchRecentTrigger: Observable<(keyword: String, page: String)> = Observable.empty()
     private let bag = DisposeBag()
     private var currentKeyword = ""
     private var nextPage = "1"
@@ -71,9 +72,9 @@ class RecentArticleViewModel: FetchArticleType {
                     // TODO: 判定が面倒なので、errorの種類自体をEnumにする
                     switch error {
                     case let qiitaError as QiitaAPIError:
-                        self.showAlert(message: qiitaError.message)
+                        self.alertTrigger.onNext(qiitaError.message)
                     case let connectionError as ConnectionError:
-                        self.showAlert(message: connectionError.message)
+                        self.alertTrigger.onNext(connectionError.message)
                     default:
                         break
                     }

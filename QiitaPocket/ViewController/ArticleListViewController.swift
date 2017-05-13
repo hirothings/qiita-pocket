@@ -55,7 +55,7 @@ class ArticleListViewController: UIViewController, UISearchBarDelegate {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.separatorInset = UIEdgeInsets.zero
         tableView.sectionHeaderHeight = 30.0
-        tableView.isHidden = true
+//        tableView.isHidden = true
         noneDataLabel.isHidden = true
         activityIndicatorView.hidesWhenStopped = true
         
@@ -165,6 +165,13 @@ class ArticleListViewController: UIViewController, UISearchBarDelegate {
         searchArticleVC.view.removeFromSuperview()
         searchArticleVC.removeFromParentViewController()
         nvc.setupSettingButton()
+    }
+    
+    private func showAlert(message: String) {
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        let defAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(defAction)
+        self.present(alert, animated: true, completion: nil)
     }
     
     
