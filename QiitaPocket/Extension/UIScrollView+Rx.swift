@@ -14,7 +14,6 @@ extension Reactive where Base: UIScrollView {
     var reachedBottom: ControlEvent<Void> {
         let observable = contentOffset
             .flatMap { [weak base] contentOffset -> Observable<Void> in
-                print(contentOffset.y)
                 guard let scrollView = base else {
                     return Observable.empty()
                 }

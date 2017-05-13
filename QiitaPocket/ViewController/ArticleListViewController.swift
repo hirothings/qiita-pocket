@@ -11,16 +11,18 @@ import RxSwift
 import RxCocoa
 import SafariServices
 
-class ArticleListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SwipeCellDelegate, UISearchBarDelegate {
+
+class ArticleListViewController: UIViewController, UISearchBarDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var noneDataLabel: UILabel!
 
-    var articles: [Article] = []
     var refreshControll = UIRefreshControl()
     
-    private var viewModel: ArticleListViewModel!
+    private var viewModel: FetchArticleType!
+    private let dataSource = ArticleTableViewDataSource()
+    
     private var fetchTrigger = PublishSubject<String>()
     private var searchArticleVC = SearchArticleViewController()
     private var searchBar: UISearchBar!
@@ -31,17 +33,29 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel = ArticleListViewModel(
-            scrollViewDidReachedBottom: tableView.rx.reachedBottom.asDriver(),
-            fetchTrigger: fetchTrigger
-        )
-            
+        let nib: UINib = UINib(nibName: "ArticleTableViewCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "ArticleTableViewCell")
+        
+        let articleFactory = ArticleFactory(fetchTrigger: fetchTrigger)
+        viewModel = articleFactory.viewModel
+        
+        viewModel.articles
+            .asObservable()
+            .bind(to: self.tableView.rx.items(dataSource: dataSource))
+            .disposed(by: bag)
+
+        tableView.delegate = dataSource
+        
+        tableView.rx.reachedBottom
+            .asDriver()
+            .drive(viewModel.scrollViewDidReachedBottom)
+            .disposed(by: bag)
+        
         tableView.estimatedRowHeight = 103.0
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.separatorInset = UIEdgeInsets.zero
         tableView.sectionHeaderHeight = 30.0
-
-        tableView.isHidden = true
+//        tableView.isHidden = true
         noneDataLabel.isHidden = true
         activityIndicatorView.hidesWhenStopped = true
         
@@ -49,32 +63,44 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
         searchBar = nvc.searchBar
         searchBar.delegate = self
         
-        let nib: UINib = UINib(nibName: "ArticleTableViewCell", bundle: nil)
-        self.tableView.register(nib, forCellReuseIdentifier: "CustomCell")
-        
         tableView.refreshControl = refreshControll
         
+        
         // bind
+        
+        dataSource.isSwipingCell
+            .bindNext { [unowned self] in
+                self.tableView.panGestureRecognizer.isEnabled = !($0)
+            }
+            .addDisposableTo(bag)
+        
+        dataSource.didSwipeCell
+            .bindNext { [unowned self] cell in
+                self.tableView.beginUpdates()
+                guard let indexPath = self.tableView.indexPath(for: cell) else { return }
+                let article = self.viewModel.articles.value[indexPath.row]
+                ArticleManager.add(readLater: article) // Realmに記事を保存
+                self.viewModel.articles.value.remove(at: indexPath.row)
+                self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                self.tableView.endUpdates()
+            }
+            .addDisposableTo(bag)
+        
+        dataSource.didTapTableRow
+            .bindNext { [unowned self] indexPath in
+                let article = self.viewModel.articles.value[indexPath.row]
+                guard let url = URL(string: article.url) else { return }
+                let safariVC = SFSafariViewController(url: url)
+                safariVC.modalPresentationStyle = .popover
+                self.present(safariVC, animated: true, completion: nil)
+                self.tableView.deselectRow(at: indexPath, animated: true)
+            }
+            .addDisposableTo(bag)
+        
         refreshControll.rx.controlEvent(.valueChanged)
             .startWith(())
             .flatMap { Observable.just(UserSettings.getCurrentSearchTag()) }
             .bindTo(fetchTrigger)
-            .addDisposableTo(bag)
-
-        viewModel.fetchSucceed
-            .subscribe(onNext: { [unowned self] articles in
-
-                print("fetch done")
-
-                self.articles = articles
-                self.tableView.delegate = self
-                self.tableView.dataSource = self
-                self.tableView.reloadData()
-                let topIndexPath = IndexPath(row: 0, section: 0)
-                self.tableView.scrollToRow(at: topIndexPath, at: .top, animated: false)
-                self.tableView.isHidden = false
-                self.refreshControll.endRefreshing()
-            })
             .addDisposableTo(bag)
         
         viewModel.isLoading.asDriver()
@@ -97,95 +123,6 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.tableFooterView = UIView(frame: CGRect.zero)
-    }
-
-
-    // MARK: - TableView Delegate
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let searchType = UserSettings.getSearchType()
-        let currentTag = UserSettings.getCurrentSearchTag()
-        
-        var text: String
-        switch searchType {
-        case .rank:
-            text = "週間ランキング"
-        case .recent:
-            text = "新着順"
-        }
-        
-        if currentTag.isEmpty {
-            text += ": すべて"
-        }
-        else {
-            text += ": \(currentTag)"
-        }
-        
-        let label: UILabel = {
-            let lb = UILabel(frame: CGRect(x: 10.0, y: 0.0, width: self.view.bounds.width, height: 30.0))
-            lb.text = text
-            lb.textColor = UIColor.white
-            lb.font = UIFont.boldSystemFont(ofSize: 12.0)
-            return lb
-        }()
-        
-        let view: UIView = {
-            let v = UIView()
-            switch searchType {
-            case .rank:
-                v.backgroundColor = UIColor.rankGold
-            case .recent:
-                v.backgroundColor = UIColor.theme
-            }
-            return v
-        }()
-        
-        view.addSubview(label)
-        return view
-    }
-
-    /// tableViewの行数を指定
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return articles.count
-    }
-    
-    /// tableViewのcellを生成
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! ArticleTableViewCell
-        cell.article = articles[indexPath.row]
-        cell.delegate = self
-        
-        return cell
-    }
-    
-    /// tableViewタップ時webViewに遷移する
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let article = articles[indexPath.row]
-        
-        guard let url = URL(string: article.url) else { return }
-        let safariVC = SFSafariViewController(url: url)
-        safariVC.modalPresentationStyle = .popover
-        self.present(safariVC, animated: true, completion: nil)
-        
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-    
-    // MARK: - SwipeCellDelegate
-    
-    func isSwipingCell(isSwiping: Bool) {
-        tableView.panGestureRecognizer.isEnabled = !(isSwiping)
-    }
-    
-    func didSwipe(cell: UITableViewCell) {
-        tableView.beginUpdates()
-        guard let indexPath = tableView.indexPath(for: cell) else { return }
-        let article = articles[indexPath.row]
-        ArticleManager.add(readLater: article) // Realmに記事を保存
-        
-        articles.remove(at: indexPath.row)
-        tableView.deleteRows(at: [indexPath], with: .automatic)
-        tableView.endUpdates()
     }
     
     
@@ -228,6 +165,13 @@ class ArticleListViewController: UIViewController, UITableViewDataSource, UITabl
         searchArticleVC.view.removeFromSuperview()
         searchArticleVC.removeFromParentViewController()
         nvc.setupSettingButton()
+    }
+    
+    private func showAlert(message: String) {
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        let defAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(defAction)
+        self.present(alert, animated: true, completion: nil)
     }
     
     

@@ -13,8 +13,12 @@
 		542265EB1E640C2400C7AA45 /* XLPagerTabStrip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 542265EA1E640C2400C7AA45 /* XLPagerTabStrip.framework */; };
 		542265EE1E64283B00C7AA45 /* ReadLaterTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542265ED1E64283B00C7AA45 /* ReadLaterTabViewController.swift */; };
 		542265F01E642A2C00C7AA45 /* ArchiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542265EF1E642A2C00C7AA45 /* ArchiveViewController.swift */; };
+		5439FA8B1EBC6AD80032F416 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5443EF4E1EBC679000BE5D09 /* RxCocoa.framework */; };
 		543B70CF1E7FB3C7009367E2 /* QiitaAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543B70CE1E7FB3C7009367E2 /* QiitaAPIError.swift */; };
 		543B70D11E7FC333009367E2 /* ConnectionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543B70D01E7FC333009367E2 /* ConnectionError.swift */; };
+		543E3A551EC71BB10085C2BB /* ArticleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543E3A541EC71BB10085C2BB /* ArticleFactory.swift */; };
+		543E3A571EC71BE30085C2BB /* FetchArticleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543E3A561EC71BE30085C2BB /* FetchArticleType.swift */; };
+		543E3A591EC722650085C2BB /* RecentArticleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543E3A581EC722650085C2BB /* RecentArticleViewModel.swift */; };
 		5457AADE1E767384000E3FE3 /* ArchiveTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5457AADC1E767384000E3FE3 /* ArchiveTableViewCell.swift */; };
 		5457AADF1E767384000E3FE3 /* ArchiveTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5457AADD1E767384000E3FE3 /* ArchiveTableViewCell.xib */; };
 		54674A501E89561A00247ABA /* ArticleCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54674A4F1E89561A00247ABA /* ArticleCellType.swift */; };
@@ -24,6 +28,7 @@
 		547B87081EA3111000E71FD8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 547B87071EA3111000E71FD8 /* GoogleService-Info.plist */; };
 		5495F4211E90D72E00F520FC /* OtherTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5495F4201E90D72E00F520FC /* OtherTableViewController.swift */; };
 		5495F4231E90EA8800F520FC /* OtherNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5495F4221E90EA8800F520FC /* OtherNavigationController.swift */; };
+		54A8B0571EBC96AB00814BFD /* ArticleTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A8B0561EBC96AB00814BFD /* ArticleTableViewDataSource.swift */; };
 		54BB71BD1E6AF8D30020DB9D /* SwipeCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BB71BC1E6AF8D30020DB9D /* SwipeCellType.swift */; };
 		54BB71BF1E6AFC240020DB9D /* ArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BB71BE1E6AFC240020DB9D /* ArticleView.swift */; };
 		54BB71C11E6AFC320020DB9D /* ArticleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54BB71C01E6AFC320020DB9D /* ArticleView.xib */; };
@@ -80,6 +85,10 @@
 		542265EF1E642A2C00C7AA45 /* ArchiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArchiveViewController.swift; sourceTree = "<group>"; };
 		543B70CE1E7FB3C7009367E2 /* QiitaAPIError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QiitaAPIError.swift; sourceTree = "<group>"; };
 		543B70D01E7FC333009367E2 /* ConnectionError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionError.swift; sourceTree = "<group>"; };
+		543E3A541EC71BB10085C2BB /* ArticleFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleFactory.swift; sourceTree = "<group>"; };
+		543E3A561EC71BE30085C2BB /* FetchArticleType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchArticleType.swift; sourceTree = "<group>"; };
+		543E3A581EC722650085C2BB /* RecentArticleViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentArticleViewModel.swift; sourceTree = "<group>"; };
+		5443EF4E1EBC679000BE5D09 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		5457AADC1E767384000E3FE3 /* ArchiveTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArchiveTableViewCell.swift; sourceTree = "<group>"; };
 		5457AADD1E767384000E3FE3 /* ArchiveTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArchiveTableViewCell.xib; sourceTree = "<group>"; };
 		54674A4F1E89561A00247ABA /* ArticleCellType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleCellType.swift; sourceTree = "<group>"; };
@@ -89,6 +98,7 @@
 		547B87071EA3111000E71FD8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5495F4201E90D72E00F520FC /* OtherTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherTableViewController.swift; sourceTree = "<group>"; };
 		5495F4221E90EA8800F520FC /* OtherNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherNavigationController.swift; sourceTree = "<group>"; };
+		54A8B0561EBC96AB00814BFD /* ArticleTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleTableViewDataSource.swift; sourceTree = "<group>"; };
 		54BB71BC1E6AF8D30020DB9D /* SwipeCellType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeCellType.swift; sourceTree = "<group>"; };
 		54BB71BE1E6AFC240020DB9D /* ArticleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleView.swift; sourceTree = "<group>"; };
 		54BB71C01E6AFC320020DB9D /* ArticleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArticleView.xib; sourceTree = "<group>"; };
@@ -141,6 +151,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5439FA8B1EBC6AD80032F416 /* RxCocoa.framework in Frameworks */,
 				542265EB1E640C2400C7AA45 /* XLPagerTabStrip.framework in Frameworks */,
 				54FAA58A1E3DD62600C09411 /* Realm.framework in Frameworks */,
 				54FAA58B1E3DD62600C09411 /* RealmSwift.framework in Frameworks */,
@@ -158,6 +169,7 @@
 		19989F1DB404BCE9479B50AF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5443EF4E1EBC679000BE5D09 /* RxCocoa.framework */,
 				542265EA1E640C2400C7AA45 /* XLPagerTabStrip.framework */,
 				54FAA5881E3DD62600C09411 /* Realm.framework */,
 				54FAA5891E3DD62600C09411 /* RealmSwift.framework */,
@@ -301,6 +313,7 @@
 				547636E81E98A33500FCBB76 /* LicensesViewController.swift */,
 				54D0D11F1EA34ECA000B602E /* BannerViewType.swift */,
 				54D0D1211EA35A40000B602E /* OtherViewController.swift */,
+				54A8B0561EBC96AB00814BFD /* ArticleTableViewDataSource.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -309,6 +322,9 @@
 			isa = PBXGroup;
 			children = (
 				54CD4D731E62D99500F15B5B /* ArticleListViewModel.swift */,
+				543E3A581EC722650085C2BB /* RecentArticleViewModel.swift */,
+				543E3A561EC71BE30085C2BB /* FetchArticleType.swift */,
+				543E3A541EC71BB10085C2BB /* ArticleFactory.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -447,11 +463,11 @@
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/WebImage.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/XLPagerTabStrip.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
 			);
 			outputPaths = (
 			);
@@ -488,11 +504,13 @@
 				54CD4D791E62D99500F15B5B /* AppDelegate.swift in Sources */,
 				54CD4D761E62D99500F15B5B /* JSONDecodable.swift in Sources */,
 				54CD4D821E62D99500F15B5B /* ArticleManager.swift in Sources */,
+				54A8B0571EBC96AB00814BFD /* ArticleTableViewDataSource.swift in Sources */,
 				54CD4D8C1E62D99500F15B5B /* SearchArticleViewController.swift in Sources */,
 				54CD4D871E62D99500F15B5B /* Util.swift in Sources */,
 				547636ED1E9BD0B800FCBB76 /* FileName.swift in Sources */,
 				543B70CF1E7FB3C7009367E2 /* QiitaAPIError.swift in Sources */,
 				54CD4D851E62D99500F15B5B /* SearchType.swift in Sources */,
+				543E3A571EC71BE30085C2BB /* FetchArticleType.swift in Sources */,
 				54CD4D841E62D99500F15B5B /* SearchHistory.swift in Sources */,
 				6C9D3C9D1EB87141006B36B1 /* SearchHistoryTableViewCell.swift in Sources */,
 				54CD4D751E62D99500F15B5B /* Dependencies.swift in Sources */,
@@ -511,6 +529,7 @@
 				54CD4D741E62D99500F15B5B /* APIClient.swift in Sources */,
 				54CD4D7D1E62D99500F15B5B /* ArrayExtension.swift in Sources */,
 				5457AADE1E767384000E3FE3 /* ArchiveTableViewCell.swift in Sources */,
+				543E3A591EC722650085C2BB /* RecentArticleViewModel.swift in Sources */,
 				54D0D1221EA35A40000B602E /* OtherViewController.swift in Sources */,
 				54CD4D8B1E62D99500F15B5B /* MainTabBarController.swift in Sources */,
 				54CD4D7F1E62D99500F15B5B /* UIViewExtension.swift in Sources */,
@@ -519,6 +538,7 @@
 				54CD4D8A1E62D99500F15B5B /* ArticleListViewController.swift in Sources */,
 				540C90EA1E717AAE0073D43E /* ArticleListNavigationController.swift in Sources */,
 				54D5713A1E765D77000C0D21 /* ReadLaterTableViewCell.swift in Sources */,
+				543E3A551EC71BB10085C2BB /* ArticleFactory.swift in Sources */,
 				54CD4D861E62D99500F15B5B /* UserSettings.swift in Sources */,
 				542265F01E642A2C00C7AA45 /* ArchiveViewController.swift in Sources */,
 				54CD4D771E62D99500F15B5B /* QiitaAPI.swift in Sources */,
@@ -656,7 +676,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/QiitaPocket/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = hirothings.QiitaPocket;
@@ -681,7 +701,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/QiitaPocket/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = hirothings.QiitaPocket;

@@ -12,26 +12,29 @@ import RxSwift
 import RxCocoa
 
 // TODO: インターフェースを作ってRecentとRankingのViewModel Classに分ける
-class ArticleListViewModel {
+class ArticleListViewModel: FetchArticleType {
     
-    let fetchSucceed = PublishSubject<[Article]>()
+    var articles = Variable<[Article]>([])
     let searchBarTitle = Variable("")
     var isLoading = Variable(false)
     var hasData = Variable(false)
+    let scrollViewDidReachedBottom = PublishSubject<Void>()
+    let alertTrigger = PublishSubject<String>()
     
     private let fetchRankingTrigger = PublishSubject<(keyword: String, page: String)>()
-    private let fetchRecentTrigger = PublishSubject<String>()
+    private let fetchRecentTrigger = PublishSubject<(keyword: String, page: String)>()
     private let bag = DisposeBag()
+    private var currentKeyword = ""
+    private var nextPage = "1"
 
     
-    init(scrollViewDidReachedBottom: Driver<Void>,
-         fetchTrigger: PublishSubject<String>
-         ) {
+    init(fetchTrigger: PublishSubject<String>) {
         
         configureRanking()
-        configureRecentArticle()
         
         fetchTrigger.bindNext { (keyword: String) in
+            self.currentKeyword = keyword
+
             let searchType = UserSettings.getSearchType()
             switch searchType {
             case .rank:
@@ -41,18 +44,23 @@ class ArticleListViewModel {
             }
         }
         .addDisposableTo(bag)
+        
+        scrollViewDidReachedBottom
+            .subscribe(onNext: { [weak self] in
+                guard let `self` = self else { return }
+                fetchTrigger.onNext(self.currentKeyword)
+            })
+            .disposed(by: bag)
     }
 
     
     func configureRanking() {
-        var currentKeyword: String = ""
-        var articles: [Article] = []
+        var _articles: [Article] = []
         
         fetchRankingTrigger
             .do(onNext: { [unowned self] in
                 self.isLoading.value = true
                 self.searchBarTitle.value = $0.keyword // TODO: 検索設定追加
-                currentKeyword = $0.keyword // キャプチャできる用にスコープ外にキーワードを渡す
             })
             .flatMap {
                 Articles.fetchWeeklyPost(with: $0.keyword, page: $0.page)
@@ -67,15 +75,15 @@ class ArticleListViewModel {
 
                     if model.items.isNotEmpty {
                         self.hasData.value = true
-                        articles += model.items
+                        _articles += model.items
                         if let nextPage = model.nextPage {
-                            self.fetchRankingTrigger.onNext((keyword: currentKeyword, page: nextPage))
+                            self.fetchRankingTrigger.onNext((keyword: self.currentKeyword, page: nextPage))
                         }
                         else {
-                            let sortedArticles = self.sortByStockCount(articles)
+                            let sortedArticles = self.sortByStockCount(_articles)
                             let addedStateArticles = self.addReadLaterState(sortedArticles)
-                            self.fetchSucceed.onNext(addedStateArticles)
-                            articles = []
+                            self.articles.value = addedStateArticles
+                            _articles = []
                         }
                     }
                     else {
@@ -86,61 +94,14 @@ class ArticleListViewModel {
                     // TODO: 判定が面倒なので、errorの種類自体をEnumにする
                     switch error {
                     case let qiitaError as QiitaAPIError:
-                        self.showAlert(message: qiitaError.message)
+                        self.alertTrigger.onNext(qiitaError.message)
                     case let connectionError as ConnectionError:
-                        self.showAlert(message: connectionError.message)
+                        self.alertTrigger.onNext(connectionError.message)
                     default:
                         break
                     }
                     self.isLoading.value = false
                     self.configureRanking() // Disposeが破棄されるので、再度設定する TODO: 再起以外に方法はないのか？
-                },
-                onCompleted: {
-                    print("Completed")
-                }
-            )
-            .addDisposableTo(bag)
-    }
-    
-    
-    func configureRecentArticle() {
-        fetchRecentTrigger
-            .do(onNext: { [unowned self] tag in
-                self.isLoading.value = true
-                self.searchBarTitle.value = tag // TODO: 検索設定追加
-            })
-            .flatMap { tag in
-                Articles.fetch(with: tag)
-            }
-            .do(onNext: { [unowned self] _ in
-                self.isLoading.value = false
-            })
-            .observeOn(Dependencies.sharedInstance.mainScheduler)
-            .subscribe(
-                onNext: { [weak self] (model: Articles) in
-                    guard let `self` = self else { return }
-                    let articles = model.items
-                    if articles.isNotEmpty {
-                        self.hasData.value = true
-                        let addedStateArticles = self.addReadLaterState(articles)
-                        self.fetchSucceed.onNext(addedStateArticles)
-                    }
-                    else {
-                        self.hasData.value = false
-                    }
-                },
-                onError: { (error) in
-                    // TODO: 判定が面倒なので、errorの種類自体をEnumにする
-                    switch error {
-                    case let qiitaError as QiitaAPIError:
-                        self.showAlert(message: qiitaError.message)
-                    case let connectionError as ConnectionError:
-                        self.showAlert(message: connectionError.message)
-                    default:
-                        break
-                    }
-                    self.isLoading.value = false
-                    self.configureRecentArticle() // Disposeが破棄されるので、再度設定する
                 },
                 onCompleted: {
                     print("Completed")
@@ -167,28 +128,5 @@ class ArticleListViewModel {
             }
         
         return sortedArticles
-    }
-    
-    /// あとで読むステータスをarticleに付与する
-    private func addReadLaterState(_ articles: [Article]) -> [Article] {
-        let saveArtcleIDs: [String] = ArticleManager.getAll().map { $0.id }
-        articles.forEach { (article: Article) in
-            for id in saveArtcleIDs {
-                if article.id == id {
-                    article.hasSaved = true
-                    break
-                }
-            }
-        }
-        return articles
-    }
-    
-    private func showAlert(message: String) {
-        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-        let defAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(defAction)
-        
-        guard let rootVC = UIApplication.shared.keyWindow?.rootViewController else { return }
-        rootVC.present(alert, animated: true, completion: nil)
     }
 }
