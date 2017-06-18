@@ -437,7 +437,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "GOOGLE_APP_ID=1:428407217170:ios:fb6e71cb93579d51\n\n\"${PODS_ROOT}\"/FirebaseCrash/upload-sym qiita-pocket-firebase-crashreporting-qysod-da92c66dbb.json";
+			shellScript = "GOOGLE_APP_ID=1:428407217170:ios:fb6e71cb93579d51\n\n\"${PODS_ROOT}\"/FirebaseCrash/upload-sym qiita-pocket-firebase-crashreporting-qysod-61f4f8b587.json";
 		};
 		56E0BEF0E548378726DE43B5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
