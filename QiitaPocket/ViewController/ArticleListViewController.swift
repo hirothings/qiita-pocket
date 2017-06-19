@@ -42,6 +42,8 @@ class ArticleListViewController:  UIViewController, UITableViewDataSource, UITab
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.separatorInset = UIEdgeInsets.zero
         tableView.sectionHeaderHeight = 30.0
+        tableView.delegate = self
+        tableView.dataSource = self
         
         tableView.isHidden = true
         noneDataLabel.isHidden = true
@@ -89,8 +91,6 @@ class ArticleListViewController:  UIViewController, UITableViewDataSource, UITab
                 print("fetch done")
                 
                 self.articles = articles
-                self.tableView.delegate = self
-                self.tableView.dataSource = self
                 self.tableView.reloadData()
                 let topIndexPath = IndexPath(row: 0, section: 0)
                 self.tableView.scrollToRow(at: topIndexPath, at: .top, animated: false)
