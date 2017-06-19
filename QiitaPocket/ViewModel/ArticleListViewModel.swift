@@ -13,8 +13,8 @@ import RxCocoa
 
 // TODO: インターフェースを作ってRecentとRankingのViewModel Classに分ける
 class ArticleListViewModel: FetchArticleType {
-    
-    var articles = Variable<[Article]>([])
+    var loadCompleteTrigger: PublishSubject<[Article]> = PublishSubject()
+    var articles: [Article] = []
     let searchBarTitle = Variable("")
     var isLoading = Variable(false)
     var hasData = Variable(false)
@@ -82,7 +82,7 @@ class ArticleListViewModel: FetchArticleType {
                         else {
                             let sortedArticles = self.sortByStockCount(_articles)
                             let addedStateArticles = self.addReadLaterState(sortedArticles)
-                            self.articles.value = addedStateArticles
+                            self.articles = addedStateArticles
                             _articles = []
                         }
                     }

@@ -12,17 +12,19 @@ import RxCocoa
 
 class RecentArticleViewModel: FetchArticleType {
     
-    var articles = Variable<[Article]>([])
+    var articles: [Article] = []
     let searchBarTitle = Variable("")
     var isLoading = Variable(false)
     var hasData = Variable(false)
     let scrollViewDidReachedBottom = PublishSubject<Void>()
     let alertTrigger = PublishSubject<String>()
+    let loadCompleteTrigger = PublishSubject<[Article]>()
     
     private var fetchRecentTrigger = PublishSubject<(keyword: String, page: String)>()
     private let bag = DisposeBag()
     private var currentKeyword = ""
     private var nextPage: Int? = 1
+    
     
     init(fetchTrigger: PublishSubject<String>) {
         
@@ -43,7 +45,7 @@ class RecentArticleViewModel: FetchArticleType {
     
     private func resetItems(keyword: String) {
         self.currentKeyword = keyword
-        articles.value = []
+        articles = []
         nextPage = 1
     }
     
@@ -79,7 +81,7 @@ class RecentArticleViewModel: FetchArticleType {
                     if _articles.isNotEmpty {
                         self.hasData.value = true
                         let addedStateArticles = self.addReadLaterState(_articles)
-                        self.articles.value += addedStateArticles
+                        self.articles += addedStateArticles
                         // TODO: 不要かもしれない
                         if let nextPage = model.nextPage {
                             self.nextPage! = Int(nextPage)!
@@ -87,6 +89,7 @@ class RecentArticleViewModel: FetchArticleType {
                         else {
                             self.nextPage = nil
                         }
+                        self.loadCompleteTrigger.onNext(self.articles)
                     }
                     else {
                         self.nextPage = nil
@@ -105,10 +108,10 @@ class RecentArticleViewModel: FetchArticleType {
                     }
                     self.isLoading.value = false
                     self.configureRecentArticle() // Disposeが破棄されるので、再度設定する
-            },
+                },
                 onCompleted: {
                     print("Completed")
-            })
-            .addDisposableTo(bag)
+                }
+            ).addDisposableTo(bag)
     }
 }
