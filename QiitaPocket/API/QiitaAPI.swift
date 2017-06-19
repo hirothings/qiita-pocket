@@ -16,7 +16,7 @@ final class QiitaAPI {
         typealias ResponseObject = Articles
         
         let tag: String
-        let page: String
+        let page: Int
 
         var path: String {
             if tag.isEmpty {
@@ -43,7 +43,7 @@ final class QiitaAPI {
         typealias ResponseObject = Articles
         
         let tag: String
-        let page: String
+        let page: Int
         
         var path: String {
             return "search"
@@ -59,9 +59,9 @@ final class QiitaAPI {
                 return formatter.string(from: oneWeekAgo)
             }()
             
-            var params: [String: String] = [
+            var params: [String: Any] = [
                 "page": page,
-                "per_page": "50", // 100が上限
+                "per_page": 50, // 100が上限
             ]
             
             if tag.isEmpty {

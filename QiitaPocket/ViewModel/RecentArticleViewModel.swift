@@ -20,7 +20,7 @@ class RecentArticleViewModel: FetchArticleType {
     let alertTrigger = PublishSubject<String>()
     let loadCompleteTrigger = PublishSubject<[Article]>()
     
-    private var fetchRecentTrigger = PublishSubject<(keyword: String, page: String)>()
+    private var fetchRecentTrigger = PublishSubject<(keyword: String, page: Int)>()
     private let bag = DisposeBag()
     private var currentKeyword = ""
     private var nextPage: Int? = 1
@@ -31,7 +31,7 @@ class RecentArticleViewModel: FetchArticleType {
         fetchTrigger
             .map { [unowned self] keyword in
                 self.resetItems(keyword: keyword)
-                return (keyword: self.currentKeyword, page: "\(1)")
+                return (keyword: self.currentKeyword, page: 1)
             }
             .bind(to: fetchRecentTrigger)
             .disposed(by: bag)
@@ -54,7 +54,8 @@ class RecentArticleViewModel: FetchArticleType {
             .filter { self.nextPage != nil }
             .map { [unowned self] _ in
                 print("scrollView下まできた")
-                return (keyword: self.currentKeyword, page: "\(self.nextPage!)")
+                print(self.nextPage)
+                return (keyword: self.currentKeyword, page: self.nextPage!)
             }
             .bind(to: fetchRecentTrigger)
             .disposed(by: bag)
@@ -70,9 +71,6 @@ class RecentArticleViewModel: FetchArticleType {
             .flatMap { tuple in
                 Articles.fetch(with: tuple.keyword, page: tuple.page)
             }
-            .do(onNext: { [unowned self] _ in
-                self.isLoading.value = false
-            })
             .observeOn(Dependencies.sharedInstance.mainScheduler)
             .subscribe(
                 onNext: { [weak self] (model: Articles) in
@@ -83,18 +81,14 @@ class RecentArticleViewModel: FetchArticleType {
                         let addedStateArticles = self.addReadLaterState(_articles)
                         self.articles += addedStateArticles
                         // TODO: 不要かもしれない
-                        if let nextPage = model.nextPage {
-                            self.nextPage! = Int(nextPage)!
-                        }
-                        else {
-                            self.nextPage = nil
-                        }
+                        self.nextPage = model.nextPage
                         self.loadCompleteTrigger.onNext(self.articles)
                     }
                     else {
                         self.nextPage = nil
                         self.hasData.value = false
                     }
+                    self.isLoading.value = false
                 },
                 onError: { (error) in
                     // TODO: 判定が面倒なので、errorの種類自体をEnumにする

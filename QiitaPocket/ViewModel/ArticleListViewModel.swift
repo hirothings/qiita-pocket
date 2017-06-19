@@ -21,11 +21,11 @@ class ArticleListViewModel: FetchArticleType {
     let scrollViewDidReachedBottom = PublishSubject<Void>()
     let alertTrigger = PublishSubject<String>()
     
-    private let fetchRankingTrigger = PublishSubject<(keyword: String, page: String)>()
-    private let fetchRecentTrigger = PublishSubject<(keyword: String, page: String)>()
+    private let fetchRankingTrigger = PublishSubject<(keyword: String, page: Int)>()
+    private let fetchRecentTrigger = PublishSubject<(keyword: String, page: Int)>()
     private let bag = DisposeBag()
     private var currentKeyword = ""
-    private var nextPage = "1"
+    private var nextPage = 1
 
     
     init(fetchTrigger: PublishSubject<String>) {
@@ -38,7 +38,7 @@ class ArticleListViewModel: FetchArticleType {
             let searchType = UserSettings.getSearchType()
             switch searchType {
             case .rank:
-                self.fetchRankingTrigger.onNext((keyword: keyword, page: "1"))
+                self.fetchRankingTrigger.onNext((keyword: keyword, page: 1))
             case .recent:
                 self.fetchRecentTrigger.onNext((keyword: keyword, page: self.nextPage))
             }

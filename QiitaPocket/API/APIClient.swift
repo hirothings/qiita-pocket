@@ -30,7 +30,14 @@ class APIClient {
             let request = Alamofire.request(url, method: request.method, parameters: request.parameters, headers: nil)
                 .responseJSON { response in
                     
-                    let nextPage: String? = self.parseNextPage(header: response.response?.allHeaderFields)
+                    var nextPage: Int?
+                    let nextPageStr: String? = self.parseNextPage(header: response.response?.allHeaderFields)
+                    if let nextPageStr = nextPageStr {
+                        nextPage = Int(nextPageStr)
+                    }
+                    else {
+                        nextPage = nil
+                    }
 
                     // TODO: ifDEBUG化
                     print("APIレスポンス -- ")

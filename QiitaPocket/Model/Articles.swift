@@ -14,9 +14,9 @@ struct Articles: JSONDecodable {
     
     static let apiClient = APIClient()
     let items: [Article]
-    let nextPage: String?
+    let nextPage: Int?
     
-    init(json: [Any], nextPage: String?) {
+    init(json: [Any], nextPage: Int?) {
         items = json.map { res in
             let json = JSON(res)
             let article = Article()
@@ -45,12 +45,12 @@ struct Articles: JSONDecodable {
         self.nextPage = nextPage
     }
 
-    static func fetch(with tag: String, page: String) -> Observable<Articles>  {
+    static func fetch(with tag: String, page: Int) -> Observable<Articles>  {
         let request = QiitaAPI.SearchArticles(tag: tag, page: page)
         return self.apiClient.call(request: request)
     }
     
-    static func fetchWeeklyPost(with tag: String, page: String) -> Observable<Articles>  {
+    static func fetchWeeklyPost(with tag: String, page: Int) -> Observable<Articles>  {
         let request = QiitaAPI.SearchWeeklyPost(tag: tag, page: page)
         return self.apiClient.call(request: request)
     }
