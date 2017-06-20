@@ -13,6 +13,8 @@ import RxCocoa
 
 // TODO: インターフェースを作ってRecentとRankingのViewModel Classに分ける
 class ArticleListViewModel: FetchArticleType {
+    
+    var loadNextPageTrigger: PublishSubject<Void> = PublishSubject<Void>()
     var loadCompleteTrigger: PublishSubject<[Article]> = PublishSubject()
     var articles: [Article] = []
     let searchBarTitle = Variable("")

@@ -13,7 +13,7 @@ protocol FetchArticleType {
     var searchBarTitle: Variable<String> { get }
     var isLoading: Variable<Bool> { get }
     var hasData: Variable<Bool> { get }
-    var scrollViewDidReachedBottom: PublishSubject<Void> { get }
+    var loadNextPageTrigger: PublishSubject<Void> { get }
     var alertTrigger: PublishSubject<String> { get }
     var loadCompleteTrigger: PublishSubject<[Article]> { get }
     func addReadLaterState(_ articles: [Article]) -> [Article]
