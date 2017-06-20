@@ -47,7 +47,6 @@ class ArticleListViewController:  UIViewController, UITableViewDataSource, UITab
         
         tableView.isHidden = true
         noneDataLabel.isHidden = true
-        activityIndicatorView.hidesWhenStopped = true
         
         nvc = self.navigationController as! ArticleListNavigationController
         searchBar = nvc.searchBar
@@ -60,7 +59,7 @@ class ArticleListViewController:  UIViewController, UITableViewDataSource, UITab
         
         tableView.rx.reachedBottom
             .asDriver()
-            .drive(viewModel.scrollViewDidReachedBottom)
+            .drive(viewModel.loadNextPageTrigger)
             .disposed(by: bag)
         
         refreshControll.rx.controlEvent(.valueChanged)
@@ -92,17 +91,13 @@ class ArticleListViewController:  UIViewController, UITableViewDataSource, UITab
                 
                 self.articles = articles
                 self.tableView.reloadData()
-                let topIndexPath = IndexPath(row: 0, section: 0)
-                self.tableView.scrollToRow(at: topIndexPath, at: .top, animated: false)
+                // TODO: 検索viewでreload時のみtopIndexPathに遷移
+//                let topIndexPath = IndexPath(row: 0, section: 0)
+//                self.tableView.scrollToRow(at: topIndexPath, at: .top, animated: false)
                 self.tableView.isHidden = false
                 self.refreshControll.endRefreshing()
             })
             .addDisposableTo(bag)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        tableView.tableFooterView = UIView(frame: CGRect.zero)
     }
     
     

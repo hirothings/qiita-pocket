@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AAx-FF-Xre">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AAx-FF-Xre">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -21,9 +21,6 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="2sy-Ix-rgN">
-                                <rect key="frame" x="177" y="16" width="20" height="20"/>
-                            </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="検索結果が0件です" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rux-eZ-sJz">
                                 <rect key="frame" x="113" y="16" width="149" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -33,6 +30,19 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LNL-OX-88e">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                 <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="rj4-Dy-vgY">
+                                    <rect key="frame" x="0.0" y="78" width="375" height="60"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="BPG-fM-iec">
+                                            <rect key="frame" x="177" y="20" width="20" height="20"/>
+                                        </activityIndicatorView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="BPG-fM-iec" firstAttribute="centerY" secondItem="rj4-Dy-vgY" secondAttribute="centerY" id="8tV-cq-v4T"/>
+                                        <constraint firstItem="BPG-fM-iec" firstAttribute="centerX" secondItem="rj4-Dy-vgY" secondAttribute="centerX" id="kvB-FZ-BNy"/>
+                                    </constraints>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ArticleTableViewCell" id="8If-M3-sd9" customClass="ArticleTableViewCell" customModule="QiitaPocket" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="50"/>
@@ -50,19 +60,17 @@
                         </subviews>
                         <color key="backgroundColor" red="0.97931915521621704" green="0.9800599217414856" blue="0.97943383455276489" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="LNL-OX-88e" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="1dn-Vr-FWb"/>
-                            <constraint firstItem="LNL-OX-88e" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="2qG-k9-FgC"/>
-                            <constraint firstItem="2sy-Ix-rgN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Gm8-Je-sXB"/>
+                            <constraint firstItem="LNL-OX-88e" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="64h-c7-70P"/>
+                            <constraint firstAttribute="trailing" secondItem="LNL-OX-88e" secondAttribute="trailing" id="Gog-ZS-Op7"/>
                             <constraint firstItem="rux-eZ-sJz" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="16" id="Iqq-fx-6IM"/>
-                            <constraint firstAttribute="trailing" secondItem="LNL-OX-88e" secondAttribute="trailing" id="YUH-6l-DdG"/>
+                            <constraint firstItem="LNL-OX-88e" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="aRX-et-u63"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="LNL-OX-88e" secondAttribute="bottom" id="au2-wf-RSN"/>
                             <constraint firstItem="rux-eZ-sJz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="h6i-nY-IaR"/>
-                            <constraint firstItem="2sy-Ix-rgN" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="16" id="n1y-PD-Zh3"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="LNL-OX-88e" secondAttribute="bottom" id="zs5-ID-Yg3"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="MXL-KA-qkx"/>
                     <connections>
-                        <outlet property="activityIndicatorView" destination="2sy-Ix-rgN" id="p9H-SX-QMJ"/>
+                        <outlet property="activityIndicatorView" destination="BPG-fM-iec" id="LfY-90-HOY"/>
                         <outlet property="noneDataLabel" destination="rux-eZ-sJz" id="OcK-P2-hmF"/>
                         <outlet property="tableView" destination="LNL-OX-88e" id="eKu-ch-UM6"/>
                     </connections>

@@ -16,7 +16,7 @@ class RecentArticleViewModel: FetchArticleType {
     let searchBarTitle = Variable("")
     var isLoading = Variable(false)
     var hasData = Variable(false)
-    let scrollViewDidReachedBottom = PublishSubject<Void>()
+    let loadNextPageTrigger = PublishSubject<Void>()
     let alertTrigger = PublishSubject<String>()
     let loadCompleteTrigger = PublishSubject<[Article]>()
     
@@ -36,8 +36,25 @@ class RecentArticleViewModel: FetchArticleType {
             .bind(to: fetchRecentTrigger)
             .disposed(by: bag)
         
-        configureRecentArticle()
-        bindPagination()
+        let nextPageRequest = isLoading.asObservable()
+            .sample(loadNextPageTrigger)
+            .flatMap { [unowned self] loading -> Observable<(keyword: String, page: Int)> in
+                print("scrollView下まできた")
+                if let page = self.nextPage, !loading {
+                    return Observable.of((keyword: self.currentKeyword, page: page))
+                }
+                else {
+                    return Observable.empty()
+                }
+            }
+            .shareReplay(1)
+        
+        let request = Observable
+            .of(fetchRecentTrigger, nextPageRequest)
+            .merge()
+            .shareReplay(1)
+        
+        configureRecentArticle(request)
     }
     
     
@@ -49,21 +66,8 @@ class RecentArticleViewModel: FetchArticleType {
         nextPage = 1
     }
     
-    private func bindPagination() {
-        scrollViewDidReachedBottom
-            .filter { self.nextPage != nil }
-            .map { [unowned self] _ in
-                print("scrollView下まできた")
-                print(self.nextPage)
-                return (keyword: self.currentKeyword, page: self.nextPage!)
-            }
-            .bind(to: fetchRecentTrigger)
-            .disposed(by: bag)
-    }
-
-    
-    private func configureRecentArticle() {
-        fetchRecentTrigger
+    private func configureRecentArticle(_ request: Observable<(keyword: String, page: Int)>) {
+        request
             .do(onNext: { [unowned self] tuple in
                 self.isLoading.value = true
                 self.searchBarTitle.value = tuple.keyword // TODO: 検索設定追加
@@ -101,7 +105,8 @@ class RecentArticleViewModel: FetchArticleType {
                         break
                     }
                     self.isLoading.value = false
-                    self.configureRecentArticle() // Disposeが破棄されるので、再度設定する
+//                    self.configureRecentArticle()
+                    // TODO: Disposeが破棄されるので、再度設定する
                 },
                 onCompleted: {
                     print("Completed")
