@@ -86,11 +86,23 @@ class ArticleListViewController:  UIViewController, UITableViewDataSource, UITab
         
         viewModel.loadCompleteTrigger
             .bind(onNext: { [unowned self] articles in
+                // プルリフレッシュ時、セルの再描画が行われるので、モデルを空にすると落ちる
+//                if articles.isEmpty {
+//                    self.articles = articles
+//                    return
+//                }
                 
                 print("fetch done")
-                
-                self.articles = articles
-                self.tableView.reloadData()
+                if self.viewModel.currentPage == 1 {
+                    self.articles = articles
+                    self.tableView.reloadData()
+                }
+                else {
+                    let counts: [Int] = Array(self.articles.count..<articles.count)
+                    self.articles = articles
+                    self.tableView.insertRows(at: counts.map { IndexPath(row: $0, section: 0) }, with: .none)
+                }
+
                 // TODO: 検索viewでreload時のみtopIndexPathに遷移
 //                let topIndexPath = IndexPath(row: 0, section: 0)
 //                self.tableView.scrollToRow(at: topIndexPath, at: .top, animated: false)

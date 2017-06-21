@@ -19,11 +19,12 @@ class RecentArticleViewModel: FetchArticleType {
     let loadNextPageTrigger = PublishSubject<Void>()
     let alertTrigger = PublishSubject<String>()
     let loadCompleteTrigger = PublishSubject<[Article]>()
+    var currentPage: Int = 1
+    var hasNextPage: Bool = false
     
     private var fetchRecentTrigger = PublishSubject<(keyword: String, page: Int)>()
     private let bag = DisposeBag()
     private var currentKeyword = ""
-    private var nextPage: Int? = 1
     
     
     init(fetchTrigger: PublishSubject<String>) {
@@ -40,8 +41,9 @@ class RecentArticleViewModel: FetchArticleType {
             .sample(loadNextPageTrigger)
             .flatMap { [unowned self] loading -> Observable<(keyword: String, page: Int)> in
                 print("scrollView下まできた")
-                if let page = self.nextPage, !loading {
-                    return Observable.of((keyword: self.currentKeyword, page: page))
+                if !loading && self.hasNextPage {
+                    self.currentPage += 1
+                    return Observable.of((keyword: self.currentKeyword, page: self.currentPage))
                 }
                 else {
                     return Observable.empty()
@@ -63,7 +65,7 @@ class RecentArticleViewModel: FetchArticleType {
     private func resetItems(keyword: String) {
         self.currentKeyword = keyword
         articles = []
-        nextPage = 1
+        currentPage = 1
     }
     
     private func configureRecentArticle(_ request: Observable<(keyword: String, page: Int)>) {
@@ -84,14 +86,12 @@ class RecentArticleViewModel: FetchArticleType {
                         self.hasData.value = true
                         let addedStateArticles = self.addReadLaterState(_articles)
                         self.articles += addedStateArticles
-                        // TODO: 不要かもしれない
-                        self.nextPage = model.nextPage
                         self.loadCompleteTrigger.onNext(self.articles)
                     }
                     else {
-                        self.nextPage = nil
                         self.hasData.value = false
                     }
+                    self.hasNextPage = (model.nextPage != nil)
                     self.isLoading.value = false
                 },
                 onError: { (error) in
