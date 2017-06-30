@@ -37,17 +37,13 @@ class RecentArticleViewModel: FetchArticleType {
             .bind(to: fetchRecentTrigger)
             .disposed(by: bag)
         
-        let nextPageRequest = isLoading.asObservable()
-            .sample(loadNextPageTrigger)
-            .flatMap { [unowned self] loading -> Observable<(keyword: String, page: Int)> in
-                print("scrollView下まできた")
-                if !loading && self.hasNextPage {
-                    self.currentPage += 1
-                    return Observable.of((keyword: self.currentKeyword, page: self.currentPage))
-                }
-                else {
-                    return Observable.empty()
-                }
+        let nextPageRequest = loadNextPageTrigger
+            .withLatestFrom(isLoading.asObservable())
+            .filter { !$0 && self.hasNextPage }
+            .flatMap { [weak self] _ -> Observable<(keyword: String, page: Int)> in
+                guard let `self` = self else { return Observable.empty() }
+                self.currentPage += 1
+                return Observable.of((keyword: self.currentKeyword, page: self.currentPage))
             }
             .shareReplay(1)
         
