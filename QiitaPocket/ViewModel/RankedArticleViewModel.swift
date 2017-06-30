@@ -1,5 +1,5 @@
 //
-//  ArticleListViewModel.swift
+//  RankedArticleViewModel.swift
 //  QiitaPocket
 //
 //  Created by hirothings on 2016/12/18.
@@ -11,8 +11,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-// TODO: インターフェースを作ってRecentとRankingのViewModel Classに分ける
-class ArticleListViewModel: FetchArticleType {
+class RankedArticleViewModel: FetchArticleType {
     var hasNextPage = Variable(false)
     var currentPage: Int = 1
     var loadNextPageTrigger: PublishSubject<Void> = PublishSubject<Void>()
