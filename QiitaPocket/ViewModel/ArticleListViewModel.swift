@@ -13,7 +13,7 @@ import RxCocoa
 
 // TODO: インターフェースを作ってRecentとRankingのViewModel Classに分ける
 class ArticleListViewModel: FetchArticleType {
-    var hasNextPage: Bool = false
+    var hasNextPage = Variable(false)
     var currentPage: Int = 1
     var loadNextPageTrigger: PublishSubject<Void> = PublishSubject<Void>()
     var loadCompleteTrigger: PublishSubject<[Article]> = PublishSubject()

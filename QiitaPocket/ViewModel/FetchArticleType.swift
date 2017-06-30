@@ -17,7 +17,7 @@ protocol FetchArticleType {
     var alertTrigger: PublishSubject<String> { get }
     var loadCompleteTrigger: PublishSubject<[Article]> { get }
     var currentPage: Int { get }
-    var hasNextPage: Bool { get }
+    var hasNextPage: Variable<Bool> { get }
     func addReadLaterState(_ articles: [Article]) -> [Article]
 }
 

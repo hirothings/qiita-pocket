@@ -104,6 +104,11 @@ class ArticleListViewController:  UIViewController, UITableViewDataSource, UITab
                 self.refreshControll.endRefreshing()
             })
             .addDisposableTo(bag)
+        
+        viewModel.hasNextPage.asObservable()
+            .map { !$0 }
+            .bind(to: self.activityIndicatorView.rx.isHidden)
+            .addDisposableTo(bag)
     }
     
     

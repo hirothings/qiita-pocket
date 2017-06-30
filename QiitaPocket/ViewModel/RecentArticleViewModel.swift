@@ -20,7 +20,7 @@ class RecentArticleViewModel: FetchArticleType {
     let alertTrigger = PublishSubject<String>()
     let loadCompleteTrigger = PublishSubject<[Article]>()
     var currentPage: Int = 1
-    var hasNextPage: Bool = false
+    var hasNextPage = Variable(false)
     
     private var fetchRecentTrigger = PublishSubject<(keyword: String, page: Int)>()
     private let bag = DisposeBag()
@@ -39,7 +39,7 @@ class RecentArticleViewModel: FetchArticleType {
         
         let nextPageRequest = loadNextPageTrigger
             .withLatestFrom(isLoading.asObservable())
-            .filter { !$0 && self.hasNextPage }
+            .filter { !$0 && self.hasNextPage.value }
             .flatMap { [weak self] _ -> Observable<(keyword: String, page: Int)> in
                 guard let `self` = self else { return Observable.empty() }
                 self.currentPage += 1
@@ -87,7 +87,7 @@ class RecentArticleViewModel: FetchArticleType {
                     else {
                         self.hasData.value = false
                     }
-                    self.hasNextPage = (model.nextPage != nil)
+                    self.hasNextPage.value = (model.nextPage != nil)
                     self.isLoading.value = false
                 },
                 onError: { (error) in
