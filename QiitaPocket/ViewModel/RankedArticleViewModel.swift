@@ -12,53 +12,45 @@ import RxSwift
 import RxCocoa
 
 class RankedArticleViewModel: FetchArticleType {
-    var hasNextPage = Variable(false)
-    var currentPage: Int = 1
-    var loadNextPageTrigger: PublishSubject<Void> = PublishSubject<Void>()
-    var loadCompleteTrigger: PublishSubject<[Article]> = PublishSubject()
+    
     var articles: [Article] = []
     let searchBarTitle = Variable("")
     var isLoading = Variable(false)
     var hasData = Variable(false)
-    let scrollViewDidReachedBottom = PublishSubject<Void>()
+    let loadNextPageTrigger = PublishSubject<Void>()
     let alertTrigger = PublishSubject<String>()
-    
+    let loadCompleteTrigger = PublishSubject<[Article]>()
+    var currentPage: Int = 1
+    var hasNextPage = Variable(false)
+
     private let fetchRankingTrigger = PublishSubject<(keyword: String, page: Int)>()
-    private let fetchRecentTrigger = PublishSubject<(keyword: String, page: Int)>()
     private let bag = DisposeBag()
     private var currentKeyword = ""
-    private var nextPage = 1
 
     
     init(fetchTrigger: PublishSubject<String>) {
         
-        configureRanking()
-        
-        fetchTrigger.bindNext { (keyword: String) in
-            self.currentKeyword = keyword
-
-            let searchType = UserSettings.getSearchType()
-            switch searchType {
-            case .rank:
-                self.fetchRankingTrigger.onNext((keyword: keyword, page: 1))
-            case .recent:
-                self.fetchRecentTrigger.onNext((keyword: keyword, page: self.nextPage))
+        fetchTrigger
+            .map { [unowned self] keyword in
+                self.resetItems(keyword: keyword)
+                return (keyword: self.currentKeyword, page: self.currentPage)
             }
-        }
-        .addDisposableTo(bag)
-        
-        scrollViewDidReachedBottom
-            .subscribe(onNext: { [weak self] in
-                guard let `self` = self else { return }
-                fetchTrigger.onNext(self.currentKeyword)
-            })
+            .bind(to: fetchRankingTrigger)
             .disposed(by: bag)
+        
+        configureRanking()
+    }
+    
+    
+    // MARK: private method
+    
+    private func resetItems(keyword: String) {
+        self.currentKeyword = keyword
+        articles = []
+        currentPage = 1
     }
 
-    
     func configureRanking() {
-        var _articles: [Article] = []
-        
         fetchRankingTrigger
             .do(onNext: { [unowned self] in
                 self.isLoading.value = true
@@ -67,29 +59,27 @@ class RankedArticleViewModel: FetchArticleType {
             .flatMap {
                 Articles.fetchWeeklyPost(with: $0.keyword, page: $0.page)
             }
-            .do(onNext: { [unowned self] _ in
-                self.isLoading.value = false
-            })
             .observeOn(Dependencies.sharedInstance.mainScheduler)
             .subscribe(
                 onNext: { [weak self] (model: Articles) in
                     guard let `self` = self else { return }
+                    
+                    if model.items.isEmpty {
+                        self.hasData.value = false
+                        return
+                    }
 
-                    if model.items.isNotEmpty {
-                        self.hasData.value = true
-                        _articles += model.items
-                        if let nextPage = model.nextPage {
-                            self.fetchRankingTrigger.onNext((keyword: self.currentKeyword, page: nextPage))
-                        }
-                        else {
-                            let sortedArticles = self.sortByStockCount(_articles)
-                            let addedStateArticles = self.addReadLaterState(sortedArticles)
-                            self.articles = addedStateArticles
-                            _articles = []
-                        }
+                    self.hasData.value = true
+                    self.articles += model.items
+                    if let _ = model.nextPage {
+                        self.fetchRankingTrigger.onNext((keyword: self.currentKeyword, page: self.currentPage + 1))
                     }
                     else {
-                        self.hasData.value = false
+                        let sortedArticles = self.sortByStockCount(self.articles)
+                        let addedStateArticles = self.addReadLaterState(sortedArticles)
+                        self.articles = addedStateArticles
+                        self.loadCompleteTrigger.onNext(self.articles)
+                        self.isLoading.value = false
                     }
                 },
                 onError: { (error) in
