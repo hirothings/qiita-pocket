@@ -21,7 +21,7 @@ class ArticleListViewController:  UIViewController, UITableViewDataSource, UITab
     var articles: [Article] = []
     var refreshControll = UIRefreshControl()
     
-    private var viewModel: FetchArticleType!
+    private var viewModel: ArticleListViewModel!
     private var fetchTrigger = PublishSubject<String>()
     private var searchArticleVC = SearchArticleViewController()
     private var searchBar: UISearchBar!
@@ -35,8 +35,7 @@ class ArticleListViewController:  UIViewController, UITableViewDataSource, UITab
         let nib: UINib = UINib(nibName: "ArticleTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "ArticleTableViewCell")
         
-        let articleFactory = ArticleFactory(fetchTrigger: fetchTrigger)
-        viewModel = articleFactory.viewModel
+        viewModel = ArticleListViewModel(fetchTrigger: fetchTrigger)
         
         tableView.estimatedRowHeight = 103.0
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -74,7 +73,7 @@ class ArticleListViewController:  UIViewController, UITableViewDataSource, UITab
             })
             .drive(UIApplication.shared.rx.isNetworkActivityIndicatorVisible)
             .addDisposableTo(bag)
-            
+        
         viewModel.isLoading.asDriver()
             .drive(activityIndicatorView.rx.isAnimating)
             .addDisposableTo(bag)
@@ -86,7 +85,6 @@ class ArticleListViewController:  UIViewController, UITableViewDataSource, UITab
         
         viewModel.loadCompleteTrigger
             .bind(onNext: { [unowned self] articles in
-                
                 print("fetch done")
                 if self.viewModel.currentPage == 1 {
                     self.articles = articles
@@ -99,7 +97,7 @@ class ArticleListViewController:  UIViewController, UITableViewDataSource, UITab
                     self.articles = articles
                     self.tableView.insertRows(at: indexPath, with: .none)
                 }
-
+                
                 self.tableView.isHidden = false
                 self.refreshControll.endRefreshing()
             })
