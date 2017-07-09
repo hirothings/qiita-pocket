@@ -15,16 +15,21 @@ class ArticleListViewModel {
     
     var articles: [Article] = []
     let searchBarTitle = Variable("")
-    var isLoading = Variable(false)
     var hasData = Variable(false)
     let loadNextPageTrigger = PublishSubject<Void>()
     let alertTrigger = PublishSubject<String>()
     let loadCompleteTrigger = PublishSubject<[Article]>()
     var currentPage: Int = 1
     var hasNextPage = Variable(false)
+    
+    lazy var isLoading: SharedSequence<DriverSharingStrategy, Bool> = {
+        return self.isLoadingVariable.asDriver()
+    }()
 
     private let fetchRankingTrigger = PublishSubject<(keyword: String, page: Int)>()
     private var fetchRecentTrigger = PublishSubject<(keyword: String, page: Int)>()
+    private var isLoadingVariable = Variable(false)
+
 
     private let bag = DisposeBag()
     private var currentKeyword = ""
@@ -37,7 +42,7 @@ class ArticleListViewModel {
         
         fetchTrigger.bind(onNext: { [weak self] (keyword: String) in
             guard let `self` = self else { return }
-            self.isLoading.value = true
+            self.isLoadingVariable.value = true
             self.resetItems(keyword: keyword)
             
             let searchType = UserSettings.getSearchType()
@@ -65,7 +70,7 @@ class ArticleListViewModel {
     func configureRanking() {
         fetchRankingTrigger
             .do(onNext: { [unowned self] tuple in
-                self.isLoading.value = true
+                self.isLoadingVariable.value = true
                 self.resetItems(keyword: tuple.keyword)
             })
             .flatMap {
@@ -91,7 +96,7 @@ class ArticleListViewModel {
                         let addedStateArticles = self.addReadLaterState(sortedArticles)
                         self.articles = addedStateArticles
                         self.loadCompleteTrigger.onNext(self.articles)
-                        self.isLoading.value = false
+                        self.isLoadingVariable.value = false
                     }
                 },
                 onError: { (error) in
@@ -104,7 +109,8 @@ class ArticleListViewModel {
                     default:
                         break
                     }
-                    self.isLoading.value = false
+                    self.hasData.value = false
+                    self.isLoadingVariable.value = false
                     self.configureRanking() // Disposeが破棄されるので、再度設定する TODO: 再起以外に方法はないのか？
                 },
                 onCompleted: {
@@ -132,7 +138,7 @@ class ArticleListViewModel {
         
         request
             .do(onNext: { [unowned self] tuple in
-                self.isLoading.value = true
+                self.isLoadingVariable.value = true
             })
             .flatMap { tuple in
                 Articles.fetch(with: tuple.keyword, page: tuple.page)
@@ -152,7 +158,7 @@ class ArticleListViewModel {
                         self.hasData.value = false
                     }
                     self.hasNextPage.value = (model.nextPage != nil)
-                    self.isLoading.value = false
+                    self.isLoadingVariable.value = false
                 },
                 onError: { (error) in
                     // TODO: 判定が面倒なので、errorの種類自体をEnumにする
@@ -164,14 +170,15 @@ class ArticleListViewModel {
                     default:
                         break
                     }
-                    self.isLoading.value = false
-                    //                    self.configureRecentArticle()
-                    // TODO: Disposeが破棄されるので、再度設定する
-            },
+                    self.hasData.value = false
+                    self.hasNextPage.value = false
+                    self.isLoadingVariable.value = false
+                    self.configureRecentArticle()
+                },
                 onCompleted: {
                     print("Completed")
-            }
-        ).addDisposableTo(bag)
+                }
+            ).addDisposableTo(bag)
     }
     
     
