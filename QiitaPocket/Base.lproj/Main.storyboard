@@ -27,6 +27,19 @@
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Sb-Oj-RYD">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="cJk-19-Kr6">
+                                        <rect key="frame" x="177.5" y="12" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="SVQ-h6-ATP"/>
+                                    <constraint firstItem="cJk-19-Kr6" firstAttribute="centerX" secondItem="9Sb-Oj-RYD" secondAttribute="centerX" id="myq-bu-jcm"/>
+                                    <constraint firstItem="cJk-19-Kr6" firstAttribute="centerY" secondItem="9Sb-Oj-RYD" secondAttribute="centerY" id="zbs-Lk-7OJ"/>
+                                </constraints>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LNL-OX-88e">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                 <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -63,16 +76,20 @@
                             <constraint firstItem="LNL-OX-88e" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="64h-c7-70P"/>
                             <constraint firstAttribute="trailing" secondItem="LNL-OX-88e" secondAttribute="trailing" id="Gog-ZS-Op7"/>
                             <constraint firstItem="rux-eZ-sJz" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="16" id="Iqq-fx-6IM"/>
+                            <constraint firstItem="9Sb-Oj-RYD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="JHa-CQ-dWt"/>
+                            <constraint firstAttribute="trailing" secondItem="9Sb-Oj-RYD" secondAttribute="trailing" id="ROh-US-afv"/>
                             <constraint firstItem="LNL-OX-88e" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="aRX-et-u63"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="LNL-OX-88e" secondAttribute="bottom" id="au2-wf-RSN"/>
                             <constraint firstItem="rux-eZ-sJz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="h6i-nY-IaR"/>
+                            <constraint firstItem="9Sb-Oj-RYD" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="ntu-tS-bOp"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="MXL-KA-qkx"/>
                     <connections>
-                        <outlet property="activityIndicatorView" destination="BPG-fM-iec" id="LfY-90-HOY"/>
+                        <outlet property="bottomIndicatorView" destination="BPG-fM-iec" id="2Bo-Zx-EhK"/>
                         <outlet property="noneDataLabel" destination="rux-eZ-sJz" id="OcK-P2-hmF"/>
                         <outlet property="tableView" destination="LNL-OX-88e" id="eKu-ch-UM6"/>
+                        <outlet property="topIndicatorView" destination="cJk-19-Kr6" id="4cn-Cz-iJS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

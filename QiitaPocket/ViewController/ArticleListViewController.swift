@@ -15,7 +15,8 @@ import SafariServices
 class ArticleListViewController:  UIViewController, UITableViewDataSource, UITableViewDelegate, SwipeCellDelegate, UISearchBarDelegate {
 
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    @IBOutlet weak var topIndicatorView: UIActivityIndicatorView!
+    @IBOutlet weak var bottomIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var noneDataLabel: UILabel!
 
     var articles: [Article] = []
@@ -53,6 +54,9 @@ class ArticleListViewController:  UIViewController, UITableViewDataSource, UITab
         
         tableView.refreshControl = refreshControll
         
+        bottomIndicatorView.hidesWhenStopped = true
+        topIndicatorView.hidesWhenStopped = true
+        
         
         // bind
         
@@ -67,19 +71,22 @@ class ArticleListViewController:  UIViewController, UITableViewDataSource, UITab
             .bind(to: fetchTrigger)
             .addDisposableTo(bag)
         
-        viewModel.isLoading.asDriver()
+        viewModel.isLoading
             .do(onNext: { [weak self] in
                 self?.noneDataLabel.isHidden = $0
             })
             .drive(UIApplication.shared.rx.isNetworkActivityIndicatorVisible)
             .addDisposableTo(bag)
         
-        viewModel.isLoading.asDriver()
-            .drive(activityIndicatorView.rx.isAnimating)
+        viewModel.isLoading
+            .drive(bottomIndicatorView.rx.isAnimating)
+            .addDisposableTo(bag)
+        
+        viewModel.isLoading
+            .drive(topIndicatorView.rx.isAnimating)
             .addDisposableTo(bag)
         
         viewModel.hasData.asObservable()
-            .skip(1)
             .bind(to: noneDataLabel.rx.isHidden)
             .addDisposableTo(bag)
         
@@ -103,10 +110,12 @@ class ArticleListViewController:  UIViewController, UITableViewDataSource, UITab
             })
             .addDisposableTo(bag)
         
-        viewModel.hasNextPage.asObservable()
-            .map { !$0 }
-            .bind(to: self.activityIndicatorView.rx.isHidden)
-            .addDisposableTo(bag)
+        viewModel.alertTrigger
+            .asObservable()
+            .bind(onNext: { [weak self] in
+                self?.showAlert(message: $0)
+            })
+            .disposed(by: bag)
     }
     
     
