@@ -59,6 +59,7 @@
 		54D5713A1E765D77000C0D21 /* ReadLaterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D571391E765D77000C0D21 /* ReadLaterTableViewCell.swift */; };
 		54D5713C1E765DC0000C0D21 /* ReadLaterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54D5713B1E765DC0000C0D21 /* ReadLaterTableViewCell.xib */; };
 		54DC8F7C1EA1963A008F0E51 /* LicenseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DC8F7B1EA1963A008F0E51 /* LicenseDetailViewController.swift */; };
+		54E3DBEC1F13B5380079BEFD /* QiitaClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E3DBEB1F13B5370079BEFD /* QiitaClientError.swift */; };
 		54ECD8571EB9442400141647 /* UIScrollView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54ECD8561EB9442400141647 /* UIScrollView+Rx.swift */; };
 		54F7C7E21E989B8A0069258E /* Licenses.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54F7C7E11E989B8A0069258E /* Licenses.plist */; };
 		54FAA58A1E3DD62600C09411 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54FAA5881E3DD62600C09411 /* Realm.framework */; };
@@ -127,6 +128,7 @@
 		54D571391E765D77000C0D21 /* ReadLaterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadLaterTableViewCell.swift; sourceTree = "<group>"; };
 		54D5713B1E765DC0000C0D21 /* ReadLaterTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReadLaterTableViewCell.xib; sourceTree = "<group>"; };
 		54DC8F7B1EA1963A008F0E51 /* LicenseDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseDetailViewController.swift; sourceTree = "<group>"; };
+		54E3DBEB1F13B5370079BEFD /* QiitaClientError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QiitaClientError.swift; sourceTree = "<group>"; };
 		54ECD8561EB9442400141647 /* UIScrollView+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Rx.swift"; sourceTree = "<group>"; };
 		54F7C7E11E989B8A0069258E /* Licenses.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Licenses.plist; sourceTree = "<group>"; };
 		54FAA5881E3DD62600C09411 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 				543B70CE1E7FB3C7009367E2 /* QiitaAPIError.swift */,
 				543B70D01E7FC333009367E2 /* ConnectionError.swift */,
 				54CD4D551E62D99500F15B5B /* QiitaRequest.swift */,
+				54E3DBEB1F13B5370079BEFD /* QiitaClientError.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -510,6 +513,7 @@
 				547636EB1E9BCFF000FCBB76 /* License.swift in Sources */,
 				54674A501E89561A00247ABA /* ArticleCellType.swift in Sources */,
 				54CD4D831E62D99500F15B5B /* Articles.swift in Sources */,
+				54E3DBEC1F13B5380079BEFD /* QiitaClientError.swift in Sources */,
 				54D0D1201EA34ECA000B602E /* BannerViewType.swift in Sources */,
 				54CD4D7E1E62D99500F15B5B /* UIColorExtension.swift in Sources */,
 				54CD4D811E62D99500F15B5B /* Article.swift in Sources */,

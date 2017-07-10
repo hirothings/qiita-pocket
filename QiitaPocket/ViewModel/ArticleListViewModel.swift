@@ -14,7 +14,6 @@ import RxCocoa
 class ArticleListViewModel {
     
     var articles: [Article] = []
-    let searchBarTitle = Variable("")
     var hasData = Variable(false)
     let loadNextPageTrigger = PublishSubject<Void>()
     let alertTrigger = PublishSubject<String>()
@@ -61,7 +60,6 @@ class ArticleListViewModel {
     
     private func resetItems(keyword: String) {
         self.currentKeyword = keyword
-        self.searchBarTitle.value = keyword
         self.hasNextPage.value = false
         articles = []
         currentPage = 1
@@ -99,16 +97,9 @@ class ArticleListViewModel {
                         self.isLoadingVariable.value = false
                     }
                 },
-                onError: { (error) in
-                    // TODO: 判定が面倒なので、errorの種類自体をEnumにする
-                    switch error {
-                    case let qiitaError as QiitaAPIError:
-                        self.alertTrigger.onNext(qiitaError.message)
-                    case let connectionError as ConnectionError:
-                        self.alertTrigger.onNext(connectionError.message)
-                    default:
-                        break
-                    }
+                onError: { [weak self] (error: Error) in
+                    guard let `self` = self else { return }
+                    self.bindError(error)
                     self.hasData.value = false
                     self.isLoadingVariable.value = false
                     self.configureRanking() // Disposeが破棄されるので、再度設定する TODO: 再起以外に方法はないのか？
@@ -161,15 +152,7 @@ class ArticleListViewModel {
                     self.isLoadingVariable.value = false
                 },
                 onError: { (error) in
-                    // TODO: 判定が面倒なので、errorの種類自体をEnumにする
-                    switch error {
-                    case let qiitaError as QiitaAPIError:
-                        self.alertTrigger.onNext(qiitaError.message)
-                    case let connectionError as ConnectionError:
-                        self.alertTrigger.onNext(connectionError.message)
-                    default:
-                        break
-                    }
+                    self.bindError(error)
                     self.hasData.value = false
                     self.hasNextPage.value = false
                     self.isLoadingVariable.value = false
@@ -214,5 +197,14 @@ class ArticleListViewModel {
         }
         return articles
     }
-
+    
+    private func bindError(_ error: Error) {
+        let err = error as! QiitaClientError
+        switch err {
+        case let .apiError(err):
+            self.alertTrigger.onNext(err.message)
+        case let .connectionError(err):
+            self.alertTrigger.onNext(err.message)
+        }
+    }
 }
