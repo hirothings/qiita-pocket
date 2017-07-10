@@ -13,25 +13,63 @@ import RxCocoa
 
 class ArticleListViewModel {
     
-    var articles: [Article] = []
     var hasData = Variable(false)
+    var hasNextPage = Variable(false)
     let loadNextPageTrigger = PublishSubject<Void>()
     let alertTrigger = PublishSubject<String>()
-    let loadCompleteTrigger = PublishSubject<[Article]>()
-    var currentPage: Int = 1
-    var hasNextPage = Variable(false)
+    var firstLoad: Observable<[Article]>!
+    var additionalLoad: Observable<[Article]>!
     
     lazy var isLoading: SharedSequence<DriverSharingStrategy, Bool> = {
         return self.isLoadingVariable.asDriver()
     }()
+    
+    var bottomViewHeight: CGFloat {
+        switch self.searchType {
+        case.rank:
+            return 0
+        case .recent:
+            return 60
+        }
+    }
+    
+    var searchTitle: String {
+        var text: String
+        switch searchType {
+        case .rank:
+            text = "週間ランキング"
+        case .recent:
+            text = "新着順"
+        }
+        text += searchKeyword.isEmpty ? ": すべて" : ": \(searchKeyword)"
+        return text
+    }
+    
+    var titleColor: UIColor {
+        switch searchType {
+        case .rank:
+            return UIColor.rankGold
+        case .recent:
+            return UIColor.theme
+        }
+    }
 
     private let fetchRankingTrigger = PublishSubject<(keyword: String, page: Int)>()
     private var fetchRecentTrigger = PublishSubject<(keyword: String, page: Int)>()
+    private let loadCompleteTrigger = PublishSubject<[Article]>()
     private var isLoadingVariable = Variable(false)
 
-
     private let bag = DisposeBag()
+    private var articles: [Article] = []
     private var currentKeyword = ""
+    private var currentPage: Int = 1
+    
+    private var searchType: SearchType {
+        return UserSettings.getSearchType()
+    }
+    private var searchKeyword: String {
+        return UserSettings.getCurrentSearchTag()
+    }
 
     
     init(fetchTrigger: PublishSubject<String>) {
@@ -44,8 +82,7 @@ class ArticleListViewModel {
             self.isLoadingVariable.value = true
             self.resetItems(keyword: keyword)
             
-            let searchType = UserSettings.getSearchType()
-            switch searchType {
+            switch self.searchType {
             case .rank:
                 self.fetchRankingTrigger.onNext((keyword: keyword, page: 1))
             case .recent:
@@ -53,6 +90,14 @@ class ArticleListViewModel {
             }
         })
         .disposed(by: bag)
+        
+        firstLoad = loadCompleteTrigger
+            .filter { _ in self.currentPage == 1 }
+            .shareReplay(1)
+        
+        additionalLoad = loadCompleteTrigger
+            .filter { _ in self.currentPage != 1 }
+            .shareReplay(1)
     }
     
     
@@ -114,7 +159,7 @@ class ArticleListViewModel {
     private func configureRecentArticle() {
         let nextPageRequest = loadNextPageTrigger
             .withLatestFrom(isLoading.asObservable())
-            .filter { !$0 && self.hasNextPage.value && UserSettings.getSearchType() == .recent }
+            .filter { !$0 && self.hasNextPage.value && self.searchType == .recent }
             .flatMap { [weak self] _ -> Observable<(keyword: String, page: Int)> in
                 guard let `self` = self else { return Observable.empty() }
                 self.currentPage += 1
@@ -151,7 +196,8 @@ class ArticleListViewModel {
                     self.hasNextPage.value = (model.nextPage != nil)
                     self.isLoadingVariable.value = false
                 },
-                onError: { (error) in
+                onError: { [weak self] (error) in
+                    guard let `self` = self else { return }
                     self.bindError(error)
                     self.hasData.value = false
                     self.hasNextPage.value = false

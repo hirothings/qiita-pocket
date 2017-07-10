@@ -17,6 +17,7 @@ class ArticleListViewController:  UIViewController, UITableViewDataSource, UITab
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var topIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var bottomIndicatorView: UIActivityIndicatorView!
+    @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var noneDataLabel: UILabel!
 
     var articles: [Article] = []
@@ -87,28 +88,33 @@ class ArticleListViewController:  UIViewController, UITableViewDataSource, UITab
             .addDisposableTo(bag)
         
         viewModel.hasData.asObservable()
+            .skip(1)
             .bind(to: noneDataLabel.rx.isHidden)
             .addDisposableTo(bag)
         
-        viewModel.loadCompleteTrigger
+        viewModel.firstLoad
             .bind(onNext: { [unowned self] articles in
-                print("fetch done")
-                if self.viewModel.currentPage == 1 {
-                    self.articles = articles
-                    self.tableView.reloadData()
-                    let topIndexPath = IndexPath(row: 0, section: 0)
-                    self.tableView.scrollToRow(at: topIndexPath, at: .top, animated: false)
-                }
-                else {
-                    let indexPath: [IndexPath] = Array(self.articles.count..<articles.count).map { IndexPath(row: $0, section: 0) }
-                    self.articles = articles
-                    self.tableView.insertRows(at: indexPath, with: .none)
-                }
+                print("first load done")
                 
+                self.articles = articles
+                self.setUpBottomView()
+                self.tableView.reloadData()
+                let topIndexPath = IndexPath(row: 0, section: 0)
+                self.tableView.scrollToRow(at: topIndexPath, at: .top, animated: false)
                 self.tableView.isHidden = false
                 self.refreshControll.endRefreshing()
             })
             .addDisposableTo(bag)
+        
+        viewModel.additionalLoad
+            .bind(onNext: { [unowned self] articles in
+                print("additional load done")
+
+                let indexPath: [IndexPath] = Array(self.articles.count..<articles.count).map { IndexPath(row: $0, section: 0) }
+                self.articles = articles
+                self.tableView.insertRows(at: indexPath, with: .none)
+            })
+            .disposed(by: bag)
         
         viewModel.alertTrigger
             .asObservable()
@@ -139,27 +145,10 @@ class ArticleListViewController:  UIViewController, UITableViewDataSource, UITab
     // MARK: - TableView Delegate
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let searchType = UserSettings.getSearchType()
-        let currentTag = UserSettings.getCurrentSearchTag()
-        
-        var text: String
-        switch searchType {
-        case .rank:
-            text = "週間ランキング"
-        case .recent:
-            text = "新着順"
-        }
-        
-        if currentTag.isEmpty {
-            text += ": すべて"
-        }
-        else {
-            text += ": \(currentTag)"
-        }
         
         let label: UILabel = {
             let lb = UILabel(frame: CGRect(x: 10.0, y: 0.0, width: UIScreen.main.bounds.width, height: 30.0))
-            lb.text = text
+            lb.text = viewModel.searchTitle
             lb.textColor = UIColor.white
             lb.font = UIFont.boldSystemFont(ofSize: 12.0)
             return lb
@@ -167,12 +156,7 @@ class ArticleListViewController:  UIViewController, UITableViewDataSource, UITab
         
         let view: UIView = {
             let v = UIView()
-            switch searchType {
-            case .rank:
-                v.backgroundColor = UIColor.rankGold
-            case .recent:
-                v.backgroundColor = UIColor.theme
-            }
+            v.backgroundColor = viewModel.titleColor
             return v
         }()
         
@@ -257,6 +241,14 @@ class ArticleListViewController:  UIViewController, UITableViewDataSource, UITab
         let defAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(defAction)
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    private func setUpBottomView() {
+        let rect = CGRect(x: bottomView.bounds.origin.x,
+                          y: bottomView.bounds.origin.y,
+                          width: bottomView.bounds.width,
+                          height: viewModel.bottomViewHeight)
+        self.bottomView.frame = rect
     }
     
     
