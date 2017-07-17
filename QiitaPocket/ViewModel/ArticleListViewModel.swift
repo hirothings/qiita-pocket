@@ -81,6 +81,7 @@ class ArticleListViewModel {
             guard let `self` = self else { return }
             self.isLoadingVariable.value = true
             self.resetItems(keyword: keyword)
+            self.updateSearchState(keyword: keyword)
             
             switch self.searchType {
             case .rank:
@@ -110,7 +111,7 @@ class ArticleListViewModel {
         currentPage = 1
     }
 
-    func configureRanking() {
+    private func configureRanking() {
         fetchRankingTrigger
             .do(onNext: { [unowned self] tuple in
                 self.isLoadingVariable.value = true
@@ -252,5 +253,11 @@ class ArticleListViewModel {
         case let .connectionError(err):
             self.alertTrigger.onNext(err.message)
         }
+    }
+    
+    private func updateSearchState(keyword: String) {
+        UserSettings.setCurrentSearchTag(name: keyword)
+        let searchHistory = SearchHistory()
+        searchHistory.add(tag: keyword)
     }
 }

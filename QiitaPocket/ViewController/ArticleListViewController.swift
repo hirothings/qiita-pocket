@@ -145,7 +145,6 @@ class ArticleListViewController:  UIViewController, UITableViewDataSource, UITab
     // MARK: - TableView Delegate
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
         let label: UILabel = {
             let lb = UILabel(frame: CGRect(x: 10.0, y: 0.0, width: UIScreen.main.bounds.width, height: 30.0))
             lb.text = viewModel.searchTitle
@@ -197,14 +196,6 @@ class ArticleListViewController:  UIViewController, UITableViewDataSource, UITab
     
     // MARK: - Private Method
     
-    // TODO: viewModelに処理移す
-    private func updateSearchState(tag: String) {
-        UserSettings.setCurrentSearchTag(name: tag)
-        
-        let searchHistory = SearchHistory()
-        searchHistory.add(tag: tag)
-    }
-    
     /// 検索ViewControllerをセット
     private func setupSearchArticleVC() {
         searchArticleVC = self.storyboard!.instantiateViewController(withIdentifier: "SearchArticleViewController") as! SearchArticleViewController
@@ -216,7 +207,6 @@ class ArticleListViewController:  UIViewController, UITableViewDataSource, UITab
         searchArticleVC.didSelectSearchHistory
             .subscribe(onNext: { [unowned self] (tag: String) in
                 self.searchBar.text = tag
-                self.updateSearchState(tag: tag)
                 self.fetchTrigger.onNext(tag)
                 self.searchBar.endEditing(true)
                 self.searchBar.showsCancelButton = false
@@ -269,8 +259,6 @@ class ArticleListViewController:  UIViewController, UITableViewDataSource, UITab
         removeSearchArticleVC()
         searchBar.endEditing(true)
         searchBar.showsCancelButton = false
-
-        updateSearchState(tag: searchBar.text!)
         fetchTrigger.onNext(searchBar.text!)
         self.tableView.isHidden = true
     }
