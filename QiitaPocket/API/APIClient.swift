@@ -67,7 +67,6 @@ class APIClient {
     /// 次のページ番号をLinkヘッダーからParseする
     private func parseNextPage(header: [AnyHashable: Any]?) -> String? {
         guard let serializedLinks = header?["Link"] as? String else { return nil }
-        print(serializedLinks)
         do {
             let regex = try NSRegularExpression(pattern: "(?<=page=)(.+?)(?=&)(?=.*rel=\"next\")", options: .allowCommentsAndWhitespace)
             guard let match = regex.firstMatch(in: serializedLinks,

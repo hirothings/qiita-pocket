@@ -68,7 +68,7 @@ class ArticleListViewModel {
         return UserSettings.getSearchType()
     }
     private var searchKeyword: String {
-        return UserSettings.getCurrentSearchTag()
+        return UserSettings.getCurrentKeyword()
     }
 
     
@@ -149,9 +149,6 @@ class ArticleListViewModel {
                     self.hasData.value = false
                     self.isLoadingVariable.value = false
                     self.configureRanking() // Disposeが破棄されるので、再度設定する TODO: 再起以外に方法はないのか？
-                },
-                onCompleted: {
-                    print("Completed")
                 }
             )
             .addDisposableTo(bag)
@@ -204,9 +201,6 @@ class ArticleListViewModel {
                     self.hasNextPage.value = false
                     self.isLoadingVariable.value = false
                     self.configureRecentArticle()
-                },
-                onCompleted: {
-                    print("Completed")
                 }
             ).addDisposableTo(bag)
     }
@@ -256,8 +250,8 @@ class ArticleListViewModel {
     }
     
     private func updateSearchState(keyword: String) {
-        UserSettings.setCurrentSearchTag(name: keyword)
+        UserSettings.setCurrentKeyword(name: keyword)
         let searchHistory = SearchHistory()
-        searchHistory.add(tag: keyword)
+        searchHistory.add(keyword: keyword)
     }
 }

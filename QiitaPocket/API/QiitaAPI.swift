@@ -15,11 +15,11 @@ final class QiitaAPI {
         
         typealias ResponseObject = Articles
         
-        let tag: String
+        let keyword: String
         let page: Int
 
         var path: String {
-            if tag.isEmpty {
+            if keyword.isEmpty {
                 return "items"
             }
             else {
@@ -28,11 +28,11 @@ final class QiitaAPI {
         }
         
         var parameters: [String: Any]? {
-            if tag.isEmpty {
+            if keyword.isEmpty {
                 return ["page": page]
             }
             else {
-                return ["page": page, "q": tag]
+                return ["page": page, "q": keyword]
             }
         }
     }
@@ -42,7 +42,7 @@ final class QiitaAPI {
         
         typealias ResponseObject = Articles
         
-        let tag: String
+        let keyword: String
         let page: Int
         
         var path: String {
@@ -64,13 +64,13 @@ final class QiitaAPI {
                 "per_page": 50, // 100が上限
             ]
             
-            if tag.isEmpty {
+            if keyword.isEmpty {
                 // RateLimit緩和のため、キーワードなしは20件以上はストックされている前提で記事を取得する
                 params["q"] = "created:>" + oneWeekAgo + " stocks:" + ">20"
                 return params
             }
             else {
-                params["q"] = tag + " created:>" + oneWeekAgo + " stocks:" + ">1"
+                params["q"] = keyword + " created:>" + oneWeekAgo + " stocks:" + ">1"
                 return params
             }
         }

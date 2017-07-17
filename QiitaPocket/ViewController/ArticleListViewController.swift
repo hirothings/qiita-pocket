@@ -68,7 +68,7 @@ class ArticleListViewController:  UIViewController, UITableViewDataSource, UITab
         
         refreshControll.rx.controlEvent(.valueChanged)
             .startWith(())
-            .flatMap { Observable.just(UserSettings.getCurrentSearchTag()) }
+            .flatMap { Observable.just(UserSettings.getCurrentKeyword()) }
             .bind(to: fetchTrigger)
             .addDisposableTo(bag)
         
@@ -205,9 +205,9 @@ class ArticleListViewController:  UIViewController, UITableViewDataSource, UITab
         
         // 検索履歴タップ時のイベント
         searchArticleVC.didSelectSearchHistory
-            .subscribe(onNext: { [unowned self] (tag: String) in
-                self.searchBar.text = tag
-                self.fetchTrigger.onNext(tag)
+            .subscribe(onNext: { [unowned self] (keyword: String) in
+                self.searchBar.text = keyword
+                self.fetchTrigger.onNext(keyword)
                 self.searchBar.endEditing(true)
                 self.searchBar.showsCancelButton = false
                 self.removeSearchArticleVC()

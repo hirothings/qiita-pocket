@@ -35,25 +35,25 @@ class SearchArticleViewController: UIViewController, UITableViewDataSource, UITa
     override func viewDidLayoutSubviews() {
         let tablecellHeight: CGFloat = 44.0
         // tableView分の高さを追加する
-        contentViewHeight.constant = tablecellHeight * CGFloat(searchHistory.tags.count)
+        contentViewHeight.constant = tablecellHeight * CGFloat(searchHistory.keywords.count)
     }
     
     
     // MARK: - TableView Delegate
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return searchHistory.tags.count
+        return searchHistory.keywords.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchHistoryTableViewCell", for: indexPath) as! SearchHistoryTableViewCell
-        cell.titleLabel.text = searchHistory.tags[indexPath.row]
+        cell.titleLabel.text = searchHistory.keywords[indexPath.row]
         cell.delegate = self
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let history = searchHistory.tags[indexPath.row]
+        let history = searchHistory.keywords[indexPath.row]
         didSelectSearchHistory.onNext(history)
     }
     

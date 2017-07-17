@@ -49,7 +49,7 @@ class ArticleTableViewDataSource: NSObject, UITableViewDataSource, RxTableViewDa
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let searchType = UserSettings.getSearchType()
-        let currentTag = UserSettings.getCurrentSearchTag()
+        let currentKeyword = UserSettings.getCurrentKeyword()
 
         var text: String
         switch searchType {
@@ -59,11 +59,11 @@ class ArticleTableViewDataSource: NSObject, UITableViewDataSource, RxTableViewDa
             text = "新着順"
         }
 
-        if currentTag.isEmpty {
+        if currentKeyword.isEmpty {
             text += ": すべて"
         }
         else {
-            text += ": \(currentTag)"
+            text += ": \(currentKeyword)"
         }
 
         let label: UILabel = {
