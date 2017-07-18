@@ -12,8 +12,11 @@ class LicenseDetailViewController: UIViewController {
     
     let licenseText: String
     
-    init(licenseText: String) {
-        self.licenseText = licenseText
+    init?(title: String) {
+        guard let licenseDetail = LicenseDetail(title: title) else {
+            return nil
+        }
+        self.licenseText = licenseDetail.text
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -56,6 +59,7 @@ class LicenseDetailViewController: UIViewController {
         label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10.0).isActive = true
         label.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10.0).isActive = true
         label.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10.0).isActive = true
+        
         
         label.numberOfLines = 0
         label.text = self.licenseText

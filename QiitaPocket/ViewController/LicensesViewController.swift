@@ -47,8 +47,10 @@ class LicensesViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let licenseText = license?.getLicenseText(index: indexPath.row) else { return }
-        let licenseDetailVC = LicenseDetailViewController(licenseText: licenseText)
+        let title: String = titles[indexPath.row]
+        guard let licenseDetailVC = LicenseDetailViewController(title: title) else {
+            return
+        }
         self.navigationController?.pushViewController(licenseDetailVC, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }

@@ -10,5 +10,5 @@ import Foundation
 
 enum FileName: String {
     case keys = "Keys"
-    case licenses = "Licenses"
+    case licenses = "com.mono0926.LicensePlist"
 }

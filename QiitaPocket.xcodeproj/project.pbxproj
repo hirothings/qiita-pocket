@@ -19,6 +19,23 @@
 		5457AADE1E767384000E3FE3 /* ArchiveTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5457AADC1E767384000E3FE3 /* ArchiveTableViewCell.swift */; };
 		5457AADF1E767384000E3FE3 /* ArchiveTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5457AADD1E767384000E3FE3 /* ArchiveTableViewCell.xib */; };
 		54674A501E89561A00247ABA /* ArticleCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54674A4F1E89561A00247ABA /* ArticleCellType.swift */; };
+		546F5ADD1F1CFF81009BC244 /* Alamofire.plist in Resources */ = {isa = PBXBuildFile; fileRef = 546F5ACD1F1CFF81009BC244 /* Alamofire.plist */; };
+		546F5ADE1F1CFF81009BC244 /* com.mono0926.LicensePlist.plist in Resources */ = {isa = PBXBuildFile; fileRef = 546F5ACE1F1CFF81009BC244 /* com.mono0926.LicensePlist.plist */; };
+		546F5ADF1F1CFF81009BC244 /* Firebase.plist in Resources */ = {isa = PBXBuildFile; fileRef = 546F5ACF1F1CFF81009BC244 /* Firebase.plist */; };
+		546F5AE01F1CFF81009BC244 /* FirebaseAnalytics.plist in Resources */ = {isa = PBXBuildFile; fileRef = 546F5AD01F1CFF81009BC244 /* FirebaseAnalytics.plist */; };
+		546F5AE11F1CFF81009BC244 /* FirebaseCore.plist in Resources */ = {isa = PBXBuildFile; fileRef = 546F5AD11F1CFF81009BC244 /* FirebaseCore.plist */; };
+		546F5AE21F1CFF81009BC244 /* FirebaseCrash.plist in Resources */ = {isa = PBXBuildFile; fileRef = 546F5AD21F1CFF81009BC244 /* FirebaseCrash.plist */; };
+		546F5AE31F1CFF81009BC244 /* FirebaseInstanceID.plist in Resources */ = {isa = PBXBuildFile; fileRef = 546F5AD31F1CFF81009BC244 /* FirebaseInstanceID.plist */; };
+		546F5AE41F1CFF81009BC244 /* Google-Mobile-Ads-SDK.plist in Resources */ = {isa = PBXBuildFile; fileRef = 546F5AD41F1CFF81009BC244 /* Google-Mobile-Ads-SDK.plist */; };
+		546F5AE51F1CFF81009BC244 /* GoogleToolboxForMac.plist in Resources */ = {isa = PBXBuildFile; fileRef = 546F5AD51F1CFF81009BC244 /* GoogleToolboxForMac.plist */; };
+		546F5AE61F1CFF81009BC244 /* Protobuf.plist in Resources */ = {isa = PBXBuildFile; fileRef = 546F5AD61F1CFF81009BC244 /* Protobuf.plist */; };
+		546F5AE71F1CFF81009BC244 /* realm-cocoa.plist in Resources */ = {isa = PBXBuildFile; fileRef = 546F5AD71F1CFF81009BC244 /* realm-cocoa.plist */; };
+		546F5AE81F1CFF81009BC244 /* RxDataSources.plist in Resources */ = {isa = PBXBuildFile; fileRef = 546F5AD81F1CFF81009BC244 /* RxDataSources.plist */; };
+		546F5AE91F1CFF81009BC244 /* RxSwift.plist in Resources */ = {isa = PBXBuildFile; fileRef = 546F5AD91F1CFF81009BC244 /* RxSwift.plist */; };
+		546F5AEA1F1CFF81009BC244 /* SDWebImage.plist in Resources */ = {isa = PBXBuildFile; fileRef = 546F5ADA1F1CFF81009BC244 /* SDWebImage.plist */; };
+		546F5AEB1F1CFF81009BC244 /* SwiftyJSON.plist in Resources */ = {isa = PBXBuildFile; fileRef = 546F5ADB1F1CFF81009BC244 /* SwiftyJSON.plist */; };
+		546F5AEC1F1CFF81009BC244 /* XLPagerTabStrip.plist in Resources */ = {isa = PBXBuildFile; fileRef = 546F5ADC1F1CFF81009BC244 /* XLPagerTabStrip.plist */; };
+		546F5AEE1F1D0050009BC244 /* LicenseDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546F5AED1F1D0050009BC244 /* LicenseDetail.swift */; };
 		547636E91E98A33500FCBB76 /* LicensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547636E81E98A33500FCBB76 /* LicensesViewController.swift */; };
 		547636EB1E9BCFF000FCBB76 /* License.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547636EA1E9BCFF000FCBB76 /* License.swift */; };
 		547636ED1E9BD0B800FCBB76 /* FileName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547636EC1E9BD0B800FCBB76 /* FileName.swift */; };
@@ -61,7 +78,6 @@
 		54DC8F7C1EA1963A008F0E51 /* LicenseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DC8F7B1EA1963A008F0E51 /* LicenseDetailViewController.swift */; };
 		54E3DBEC1F13B5380079BEFD /* QiitaClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E3DBEB1F13B5370079BEFD /* QiitaClientError.swift */; };
 		54ECD8571EB9442400141647 /* UIScrollView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54ECD8561EB9442400141647 /* UIScrollView+Rx.swift */; };
-		54F7C7E21E989B8A0069258E /* Licenses.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54F7C7E11E989B8A0069258E /* Licenses.plist */; };
 		54FAA58A1E3DD62600C09411 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54FAA5881E3DD62600C09411 /* Realm.framework */; };
 		54FAA58B1E3DD62600C09411 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54FAA5891E3DD62600C09411 /* RealmSwift.framework */; };
 		6C9D3C9D1EB87141006B36B1 /* SearchHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9D3C9C1EB87141006B36B1 /* SearchHistoryTableViewCell.swift */; };
@@ -87,6 +103,23 @@
 		5457AADC1E767384000E3FE3 /* ArchiveTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArchiveTableViewCell.swift; sourceTree = "<group>"; };
 		5457AADD1E767384000E3FE3 /* ArchiveTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArchiveTableViewCell.xib; sourceTree = "<group>"; };
 		54674A4F1E89561A00247ABA /* ArticleCellType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleCellType.swift; sourceTree = "<group>"; };
+		546F5ACD1F1CFF81009BC244 /* Alamofire.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Alamofire.plist; sourceTree = "<group>"; };
+		546F5ACE1F1CFF81009BC244 /* com.mono0926.LicensePlist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = com.mono0926.LicensePlist.plist; sourceTree = "<group>"; };
+		546F5ACF1F1CFF81009BC244 /* Firebase.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Firebase.plist; sourceTree = "<group>"; };
+		546F5AD01F1CFF81009BC244 /* FirebaseAnalytics.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FirebaseAnalytics.plist; sourceTree = "<group>"; };
+		546F5AD11F1CFF81009BC244 /* FirebaseCore.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FirebaseCore.plist; sourceTree = "<group>"; };
+		546F5AD21F1CFF81009BC244 /* FirebaseCrash.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FirebaseCrash.plist; sourceTree = "<group>"; };
+		546F5AD31F1CFF81009BC244 /* FirebaseInstanceID.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FirebaseInstanceID.plist; sourceTree = "<group>"; };
+		546F5AD41F1CFF81009BC244 /* Google-Mobile-Ads-SDK.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Google-Mobile-Ads-SDK.plist"; sourceTree = "<group>"; };
+		546F5AD51F1CFF81009BC244 /* GoogleToolboxForMac.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = GoogleToolboxForMac.plist; sourceTree = "<group>"; };
+		546F5AD61F1CFF81009BC244 /* Protobuf.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Protobuf.plist; sourceTree = "<group>"; };
+		546F5AD71F1CFF81009BC244 /* realm-cocoa.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "realm-cocoa.plist"; sourceTree = "<group>"; };
+		546F5AD81F1CFF81009BC244 /* RxDataSources.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RxDataSources.plist; sourceTree = "<group>"; };
+		546F5AD91F1CFF81009BC244 /* RxSwift.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RxSwift.plist; sourceTree = "<group>"; };
+		546F5ADA1F1CFF81009BC244 /* SDWebImage.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SDWebImage.plist; sourceTree = "<group>"; };
+		546F5ADB1F1CFF81009BC244 /* SwiftyJSON.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SwiftyJSON.plist; sourceTree = "<group>"; };
+		546F5ADC1F1CFF81009BC244 /* XLPagerTabStrip.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = XLPagerTabStrip.plist; sourceTree = "<group>"; };
+		546F5AED1F1D0050009BC244 /* LicenseDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseDetail.swift; sourceTree = "<group>"; };
 		547636E81E98A33500FCBB76 /* LicensesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicensesViewController.swift; sourceTree = "<group>"; };
 		547636EA1E9BCFF000FCBB76 /* License.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = License.swift; sourceTree = "<group>"; };
 		547636EC1E9BD0B800FCBB76 /* FileName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileName.swift; sourceTree = "<group>"; };
@@ -130,7 +163,6 @@
 		54DC8F7B1EA1963A008F0E51 /* LicenseDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseDetailViewController.swift; sourceTree = "<group>"; };
 		54E3DBEB1F13B5370079BEFD /* QiitaClientError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QiitaClientError.swift; sourceTree = "<group>"; };
 		54ECD8561EB9442400141647 /* UIScrollView+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Rx.swift"; sourceTree = "<group>"; };
-		54F7C7E11E989B8A0069258E /* Licenses.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Licenses.plist; sourceTree = "<group>"; };
 		54FAA5881E3DD62600C09411 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		54FAA5891E3DD62600C09411 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		6C9D3C9C1EB87141006B36B1 /* SearchHistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchHistoryTableViewCell.swift; sourceTree = "<group>"; };
@@ -205,9 +237,33 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		546F5ACC1F1CFF81009BC244 /* com.mono0926.LicensePlist */ = {
+			isa = PBXGroup;
+			children = (
+				546F5ACD1F1CFF81009BC244 /* Alamofire.plist */,
+				546F5ACE1F1CFF81009BC244 /* com.mono0926.LicensePlist.plist */,
+				546F5ACF1F1CFF81009BC244 /* Firebase.plist */,
+				546F5AD01F1CFF81009BC244 /* FirebaseAnalytics.plist */,
+				546F5AD11F1CFF81009BC244 /* FirebaseCore.plist */,
+				546F5AD21F1CFF81009BC244 /* FirebaseCrash.plist */,
+				546F5AD31F1CFF81009BC244 /* FirebaseInstanceID.plist */,
+				546F5AD41F1CFF81009BC244 /* Google-Mobile-Ads-SDK.plist */,
+				546F5AD51F1CFF81009BC244 /* GoogleToolboxForMac.plist */,
+				546F5AD61F1CFF81009BC244 /* Protobuf.plist */,
+				546F5AD71F1CFF81009BC244 /* realm-cocoa.plist */,
+				546F5AD81F1CFF81009BC244 /* RxDataSources.plist */,
+				546F5AD91F1CFF81009BC244 /* RxSwift.plist */,
+				546F5ADA1F1CFF81009BC244 /* SDWebImage.plist */,
+				546F5ADB1F1CFF81009BC244 /* SwiftyJSON.plist */,
+				546F5ADC1F1CFF81009BC244 /* XLPagerTabStrip.plist */,
+			);
+			path = com.mono0926.LicensePlist;
+			sourceTree = "<group>";
+		};
 		54CD4D4F1E62D99500F15B5B /* QiitaPocket */ = {
 			isa = PBXGroup;
 			children = (
+				546F5ACC1F1CFF81009BC244 /* com.mono0926.LicensePlist */,
 				547B87071EA3111000E71FD8 /* GoogleService-Info.plist */,
 				54CD4D501E62D99500F15B5B /* API */,
 				54CD4D561E62D99500F15B5B /* AppDelegate.swift */,
@@ -217,7 +273,6 @@
 				54CD4D5C1E62D99500F15B5B /* Extension */,
 				54CD4D601E62D99500F15B5B /* Info.plist */,
 				540B1D881E75206700D6DD17 /* Keys.plist */,
-				54F7C7E11E989B8A0069258E /* Licenses.plist */,
 				54CD4D611E62D99500F15B5B /* Model */,
 				54CD4D671E62D99500F15B5B /* Util */,
 				54CD4D6A1E62D99500F15B5B /* View */,
@@ -256,6 +311,7 @@
 		54CD4D611E62D99500F15B5B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				546F5AED1F1D0050009BC244 /* LicenseDetail.swift */,
 				547636EA1E9BCFF000FCBB76 /* License.swift */,
 				547636EC1E9BD0B800FCBB76 /* FileName.swift */,
 				54CD4D621E62D99500F15B5B /* Article.swift */,
@@ -389,16 +445,31 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				546F5AE11F1CFF81009BC244 /* FirebaseCore.plist in Resources */,
+				546F5AE01F1CFF81009BC244 /* FirebaseAnalytics.plist in Resources */,
+				546F5ADF1F1CFF81009BC244 /* Firebase.plist in Resources */,
 				540B1D891E75206700D6DD17 /* Keys.plist in Resources */,
+				546F5AEB1F1CFF81009BC244 /* SwiftyJSON.plist in Resources */,
 				54BB71C11E6AFC320020DB9D /* ArticleView.xib in Resources */,
-				54F7C7E21E989B8A0069258E /* Licenses.plist in Resources */,
+				546F5AE61F1CFF81009BC244 /* Protobuf.plist in Resources */,
+				546F5AE41F1CFF81009BC244 /* Google-Mobile-Ads-SDK.plist in Resources */,
+				546F5AE31F1CFF81009BC244 /* FirebaseInstanceID.plist in Resources */,
 				54D5713C1E765DC0000C0D21 /* ReadLaterTableViewCell.xib in Resources */,
+				546F5AEA1F1CFF81009BC244 /* SDWebImage.plist in Resources */,
 				54CD4D891E62D99500F15B5B /* ArticleTableViewCell.xib in Resources */,
+				546F5ADE1F1CFF81009BC244 /* com.mono0926.LicensePlist.plist in Resources */,
 				54CD4D7C1E62D99500F15B5B /* Main.storyboard in Resources */,
+				546F5AE81F1CFF81009BC244 /* RxDataSources.plist in Resources */,
+				546F5AE51F1CFF81009BC244 /* GoogleToolboxForMac.plist in Resources */,
 				54CD4D7A1E62D99500F15B5B /* Assets.xcassets in Resources */,
 				547B87081EA3111000E71FD8 /* GoogleService-Info.plist in Resources */,
+				546F5AE91F1CFF81009BC244 /* RxSwift.plist in Resources */,
+				546F5ADD1F1CFF81009BC244 /* Alamofire.plist in Resources */,
+				546F5AEC1F1CFF81009BC244 /* XLPagerTabStrip.plist in Resources */,
+				546F5AE71F1CFF81009BC244 /* realm-cocoa.plist in Resources */,
 				5457AADF1E767384000E3FE3 /* ArchiveTableViewCell.xib in Resources */,
 				54CD4D7B1E62D99500F15B5B /* LaunchScreen.storyboard in Resources */,
+				546F5AE21F1CFF81009BC244 /* FirebaseCrash.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -506,6 +577,7 @@
 				54CD4D851E62D99500F15B5B /* SearchType.swift in Sources */,
 				54CD4D841E62D99500F15B5B /* SearchHistory.swift in Sources */,
 				6C9D3C9D1EB87141006B36B1 /* SearchHistoryTableViewCell.swift in Sources */,
+				546F5AEE1F1D0050009BC244 /* LicenseDetail.swift in Sources */,
 				54CD4D751E62D99500F15B5B /* Dependencies.swift in Sources */,
 				543B70D11E7FC333009367E2 /* ConnectionError.swift in Sources */,
 				542265EE1E64283B00C7AA45 /* ReadLaterTabViewController.swift in Sources */,
