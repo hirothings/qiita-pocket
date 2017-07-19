@@ -240,12 +240,13 @@ class ArticleListViewModel {
     }
     
     private func bindError(_ error: Error) {
-        let err = error as! QiitaClientError
-        switch err {
-        case let .apiError(err):
-            self.alertTrigger.onNext(err.message)
-        case let .connectionError(err):
-            self.alertTrigger.onNext(err.message)
+        switch error {
+        case let error as QiitaAPIError:
+            self.alertTrigger.onNext(error.message)
+        case let error as ConnectionError:
+            self.alertTrigger.onNext(error.message)
+        default:
+            self.alertTrigger.onNext(error.localizedDescription)
         }
     }
     
