@@ -4,4 +4,3 @@ github "rs/SDWebImage" ~> 3.8
 github "ReactiveX/RxSwift" ~> 3.0
 github "realm/realm-cocoa" ~> 2.2
 github "xmartlabs/XLPagerTabStrip" ~> 7.0
-github "RxSwiftCommunity/RxDataSources" ~> 1.0
