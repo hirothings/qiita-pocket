@@ -16,11 +16,13 @@ class ArticleListNavigationController: UINavigationController {
     private let bag = DisposeBag()
     
     private let settingButton: UIBarButtonItem = {
-        let settingImageView = UIImageView(image: #imageLiteral(resourceName: "ic-setting"))
-        settingImageView.frame = CGRect(x: 0, y: 0, width: 12, height: 12)
-        settingImageView.contentMode = .scaleAspectFit
-        settingImageView.isUserInteractionEnabled = true
-        return UIBarButtonItem(customView: settingImageView)
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
+        let image = #imageLiteral(resourceName: "ic-setting")
+        button.setImage(image, for: .normal)
+        button.imageEdgeInsets = UIEdgeInsetsMake(14.0, 14.0, 14.0, 14.0)
+        button.imageView?.frame = CGRect(x: 14, y: 14, width: 16.0, height: 16.0)
+        button.addTarget(self, action: #selector(didTapSettingButton(_:)), for: .touchUpInside)
+        return UIBarButtonItem(customView: button)
     }()
     
     private let logoImageItem: UIBarButtonItem = {
@@ -34,12 +36,6 @@ class ArticleListNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // TODO:
-        settingButton.rx.tap.bindNext { _ in
-                print("TODO")
-            }
-            .addDisposableTo(bag)
-        
         setupLogoImage()
         setupSearchBar()
         setupSettingButton()
@@ -51,8 +47,8 @@ class ArticleListNavigationController: UINavigationController {
     
     func setupSettingButton() {
         let spacer = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
-        spacer.width = 10
-        navigationBar.topItem?.rightBarButtonItems = [settingButton, spacer]
+        spacer.width = -10
+        navigationBar.topItem?.rightBarButtonItems = [spacer, settingButton]
     }
 
     private func setupLogoImage() {
@@ -62,12 +58,12 @@ class ArticleListNavigationController: UINavigationController {
     }
     
     private func setupSearchBar() {
-        searchBar.placeholder = "タグを検索"
+        searchBar.placeholder = "キーワードを入力"
         searchBar.showsCancelButton = false
         searchBar.autocapitalizationType = .none
         searchBar.keyboardType = .default
         searchBar.tintColor = UIColor.gray
-        searchBar.text = UserSettings.getCurrentSearchTag()
+        searchBar.text = UserSettings.getCurrentKeyword()
         searchBar.enablesReturnKeyAutomatically = false
         for subView in searchBar.subviews {
             for secondSubView in subView.subviews {
@@ -78,5 +74,10 @@ class ArticleListNavigationController: UINavigationController {
             }
         }
         self.navigationBar.topItem?.titleView = searchBar
+    }
+    
+    func didTapSettingButton(_ sender: UITapGestureRecognizer) {
+        let otherNVC = self.storyboard!.instantiateViewController(withIdentifier: "OtherNavigationController") as! OtherNavigationController
+        self.present(otherNVC, animated: true, completion: nil)
     }
 }

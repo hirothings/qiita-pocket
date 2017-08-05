@@ -23,12 +23,14 @@ final class Article: Object {
     dynamic var publishedAt: String = ""
     dynamic var id: String = ""
     dynamic var title: String = ""
-    dynamic var user: String = ""
+    dynamic var author: String = ""
     dynamic var profile_image_url: String = ""
     dynamic var url: String = ""
     dynamic var saveState: String = SaveState.none.rawValue
+    dynamic var hasSaved: Bool = false
     let tags: List<Tag> = List<Tag>()
-    let stockCount = RealmOptional<Int>()
+    dynamic var stockCount: Int = 0
+    let rank = RealmOptional<Int>()
     
     var saveStateType: SaveState {
         get {
@@ -37,6 +39,12 @@ final class Article: Object {
         set {
             saveState = newValue.rawValue
         }
+    }
+    
+    var formattedUpdatedAt: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy.MM.dd HH:mm:ss"
+        return formatter.string(from: updatedAt)
     }
     
     override class func primaryKey() -> String? {

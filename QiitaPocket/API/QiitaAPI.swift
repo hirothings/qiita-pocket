@@ -15,33 +15,64 @@ final class QiitaAPI {
         
         typealias ResponseObject = Articles
         
-        let tag: String
+        let keyword: String
+        let page: Int
 
         var path: String {
-            return "items"
+            if keyword.isEmpty {
+                return "items"
+            }
+            else {
+                return "search"
+            }
         }
         
         var parameters: [String: Any]? {
-            if tag.isEmpty {
-                return nil
+            if keyword.isEmpty {
+                return ["page": page]
             }
             else {
-                return ["query": "tag:" + tag]
+                return ["page": page, "q": keyword]
             }
         }
     }
     
-    /// ストック情報のリクエスト
-    struct SearchStocks: QiitaRequest {
+    /// 過去1週間分の記事のリクエスト
+    struct SearchWeeklyPost: QiitaRequest {
         
-        typealias ResponseObject = Stocks
+        typealias ResponseObject = Articles
         
-        let itemID: String
+        let keyword: String
+        let page: Int
         
         var path: String {
-            return "items/\(itemID)/stockers"
+            return "search"
         }
         
-        var parameters: [String : Any]? { return nil }
+        var parameters: [String: Any]? {
+            
+            let oneWeekAgo: String = {
+                let now = Date()
+                let oneWeekAgo = Date(timeInterval: -60 * 60 * 24 * 7, since: now)
+                let formatter = DateFormatter()
+                formatter.dateFormat = "yyyy-MM-dd"
+                return formatter.string(from: oneWeekAgo)
+            }()
+            
+            var params: [String: Any] = [
+                "page": page,
+                "per_page": 50, // 100が上限
+            ]
+            
+            if keyword.isEmpty {
+                // RateLimit緩和のため、キーワードなしは20件以上はストックされている前提で記事を取得する
+                params["q"] = "created:>" + oneWeekAgo + " stocks:" + ">20"
+                return params
+            }
+            else {
+                params["q"] = keyword + " created:>" + oneWeekAgo + " stocks:" + ">1"
+                return params
+            }
+        }
     }
 }

@@ -10,12 +10,12 @@ import Foundation
 
 class UserSettings {
     
-    // 検索タグ
-    static func getCurrentSearchTag() -> String {
+    // 検索キーワード
+    static func getCurrentKeyword() -> String {
         UserDefaults.standard.register(defaults: ["CurrentSearchTag": ""])
         return UserDefaults.standard.string(forKey: "CurrentSearchTag")!
     }
-    static func setCurrentSearchTag(name: String) {
+    static func setCurrentKeyword(name: String) {
         UserDefaults.standard.set(name, forKey: "CurrentSearchTag")
     }
     
@@ -25,31 +25,24 @@ class UserSettings {
         UserDefaults.standard.register(defaults: ["SearchHistory": strArray])
         return UserDefaults.standard.stringArray(forKey: "SearchHistory")!
     }
-    static func setSearchHistory(tags: [String]) {
-        UserDefaults.standard.set(tags, forKey: "SearchHistory")
+    static func setSearchHistory(keywords: [String]) {
+        UserDefaults.standard.set(keywords, forKey: "SearchHistory")
         UserDefaults.standard.synchronize()
     }
     
-    // 検索順
-    static func getSearchSort() -> SearchSort? {
-        guard let rawValue = UserDefaults.standard.string(forKey: "SearchSort") else {
-            return nil
+    // 検索タイプ
+    static func getSearchType() -> SearchType {
+        UserDefaults.standard.register(defaults: ["SearchType": "rank"])
+        guard let rawValue = UserDefaults.standard.string(forKey: "SearchType") else {
+            return SearchType.rank
         }
-        return SearchSort(rawValue: rawValue)
-    }
-    static func setSearchSort(_ searchSort: SearchSort) {
-        UserDefaults.standard.set(searchSort.rawValue, forKey: "SearchSort")
-    }
-    
-    // 期間
-    static func getSearchPeriod() -> SearchPeriod? {
-        guard let rawValue = UserDefaults.standard.string(forKey: "SearchPeriod") else {
-            return nil
+        guard let searchType = SearchType(rawValue: rawValue) else {
+            return SearchType.rank
         }
-        return SearchPeriod(rawValue: rawValue)
+        return searchType
     }
-    static func setSearchPeriod(_ searchPeriod: SearchPeriod) {
-        UserDefaults.standard.set(searchPeriod.rawValue, forKey: "SearchPeriod")
+    static func setSearchType(_ searchType: SearchType) {
+        UserDefaults.standard.set(searchType.rawValue, forKey: "SearchType")
     }
     
     // delete

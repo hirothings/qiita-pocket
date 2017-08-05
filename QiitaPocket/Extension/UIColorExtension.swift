@@ -10,5 +10,11 @@ import Foundation
 import UIKit
 
 extension UIColor {
-    static let theme = #colorLiteral(red: 0.3490196078, green: 0.7333333333, blue: 0.04705882353, alpha: 1)
+    static let theme = #colorLiteral(red: 0.2274509804, green: 0.6392156863, blue: 0.03921568627, alpha: 1)
+    static let bg = #colorLiteral(red: 0.9411764706, green: 0.9411764706, blue: 0.9411764706, alpha: 1)
+    static let readLater = #colorLiteral(red: 0.9647058824, green: 0.6509803922, blue: 0.137254902, alpha: 1)
+    static let disabled = #colorLiteral(red: 0.8470588235, green: 0.8470588235, blue: 0.8470588235, alpha: 1)
+    static let rankGold = #colorLiteral(red: 0.7764705882, green: 0.7019607843, blue: 0.3882352941, alpha: 1)
+    static let rankSilver = #colorLiteral(red: 0.6117647059, green: 0.662745098, blue: 0.7450980392, alpha: 1)
+    static let rankBronse = #colorLiteral(red: 0.8156862745, green: 0.5490196078, blue: 0.3529411765, alpha: 1)
 }

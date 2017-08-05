@@ -15,7 +15,33 @@ class ArticleView: UIView {
     @IBOutlet weak var authorID: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tagLabel: UILabel!
-    @IBOutlet weak var likeCount: UILabel!
+    @IBOutlet weak var stockCount: UILabel!
+    @IBOutlet weak var actionButton: UIButton!
+    @IBOutlet weak var rankBadgeView: UIView!
+    @IBOutlet weak var rankLabel: UILabel!
+    
+    var rankBGImageView: UIImageView = {
+        let bgImage = #imageLiteral(resourceName: "ic-rankBadge") .withRenderingMode(.alwaysTemplate)
+        let rankBGImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 15, height: 15))
+        rankBGImageView.image = bgImage
+        return rankBGImageView
+    }()
+
+    var saveState: SaveState = .none {
+        willSet(state) {
+            switch state {
+            case .none:
+                self.actionButton.setImage(#imageLiteral(resourceName: "ic-read-later_disabled"), for: .normal)
+                self.actionButton.setImage(#imageLiteral(resourceName: "ic-read-later"), for: .selected)
+            case .readLater:
+                self.actionButton.setImage(#imageLiteral(resourceName: "ic-check_disabled"), for: .normal)
+                self.actionButton.setImage(#imageLiteral(resourceName: "ic-check"), for: .selected)
+            case .archive:
+                self.actionButton.setImage(#imageLiteral(resourceName: "ic-delete"), for: .normal)
+                self.actionButton.setImage(#imageLiteral(resourceName: "ic-delete_on"), for: .selected)
+            }
+        }
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -34,6 +60,13 @@ class ArticleView: UIView {
         // profile画像を丸くする
         profileImageView.layer.cornerRadius = profileImageView.frame.size.width * 0.5
         profileImageView.clipsToBounds = true
+        
+        // rankViewは非表示にしておく
+        rankBadgeView.isHidden = true
+        
+        // 最背面にランキング画像を置く
+        rankBadgeView.addSubview(rankBGImageView)
+        rankBadgeView.sendSubview(toBack: rankBGImageView)
         
         // カスタムViewのサイズを自分自身と同じサイズにする
         view.translatesAutoresizingMaskIntoConstraints = false

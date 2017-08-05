@@ -14,17 +14,18 @@ struct Articles: JSONDecodable {
     
     static let apiClient = APIClient()
     let items: [Article]
+    let nextPage: Int?
     
-    init(json: [Any]) {
+    init(json: [Any], nextPage: Int?) {
         items = json.map { res in
             let json = JSON(res)
             let article = Article()
             
             let createdAt = json["created_at"].stringValue
-            article.publishedAt = Util.setDisplayDate(str: createdAt, format: "yyyy.MM.dd HH:mm:ss")
+            article.publishedAt = Util.setDisplayDate(str: createdAt, format: "yyyy.MM.dd")
             article.id = json["id"].stringValue
             article.title = json["title"].stringValue
-            article.user = json["user"]["id"].stringValue
+            article.author = json["user"]["url_name"].stringValue
             article.profile_image_url = json["user"]["profile_image_url"].stringValue
             article.url = json["url"].stringValue
             
@@ -36,12 +37,21 @@ struct Articles: JSONDecodable {
                 article.tags.append(tag) // imutableだからappendしかない？
             }
             
+            article.stockCount = json["stock_count"].intValue
+            
             return article
         }
+        
+        self.nextPage = nextPage
     }
 
-    static func fetch(with tag: String) -> Observable<Articles>  {
-        let request = QiitaAPI.SearchArticles(tag: tag)
+    static func fetch(with keyword: String, page: Int) -> Observable<Articles>  {
+        let request = QiitaAPI.SearchArticles(keyword: keyword, page: page)
+        return self.apiClient.call(request: request)
+    }
+    
+    static func fetchWeeklyPost(with keyword: String, page: Int) -> Observable<Articles>  {
+        let request = QiitaAPI.SearchWeeklyPost(keyword: keyword, page: page)
         return self.apiClient.call(request: request)
     }
 }

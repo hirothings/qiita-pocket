@@ -8,13 +8,7 @@
 
 import Foundation
 
-enum SearchSort: String {
+enum SearchType: String {
+    case rank
     case recent
-    case popular
-}
-
-enum SearchPeriod: String {
-    case all
-    case month
-    case week
 }

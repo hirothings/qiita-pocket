@@ -11,9 +11,8 @@ import RxSwift
 import RxCocoa
 import RealmSwift
 import XLPagerTabStrip
+import SafariServices
 
-
-// TODO: 共通化
 final class ReadLaterViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SwipeCellDelegate, IndicatorInfoProvider {
 
     @IBOutlet weak var tableView: UITableView!
@@ -22,7 +21,6 @@ final class ReadLaterViewController: UIViewController, UITableViewDataSource, UI
         return ArticleManager.getReadLaters()
     }()
 
-    var postUrl: URL?
     var notificationToken: NotificationToken?
     
     private let bag = DisposeBag()
@@ -31,9 +29,11 @@ final class ReadLaterViewController: UIViewController, UITableViewDataSource, UI
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.rowHeight = 72.0
+        tableView.estimatedRowHeight = 103.0
+        tableView.rowHeight = UITableViewAutomaticDimension
         tableView.separatorInset = UIEdgeInsets.zero
-        let nib: UINib = UINib(nibName: "ArticleTableViewCell", bundle: nil)
+        
+        let nib: UINib = UINib(nibName: "ReadLaterTableViewCell", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: "CustomCell")
         
         tableView.delegate = self
@@ -46,14 +46,25 @@ final class ReadLaterViewController: UIViewController, UITableViewDataSource, UI
             switch change {
             case .initial:
                 tableView.reloadData()
-            case .update(_, deletions: _, insertions: _, modifications: _):
-                tableView.reloadData()
+            case .update(_, deletions: let deletions, insertions: let insertions, modifications: let modifications):                tableView.beginUpdates()
+                tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0) }),
+                                     with: .automatic)
+                tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 0)}),
+                                     with: .automatic)
+                tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0) }),
+                                     with: .automatic)
+                tableView.endUpdates()
             case .error(let error):
                 // TODO: エラー処理
                 fatalError("\(error)")
                 break
             }
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
     }
     
     deinit {
@@ -64,7 +75,7 @@ final class ReadLaterViewController: UIViewController, UITableViewDataSource, UI
     // MARK: - IndicatorInfoProvider
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "後で読む")
+        return IndicatorInfo(title: "あとで読む")
     }
 
 
@@ -77,7 +88,7 @@ final class ReadLaterViewController: UIViewController, UITableViewDataSource, UI
 
     /// tableViewのcellを生成
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! ArticleTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! ReadLaterTableViewCell
         cell.article = articles[indexPath.row]
         cell.delegate = self
         
@@ -88,35 +99,24 @@ final class ReadLaterViewController: UIViewController, UITableViewDataSource, UI
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let article = articles[indexPath.row]
         
-        postUrl = URL(string: article.url)
-        performSegue(withIdentifier: "toWebView", sender: nil)
+        guard let url = URL(string: article.url) else { return }
+        let safariVC = SFSafariViewController(url: url)
+        safariVC.modalPresentationStyle = .popover
+        self.present(safariVC, animated: true, completion: nil)
+        
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     
     // MARK: - SwipeCellDelegate
     
-    func didSwipeCell(at indexPath: IndexPath) {
-        tableView.beginUpdates()
-        
-//        let article = articles[indexPath.row]
-        // TODO: 記事をアーカイブに移動させる
-
-        tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
-        tableView.endUpdates()
+    func isSwipingCell(isSwiping: Bool) {
+        tableView.panGestureRecognizer.isEnabled = !(isSwiping)
     }
-
-
-    // MARK: - Segue
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch segue.identifier! {
-        case "toWebView":
-            let webView: WebViewController = segue.destination as! WebViewController
-            webView.url = postUrl
-            webView.hidesBottomBarWhenPushed = true
-        default:
-            break
-        }
+    func didSwipe(cell: UITableViewCell) {
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        let article = articles[indexPath.row]
+        ArticleManager.add(archive: article)
     }
-
 }

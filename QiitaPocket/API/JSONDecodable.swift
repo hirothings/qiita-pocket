@@ -9,5 +9,5 @@
 import Foundation
 
 protocol JSONDecodable {
-    init(json: [Any]) // TODO: エラー処理
+    init(json: [Any], nextPage: Int?) // TODO: エラー処理
 }

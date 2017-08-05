@@ -9,57 +9,58 @@
 import UIKit
 
 protocol SwipeCellDelegate: class {
-    func didSwipeCell(at indexPath: IndexPath)
+    func isSwipingCell(isSwiping: Bool)
+    func didSwipe(cell: UITableViewCell)
 }
 
 protocol SwipeCellType: class {
     weak var articleView: ArticleView! { get }
     weak var delegate: SwipeCellDelegate? { get }
     var swipeGesture: UIPanGestureRecognizer { get }
-    var swipeIndexPath: IndexPath! { get set }
-    var preTransration: CGPoint? { get set }
-    func onRightSwipe(_ gesture: UIPanGestureRecognizer)
+    var swipeIndexPath: IndexPath { get set }
+    var isSwiping: Bool { get set }
+    func onRightSwipe(_ gesture: UIPanGestureRecognizer, iconView: UIImageView)
 }
 
 extension SwipeCellType where Self: UITableViewCell {
     
-    func onRightSwipe(_ gesture: UIPanGestureRecognizer) {
+    func onRightSwipe(_ gesture: UIPanGestureRecognizer, iconView: UIImageView) {
         let translation = gesture.translation(in: self)
-        
-        guard let tableView = self.superview?.superview as? UITableView else { return }
+        let swipeThreshold: CGFloat = UIScreen.main.bounds.width * 0.35
         
         switch gesture.state {
         case .began:
-            let swipeLocation: CGPoint = gesture.location(in: tableView)
-            swipeIndexPath = tableView.indexPathForRow(at: swipeLocation)!
-            
+            break
         case .changed:
             // 左端より先にはスワイプさせない
             if translation.x < 0 { return }
             
-            // トランジション方向が、-x方向の場合、閾値を考慮せずカードを移動させる
-            if let preTransration = preTransration {
-                if translation.x < preTransration.x {
-                    self.articleView.frame.origin.x = translation.x
-                }
+            // スワイプ中、cellを移動させる
+            if isSwiping == true {
+                self.articleView.frame.origin.x = translation.x
+                // アイコンの拡大・縮小
+                let ratio = translation.x / swipeThreshold
+                if 1.0 < ratio { return }
+                iconView.alpha = ratio
+                iconView.transform = CGAffineTransform(scaleX: ratio, y: ratio)
+                return
             }
             
-            // トランジション方向が閾値を超えた場合、セルを右スワイプ中とみなす
-            if 30.0 < translation.x {
-                preTransration = translation
-                self.articleView.frame.origin.x = translation.x
-                tableView.panGestureRecognizer.isEnabled = false // 右スワイプ中はtableviewのscrollを切る
+            // Y軸へのトランジションが閾値以内の場合、セルを右スワイプ中とみなす
+            if abs(translation.y) < 5 && translation.y < translation.x {
+                isSwiping = true
+                self.delegate?.isSwipingCell(isSwiping: isSwiping)
             }
             
         case .ended:
-            if 80.0 < translation.x {
+            if (swipeThreshold) < translation.x {
                 UIView.animate(
                     withDuration: 0.1,
                     animations: { [unowned self] in
                         self.articleView.frame.origin.x = UIScreen.main.bounds.width
                     },
                     completion: { [unowned self] _ in
-                        self.delegate?.didSwipeCell(at: self.swipeIndexPath)
+                        self.delegate?.didSwipe(cell: self)
                 })
             }
             else {
@@ -67,8 +68,8 @@ extension SwipeCellType where Self: UITableViewCell {
                     self.articleView.frame.origin.x = 0
                 })
             }
-            tableView.panGestureRecognizer.isEnabled = true // tableviewのscrollを復帰する
-            preTransration = nil
+            isSwiping = false
+            self.delegate?.isSwipingCell(isSwiping: isSwiping)
         default:
             break
         }

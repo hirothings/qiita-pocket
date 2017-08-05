@@ -10,7 +10,7 @@ import Foundation
 
 struct SearchHistory {
     
-    static var tags: [String] {
+    var keywords: [String] {
       return UserSettings.getSearchHistory()
     }
     
@@ -19,15 +19,23 @@ struct SearchHistory {
     init() {}
     
     
-    func add(tag: String) {
-        if tag.isEmpty { return }
+    func add(keyword: String) {
+        if keyword.isEmpty { return }
         
-        var tags = UserSettings.getSearchHistory()
-        tags.insert(tag, at: 0)
+        var keywords = self.keywords
+        if let _ = keywords.index(of: keyword) { return } // 重複して登録させない
+
+        keywords.insert(keyword, at: 0)
         
-        if tags.count > max {
-            tags.removeLast()
+        if keywords.count > max {
+            keywords.removeLast()
         }
-        UserSettings.setSearchHistory(tags: tags)
+        UserSettings.setSearchHistory(keywords: keywords)
+    }
+    
+    func delete(index: Int) {
+        var keywords = self.keywords
+        keywords.remove(at: index)
+        UserSettings.setSearchHistory(keywords: keywords)
     }
 }
