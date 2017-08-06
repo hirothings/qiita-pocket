@@ -12,7 +12,6 @@ import RxSwift
 
 class APIClient {
     
-    
     /// Observable化したAPIレスポンスを返す
     func call<Request: QiitaRequest>(request: Request) -> Observable<Request.ResponseObject> {
         
@@ -24,13 +23,10 @@ class APIClient {
             let request = Alamofire.request(url, method: request.method, parameters: request.parameters, headers: nil)
                 .responseJSON { response in
                     
-                    var nextPage: Int?
+                    var nextPage: Int? = nil
                     let nextPageStr: String? = self.parseNextPage(header: response.response?.allHeaderFields)
                     if let nextPageStr = nextPageStr {
                         nextPage = Int(nextPageStr)
-                    }
-                    else {
-                        nextPage = nil
                     }
 
                     switch response.result {
@@ -68,7 +64,7 @@ class APIClient {
     private func parseNextPage(header: [AnyHashable: Any]?) -> String? {
         guard let serializedLinks = header?["Link"] as? String else { return nil }
         do {
-            let regex = try NSRegularExpression(pattern: "(?<=page=)(.+?)(?=&)(?=.*rel=\"next\")", options: .allowCommentsAndWhitespace)
+            let regex = try NSRegularExpression(pattern: "(?<=page=)(.+?)(?=.*rel=\"next\")", options: .allowCommentsAndWhitespace)
             guard let match = regex.firstMatch(in: serializedLinks,
                                                options: NSRegularExpression.MatchingOptions(),
                                                range: NSRange(location: 0, length: serializedLinks.characters.count)) else { return nil }
