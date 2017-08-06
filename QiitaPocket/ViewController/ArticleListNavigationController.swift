@@ -76,7 +76,7 @@ class ArticleListNavigationController: UINavigationController {
         self.navigationBar.topItem?.titleView = searchBar
     }
     
-    func didTapSettingButton(_ sender: UITapGestureRecognizer) {
+    @objc func didTapSettingButton(_ sender: UITapGestureRecognizer) {
         let otherNVC = self.storyboard!.instantiateViewController(withIdentifier: "OtherNavigationController") as! OtherNavigationController
         self.present(otherNVC, animated: true, completion: nil)
     }
