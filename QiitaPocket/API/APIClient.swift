@@ -70,7 +70,7 @@ class APIClient {
                                                range: NSRange(location: 0, length: serializedLinks.characters.count)) else { return nil }
 
             let matcheStrings = (1 ..< match.numberOfRanges).map { rangeIndex -> String in
-                let range = match.rangeAt(rangeIndex) // マッチングした位置
+                let range = match.range(at: rangeIndex) // マッチングした位置
                 // CharacterView型のindexに変換
                 let startIndex: String.CharacterView.Index = serializedLinks.characters.index(serializedLinks.startIndex, offsetBy: range.location)
                 let endIndex: String.CharacterView.Index = serializedLinks.characters.index(serializedLinks.startIndex, offsetBy: range.location + range.length)
