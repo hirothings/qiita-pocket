@@ -45,6 +45,18 @@ class UserSettings {
         UserDefaults.standard.set(searchType.rawValue, forKey: "SearchType")
     }
     
+    // 検索期間
+    static func getSearchPeriod() -> SearchPeriod {
+        UserDefaults.standard.register(defaults: ["SearchPeriod": SearchPeriod.week.rawValue])
+        guard
+            let rawvalue = UserDefaults.standard.string(forKey: "SearchPeriod"),
+            let searchPeriod = SearchPeriod(rawValue: rawvalue)
+        else {
+            return SearchPeriod.week
+        }
+        return searchPeriod
+    }
+    
     // delete
     static func delete(for key: String) {
         UserDefaults.standard.removeObject(forKey: key)
