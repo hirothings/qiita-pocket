@@ -36,8 +36,8 @@ final class QiitaAPI {
         }
     }
     
-    /// 過去1週間分の記事のリクエスト
-    struct SearchWeeklyPost: QiitaRequest {
+    /// ランキング記事のリクエスト
+    struct SearchRankedPost: QiitaRequest {
         typealias ResponseObject = Articles
         
         let tag: String

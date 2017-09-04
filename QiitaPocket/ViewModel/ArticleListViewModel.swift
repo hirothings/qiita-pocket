@@ -54,7 +54,7 @@ class ArticleListViewModel {
         }
     }
 
-    private let fetchRankingTrigger = PublishSubject<(tag: String, page: Int)>()
+    private let fetchRankingTrigger = PublishSubject<(tag: String, period: SearchPeriod)>()
     private var fetchRecentTrigger = PublishSubject<(tag: String, page: Int)>()
     private let loadCompleteTrigger = PublishSubject<[Article]>()
     private var isLoadingVariable = Variable(false)
@@ -69,6 +69,9 @@ class ArticleListViewModel {
     }
     private var searchTag: String {
         return UserSettings.getcurrentTag()
+    }
+    private var searchPeriod: SearchPeriod {
+        return UserSettings.getSearchPeriod()
     }
 
     
@@ -85,7 +88,7 @@ class ArticleListViewModel {
             
             switch self.searchType {
             case .rank:
-                self.fetchRankingTrigger.onNext((tag: tag, page: 1))
+                self.fetchRankingTrigger.onNext((tag: tag, period: self.searchPeriod))
             case .recent:
                 self.fetchRecentTrigger.onNext((tag: tag, page: 1))
             }
@@ -118,7 +121,7 @@ class ArticleListViewModel {
                 self.resetItems(tag: tuple.tag)
             })
             .flatMap {
-                Articles.fetchWeeklyPost(with: $0.tag, page: $0.page)
+                Articles.fetchRankedPost(with: $0.tag, period: self.searchPeriod)
             }
             .observeOn(Dependencies.sharedInstance.mainScheduler)
             .subscribe(
@@ -133,7 +136,7 @@ class ArticleListViewModel {
                     self.hasData.value = true
                     self.articles += model.items
                     if let _ = model.nextPage {
-                        self.fetchRankingTrigger.onNext((tag: self.currentTag, page: self.currentPage + 1))
+                        self.fetchRankingTrigger.onNext((tag: self.currentTag, period: self.searchPeriod))
                     }
                     else {
                         let sortedArticles = self.sortByStockCount(self.articles)

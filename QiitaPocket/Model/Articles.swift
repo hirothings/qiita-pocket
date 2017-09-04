@@ -50,8 +50,8 @@ struct Articles: JSONDecodable {
         return self.apiClient.call(request: request)
     }
     
-    static func fetchWeeklyPost(with tag: String, page: Int) -> Observable<Articles>  {
-        let request = QiitaAPI.SearchWeeklyPost(tag: tag, page: page)
+    static func fetchRankedPost(with tag: String, period: SearchPeriod) -> Observable<Articles>  {
+        let request = QiitaAPI.SearchRankedPost(tag: tag, period: period)
         return self.apiClient.call(request: request)
     }
 }
