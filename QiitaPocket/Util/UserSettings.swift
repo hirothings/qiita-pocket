@@ -11,12 +11,12 @@ import Foundation
 class UserSettings {
     
     // 検索キーワード
-    static func getCurrentKeyword() -> String {
-        UserDefaults.standard.register(defaults: ["CurrentSearchTag": ""])
-        return UserDefaults.standard.string(forKey: "CurrentSearchTag")!
+    static func getcurrentTag() -> String {
+        UserDefaults.standard.register(defaults: ["CurrentsearchTag": ""])
+        return UserDefaults.standard.string(forKey: "CurrentsearchTag")!
     }
-    static func setCurrentKeyword(name: String) {
-        UserDefaults.standard.set(name, forKey: "CurrentSearchTag")
+    static func setcurrentTag(name: String) {
+        UserDefaults.standard.set(name, forKey: "CurrentsearchTag")
     }
     
     // 検索履歴
@@ -25,8 +25,8 @@ class UserSettings {
         UserDefaults.standard.register(defaults: ["SearchHistory": strArray])
         return UserDefaults.standard.stringArray(forKey: "SearchHistory")!
     }
-    static func setSearchHistory(keywords: [String]) {
-        UserDefaults.standard.set(keywords, forKey: "SearchHistory")
+    static func setSearchHistory(tags: [String]) {
+        UserDefaults.standard.set(tags, forKey: "SearchHistory")
         UserDefaults.standard.synchronize()
     }
     

@@ -63,7 +63,7 @@ class ArticleListNavigationController: UINavigationController {
         searchBar.autocapitalizationType = .none
         searchBar.keyboardType = .default
         searchBar.tintColor = UIColor.gray
-        searchBar.text = UserSettings.getCurrentKeyword()
+        searchBar.text = UserSettings.getcurrentTag()
         searchBar.enablesReturnKeyAutomatically = false
         for subView in searchBar.subviews {
             for secondSubView in subView.subviews {
