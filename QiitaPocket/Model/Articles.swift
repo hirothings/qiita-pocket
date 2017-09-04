@@ -37,7 +37,7 @@ struct Articles: JSONDecodable {
                 article.tags.append(tag) // imutableだからappendしかない？
             }
             
-            article.stockCount = json["stock_count"].intValue
+            article.stockCount = json["likes_count"].intValue
             
             return article
         }

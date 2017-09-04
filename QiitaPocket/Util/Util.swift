@@ -13,7 +13,9 @@ class Util {
     static func setDisplayDate(str: String, format: String) -> String {
         let inFormatter = DateFormatter()
         inFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-        let date = inFormatter.date(from: str)!
+        guard let date = inFormatter.date(from: str) else {
+            return ""
+        }
         
         let outFormatter = DateFormatter()
         outFormatter.dateFormat = format
