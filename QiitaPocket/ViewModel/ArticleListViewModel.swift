@@ -114,6 +114,7 @@ class ArticleListViewModel {
         currentPage = 1
     }
 
+    // TODO: ランキング取得, likes_countをAPIでModel化する
     private func configureRanking() {
         fetchRankingTrigger
             .do(onNext: { [unowned self] tuple in
