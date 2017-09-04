@@ -12,66 +12,55 @@ final class QiitaAPI {
     
     /// 投稿記事のリクエスト
     struct SearchArticles: QiitaRequest {
-        
         typealias ResponseObject = Articles
         
-        let keyword: String
+        let tag: String
         let page: Int
+        
+        // Qiita API v2
+        var baseURL: String {
+            return "https://qiita.com/api/v2"
+        }
 
         var path: String {
-            if keyword.isEmpty {
-                return "items"
-            }
-            else {
-                return "search"
-            }
+            return "items"
         }
         
         var parameters: [String: Any]? {
-            if keyword.isEmpty {
+            if tag.isEmpty {
                 return ["page": page]
             }
             else {
-                return ["page": page, "q": keyword]
+                return ["page": page, "q": tag]
             }
         }
     }
     
     /// 過去1週間分の記事のリクエスト
     struct SearchWeeklyPost: QiitaRequest {
-        
         typealias ResponseObject = Articles
         
-        let keyword: String
-        let page: Int
+        let tag: String
+        let period: SearchPeriod
+        
+        // Qiita Pocket用自作API
+        var baseURL: String {
+            return "https://qiita-pocket-api.herokuapp.com"
+        }
         
         var path: String {
             return "search"
         }
         
         var parameters: [String: Any]? {
-            
-            let oneWeekAgo: String = {
-                let now = Date()
-                let oneWeekAgo = Date(timeInterval: -60 * 60 * 24 * 7, since: now)
-                let formatter = DateFormatter()
-                formatter.dateFormat = "yyyy-MM-dd"
-                return formatter.string(from: oneWeekAgo)
-            }()
-            
-            var params: [String: Any] = [
-                "page": page,
-                "per_page": 50, // 100が上限
-            ]
-            
-            if keyword.isEmpty {
-                // RateLimit緩和のため、キーワードなしは20件以上はストックされている前提で記事を取得する
-                params["q"] = "created:>" + oneWeekAgo + " stocks:" + ">20"
-                return params
+            if tag.isEmpty {
+                return ["period": period.rawValue]
             }
             else {
-                params["q"] = keyword + " created:>" + oneWeekAgo + " stocks:" + ">1"
-                return params
+                return [
+                    "period": period.rawValue,
+                    "tag": tag
+                ]
             }
         }
     }
