@@ -49,7 +49,7 @@ final class QiitaAPI {
         }
         
         var path: String {
-            return "search"
+            return "articles"
         }
         
         var parameters: [String: Any]? {
