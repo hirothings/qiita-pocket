@@ -8,6 +8,7 @@
 
 import Foundation
 
+// TODO: Protocol + Structにする
 class UserSettings {
     
     // 検索キーワード
