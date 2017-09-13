@@ -1,5 +1,5 @@
 # Qiita Pocket
-あとで読むQiita APP (Swift3.x / Xcode8)
+あとで読むQiita APP (Swift4.x / Xcode9)
 
 ## どんなアプリ？
 
