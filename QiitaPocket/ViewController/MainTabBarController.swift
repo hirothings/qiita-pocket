@@ -17,13 +17,13 @@ class MainTabBarController: UITabBarController {
         guard let readLaterButton = tabBar.items?.last else { return }
         
         // tabBar フォント調整
-        let normalAttributes: [String: Any] = [
-            NSFontAttributeName: UIFont.systemFont(ofSize: 10),
-            NSForegroundColorAttributeName: UIColor.disabled
+        let normalAttributes: [NSAttributedStringKey: Any] = [
+            NSAttributedStringKey.font: UIFont.systemFont(ofSize: 10),
+            NSAttributedStringKey.foregroundColor: UIColor.disabled
         ]
-        let selectedAttributes: [String: Any] = [
-            NSFontAttributeName: UIFont.systemFont(ofSize: 10),
-            NSForegroundColorAttributeName: UIColor.theme
+        let selectedAttributes: [NSAttributedStringKey: Any] = [
+            NSAttributedStringKey.font: UIFont.systemFont(ofSize: 10),
+            NSAttributedStringKey.foregroundColor: UIColor.theme
         ]
         searchButton.setTitleTextAttributes(normalAttributes, for: .normal)
         searchButton.setTitleTextAttributes(selectedAttributes, for: .selected)

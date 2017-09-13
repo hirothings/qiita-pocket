@@ -1,7 +1,6 @@
-github "Alamofire/Alamofire" ~> 4.2
-github "SwiftyJSON/SwiftyJSON" ~> 3.0
-github "rs/SDWebImage" ~> 3.8
-github "ReactiveX/RxSwift" ~> 3.0
-github "realm/realm-cocoa" ~> 2.2
-github "xmartlabs/XLPagerTabStrip" ~> 7.0
-github "RxSwiftCommunity/RxDataSources" ~> 1.0
+github "Alamofire/Alamofire"
+github "SwiftyJSON/SwiftyJSON" ~> 4.0
+github "rs/SDWebImage"
+github "ReactiveX/RxSwift" ~> 4.0
+github "realm/realm-cocoa" ~> 2.0
+github "xmartlabs/XLPagerTabStrip" "swift4"

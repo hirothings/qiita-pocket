@@ -22,7 +22,7 @@ extension Reactive where Base: UIScrollView {
                 let y = contentOffset.y + scrollView.contentInset.top
                 let threshold = max(0.0, scrollView.contentSize.height - visibleHeight)
                 
-                return y > threshold ? Observable.just() : Observable.empty()
+                return y > threshold ? Observable.just(()) : Observable.empty()
             }
         
         return ControlEvent(events: observable)

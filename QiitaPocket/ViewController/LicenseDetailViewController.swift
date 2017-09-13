@@ -51,7 +51,7 @@ class LicenseDetailViewController: UIViewController {
         contentView.rightAnchor.constraint(equalTo: scrollView.rightAnchor).isActive = true
         
         contentView.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
-        contentView.heightAnchor.constraint(equalTo: self.view.heightAnchor).priority = 250
+        contentView.heightAnchor.constraint(equalTo: self.view.heightAnchor).priority = UILayoutPriority(rawValue: 250)
         contentView.backgroundColor = UIColor.white
         
         label.translatesAutoresizingMaskIntoConstraints = false
