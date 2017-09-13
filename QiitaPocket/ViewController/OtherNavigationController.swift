@@ -15,7 +15,7 @@ class OtherNavigationController: UINavigationController {
         self.navigationBar.topItem?.leftBarButtonItem = UIBarButtonItem(title: "閉じる", style: .plain, target: self, action: #selector(didTapCloseButton))
     }
     
-    func didTapCloseButton() {
+    @objc func didTapCloseButton() {
         self.dismiss(animated: true, completion: nil)
     }
 }

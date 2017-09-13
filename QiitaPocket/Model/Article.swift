@@ -19,17 +19,17 @@ enum SaveState: String {
 
 final class Article: Object {
 
-    dynamic var updatedAt: Date = Date()
-    dynamic var publishedAt: String = ""
-    dynamic var id: String = ""
-    dynamic var title: String = ""
-    dynamic var author: String = ""
-    dynamic var profile_image_url: String = ""
-    dynamic var url: String = ""
-    dynamic var saveState: String = SaveState.none.rawValue
-    dynamic var hasSaved: Bool = false
+    @objc dynamic var updatedAt: Date = Date()
+    @objc dynamic var publishedAt: String = ""
+    @objc dynamic var id: String = ""
+    @objc dynamic var title: String = ""
+    @objc dynamic var author: String = ""
+    @objc dynamic var profile_image_url: String = ""
+    @objc dynamic var url: String = ""
+    @objc dynamic var saveState: String = SaveState.none.rawValue
+    @objc dynamic var hasSaved: Bool = false
     let tags: List<Tag> = List<Tag>()
-    dynamic var stockCount: Int = 0
+    @objc dynamic var stockCount: Int = 0
     let rank = RealmOptional<Int>()
     
     var saveStateType: SaveState {
@@ -54,7 +54,7 @@ final class Article: Object {
 
 
 final class Tag: Object {
-    dynamic var name: String = ""
+    @objc dynamic var name: String = ""
     
     override convenience init(value: Any) {
         self.init()

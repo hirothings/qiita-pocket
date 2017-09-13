@@ -10,7 +10,6 @@ import Foundation
 import Alamofire
 
 protocol QiitaRequest {
-    
     associatedtype ResponseObject: JSONDecodable
     
     var baseURL: String { get }
@@ -20,10 +19,6 @@ protocol QiitaRequest {
 }
 
 extension QiitaRequest {
-    var baseURL: String {
-        return "https://qiita.com/api/v1"
-    }
-    
     var method: HTTPMethod {
         return Alamofire.HTTPMethod.get
     }

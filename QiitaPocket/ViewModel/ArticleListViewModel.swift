@@ -41,7 +41,7 @@ class ArticleListViewModel {
         case .recent:
             text = "新着順"
         }
-        text += searchKeyword.isEmpty ? ": すべて" : ": \(searchKeyword)"
+        text += searchTag.isEmpty ? ": すべて" : ": \(searchTag)"
         return text
     }
     
@@ -54,21 +54,24 @@ class ArticleListViewModel {
         }
     }
 
-    private let fetchRankingTrigger = PublishSubject<(keyword: String, page: Int)>()
-    private var fetchRecentTrigger = PublishSubject<(keyword: String, page: Int)>()
+    private let fetchRankingTrigger = PublishSubject<(tag: String, period: SearchPeriod)>()
+    private var fetchRecentTrigger = PublishSubject<(tag: String, page: Int)>()
     private let loadCompleteTrigger = PublishSubject<[Article]>()
     private var isLoadingVariable = Variable(false)
 
     private let bag = DisposeBag()
     private var articles: [Article] = []
-    private var currentKeyword = ""
+    private var currentTag = ""
     private var currentPage: Int = 1
     
     private var searchType: SearchType {
         return UserSettings.getSearchType()
     }
-    private var searchKeyword: String {
-        return UserSettings.getCurrentKeyword()
+    private var searchTag: String {
+        return UserSettings.getcurrentTag()
+    }
+    private var searchPeriod: SearchPeriod {
+        return UserSettings.getSearchPeriod()
     }
 
     
@@ -77,17 +80,17 @@ class ArticleListViewModel {
         self.configureRecentArticle()
         self.configureRanking()
         
-        fetchTrigger.bind(onNext: { [weak self] (keyword: String) in
+        fetchTrigger.bind(onNext: { [weak self] (tag: String) in
             guard let `self` = self else { return }
             self.isLoadingVariable.value = true
-            self.resetItems(keyword: keyword)
-            self.updateSearchState(keyword: keyword)
+            self.resetItems(tag: tag)
+            self.updateSearchState(tag: tag)
             
             switch self.searchType {
             case .rank:
-                self.fetchRankingTrigger.onNext((keyword: keyword, page: 1))
+                self.fetchRankingTrigger.onNext((tag: tag, period: self.searchPeriod))
             case .recent:
-                self.fetchRecentTrigger.onNext((keyword: keyword, page: 1))
+                self.fetchRecentTrigger.onNext((tag: tag, page: 1))
             }
         })
         .disposed(by: bag)
@@ -104,21 +107,22 @@ class ArticleListViewModel {
     
     // MARK: private method
     
-    private func resetItems(keyword: String) {
-        self.currentKeyword = keyword
+    private func resetItems(tag: String) {
+        self.currentTag = tag
         self.hasNextPage.value = false
         articles = []
         currentPage = 1
     }
 
+    // TODO: ランキング取得, likes_countをAPIでModel化する
     private func configureRanking() {
         fetchRankingTrigger
             .do(onNext: { [unowned self] tuple in
                 self.isLoadingVariable.value = true
-                self.resetItems(keyword: tuple.keyword)
+                self.resetItems(tag: tuple.tag)
             })
             .flatMap {
-                Articles.fetchWeeklyPost(with: $0.keyword, page: $0.page)
+                Articles.fetchRankedPost(with: $0.tag, period: self.searchPeriod)
             }
             .observeOn(Dependencies.sharedInstance.mainScheduler)
             .subscribe(
@@ -133,7 +137,7 @@ class ArticleListViewModel {
                     self.hasData.value = true
                     self.articles += model.items
                     if let _ = model.nextPage {
-                        self.fetchRankingTrigger.onNext((keyword: self.currentKeyword, page: self.currentPage + 1))
+                        self.fetchRankingTrigger.onNext((tag: self.currentTag, period: self.searchPeriod))
                     }
                     else {
                         let sortedArticles = self.sortByStockCount(self.articles)
@@ -158,10 +162,10 @@ class ArticleListViewModel {
         let nextPageRequest = loadNextPageTrigger
             .withLatestFrom(isLoading.asObservable())
             .filter { !$0 && self.hasNextPage.value && self.searchType == .recent }
-            .flatMap { [weak self] _ -> Observable<(keyword: String, page: Int)> in
+            .flatMap { [weak self] _ -> Observable<(tag: String, page: Int)> in
                 guard let `self` = self else { return Observable.empty() }
                 self.currentPage += 1
-                return Observable.of((keyword: self.currentKeyword, page: self.currentPage))
+                return Observable.of((tag: self.currentTag, page: self.currentPage))
             }
             .shareReplay(1)
         
@@ -175,7 +179,7 @@ class ArticleListViewModel {
                 self.isLoadingVariable.value = true
             })
             .flatMap { tuple in
-                Articles.fetch(with: tuple.keyword, page: tuple.page)
+                Articles.fetch(with: tuple.tag, page: tuple.page)
             }
             .observeOn(Dependencies.sharedInstance.mainScheduler)
             .subscribe(
@@ -250,9 +254,9 @@ class ArticleListViewModel {
         }
     }
     
-    private func updateSearchState(keyword: String) {
-        UserSettings.setCurrentKeyword(name: keyword)
+    private func updateSearchState(tag: String) {
+        UserSettings.setcurrentTag(name: tag)
         let searchHistory = SearchHistory()
-        searchHistory.add(keyword: keyword)
+        searchHistory.add(tag: tag)
     }
 }
