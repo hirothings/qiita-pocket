@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -75,17 +75,17 @@
                             <state key="normal" image="ic-read-later_disabled"/>
                         </button>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="ckz-0k-9PX">
-                            <rect key="frame" x="344" y="76" width="54" height="15"/>
+                            <rect key="frame" x="344" y="71" width="54" height="20"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-stock" translatesAutoresizingMaskIntoConstraints="NO" id="QJ8-OJ-bqL">
-                                    <rect key="frame" x="0.0" y="0.0" width="20" height="15"/>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-like" translatesAutoresizingMaskIntoConstraints="NO" id="QJ8-OJ-bqL">
+                                    <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="20" id="KyM-SJ-WpL"/>
-                                        <constraint firstAttribute="width" secondItem="QJ8-OJ-bqL" secondAttribute="height" multiplier="49:38" id="VgP-kT-lF5"/>
+                                        <constraint firstAttribute="width" secondItem="QJ8-OJ-bqL" secondAttribute="height" multiplier="40:40" id="VgP-kT-lF5"/>
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d1t-zP-Ge5">
-                                    <rect key="frame" x="24" y="0.0" width="30" height="15"/>
+                                    <rect key="frame" x="24" y="0.0" width="30" height="20"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -152,7 +152,7 @@
         </view>
     </objects>
     <resources>
+        <image name="ic-like" width="128" height="128"/>
         <image name="ic-read-later_disabled" width="76" height="76"/>
-        <image name="ic-stock" width="49" height="38"/>
     </resources>
 </document>
