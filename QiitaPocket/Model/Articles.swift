@@ -17,6 +17,8 @@ struct Articles: JSONDecodable {
     let nextPage: Int?
     
     init(json: [Any], nextPage: Int?) {
+        var rankCount: Int = 1
+        
         items = json.map { res in
             let json = JSON(res)
             let article = Article()
@@ -35,6 +37,10 @@ struct Articles: JSONDecodable {
             
             for tag in tags {
                 article.tags.append(tag) // imutableだからappendしかない？
+            }
+            if UserSettings.getSearchType() == .rank {
+                article.rank.value = rankCount
+                rankCount += 1
             }
             
             article.stockCount = json["likes_count"].intValue

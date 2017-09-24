@@ -114,7 +114,6 @@ class ArticleListViewModel {
         currentPage = 1
     }
 
-    // TODO: ランキング取得, likes_countをAPIでModel化する
     private func configureRanking() {
         fetchRankingTrigger
             .do(onNext: { [unowned self] tuple in
@@ -128,24 +127,15 @@ class ArticleListViewModel {
             .subscribe(
                 onNext: { [weak self] (model: Articles) in
                     guard let `self` = self else { return }
-                    
+                    self.isLoadingVariable.value = false
                     if model.items.isEmpty {
                         self.hasData.value = false
                         return
                     }
-
                     self.hasData.value = true
-                    self.articles += model.items
-                    if let _ = model.nextPage {
-                        self.fetchRankingTrigger.onNext((tag: self.currentTag, period: self.searchPeriod))
-                    }
-                    else {
-                        let sortedArticles = self.sortByStockCount(self.articles)
-                        let addedStateArticles = self.addReadLaterState(sortedArticles)
-                        self.articles = addedStateArticles
-                        self.loadCompleteTrigger.onNext(self.articles)
-                        self.isLoadingVariable.value = false
-                    }
+                    let addedStateArticles = self.addReadLaterState(model.items)
+                    self.articles = addedStateArticles
+                    self.loadCompleteTrigger.onNext(self.articles)
                 },
                 onError: { [weak self] (error: Error) in
                     guard let `self` = self else { return }
@@ -212,23 +202,6 @@ class ArticleListViewModel {
     
     // MARK: - Private Method
 
-    /// ストック順に記事をソートする
-    private func sortByStockCount(_ articles: [Article]) -> [Article] {
-        let rankLimit: Int = (articles.count > 20) ? 20 : articles.count // 20件以上の場合、20件までに絞る
-        var rankCount = 1
-        
-        let sortedArticles: [Article] = articles
-            .flatMap { ($0, $0.stockCount) }
-            .sorted { $0.1 > $1.1 }[0..<rankLimit]
-            .map {
-                $0.0.rank.value = rankCount
-                rankCount += 1
-                return $0.0
-            }
-        
-        return sortedArticles
-    }
-    
     /// あとで読むステータスをarticleに付与する
     private func addReadLaterState(_ articles: [Article]) -> [Article] {
         let saveArtcleIDs: [String] = ArticleManager.getAll().map { $0.id }
