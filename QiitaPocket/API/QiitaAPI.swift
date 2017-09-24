@@ -31,7 +31,7 @@ final class QiitaAPI {
                 return ["page": page]
             }
             else {
-                return ["page": page, "q": tag]
+                return ["page": page, "query": tag]
             }
         }
     }
