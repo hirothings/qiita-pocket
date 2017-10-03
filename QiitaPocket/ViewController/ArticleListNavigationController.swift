@@ -16,28 +16,45 @@ class ArticleListNavigationController: UINavigationController {
     private let bag = DisposeBag()
     
     private let settingButton: UIBarButtonItem = {
-        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
+        var posY: CGFloat
+        if #available(iOS 11.0, *) {
+            posY = 6
+        }
+        else {
+            posY = 0
+        }
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
+        let button = UIButton(frame: CGRect(x: 0, y: posY, width: 44, height: 44))
         let image = #imageLiteral(resourceName: "ic-setting")
         button.setImage(image, for: .normal)
         button.imageEdgeInsets = UIEdgeInsetsMake(14.0, 14.0, 14.0, 14.0)
         button.imageView?.frame = CGRect(x: 14, y: 14, width: 16.0, height: 16.0)
         button.addTarget(self, action: #selector(didTapSettingButton(_:)), for: .touchUpInside)
-        return UIBarButtonItem(customView: button)
+        view.addSubview(button)
+        return UIBarButtonItem(customView: view)
     }()
     
     private let logoImageItem: UIBarButtonItem = {
+        var posY: CGFloat
+        if #available(iOS 11.0, *) {
+            posY = 12
+        }
+        else {
+            posY = 8
+        }
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 32, height: 44))
         let logoImageView = UIImageView(image: #imageLiteral(resourceName: "logo"))
-        logoImageView.frame = CGRect(x: 0, y: 0, width: 26, height: 26)
+        logoImageView.frame = CGRect(x: 0, y: posY, width: 32, height: 32)
         logoImageView.contentMode = .scaleAspectFit
-        return UIBarButtonItem(customView: logoImageView)
+        view.addSubview(logoImageView)
+        return UIBarButtonItem(customView: view)
     }()
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setupLogoImage()
         setupSearchBar()
+        setupLogoImage()
         setupSettingButton()
     }
     
