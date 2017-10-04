@@ -34,11 +34,17 @@ class ArticleListViewModel {
     }
     
     var searchTitle: String {
-        var text: String
-        switch searchType {
-        case .rank:
-            text = "週間ランキング"
-        case .recent:
+        var text: String = ""
+        if searchType == .rank {
+            switch searchPeriod {
+            case .week:
+                text = "週間"
+            case .month:
+                text = "月間"
+            }
+            text += "ランキング"
+        }
+        else {
             text = "新着順"
         }
         text += searchTag.isEmpty ? ": すべて" : ": \(searchTag)"
@@ -46,11 +52,14 @@ class ArticleListViewModel {
     }
     
     var titleColor: UIColor {
-        switch searchType {
-        case .rank:
-            return UIColor.rankGold
-        case .recent:
+        if searchType == .recent {
             return UIColor.theme
+        }
+        switch searchPeriod {
+        case .week:
+            return UIColor.week
+        case .month:
+            return UIColor.month
         }
     }
 

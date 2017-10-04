@@ -11,6 +11,8 @@ import UIKit
 
 extension UIColor {
     static let theme = #colorLiteral(red: 0.2274509804, green: 0.6392156863, blue: 0.03921568627, alpha: 1)
+    static let week = #colorLiteral(red: 0.7764705882, green: 0.7019607843, blue: 0.3882352941, alpha: 1)
+    static let month = #colorLiteral(red: 0.8849335313, green: 0.3303497434, blue: 0.04769382626, alpha: 1)
     static let bg = #colorLiteral(red: 0.9411764706, green: 0.9411764706, blue: 0.9411764706, alpha: 1)
     static let readLater = #colorLiteral(red: 0.9647058824, green: 0.6509803922, blue: 0.137254902, alpha: 1)
     static let disabled = #colorLiteral(red: 0.8470588235, green: 0.8470588235, blue: 0.8470588235, alpha: 1)
