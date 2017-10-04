@@ -41,6 +41,7 @@ class SearchArticleViewController: UIViewController, UITableViewDataSource, UITa
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView(frame: CGRect.zero)
+        tableView.separatorInset = UIEdgeInsets.zero
     }
     
     override func viewDidLayoutSubviews() {
