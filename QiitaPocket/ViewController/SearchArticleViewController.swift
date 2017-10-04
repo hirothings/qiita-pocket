@@ -13,19 +13,30 @@ import RxCocoa
 class SearchArticleViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SearchHistoryCellDelegate {
     
     @IBOutlet weak var searchTypeSegment: UISegmentedControl!
+    @IBOutlet weak var searchPeriodSegment: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchPeriodStackView: UIStackView!
     @IBOutlet weak var contentViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var searchPeriodTopMargin: NSLayoutConstraint!
     
     var didSelectSearchHistory = PublishSubject<String>()
     
     private let bag = DisposeBag()
     private let searchHistory = SearchHistory()
     
+    private var searchType: SearchType {
+        return UserSettings.getSearchType()
+    }
+    private var searchPeriod: SearchPeriod {
+        return UserSettings.getSearchPeriod()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         initSegmentValue()
-        saveSearchSettings()
+        configureSearchTypeSegment()
+        configureSearchPeriodSegment()
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -61,28 +72,53 @@ class SearchArticleViewController: UIViewController, UITableViewDataSource, UITa
     // MARK: - Private Method
     
     func initSegmentValue() {
-        let searchType = UserSettings.getSearchType()
         switch searchType {
         case .rank:
             searchTypeSegment.selectedSegmentIndex = 0
         case .recent:
             searchTypeSegment.selectedSegmentIndex = 1
         }
+        
+        switch searchPeriod {
+        case .week:
+            searchPeriodSegment.selectedSegmentIndex = 0
+        case .month:
+            searchPeriodSegment.selectedSegmentIndex = 1
+        }
     }
     
-    func saveSearchSettings() {
+    func configureSearchTypeSegment() {
         searchTypeSegment.rx.value
-            .subscribe(onNext: { index in
+            .subscribe(onNext: { [weak self] index in
                 switch index {
                 case 0:
                     UserSettings.setSearchType(SearchType.rank)
+                    self?.searchPeriodStackView.isHidden = false
+                    self?.searchPeriodTopMargin.priority = UILayoutPriority.defaultHigh
                 case 1:
                     UserSettings.setSearchType(SearchType.recent)
+                    self?.searchPeriodStackView.isHidden = true
+                    self?.searchPeriodTopMargin.priority = UILayoutPriority.defaultLow
                 default:
                     break
                 }
             })
             .addDisposableTo(bag)
+    }
+    
+    func configureSearchPeriodSegment() {
+        searchPeriodSegment.rx.value
+            .subscribe(onNext: { index in
+                switch index {
+                case 0:
+                    UserSettings.setSearchPeriod(SearchPeriod.week)
+                case 1:
+                    UserSettings.setSearchPeriod(SearchPeriod.month)
+                default:
+                    break
+                }
+            })
+            .disposed(by: bag)
     }
     
     
