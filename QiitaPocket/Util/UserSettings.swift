@@ -57,6 +57,9 @@ class UserSettings {
         }
         return searchPeriod
     }
+    static func setSearchPeriod(_ searchPeriod: SearchPeriod) {
+        UserDefaults.standard.set(searchPeriod.rawValue, forKey: "SearchPeriod")
+    }
     
     // delete
     static func delete(for key: String) {

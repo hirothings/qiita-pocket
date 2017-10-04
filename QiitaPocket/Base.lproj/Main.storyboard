@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -327,18 +328,18 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="naa-YE-kge">
-                                                        <rect key="frame" x="16" y="16" width="215" height="55"/>
+                                                        <rect key="frame" x="16" y="16" width="163" height="55"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="検索モード" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bd7-Kf-e9h">
-                                                                <rect key="frame" x="0.0" y="0.0" width="215" height="17"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="163" height="17"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="WjI-dJ-Zc9">
-                                                                <rect key="frame" x="0.0" y="27" width="215" height="29"/>
+                                                                <rect key="frame" x="0.0" y="27" width="163" height="29"/>
                                                                 <segments>
-                                                                    <segment title="週間ランキング"/>
+                                                                    <segment title="ランキング"/>
                                                                     <segment title="新着"/>
                                                                 </segments>
                                                             </segmentedControl>
@@ -422,6 +423,7 @@
                                                     <constraint firstItem="naa-YE-kge" firstAttribute="leading" secondItem="a1f-7c-hrm" secondAttribute="leading" constant="16" id="UxR-C7-CLo"/>
                                                     <constraint firstItem="cGN-aq-6kP" firstAttribute="top" secondItem="dnf-LL-7hd" secondAttribute="bottom" constant="10" id="Yi0-2R-Idk"/>
                                                     <constraint firstItem="dnf-LL-7hd" firstAttribute="top" secondItem="7EZ-9q-IF9" secondAttribute="bottom" constant="25" id="az1-RK-VWb"/>
+                                                    <constraint firstItem="dnf-LL-7hd" firstAttribute="top" secondItem="WjI-dJ-Zc9" secondAttribute="bottom" priority="500" constant="25" id="dCR-mJ-ASV"/>
                                                     <constraint firstItem="naa-YE-kge" firstAttribute="top" secondItem="a1f-7c-hrm" secondAttribute="top" constant="16" id="gWk-AJ-mpu"/>
                                                     <constraint firstAttribute="bottom" secondItem="cGN-aq-6kP" secondAttribute="bottom" id="zp6-PB-qNY"/>
                                                 </constraints>
@@ -456,6 +458,9 @@
                     </view>
                     <connections>
                         <outlet property="contentViewHeight" destination="6AA-FA-2ph" id="dbh-yv-BmP"/>
+                        <outlet property="searchPeriodSegment" destination="jbp-Jn-MwD" id="tTP-Bn-Qwx"/>
+                        <outlet property="searchPeriodStackView" destination="7EZ-9q-IF9" id="BXi-fj-lMs"/>
+                        <outlet property="searchPeriodTopMargin" destination="HWf-2b-urN" id="oxs-IL-Kst"/>
                         <outlet property="searchTypeSegment" destination="WjI-dJ-Zc9" id="nV8-LI-cCV"/>
                         <outlet property="tableView" destination="cGN-aq-6kP" id="ESj-Ul-1EL"/>
                     </connections>
